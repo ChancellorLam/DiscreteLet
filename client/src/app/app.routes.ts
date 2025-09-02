@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import {HomeComponent} from './pages/home/home.component';
+import { LogicandproofsComponent } from './pages/logicandproofs/logicandproofs.component';
 
-export const routes: Routes = [
-    { path: '', component: HomeComponent }, 
+export const routes: Routes = [ 
+    { path: '', component: LogicandproofsComponent}
 ];
