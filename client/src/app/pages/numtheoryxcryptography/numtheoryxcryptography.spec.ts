@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Home } from './home';
+import { Numtheoryxcryptography } from './numtheoryxcryptography';
 
-describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+describe('Numtheoryxcryptography', () => {
+  let component: Numtheoryxcryptography;
+  let fixture: ComponentFixture<Numtheoryxcryptography>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Home]
+      imports: [Numtheoryxcryptography]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Home);
+    fixture = TestBed.createComponent(Numtheoryxcryptography);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
