@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './logicandproofs.html',
   styleUrl: './logicandproofs.css'
 })
-export class LogicandproofsComponent {
+export class Logicandproofs {
 
 }

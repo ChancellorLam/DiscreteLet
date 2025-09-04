@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogicandproofsComponent } from './logicandproofs.component';
+import { Logicandproofs } from './logicandproofs';
 
 describe('Logicandproofs', () => {
-  let component: LogicandproofsComponent;
-  let fixture: ComponentFixture<LogicandproofsComponent>;
+  let component: Logicandproofs;
+  let fixture: ComponentFixture<Logicandproofs>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LogicandproofsComponent]
+      imports: [Logicandproofs]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LogicandproofsComponent);
+    fixture = TestBed.createComponent(Logicandproofs);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
