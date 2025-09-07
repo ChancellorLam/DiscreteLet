@@ -6,12 +6,14 @@ import { RouterLink, RouterModule } from '@angular/router';
   selector: 'app-menubar',
   standalone: true,
   imports: [MenubarModule, RouterModule],
+  styleUrls: ['./menubar.css'],
   template: `
     <p-menubar [model]="items"></p-menubar>
   `
 })
 export class AppMenubar {
   items = [
+    { label: 'Home', routerLink: '/' },
     { label: 'Logic and Proofs', routerLink: '/logicandproofs' },
     { label: 'Number Theory and Cryptography', routerLink: '/numtheoryxcrypt' },
     { label: 'Graph Theory', routerLink: '/graphtheory' },

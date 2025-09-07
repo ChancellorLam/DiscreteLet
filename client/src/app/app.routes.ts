@@ -6,7 +6,10 @@ import { Counting } from './pages/counting/counting';
 import { Basicstructures } from './pages/basicstructures/basicstructures';
 import { Relations } from './pages/relations/relations';
 
+class HomeContent {}
+
 export const routes: Routes = [ 
+    { path: '', component: HomeContent, pathMatch: 'full' },
     { path: 'logicandproofs', component: Logicandproofs},
     { path: 'numtheoryxcrypt', component: Numtheoryxcrypt},
     { path: 'graphtheory', component: Graphtheory},

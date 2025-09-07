@@ -15,10 +15,6 @@ export class App {
   protected readonly title = signal('DiscreteLet');
    private activatedRoute = inject(ActivatedRoute);
 
-constructor() {
-    console.log(this.activatedRoute);
-  }
-
 
   }
 
