@@ -7,10 +7,10 @@ import { Basicstructures } from './pages/basicstructures/basicstructures';
 import { Relations } from './pages/relations/relations';
 
 export const routes: Routes = [ 
-    { path: '', component: Logicandproofs},
-    { path: '', component: Numtheoryxcrypt},
-    { path: '', component: Graphtheory},
-    { path: '', component: Counting},
-    { path: '', component: Basicstructures},
-    { path: '', component: Relations}
+    { path: 'logicandproofs', component: Logicandproofs},
+    { path: 'numtheoryxcrypt', component: Numtheoryxcrypt},
+    { path: 'graphtheory', component: Graphtheory},
+    { path: 'counting', component: Counting},
+    { path: 'basicstructures', component: Basicstructures},
+    { path: 'relations', component: Relations}
 ];
