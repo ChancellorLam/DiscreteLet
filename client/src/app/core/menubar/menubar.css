@@ -6,17 +6,16 @@
 }
 
 /*Menu items */
-:host ::ng-deep .app-menubar .p-menuitem-link {
-  color: #ffffff;
+:host ::ng-deep .p-menubar .p-menubar-item-link {
+  color: #000000;
   font-weight: 500;
   font-size: 14px;
   padding: 0 15px;
 }
 
 /* Align items nicely */
-:host ::ng-deep .p-menubar .p-menubar-start {
+:host ::ng-deep .p-menubar .p-menubar-root-list {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-
