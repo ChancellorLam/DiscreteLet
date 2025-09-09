@@ -1,12 +1,22 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { AppMenubar } from './core/menubar/menubar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, AppMenubar],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'] 
+
 })
 export class App {
   protected readonly title = signal('DiscreteLet');
-}
+   private activatedRoute = inject(ActivatedRoute);
+
+
+  }
+
+
+
