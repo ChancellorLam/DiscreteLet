@@ -16,6 +16,6 @@ export const routes: Routes = [
   { path: 'relations', component: RelationsPage },
   { path: 'graph-theory', component: GraphTheoryPage },
   { path: 'counting', component: CountingPage },
-  { path: 'number-theory', component: NumberTheoryPage},
-  { path: 'primeng-test-page', component: PrimengTestPage},
+  { path: 'number-theory', component: NumberTheoryPage },
+  { path: 'primeng-test-page', component: PrimengTestPage },
 ];
