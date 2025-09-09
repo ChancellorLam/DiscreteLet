@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Basicstructures } from './basicstructures';
+import { BasicStructuresPage } from './basic-structures-page';
 
-describe('Basicstructures', () => {
-  let component: Basicstructures;
-  let fixture: ComponentFixture<Basicstructures>;
+describe('BasicStructuresPage', () => {
+  let component: BasicStructuresPage;
+  let fixture: ComponentFixture<BasicStructuresPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Basicstructures]
+      imports: [BasicStructuresPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Basicstructures);
+    fixture = TestBed.createComponent(BasicStructuresPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
