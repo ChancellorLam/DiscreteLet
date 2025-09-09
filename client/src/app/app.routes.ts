@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './pages/home-page/home-page';
 import { LogicPage } from './pages/logic-page/logic-page';
-import { BasicStructuresPage} from './pages/basic-structures-page/basic-structures-page';
+import { BasicStructuresPage } from './pages/basic-structures-page/basic-structures-page';
 import { Relations } from './pages/relations/relations';
 import { GraphTheoryPage } from './pages/graph-theory-page/graph-theory-page';
 import { CountingPage } from './pages/counting-page/counting-page';
-import { Numtheoryxcrypt } from './pages/numtheoryxcrypt/numtheoryxcrypt';
+import { NumberTheoryPage } from './pages/number-theory-page/number-theory-page';
 import { PrimengTestPage } from './pages/primeng-test-page/primeng-test-page';
 
 export const routes: Routes = [
@@ -16,6 +16,6 @@ export const routes: Routes = [
   { path: 'relations', component: Relations },
   { path: 'graph-theory', component: GraphTheoryPage },
   { path: 'counting', component: CountingPage },
-  { path: 'number-theory', component: Numtheoryxcrypt},
+  { path: 'number-theory', component: NumberTheoryPage},
   { path: 'primeng-test-page', component: PrimengTestPage},
 ];

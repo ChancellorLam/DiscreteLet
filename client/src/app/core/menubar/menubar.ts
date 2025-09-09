@@ -15,7 +15,7 @@ export class AppMenubar {
   items = [
     { label: 'Home', routerLink: '/' },
     { label: 'Logic', routerLink: '/logic' },
-    { label: 'Number Theory & Cryptography', routerLink: '/numtheoryxcrypt' },
+    { label: 'Number Theory', routerLink: '/number-theory' },
     { label: 'Graph Theory', routerLink: '/graph-theory' },
     { label: 'CountingPage', routerLink: '/counting' },
     { label: 'Basic Structures', routerLink: '/basic-structures' },

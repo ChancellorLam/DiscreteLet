@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Numtheoryxcrypt } from './numtheoryxcrypt';
+import { NumberTheoryPage } from './number-theory-page';
 
-describe('Numtheoryxcrypt', () => {
-  let component: Numtheoryxcrypt;
-  let fixture: ComponentFixture<Numtheoryxcrypt>;
+describe('NumberTheoryPage', () => {
+  let component: NumberTheoryPage;
+  let fixture: ComponentFixture<NumberTheoryPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Numtheoryxcrypt]
+      imports: [NumberTheoryPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Numtheoryxcrypt);
+    fixture = TestBed.createComponent(NumberTheoryPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
