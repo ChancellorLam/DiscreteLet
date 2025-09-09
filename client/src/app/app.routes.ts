@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './pages/home-page/home-page';
-import { Logicandproofs } from './pages/logicandproofs/logicandproofs';
+import { LogicPage } from './pages/logic-page/logic-page';
 import { BasicStructuresPage} from './pages/basic-structures-page/basic-structures-page';
 import { Relations } from './pages/relations/relations';
 import { GraphTheoryPage } from './pages/graph-theory-page/graph-theory-page';
@@ -11,7 +11,7 @@ import { PrimengTestPage } from './pages/primeng-test-page/primeng-test-page';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomePage, pathMatch: 'full' },
-  { path: 'logic', component: Logicandproofs },
+  { path: 'logic', component: LogicPage },
   { path: 'basic-structures', component: BasicStructuresPage },
   { path: 'relations', component: Relations },
   { path: 'graph-theory', component: GraphTheoryPage },

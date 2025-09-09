@@ -14,7 +14,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 export class AppMenubar {
   items = [
     { label: 'Home', routerLink: '/' },
-    { label: 'Logic & Proofs', routerLink: '/logicandproofs' },
+    { label: 'Logic', routerLink: '/logic' },
     { label: 'Number Theory & Cryptography', routerLink: '/numtheoryxcrypt' },
     { label: 'Graph Theory', routerLink: '/graph-theory' },
     { label: 'CountingPage', routerLink: '/counting' },
