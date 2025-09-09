@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
+import { HomePage } from './pages/home-page/home-page';
 import { Logicandproofs } from './pages/logicandproofs/logicandproofs';
 import { BasicStructuresPage} from './pages/basic-structures-page/basic-structures-page';
 import { Relations } from './pages/relations/relations';
@@ -10,7 +10,7 @@ import { PrimengTestPage } from './pages/primeng-test-page/primeng-test-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: Home, pathMatch: 'full' },
+  { path: 'home', component: HomePage, pathMatch: 'full' },
   { path: 'logic', component: Logicandproofs },
   { path: 'basic-structures', component: BasicStructuresPage },
   { path: 'relations', component: Relations },
