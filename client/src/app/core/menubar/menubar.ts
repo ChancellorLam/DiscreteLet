@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
-import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menubar',
-  standalone: true,
-  imports: [MenubarModule, RouterModule],
-  styleUrls: ['./menubar.css'],
+  imports: [MenubarModule],
+  styleUrl: './menubar.css',
   template: `
     <p-menubar [model]="items"></p-menubar>
   `
@@ -15,10 +13,10 @@ export class AppMenubar {
   items = [
     { label: 'Home', routerLink: '/' },
     { label: 'Logic', routerLink: '/logic' },
-    { label: 'Number Theory', routerLink: '/number-theory' },
-    { label: 'Graph Theory', routerLink: '/graph-theory' },
-    { label: 'CountingPage', routerLink: '/counting' },
     { label: 'Basic Structures', routerLink: '/basic-structures' },
-    { label: 'Relations', routerLink: '/relations' }
+    { label: 'Relations', routerLink: '/relations' },
+    { label: 'Graph Theory', routerLink: '/graph-theory' },
+    { label: 'Counting', routerLink: '/counting' },
+    { label: 'Number Theory', routerLink: '/number-theory' },
   ];
 }
