@@ -16,7 +16,7 @@ export class AppMenubar {
     { label: 'Home', routerLink: '/' },
     { label: 'Logic & Proofs', routerLink: '/logicandproofs' },
     { label: 'Number Theory & Cryptography', routerLink: '/numtheoryxcrypt' },
-    { label: 'Graph Theory', routerLink: '/graphtheory' },
+    { label: 'Graph Theory', routerLink: '/graph-theory' },
     { label: 'CountingPage', routerLink: '/counting' },
     { label: 'Basic Structures', routerLink: '/basic-structures' },
     { label: 'Relations', routerLink: '/relations' }
