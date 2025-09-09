@@ -1,12 +1,18 @@
 import { Routes } from '@angular/router';
 import { Logicandproofs } from './pages/logicandproofs/logicandproofs';
-import { Numtheoryxcrypt } from './pages/numtheoryxcrypt/numtheoryxcrypt';
+import { Basicstructures} from './pages/basicstructures/basicstructures';
+import { Relations } from './pages/relations/relations';
 import { Graphtheory } from './pages/graphtheory/graphtheory';
 import { Counting } from './pages/counting/counting';
+import { Numtheoryxcrypt } from './pages/numtheoryxcrypt/numtheoryxcrypt';
+import { PrimengTestPage } from './pages/primeng-test-page/primeng-test-page';
 
-export const routes: Routes = [ 
-    { path: '', component: Logicandproofs},
-    { path: '', component: Numtheoryxcrypt},
-    { path: '', component: Graphtheory},
-    { path: '', component: Counting},
+export const routes: Routes = [
+  { path: 'logic', component: Logicandproofs },
+  { path: 'basic-structures', component: Basicstructures },
+  { path: 'relations', component: Relations },
+  { path: 'graph-theory', component: Graphtheory },
+  { path: 'counting', component: Counting},
+  { path: 'number-theory', component: Numtheoryxcrypt},
+  { path: 'primeng-test-page', component: PrimengTestPage},
 ];
