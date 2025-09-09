@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Counting } from './counting';
+import { CountingPage } from './counting-page';
 
-describe('Counting', () => {
-  let component: Counting;
-  let fixture: ComponentFixture<Counting>;
+describe('CountingPage', () => {
+  let component: CountingPage;
+  let fixture: ComponentFixture<CountingPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Counting]
+      imports: [CountingPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Counting);
+    fixture = TestBed.createComponent(CountingPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
