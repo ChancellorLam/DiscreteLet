@@ -6,12 +6,13 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
 import { MenubarModule } from 'primeng/menubar';
+import { RouterLink} from '@angular/router';
 
 @Component({
     selector: 'app-menubar',
     templateUrl: './menubar.html',
     standalone: true,
-    imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule]
+    imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterLink]
 })
 export class AppMenubar implements OnInit {
     items: MenuItem[] = [];
@@ -24,7 +25,7 @@ export class AppMenubar implements OnInit {
             { label: 'Relations', routerLink: '/relations', icon: 'pi pi-link' },
             { label: 'Graph Theory', routerLink: '/graph-theory', icon: 'pi pi-share-alt' },
             { label: 'Counting', routerLink: '/counting', icon: 'pi pi-calculator' },
-            { label: 'Number Theory', routerLink: '/number-theory', icon: 'pi pi-hash' },
+            { label: 'Number Theory & Cryptography', routerLink: '/number-theory', icon: 'pi pi-hash' },
             { label: 'Profile', routerLink: '/profile-page', icon: 'pi pi-user' }
         ];
     }
