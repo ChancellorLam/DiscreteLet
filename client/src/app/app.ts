@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AppMenubar } from './core/menubar/menubar';
 

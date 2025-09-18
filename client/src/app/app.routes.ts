@@ -7,6 +7,7 @@ import { GraphTheoryPage } from './pages/graph-theory-page/graph-theory-page';
 import { CountingPage } from './pages/counting-page/counting-page';
 import { NumberTheoryPage } from './pages/number-theory-page/number-theory-page';
 import { PrimengTestPage } from './pages/primeng-test-page/primeng-test-page';
+import { ProfilePage } from './pages/profile-page/profile-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,4 +19,5 @@ export const routes: Routes = [
   { path: 'counting', component: CountingPage },
   { path: 'number-theory', component: NumberTheoryPage },
   { path: 'primeng-test-page', component: PrimengTestPage },
+  { path: 'profile-page', component: ProfilePage}
 ];
