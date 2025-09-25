@@ -2,11 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AppMenubar } from './core/menubar/menubar';
+import { AccordionModule } from 'primeng/accordion';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppMenubar],
+  imports: [RouterOutlet, AppMenubar, AccordionModule],
   templateUrl: './app.html',
   styleUrls: ['./app.css'] 
 
