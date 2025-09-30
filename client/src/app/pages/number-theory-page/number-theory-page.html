@@ -26,26 +26,85 @@
 
         <!-- Panel 2 -->
         <p-accordion-panel value="1">
-            <p-accordion-header>Header II</p-accordion-header>
+            <p-accordion-header>1. Integers & Divisibility</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-                    qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+                    Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with integers often 
+                    leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where qqq is the quotient and rrr is the 
+                    remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder. Properties of divisibility
+                    help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like 
+                    prime factorization and modular arithmetic.
                 </p>
             </p-accordion-content>
         </p-accordion-panel>
 
         <!-- Panel 3 -->
         <p-accordion-panel value="2">
-            <p-accordion-header>Header III</p-accordion-header>
+            <p-accordion-header>2. GCD & LCM</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
-                    culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et
-                    expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+                    The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common 
+                    multiple (LCM) is the smallest positive integer that both numbers divide into evenly. One way to find these is through 
+                    prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm, which uses repeated 
+                    division to efficiently determine the GCD. These concepts are essential for simplifying fractions, solving equations, 
+                    and understanding number relationships.
+                </p>
+            </p-accordion-content>
+        </p-accordion-panel>
+
+        <!-- Panel 4 -->
+        <p-accordion-panel value="3">
+            <p-accordion-header>3. Prime Numbers</p-accordion-header>
+            <p-accordion-content>
+                <p class="m-0">
+                    A prime number is a number greater than 1 that has exactly two divisors: 1 and itself. Numbers with more than 
+                    two divisors are composite. The Fundamental Theorem of Arithmetic states that every integer greater than 1 can be 
+                    uniquely expressed as a product of prime numbers, which makes primes the “building blocks” of integers. Although 
+                    primes become less frequent as numbers grow larger, their distribution follows intriguing patterns that are central 
+                    to number theory and applications like cryptography.
+                </p>
+            </p-accordion-content>
+        </p-accordion-panel>
+
+        <!-- Panel 5 -->
+        <p-accordion-panel value="4">
+            <p-accordion-header>4. Modular Arithmetic</p-accordion-header>
+            <p-accordion-content>
+                <p class="m-0">
+                    In modular arithmetic, we write a≡b (mod n)a \equiv b \ (\text(mod ) n)a≡b (mod n) to mean that aaa and bbb 
+                    leave the same remainder when divided by nnn. This system is often described as “clock arithmetic,” since numbers 
+                    wrap around after reaching the modulus. Modular arithmetic has its own rules for addition and multiplication, and 
+                    introduces concepts like modular inverses, which allow certain equations to be solved in modular systems. It is a 
+                    powerful tool used in problem-solving, cryptography, and computer science.
+                </p>
+            </p-accordion-content>
+        </p-accordion-panel>
+
+        <!-- Panel 6 -->
+        <p-accordion-panel value="5">
+            <p-accordion-header>5. Classical Theorems</p-accordion-header>
+            <p-accordion-content>
+                <p class="m-0">
+                    Several foundational theorems form the backbone of number theory. The Euclidean Algorithm provides a systematic 
+                    way to find the GCD, reinforcing divisibility concepts. Fermat’s Little Theorem introduces a relationship between 
+                    prime numbers and modular arithmetic, showing that ap−1≡1 (mod p)a^(p-1) \equiv 1 \ (\text(mod ) p)ap−1≡1 (mod p) 
+                    for prime ppp. The Chinese Remainder Theorem explains how to solve systems of modular equations simultaneously, 
+                    with visual or intuitive methods helping to make this abstract idea concrete. These theorems build intuition for 
+                    more advanced mathematical applications.
+                </p>
+            </p-accordion-content>
+        </p-accordion-panel>
+
+        <!-- Panel 7 -->
+        <p-accordion-panel value="6">
+            <p-accordion-header>6. Applications in Cryptography and Computer Science</p-accordion-header>
+            <p-accordion-content>
+                <p class="m-0">
+                    Primes and modular arithmetic are essential for modern encryption systems, especially in securing digital 
+                    communication. The RSA algorithm uses large prime numbers and modular exponentiation to create public and 
+                    private keys, making it computationally easy to encrypt but extremely hard to break without special knowledge. 
+                    Even without advanced math, students can see how modular arithmetic underpins secure data transfer and how number 
+                    theory moves from abstract concepts to real-world technologies.
                 </p>
             </p-accordion-content>
         </p-accordion-panel>
