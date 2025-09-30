@@ -1,5 +1,13 @@
-    <div class="card flex justify-content-center">
-    <p-accordion [value]="['0']" [multiple]="true">
+<p-button 
+  (click)="toggleAll()" 
+  styleClass="p-button-text" 
+  [label]="isExpanded ? 'Collapse All' : 'Expand All'">
+</p-button>
+
+<div class="card flex justify-content-center">
+    <p-accordion [(value)]="activeTabs" multiple="true">
+        
+        <!-- Panel 1 -->
         <p-accordion-panel value="0">
             <p-accordion-header>Number Theory Introduction:</p-accordion-header>
             <p-accordion-content>
@@ -15,6 +23,8 @@
                 </p>
             </p-accordion-content>
         </p-accordion-panel>
+
+        <!-- Panel 2 -->
         <p-accordion-panel value="1">
             <p-accordion-header>Header II</p-accordion-header>
             <p-accordion-content>
@@ -26,6 +36,8 @@
                 </p>
             </p-accordion-content>
         </p-accordion-panel>
+
+        <!-- Panel 3 -->
         <p-accordion-panel value="2">
             <p-accordion-header>Header III</p-accordion-header>
             <p-accordion-content>
@@ -37,5 +49,6 @@
                 </p>
             </p-accordion-content>
         </p-accordion-panel>
+
     </p-accordion>
 </div>
