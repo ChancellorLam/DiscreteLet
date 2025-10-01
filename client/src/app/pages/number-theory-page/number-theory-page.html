@@ -93,7 +93,8 @@
                     to number theory and applications like cryptography.
                     </p>
 
-                    <!-- Add button to generate random num here-->
+                <div class="primeNumChecker">
+                    <!-- generate random num here-->
                      <p-button 
                         (click)="onClick()" 
                         styleClass="p-button-text" 
@@ -101,9 +102,11 @@
                     </p-button>
                     <div>
                         Random number: {{ randomNumber }}
-                    </div>          
-                <!-- Add button to check if num is prime-->
+                    </div>        
+                     
+                <!-- check if num is prime-->
                      <p>Is this a prime number?</p>
+                <div class="button-row">
                      <p-button 
                         (click)="onPrimeAnswer(true)" 
                         styleClass="p-button-text" 
@@ -114,10 +117,11 @@
                         styleClass="p-button-text" 
                         label="No">
                     </p-button>
+                </div> 
 
                     <div>{{primeNumFeedback}}</div>
 
-
+                </div>
                 
             </p-accordion-content>
         </p-accordion-panel>
