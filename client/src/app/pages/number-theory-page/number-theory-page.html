@@ -49,6 +49,35 @@
                     division to efficiently determine the GCD. These concepts are essential for simplifying fractions, solving equations, 
                     and understanding number relationships.
                 </p>
+
+                <h1>GCD / LCM Calculator</h1>
+  <label for="numbers">Enter numbers (comma-separated):</label><br>
+  <input type="text" id="numbers" placeholder="e.g. 12, 18, 36"><br>
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="results"></div>
+
+  <script>
+    function calculate() {
+      const input = document.getElementById('numbers').value;
+      const numArray = input.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+
+      if (numArray.length < 2) {
+        document.getElementById('results').innerHTML = "<p>Please enter at least two valid numbers.</p>";
+        return;
+      }
+
+      const gcd = math.gcd(...numArray);
+      const lcm = math.lcm(...numArray);
+
+      document.getElementById('results').innerHTML = `
+        <p><strong>GCD:</strong> ${gcd}</p>
+        <p><strong>LCM:</strong> ${lcm}</p>
+      `;
+    }
+  </script>
+
+
             </p-accordion-content>
         </p-accordion-panel>
 
@@ -62,7 +91,34 @@
                     uniquely expressed as a product of prime numbers, which makes primes the “building blocks” of integers. Although 
                     primes become less frequent as numbers grow larger, their distribution follows intriguing patterns that are central 
                     to number theory and applications like cryptography.
-                </p>
+                    </p>
+
+                    <!-- Add button to generate random num here-->
+                     <p-button 
+                        (click)="onClick()" 
+                        styleClass="p-button-text" 
+                        label="Generate-Number">
+                    </p-button>
+                    <div>
+                        Random number: {{ randomNumber }}
+                    </div>          
+                <!-- Add button to check if num is prime-->
+                     <p>Is this a prime number?</p>
+                     <p-button 
+                        (click)="onPrimeAnswer(true)" 
+                        styleClass="p-button-text" 
+                        label="Yes">
+                    </p-button>
+                    <p-button 
+                        (click)="onPrimeAnswer(false)" 
+                        styleClass="p-button-text" 
+                        label="No">
+                    </p-button>
+
+                    <div>{{primeNumFeedback}}</div>
+
+
+                
             </p-accordion-content>
         </p-accordion-panel>
 
