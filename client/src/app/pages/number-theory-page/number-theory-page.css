@@ -1,0 +1,13 @@
+.primeNumChecker{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color:aliceblue;
+}
+
+.button-row{
+    display: flex;
+    gap: 1rem;
+}
