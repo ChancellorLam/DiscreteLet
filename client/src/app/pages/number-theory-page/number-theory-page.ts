@@ -3,6 +3,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
+import confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-number-theory-page',
@@ -50,6 +51,7 @@ getRandomNum(min: number, max: number): number {
 
       if(userGuessPrime === actualPrime){
         this.primeNumFeedback = "Correct!";
+        confetti();
       }
       else{
         this.primeNumFeedback = "Incorrect. Try again.";
