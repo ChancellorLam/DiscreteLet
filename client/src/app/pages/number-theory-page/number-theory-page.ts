@@ -58,6 +58,7 @@ getRandomNum(min: number, max: number): number {
       }
       console.log(this.primeNumFeedback);
     }
+    // END prime num checker
 
   toggleAll() {
     if (this.isExpanded) {

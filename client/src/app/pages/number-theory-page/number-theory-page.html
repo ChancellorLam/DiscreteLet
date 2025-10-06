@@ -9,7 +9,7 @@
         
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
-            <p-accordion-header>Number Theory Introduction:</p-accordion-header>
+            <p-accordion-header class="accordionHeader">Number Theory Introduction:</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Number theory is a branch of pure mathematics that focuses on the integers and integer-valued functions. It investigates 
@@ -26,7 +26,7 @@
 
         <!-- Panel 2 -->
         <p-accordion-panel value="1">
-            <p-accordion-header>1. Integers & Divisibility</p-accordion-header>
+            <p-accordion-header class="accordionHeader">1. Integers & Divisibility</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with integers often 
@@ -40,7 +40,7 @@
 
         <!-- Panel 3 -->
         <p-accordion-panel value="2">
-            <p-accordion-header>2. GCD & LCM</p-accordion-header>
+            <p-accordion-header class="accordionHeader">2. GCD & LCM</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common 
@@ -50,40 +50,83 @@
                     and understanding number relationships.
                 </p>
 
-                <h1>GCD / LCM Calculator</h1>
-  <label for="numbers">Enter numbers (comma-separated):</label><br>
-  <input type="text" id="numbers" placeholder="e.g. 12, 18, 36"><br>
-  <button onclick="calculate()">Calculate</button>
+                <h3>Euclidean Algorithm — Compute gcd(252, 198)</h3>
 
-  <div id="results"></div>
+                <p>Apply repeated division with remainder:</p>
 
-  <script>
-    function calculate() {
-      const input = document.getElementById('numbers').value;
-      const numArray = input.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+                <p>
+                    252 = 1 × 198 + 54 &nbsp;&nbsp; (quotient = 1, remainder = 54)<br>
+                    198 = 3 × 54 + 36 &nbsp;&nbsp; (quotient = 3, remainder = 36)<br>
+                    54 = 1 × 36 + 18 &nbsp;&nbsp; (quotient = 1, remainder = 18)<br>
+                    36 = 2 × 18 + 0 &nbsp;&nbsp; (quotient = 2, remainder = 0)
+                </p>
 
-      if (numArray.length < 2) {
-        document.getElementById('results').innerHTML = "<p>Please enter at least two valid numbers.</p>";
-        return;
-      }
+                <p>When we reach a remainder of 0, the previous nonzero remainder is the gcd.</p>
+                <p><strong>Therefore, gcd(252, 198) = 18</strong></p>
 
-      const gcd = math.gcd(...numArray);
-      const lcm = math.lcm(...numArray);
+                <hr>
 
-      document.getElementById('results').innerHTML = `
-        <p><strong>GCD:</strong> ${gcd}</p>
-        <p><strong>LCM:</strong> ${lcm}</p>
-      `;
-    }
-  </script>
+                <h3>Example: Find the LCM of 12 and 18</h3>
 
+                <h4>Step 1 — Recall the relationship</h4>
+                <p>
+                    For any positive integers a and b:<br>
+                    LCM(a, b) = |a × b| / GCD(a, b)
+                </p>
+
+                <p>
+                    This formula comes from the fact that the product of two numbers equals the product of their GCD and LCM:<br>
+                    a × b = GCD(a, b) × LCM(a, b)
+                </p>
+
+                <h4>Step 2 — Find the GCD using the Euclidean algorithm</h4>
+                <p>
+                    18 = 1 × 12 + 6<br>
+                    12 = 2 × 6 + 0<br>
+                    → The remainder becomes 0, so <strong>GCD = 6</strong>.
+                </p>
+
+                <h4>Step 3 — Apply the formula for LCM</h4>
+                <p>
+                    LCM(12, 18) = (12 × 18) / 6<br>
+                    12 × 18 = 216<br>
+                    216 ÷ 6 = 36
+                </p>
+
+                <p><strong>Therefore, LCM(12, 18) = 36</strong></p>
+
+                <h4>Step 4 — (Optional) Check using prime factorization</h4>
+                <table border="1" cellpadding="5" cellspacing="0">
+                <tr>
+                    <th>Number</th>
+                    <th>Prime Factors</th>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>2<sup>2</sup> × 3<sup>1</sup></td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>2<sup>1</sup> × 3<sup>2</sup></td>
+                </tr>
+                </table>
+
+                <p>
+                Take the highest power of each prime:<br>
+                LCM = 2<sup>2</sup> × 3<sup>2</sup> = 4 × 9 = 36<br>
+                <strong>Produces the same result!</strong>
+                </p>
+                <br>
+
+                <h3>GCD / LCM Calculator</h3>
+                
 
             </p-accordion-content>
         </p-accordion-panel>
 
         <!-- Panel 4 -->
         <p-accordion-panel value="3">
-            <p-accordion-header>3. Prime Numbers</p-accordion-header>
+            <p-accordion-header class="accordionHeader">3. Prime Numbers</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     A prime number is a number greater than 1 that has exactly two divisors: 1 and itself. Numbers with more than 
@@ -92,8 +135,61 @@
                     primes become less frequent as numbers grow larger, their distribution follows intriguing patterns that are central 
                     to number theory and applications like cryptography.
                     </p>
+                    <br>
+
+                    <h3>Walkthrough example — determine whether 221 is prime</h3>
+                    <p>
+                        <h4>Step 1 — Trivial checks</h4>
+                <p>Let <strong>n = 221</strong>.</p>
+                <ul>
+                <li>Check: <code>n &gt; 1</code> — yes: <code>221 &gt; 1</code>.</li>
+                <li>Is <code>n = 2</code>? — no.</li>
+                <li>Is <code>n</code> even? Last digit is <code>1</code> &rarr; odd &rarr; not divisible by 2.</li>
+                </ul>
+
+                <h4>Step 2 — Compute bound</h4>
+                <p>
+                14<sup>2</sup> = 196 and 15<sup>2</sup> = 225, so &radic;221 is between 14 and 15.
+                Therefore we only need to check divisors &le; 14. The primes to test are:
+                <code>2, 3, 5, 7, 11, 13</code>.
+                </p>
+
+                <h4>Step 3 — Test each candidate (showing arithmetic)</h4>
+
+                 <p>Divisible by 2? Last digit is <code>1</code> &rarr; <strong>no</strong>.</p>
+
+                <p>Divisible by 3? Sum of digits = 2 + 2 + 1 = 5. Since 5 is not a multiple of 3 &rarr; <strong>no</strong>.</p>
+
+                <p>Divisible by 5? Last digit is not 0 or 5 &rarr; <strong>no</strong>.</p>
+
+                <p>Divisible by 7? (long division)</p>
+                <pre>
+                    Divide 221 by 7:
+                    7 goes into 22 → 3    (3 × 7 = 21), remainder 22 − 21 = 1
+                    bring down final digit 1 → 11
+                    7 goes into 11 → 1    (1 × 7 = 7), remainder 11 − 7 = 4
+                    Final remainder = 4 → not divisible by 7.
+                </pre>
+
+                <p>Divisible by 11? Alternating-sum test: 2 − 2 + 1 = 1, not a multiple of 11 &rarr; <strong>no</strong>.
+                (Long division also gives remainder 1.)</p>
+
+                <p>Divisible by 13? (long division)</p>
+                <pre>
+                    13 goes into 22 → 1    (1 × 13 = 13), remainder 22 − 13 = 9
+                    bring down final digit 1 → 91
+                    13 goes into 91 → 7    (7 × 13 = 91), remainder 91 − 91 = 0
+                    Final remainder = 0 → divisible by 13.
+                </pre>
+
+                <h4>Step 4 — Conclude</h4>
+                <p>We found a nontrivial divisor: <strong>13</strong>. Therefore <strong>221 is composite (not prime)</strong>.</p>
+                <p>Compute the cofactor: <code>221 &divide; 13 = 17</code>.</p>
+                <p>Check: <code>13 &times; 17 = 221</code>.</p>
+                <p>Prime factorization (by the Fundamental Theorem of Arithmetic): <code>221 = 13 &times; 17</code>.</p>
 
                 <div class="primeNumChecker">
+                    <h3>Prime Number Checker</h3>
                     <!-- generate random num here-->
                      <p-button 
                         (click)="onClick()" 
@@ -128,7 +224,7 @@
 
         <!-- Panel 5 -->
         <p-accordion-panel value="4">
-            <p-accordion-header>4. Modular Arithmetic</p-accordion-header>
+            <p-accordion-header class="accordionHeader">4. Modular Arithmetic</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     In modular arithmetic, we write a≡b (mod n)a \equiv b \ (\text(mod ) n)a≡b (mod n) to mean that aaa and bbb 
@@ -142,7 +238,7 @@
 
         <!-- Panel 6 -->
         <p-accordion-panel value="5">
-            <p-accordion-header>5. Classical Theorems</p-accordion-header>
+            <p-accordion-header class="accordionHeader">5. Classical Theorems</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Several foundational theorems form the backbone of number theory. The Euclidean Algorithm provides a systematic 
@@ -157,7 +253,7 @@
 
         <!-- Panel 7 -->
         <p-accordion-panel value="6">
-            <p-accordion-header>6. Applications in Cryptography and Computer Science</p-accordion-header>
+            <p-accordion-header class="accordionHeader">6. Applications in Cryptography and Computer Science</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Primes and modular arithmetic are essential for modern encryption systems, especially in securing digital 
