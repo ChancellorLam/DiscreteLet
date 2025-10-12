@@ -158,6 +158,57 @@
             </p-accordion-content>
         </p-accordion-panel>
 
-        
+        <p-accordion-panel value="3">
+            <p-accordion-header>3. Operations on Relations</p-accordion-header>
+            <p-accordion-content>
+                <h3>Common Operations</h3>
+                <p class="m-0">Let R<sub>1</sub>​ and R<sub>2</sub>​ be relations on a set A.</p>
+                <table>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Symbol</th>
+                        <th>Defintion</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <th>Union</th>
+                        <td>R<sub>1</sub> ∪ R<sub>2</sub></td>
+                        <td>All pairs in R<sub>1</sub> or R<sub>2</sub></td>
+                        <td>Combines both relations</td>
+                    </tr>
+                    <tr>
+                        <th>Intersection</th>
+                        <td>R<sub>1</sub> ∩ R<sub>2</sub></td>
+                        <td>Only pairs in both R<sub>1</sub> and R<sub>2</sub></td>
+                        <td>Finds common pairs</td>
+                    </tr>
+                    <tr>
+                        <th>Difference</th>
+                        <td>R<sub>1</sub> - R<sub>2</sub></td>
+                        <td>Pairs in R<sub>1</sub> that aren't in R<sub>2</sub></td>
+                        <td>Subtracts one relation from another</td>
+                    </tr>
+                    <tr>
+                        <th>Inverse</th>
+                        <td>R<sup>-1</sup></td>
+                        <td>Flip each pair: (a,b) becomes (b,a)</td>
+                        <td>Reverses direction of relation</td>
+                    </tr>
+                    <tr>
+                        <th>Composition</th>
+                        <td>R<sub>1</sub> ∘ R<sub>2</sub></td>
+                        <td>Pairs (a, c) where there's a <strong>b</strong> such that (a, b) ∈ R<sub>1</sub>
+                        and (b, c) ∈ R<sub>2</sub></td>
+                        <td>Chains relations through a middle</td>
+                    </tr>
+                </table>
+
+                <div>
+                    <h3>Matrix Operations</h3>
+                </div>
+
+            </p-accordion-content>
+        </p-accordion-panel>
+
     </p-accordion>
 </div>
