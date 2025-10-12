@@ -25,8 +25,7 @@ export class AppMenubar implements OnInit {
             { label: 'Relations', routerLink: '/relations', icon: 'pi pi-link' },
             { label: 'Graph Theory', routerLink: '/graph-theory', icon: 'pi pi-share-alt' },
             { label: 'Counting', routerLink: '/counting', icon: 'pi pi-calculator' },
-            { label: 'Number Theory & Cryptography', routerLink: '/number-theory', icon: 'pi pi-hash' },
-            { label: 'Profile', routerLink: '/profile-page', icon: 'pi pi-user' }
+            { label: 'Number Theory & Cryptography', routerLink: '/number-theory', icon: 'pi pi-hash' }
         ];
     }
 }
