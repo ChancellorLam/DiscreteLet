@@ -4,10 +4,11 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
 import confetti from 'canvas-confetti';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-number-theory-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule],
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule],
   templateUrl: './number-theory-page.html',
   styleUrl: './number-theory-page.css'
 })
@@ -15,11 +16,21 @@ export class NumberTheoryPage {
   activeTabs: string[] = [];
   isExpanded = false;
   randomNumber: number | null = null;
+  randMod: number | null = null;
   primeNumFeedback: string | null = null;
+  userModAnswer: number | null = null;
+  modFeedback: string | null = null;
 
 
 // Random Number generator for prime number checker
 getRandomNum(min: number, max: number): number {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+}
+
+// Random Mod generator for Mod checker with max of 20
+getRandomMod(min: number, max: number): number {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
   return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
@@ -37,9 +48,17 @@ getRandomNum(min: number, max: number): number {
     return true;
   }
 
+  // mod checker
+  getModAnswer(): number | null{
+    if(this.randomNumber ===null || this.randMod ===null) return null;
+    return this.randomNumber % this.randMod;
+  }
+
     onClick(): void {
       const random = this.getRandomNum(1, 999);
+      const randomMod = this.getRandomMod(1, 20);
       this.randomNumber = random;
+      this.randMod = randomMod;
       this.primeNumFeedback=null;
       console.log('Random number:', random);
     }
@@ -60,6 +79,28 @@ getRandomNum(min: number, max: number): number {
     }
     // END prime num checker
 
+    // on Mod Answer
+    onModAnswer(userGuessModAnswer: number |null): void{
+      if(userGuessModAnswer ===null){
+        this.modFeedback = "Please enter an answer"; return;
+      }
+      const correct = this.getModAnswer();
+      if(correct ===null){
+        this.modFeedback = "Generate numbers first!";
+        return;
+      }
+      if(userGuessModAnswer == correct){
+        this.modFeedback = "Correct!";
+        confetti();
+      }
+      else{
+        this.modFeedback = "Incorrect. The correct answer is ${correct}.`";
+      }
+    }
+
+
+
+   // toggling expansion panels 
   toggleAll() {
     if (this.isExpanded) {
       this.collapseAll();
@@ -77,16 +118,3 @@ getRandomNum(min: number, max: number): number {
     this.activeTabs = [];
   }
 }
-
-
-//   // Calculate the greatest common divisor (GCD)
-// const gcdResult = math.gcd(36, 48); // 12
-// console.log(gcdResult);
-
-// // Calculate the least common multiple (LCM)
-// const lcmResult = math.lcm(12, 18); // 36
-// console.log(lcmResult);
-
-// // Works with multiple numbers
-// const multiLcm = math.lcm(1, 3, 4, 5); // 60
-// console.log(multiLcm);
