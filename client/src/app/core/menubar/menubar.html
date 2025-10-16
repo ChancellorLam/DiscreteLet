@@ -16,7 +16,9 @@
         <ng-template #end>
             <div class="flex items-center gap-2">
                 <input type="text" pInputText placeholder="Search" class="w-36" />
-                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                <a [routerLink]="'/profile-page'">
+                <p-avatar image="https://jcusports.com/images/2020/8/12/JCU_Mark_FullColor_4x_100.jpg" shape="circle" />
+            </a>
             </div>
         </ng-template>
     </p-menubar>

@@ -3,29 +3,104 @@ import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
+import confetti from 'canvas-confetti';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-number-theory-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule],
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule],
   templateUrl: './number-theory-page.html',
   styleUrl: './number-theory-page.css'
 })
 export class NumberTheoryPage {
   activeTabs: string[] = [];
   isExpanded = false;
+  randomNumber: number | null = null;
+  randMod: number | null = null;
+  primeNumFeedback: string | null = null;
+  userModAnswer: number | null = null;
+  modFeedback: string | null = null;
 
-//   // Calculate the greatest common divisor (GCD)
-// const gcdResult = math.gcd(36, 48); // 12
-// console.log(gcdResult);
 
-// // Calculate the least common multiple (LCM)
-// const lcmResult = math.lcm(12, 18); // 36
-// console.log(lcmResult);
+// Random Number generator for prime number checker
+getRandomNum(min: number, max: number): number {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+}
 
-// // Works with multiple numbers
-// const multiLcm = math.lcm(1, 3, 4, 5); // 60
-// console.log(multiLcm);
+// Random Mod generator for Mod checker with max of 20
+getRandomMod(min: number, max: number): number {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+}
 
+  // prime checker
+  isPrime(num: number): boolean {
+    if(num <=1 ) return false;
+    if(num === 2) return true;
+    if (num % 2 === 0) return false;
+
+    for(let i=3; i<=Math.sqrt(num); i+=2){
+      if(num%i === 0) return false;
+    }
+    return true;
+  }
+
+  // mod checker
+  getModAnswer(): number | null{
+    if(this.randomNumber ===null || this.randMod ===null) return null;
+    return this.randomNumber % this.randMod;
+  }
+
+    onClick(): void {
+      const random = this.getRandomNum(1, 999);
+      const randomMod = this.getRandomMod(1, 20);
+      this.randomNumber = random;
+      this.randMod = randomMod;
+      this.primeNumFeedback=null;
+      console.log('Random number:', random);
+    }
+
+    onPrimeAnswer(userGuessPrime: boolean): void{
+      if(this.randomNumber ===null) return;
+
+      const actualPrime = this.isPrime(this.randomNumber);
+
+      if(userGuessPrime === actualPrime){
+        this.primeNumFeedback = "Correct!";
+        confetti();
+      }
+      else{
+        this.primeNumFeedback = "Incorrect. Try again.";
+      }
+      console.log(this.primeNumFeedback);
+    }
+    // END prime num checker
+
+    // on Mod Answer
+    onModAnswer(userGuessModAnswer: number |null): void{
+      if(userGuessModAnswer ===null){
+        this.modFeedback = "Please enter an answer"; return;
+      }
+      const correct = this.getModAnswer();
+      if(correct ===null){
+        this.modFeedback = "Generate numbers first!";
+        return;
+      }
+      if(userGuessModAnswer == correct){
+        this.modFeedback = "Correct!";
+        confetti();
+      }
+      else{
+        this.modFeedback = "Incorrect. The correct answer is ${correct}.`";
+      }
+    }
+
+
+
+   // toggling expansion panels 
   toggleAll() {
     if (this.isExpanded) {
       this.collapseAll();
