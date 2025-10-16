@@ -1,0 +1,21 @@
+/* Base nav bar style */
+:host ::ng-deep .p-menubar {
+  background-color: #B39D80; 
+  padding: 0 20px;
+  border-radius: 0;
+}
+
+/*Menu items */
+:host ::ng-deep .p-menubar .p-menubar-item-link {
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0 15px;
+}
+
+/* Align items nicely */
+:host ::ng-deep .p-menubar .p-menubar-root-list {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

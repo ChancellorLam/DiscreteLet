@@ -1,47 +1,25 @@
-<!-- PrimeNG Menubar component bound to menu items from the TypeScript file -->
-<p-menubar [model]="items">
-  <!-- START SLOT — Left-side branding -->
-  <ng-template #start>
-       <!-- App logo (SVG graphic) displayed at the start of the menubar -->
-    <div class="logo">
-      <a href="/">
-        <img
-          ngSrc="images/discretelet-logo.svg"
-          alt="Discretelet!"
-          width="165"
-          height="38"
-          priority
-          class="logo-image"
-        >
-      </a>
-    </div>
-  </ng-template>
-
-  <!-- CUSTOM ITEM TEMPLATE — Defines how each menu item looks -->
-  <ng-template #item let-item let-root="root">
-    <!-- Each menu link; uses PrimeNG Ripple effect and Angular router navigation -->
-    <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.routerLink">
-      <!-- Icon (example: Bitcoin) shown next to label -->
-      <i *ngIf="item.icon" [ngClass]="item.icon" style="font-size: 1.5rem; color: rgb(247,173,0);"></i>
-      <!-- Menu label text -->
-      <span>{{ item.label }}</span>
-      <!-- only render bitcoin badge when count is defined and > 0 -->
-      <ng-container *ngIf="item.icon === 'pi pi-bitcoin'">
-        <ng-container *ngIf="rewards.count$ | async as count">
-          <p-badge *ngIf="count > 0" [value]="count" class="ml-2"></p-badge>
-        </ng-container>
-      </ng-container>
-
-      <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
-    </a>
-  </ng-template>
-
-    <!-- END SLOT — Right-side section (search + avatar) -->
-    <ng-template #end>
-        <div>
-          <a [routerLink]="'/profile-page'">
-            <p-avatar image="https://jcusports.com/images/2020/8/12/JCU_Mark_FullColor_4x_100.jpg" shape="circle" />
-          </a>
-        </div>
-    </ng-template>
-</p-menubar>
+<div class="card">
+    <p-menubar [model]="items">
+        <ng-template #start>
+            <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- ...SVG paths here... -->
+            </svg>
+        </ng-template>
+        <ng-template #item let-item let-root="root">
+            <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.routerLink">
+                <span>{{ item.label }}</span>
+                <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
+                <span *ngIf="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
+                <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
+            </a>
+        </ng-template>
+        <ng-template #end>
+            <div class="flex items-center gap-2">
+                <input type="text" pInputText placeholder="Search" class="w-36" />
+                <a [routerLink]="'/profile-page'">
+                <p-avatar image="https://jcusports.com/images/2020/8/12/JCU_Mark_FullColor_4x_100.jpg" shape="circle" />
+            </a>
+            </div>
+        </ng-template>
+    </p-menubar>
+</div>
