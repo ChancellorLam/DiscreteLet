@@ -7,6 +7,7 @@
         </ng-template>
         <ng-template #item let-item let-root="root">
             <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.routerLink">
+                <i class="pi pi-bitcoin" style="font-size: 10rem; color: goldenrod;"></i>
                 <span>{{ item.label }}</span>
                 <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
                 <span *ngIf="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
@@ -15,7 +16,7 @@
         </ng-template>
         <ng-template #end>
             <div class="flex items-center gap-2">
-                <input type="text" pInputText placeholder="Search" class="w-36" />
+                <input type="text" pInputText placeholder="Search" class="w-36" [(ngModel)]="searchQuery" (keydown.enter)="search()"/>
                 <a [routerLink]="'/profile-page'">
                 <p-avatar image="https://jcusports.com/images/2020/8/12/JCU_Mark_FullColor_4x_100.jpg" shape="circle" />
             </a>

@@ -1,3 +1,8 @@
+/* PrimeNG CSS (ensure these paths match your node_modules setup) */
+/* @import 'primeng/themes/lara-light-blue.css';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css'; */
+
 /* You can add global styles to this file, and also import other style files */
 :root {
   --text: #000000;
@@ -5,4 +10,19 @@
   --primary: #B39D80;
   --secondary: #DAC7AF;
   --accent: #8AA08A;
+}
+
+/* Force light page background and readable text */
+html, body, app-root {
+  height: 100%;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Surface variables used by PrimeNG themes */
+:root {
+  --surface-ground: #ffffff;
+  --surface-card: #ffffff;
+  --surface-overlay: #ffffff;
+  --p-primary-color: #B39D80;
 }
