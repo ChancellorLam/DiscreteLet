@@ -6,3 +6,10 @@
   --secondary: #DAC7AF;
   --accent: #8AA08A;
 }
+
+/* Force light page background and readable text */
+html, body, app-root {
+  height: 100%;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
