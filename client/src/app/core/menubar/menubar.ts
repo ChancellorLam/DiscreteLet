@@ -52,9 +52,13 @@ export class AppMenubar implements OnInit {
                     {label: 'Applications in Cryptography and Computer Science', routerLink: '/number-theory', panelValue: '6'}
                 ]
              },
-            { label: 'Bitcoins', icon: PrimeIcons.BITCOIN}
+            { label: '', icon: PrimeIcons.BITCOIN}
+        
         ];
+        console.log(PrimeIcons.BITCOIN);
     }
+
+    
 
     search() {
         const query = this.searchQuery.toLowerCase().trim();
