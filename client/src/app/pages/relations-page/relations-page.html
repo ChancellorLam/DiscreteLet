@@ -1,11 +1,15 @@
+<!-- Button to expand or collapse all accordion panels -->
 <p-button 
   (click)="toggleAll()" 
   styleClass="p-button-text" 
   [label]="isExpanded ? 'Collapse All' : 'Expand All'">
 </p-button>
 
+<!-- Main container for accordion component -->
 <div class="card flex justify-content-center">
+    <!-- Accordion component with multiple panels allowed -->
     <p-accordion #accordion [(value)]="activeTabs" multiple="true">
+        <!-- Load MathJax for rendering mathematical expressions -->
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         
         <!-- Panel 1 -->

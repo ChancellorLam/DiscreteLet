@@ -10,22 +10,25 @@ import { Router, RouterLink} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-menubar',
-    templateUrl: './menubar.html',
+    selector: 'app-menubar',        // Component selector for use in templates
+    templateUrl: './menubar.html',      // Linked HTML template
     standalone: true,
     imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterLink, FormsModule]
 }) 
 export class AppMenubar implements OnInit {
-    items: MenuItem[] = [];
-    searchQuery = '';
+    items: MenuItem[] = [];     // Holds all menu items displayed in the menubar
+    searchQuery = '';       // Bound to the search input field in the template
 
-    private router = inject(Router);
+    private router = inject(Router);        // Angular router instance (using inject API)
 
+    // Initialization — build menubar structure
     ngOnInit() {
 
+        // Debug logs to confirm PrimeIcons loading correctly
         console.log("PrimeIcons object: ", PrimeIcons);
         console.log("PrimeIcons.Bitcoin:", PrimeIcons.BITCOIN);
 
+        // Define navigation menu items and submenus
         this.items = [
             { label: 'Home', icon: 'pi pi-home', routerLink: '/home' },
             { label: 'Logic', routerLink: '/logic', icon: 'pi pi-sliders-h' },
@@ -57,9 +60,9 @@ export class AppMenubar implements OnInit {
         ];
         console.log(PrimeIcons.BITCOIN);
     }
-
     
-
+    // SEARCH FUNCTIONALITY
+    // Searches the menu items (and nested items) for a label that matches user input
     search() {
         const query = this.searchQuery.toLowerCase().trim();
 
@@ -79,35 +82,38 @@ export class AppMenubar implements OnInit {
         };
 
         const match = findItem(this.items);
-
+            // If a matching menu item is found, navigate to it
             if (match && match.routerLink) {
-            const queryParams = match['panelValue'] != null ? { panel: match['panelValue'] } : {};
-            this.router.navigate([match.routerLink], { queryParams });
-            this.searchQuery = '';
-        } else {
-            alert('Topic not found.');
-        }
+                // If item has a panelValue, pass it as query param
+                const queryParams = match['panelValue'] != null ? { panel: match['panelValue'] } : {};
+                this.router.navigate([match.routerLink], { queryParams });
+                this.searchQuery = '';
+        }   else {
+                alert('Topic not found.');
+            }
 
     }
 
-
+    // Expands a specific accordion panel by its 'value' attribute
     openPanel(panelValue: string | number){
         const accordion = document.querySelector('p-accordion');
         if(!accordion) return;
 
+        // Find the target panel matching the provided value
         const panel = Array.from(accordion.querySelectorAll('p-accordion-panel'))
         .find(p => p.getAttribute('value') === String(panelValue));
 
+        // Click to open if not already active
         if(panel) {
             const header = panel.querySelector('p-accordion-header') as HTMLElement;
             if(header && !panel.classList.contains('p-accordion-header-active')) {
                 header.click();
             }
+            // Smoothly scroll to the opened panel
             setTimeout(() => {
                 panel.scrollIntoView({behavior: 'smooth', block: 'start'});
             }, 150);
         }
     }
-
 
 }
