@@ -1,11 +1,17 @@
+<!-- Button that toggles expansion/collapse of all accordion panels -->
+ <!-- Calls toggleAll() method in the component when clicked -->
+  <!-- Applies PrimeNG text-style button -->
+   <!-- Dynamically changes label based on expansion state -->
 <p-button 
-  (click)="toggleAll()" 
-  styleClass="p-button-text" 
+  (click)="toggleAll()"         
+  styleClass="p-button-text"    
   [label]="isExpanded ? 'Collapse All' : 'Expand All'">
 </p-button>
 
+<!-- Centered container for the accordion -->
 <div class="card flex justify-content-center">
-    <p-accordion [(value)]="activeTabs" multiple="true">
+     <!-- Accordion component with two-way binding to 'activeTabs' -->
+    <p-accordion [(value)]="activeTabs" multiple="true">    <!-- 'multiple=true' allows multiple panels to stay open -->
         
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
@@ -203,12 +209,12 @@
                 <!-- check if num is prime-->
                      <p>Is this a prime number?</p>
                 <div class="button-row">
-                     <p-button 
+                     <p-button>  <!-- Button: user answers "Yes" -->
                         (click)="onPrimeAnswer(true)" 
                         styleClass="p-button-text" 
                         label="Yes">
                     </p-button>
-                    <p-button 
+                    <p-button>   <!-- Button: user answers "No" --> 
                         (click)="onPrimeAnswer(false)" 
                         styleClass="p-button-text" 
                         label="No">
@@ -251,8 +257,8 @@
                 <p>Check Answer</p>
                 <div class="button-row">
                     <p-inputnumber [(ngModel)]="userModAnswer" inputId="integeronly" />
-                    <p-button 
-                        (click)="onModAnswer(userModAnswer)" 
+                    <p-button>
+                        (click)="onModAnswer(userModAnswer)" <!-- Calls method passing user input -->
                         styleClass="p-button-text" 
                         label="Check">
                     </p-button>
