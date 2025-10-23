@@ -5,13 +5,13 @@
 </p-button>
 
 <div class="card flex justify-content-center">
-    <p-accordion [(value)]="activeTabs" multiple="true">
+    <p-accordion #accordion [(value)]="activeTabs" multiple="true">
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
             <p-accordion-header>Relations Introduction:</p-accordion-header>
-            <p-accordion-content>
+            <p-accordion-content>   
                 <p class="m-0">
                     In Discrete Mathematics, a relation is a way of describing how elements of one set are connected to elements of another 
                     set, formally defined as a subset of the Cartesian product of two sets. Relations are fundamental in representing 
@@ -296,7 +296,36 @@
                         <td>If <b>a</b> is related to <b>b</b>, and <b>b</b> to <b>c</b>, then <b>a</b> is related to <b>c</b>.</td>
                     </tr>
                 </table>
+                <br/>
 
+                <h4>Example</h4>
+                <p><b>Given</b>: A = &#123;1, 2, 3, 4, 5, 6&#125;</p>
+                <p>And the relation R is defined by aRb ⟺ a≡b(mod3)</p>
+                <p>This means two numbers are related if they produce the same remaineder when divided by 3.</p>
+
+                <table>
+                    <tr>
+                        <td>1 mod3</td>
+                        <td>2 mod3</td>
+                        <td>3 mod3</td>
+                        <td>4 mod3</td>
+                        <td>5 mod3</td>
+                        <td>6 mod3</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+                <p>Then...<br/>1R4, 2R5, 3R6<br/>By definition, R is reflexive, symmetric, and transitive.</p>
+
+                <h4>Equivalence Classes</h4>
+                <p>The set of all elements related to a given element <i>a</i> is called its equivalent class:</p>
+                <p>[a] = &#123;b ∈ A | aRb&#125;</p>
 
             </p-accordion-content>
         </p-accordion-panel>
