@@ -34,6 +34,7 @@
     "cytoscape": "^3.33.1",
     "katex": "^0.16.22",
     "mathjs": "^14.8.1",
+    "primeicons": "^7.0.0",
     "primeng": "^20.1.1",
     "rxjs": "^7.8.2",
     "tslib": "^2.3.0",

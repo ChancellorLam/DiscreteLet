@@ -1,9 +1,3 @@
-<p-button 
-  (click)="toggleAll()" 
-  styleClass="p-button-text" 
-  [label]="isExpanded ? 'Collapse All' : 'Expand All'">
-</p-button>
-
 <div class="card flex justify-content-center">
     <p-accordion [(value)]="activeTabs" multiple="true">
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -19,7 +13,11 @@
 
     <p-tabpanels>
       <p-tabpanel value="0">
-        <h3>Relations Lessons</h3>
+        <h3>Relations Lessons    <p-button 
+            (click)="toggleAll()" 
+            styleClass="p-button-text" 
+            [label]="isExpanded ? 'Collapse All' : 'Expand All'">
+        </p-button>   </h3>
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
             <p-accordion-header><u>Relations Introduction:</u></p-accordion-header>
