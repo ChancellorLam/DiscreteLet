@@ -50,3 +50,19 @@ h2, h3, h4, p, pre, li, table{
 .interactiveToolText{
   color: #000000;
 }
+
+/* Base nav bar style */
+:host ::ng-deep .p-menubar {
+  background-color: #B39D80 !important; 
+  color: #000000 !important;
+  padding: 0 20px;
+  border-radius: 0;
+}
+
+/*Menu items */
+:host ::ng-deep .p-menubar-item-link {
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0 15px;
+}
