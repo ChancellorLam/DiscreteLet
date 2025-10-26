@@ -3,16 +3,20 @@ import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
+import { ActivatedRoute } from '@angular/router';
+import { TabsModule } from 'primeng/tabs';
 
 @Component({
   selector: 'app-relations-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule],
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule],
   templateUrl: './relations-page.html',
   styleUrl: './relations-page.css'
 })
 export class RelationsPage {
 
   activeTabs: string[] = [];
+  activeTab = '0';
+  // Tracks whether all panels are expanded or collapsed
   isExpanded = false;
 
   toggleAll() {

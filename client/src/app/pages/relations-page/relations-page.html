@@ -7,11 +7,23 @@
 <div class="card flex justify-content-center">
     <p-accordion [(value)]="activeTabs" multiple="true">
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        
+
+<!--Tab Components-->
+<div class="card">
+  <p-tabs [(value)]="activeTab">
+    <p-tablist>
+      <p-tab value="0">Lessons</p-tab>
+      <p-tab value="1">Exercises</p-tab>
+      <p-tab value="2">Quiz</p-tab>
+    </p-tablist>
+
+    <p-tabpanels>
+      <p-tabpanel value="0">
+        <h3>Relations Lessons</h3>
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
-            <p-accordion-header>Relations Introduction:</p-accordion-header>
-            <p-accordion-content>
+            <p-accordion-header><u>Relations Introduction:</u></p-accordion-header>
+            <p-accordion-content>   
                 <p class="m-0">
                     In Discrete Mathematics, a relation is a way of describing how elements of one set are connected to elements of another 
                     set, formally defined as a subset of the Cartesian product of two sets. Relations are fundamental in representing 
@@ -25,7 +37,7 @@
 
         <!-- Panel 2 -->
         <p-accordion-panel value="1">
-            <p-accordion-header>1. Relations and their Properties</p-accordion-header>
+            <p-accordion-header><u>1. Relations and their Properties</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Definition: A relation RRR from a set AAA to a set BBB is a subset of the Cartesian product A×BA \times BA×B.
@@ -100,7 +112,7 @@
 
         <!-- Panel 3 -->
         <p-accordion-panel value="2">
-            <p-accordion-header>2. Representing Relations Using Matrices</p-accordion-header>
+            <p-accordion-header><u>2. Representing Relations Using Matrices</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Let's say you have a set:</p>
@@ -155,7 +167,7 @@
 
         <!-- Panel 4-->
         <p-accordion-panel value="3">
-            <p-accordion-header>3. Operations on Relations</p-accordion-header>
+            <p-accordion-header><u>3. Operations on Relations</u></p-accordion-header>
             <p-accordion-content>
                 <h3>Common Operations</h3>
                 <p class="m-0">Let the set A = &#123;1, 2, 3&#125;<br/>And two relations on A:</p>
@@ -271,7 +283,7 @@
 
         <!-- Panel 5 -->
         <p-accordion-panel value="4">
-            <p-accordion-header>4. Equivalence Relations</p-accordion-header>
+            <p-accordion-header><u>4. Equivalence Relations</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">A relation R on set A is an equivalence relation if it satisfies the following:</p>
                 <table>
@@ -329,6 +341,22 @@
 
             </p-accordion-content>
         </p-accordion-panel>
+      </p-tabpanel>
+
+      <p-tabpanel value="1">
+        <h3>Exercises</h3>
+        <p>Practice gcd, modular inverses, sample problems.</p>
+      </p-tabpanel>
+
+      <p-tabpanel value="2">
+        <h3>Applications</h3>
+        <p>Cryptography, RSA outline, examples.</p>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
+</div>
+        
+        
 
 
     </p-accordion>

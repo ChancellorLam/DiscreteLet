@@ -9,7 +9,7 @@
         
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
-            <p-accordion-header class="accordionHeader">Number Theory Introduction:</p-accordion-header>
+            <p-accordion-header class="accordionHeader"><u>Number Theory Introduction:</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Number theory is a branch of pure mathematics that focuses on the integers and integer-valued functions. It investigates 
@@ -26,7 +26,7 @@
 
         <!-- Panel 2 -->
         <p-accordion-panel value="1">
-            <p-accordion-header class="accordionHeader">1. Integers & Divisibility</p-accordion-header>
+            <p-accordion-header class="accordionHeader"><u>1. Integers & Divisibility</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with integers often 
@@ -40,7 +40,7 @@
 
         <!-- Panel 3 -->
         <p-accordion-panel value="2">
-            <p-accordion-header class="accordionHeader">2. GCD & LCM</p-accordion-header>
+            <p-accordion-header class="accordionHeader"><u>2. GCD & LCM</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common 
@@ -126,7 +126,7 @@
 
         <!-- Panel 4 Prime Numbers-->
         <p-accordion-panel value="3">
-            <p-accordion-header class="accordionHeader">3. Prime Numbers</p-accordion-header>
+            <p-accordion-header class="accordionHeader"><u>3. Prime Numbers</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     A prime number is a number greater than 1 that has exactly two divisors: 1 and itself. Numbers with more than 
@@ -203,12 +203,14 @@
                 <!-- check if num is prime-->
                      <p>Is this a prime number?</p>
                 <div class="button-row">
-                     <p-button 
+                    <!-- Button: user answers Yes --> 
+                    <p-button
                         (click)="onPrimeAnswer(true)" 
                         styleClass="p-button-text" 
                         label="Yes">
                     </p-button>
-                    <p-button 
+                    <!-- Button: user answers No -->
+                    <p-button    
                         (click)="onPrimeAnswer(false)" 
                         styleClass="p-button-text" 
                         label="No">
@@ -224,7 +226,7 @@
 
         <!-- Panel 5 -->
         <p-accordion-panel value="4">
-            <p-accordion-header class="accordionHeader">4. Modular Arithmetic</p-accordion-header>
+            <p-accordion-header class="accordionHeader"><u>4. Modular Arithmetic</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     In modular arithmetic, we write a≡b (mod n)a \equiv b \ (\text(mod ) n)a≡b (mod n) to mean that aaa and bbb 
@@ -251,7 +253,8 @@
                 <p>Check Answer</p>
                 <div class="button-row">
                     <p-inputnumber [(ngModel)]="userModAnswer" inputId="integeronly" />
-                    <p-button 
+                    <!-- Calls method passing user input -->
+                    <p-button
                         (click)="onModAnswer(userModAnswer)" 
                         styleClass="p-button-text" 
                         label="Check">
@@ -265,7 +268,7 @@
 
         <!-- Panel 6 -->
         <p-accordion-panel value="5">
-            <p-accordion-header class="accordionHeader">5. Classical Theorems</p-accordion-header>
+            <p-accordion-header class="accordionHeader"><u>5. Classical Theorems</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Several foundational theorems form the backbone of number theory. The Euclidean Algorithm provides a systematic 
@@ -280,7 +283,7 @@
 
         <!-- Panel 7 -->
         <p-accordion-panel value="6">
-            <p-accordion-header class="accordionHeader">6. Applications in Cryptography and Computer Science</p-accordion-header>
+            <p-accordion-header class="accordionHeader"><u>6. Applications in Cryptography and Computer Science</u></p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
                     Primes and modular arithmetic are essential for modern encryption systems, especially in securing digital 
