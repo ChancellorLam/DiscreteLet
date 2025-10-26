@@ -5,6 +5,7 @@
   --primary: #B39D80;
   --secondary: #DAC7AF;
   --accent: #8AA08A;
+  --invert: #755f75;
 }
 
 /* Force light page background and readable text */
@@ -26,11 +27,11 @@ html, body, app-root {
   --p-accordion-header-active-color: #000000;
 
   /*PrimeNG tabs styling */
-  --p-tabs-tablist-background:var(--background);
+  --p-tabs-tablist-background:var(--secondary);
   --p-tabs-tab-color: #000000;
   --p-tabs-tabpanel-background:var(--accent);
-
-
+  --p-tabs-tab-active-color:#000000;
+  --p-tabs-tab-active-border-color:var(--background);
   
   --p-accordion-content-background: #8AA08A;
 }

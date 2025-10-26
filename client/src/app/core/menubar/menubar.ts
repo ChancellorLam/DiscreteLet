@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MenuItem, PrimeIcons } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { AvatarModule } from 'primeng/avatar';
@@ -7,15 +7,18 @@ import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
 import { MenubarModule } from 'primeng/menubar';
 import { RouterLink} from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { RewardService } from '../reward-service';
 
 @Component({
     selector: 'app-menubar',
     templateUrl: './menubar.html',
     standalone: true,
-    imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterLink]
+    imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterLink, FormsModule]
 })
 export class AppMenubar implements OnInit {
     items: MenuItem[] = [];
+    public rewards = inject(RewardService);
 
     ngOnInit() {
         this.items = [
@@ -44,7 +47,7 @@ export class AppMenubar implements OnInit {
                     {label: 'Applications in Cryptography and Computer Science', routerLink: '/number-theory', panelValue: '6'}
                 ]
              },
-            { icon: PrimeIcons.BITCOIN, label: "n Bitcoin"}
+            { icon: PrimeIcons.BITCOIN}
         
         ];
     }

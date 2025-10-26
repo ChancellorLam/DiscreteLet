@@ -3,6 +3,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ActivatedRoute } from '@angular/router';
 import { TabsModule } from 'primeng/tabs';
 

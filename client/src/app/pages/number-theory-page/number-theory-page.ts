@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
 import confetti from 'canvas-confetti';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { TabsModule } from 'primeng/tabs';
+import { RewardService } from '../../core/reward-service';
 
 @Component({
   selector: 'app-number-theory-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule],
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule],
   templateUrl: './number-theory-page.html',
   styleUrl: './number-theory-page.css'
 })
 export class NumberTheoryPage {
+  private rewards = inject(RewardService);
   activeTabs: string[] = [];
+  activeTab= '0';
   isExpanded = false;
   randomNumber: number | null = null;
   randMod: number | null = null;
@@ -71,6 +75,7 @@ getRandomMod(min: number, max: number): number {
       if(userGuessPrime === actualPrime){
         this.primeNumFeedback = "Correct!";
         confetti();
+        this.rewards.add(1);
       }
       else{
         this.primeNumFeedback = "Incorrect. Try again.";
@@ -92,6 +97,7 @@ getRandomMod(min: number, max: number): number {
       if(userGuessModAnswer == correct){
         this.modFeedback = "Correct!";
         confetti();
+        this.rewards.add(1);
       }
       else{
         this.modFeedback = "Incorrect. The correct answer is ${correct}.`";
