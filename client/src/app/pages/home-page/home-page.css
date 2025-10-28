@@ -1,3 +1,13 @@
-h2 {
+h2, h3 {
     text-align: center;
+    margin-top: 2rem;
+}
+
+.content-purpose{
+    text-align: center;
+}
+
+ul {
+    display: inline-block;
+    text-align: left;;
 }
