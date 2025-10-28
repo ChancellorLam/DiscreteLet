@@ -16,7 +16,7 @@
 /* Global page setup — force light background and readable text */
 html, body, app-root {
   height: 100%;
-  background-color: #ffffff !important;   /* Ensures white background across app */
+  background-color: #DAC7AF !important;   /* Ensures white background across app */
   color: #000000 !important;    /* Ensures black readable text */
   
   /* PrimeNG menubar colors */
@@ -32,6 +32,9 @@ html, body, app-root {
   --p-accordion-header-active-color: #000000;
   
   --p-accordion-content-background: #8AA08A;
+
+/* transition is for when you hover over the accordion headers */
+  --p-accordion-transition-duration: 0.3s;
 }
 
 /* Text elements */

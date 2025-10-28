@@ -9,45 +9,95 @@
         
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
-            <p-accordion-header>Number Theory Introduction:</p-accordion-header>
+            <p-accordion-header>Basic Structure Introduction:</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
-                    Number theory is a branch of pure mathematics that focuses on the integers and integer-valued functions. It investigates 
-                    fundamental concepts such as divisibility (what it means for one integer to divide another), prime numbers and their 
-                    distribution, greatest common divisors, and factorization into primes. Beyond these “elementary” concerns, number theory 
-                    branches into deeper realms: analytic number theory uses tools from calculus and complex analysis to study patterns like 
-                    the density of primes, while algebraic number theory examines the arithmetic properties of numbers in more general 
-                    algebraic structures (like rings of algebraic integers). Many of its problems are easy to state but famously hard to 
-                    solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field has unexpectedly rich applications 
-                    in modern cryptography and computer science.
+                    Discrete Mathematics revolves around discrete structures that can be counted and separated (i.e numbers, letters, people). One of the important building blocks of basic structures is the set. A set is a collection of things. From sets, we can create things such as combinations, relations, graphs, and even machines. Another concept of basic structures is functions. Functions can either be represented as sequences (such as ordered lists of numbers) or Strings (sequences of symbols). Summations (a word for adding all the numbers together) are also utilized when studying algorithms. The size of sets can also be compared, even infinite sets can be counted and compared. However, other sets may not be countable, like sets of real numbers. This even suggests that there are problems that won't ever be solved by computers. Lastly, there will be matricies (tables of numbers) to help represent and solve problems with relations and graphs.
                 </p>
             </p-accordion-content>
         </p-accordion-panel>
 
         <!-- Panel 2 -->
         <p-accordion-panel value="1">
-            <p-accordion-header>1. Integers & Divisibility</p-accordion-header>
+            <p-accordion-header>1. Sets</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
-                    Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with integers often 
-                    leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where qqq is the quotient and rrr is the 
-                    remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder. Properties of divisibility
-                    help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like 
-                    prime factorization and modular arithmetic.
-                </p>
+                    Sets are a simple yet fundamental concept in discrete mathematics. A set is a collection of distinct objects, considered as an object in its own right. 
+            Sets are typically denoted using curly braces, for example, the set of natural numbers can be represented as &#123;1, 2, 3, ....&#125;. 
+            The objects within a set are called elements or members. Sets can be finite or infinite, and they can contain any type of object, including numbers, letters, or even other sets.
+            <br /><br />
+            Heres an example of a numerical set:
+            <br /><br />
+            A = &#123;1, 2, 3, 4, 5&#125;
+            <br /><br />
+            In this example, the set 'A' contains the elements 1, 2, 3, 4, and 5.
+            <br /><br />
+            Try it yourself using the concept that sets can be numbers, letters, or words:
+            </p>
+            <input 
+                type="text" 
+                pInputText 
+                [(ngModel)]="value" 
+                (input)="checkSetInput()"
+                placeholder="Enter a valid set:"
+                />
+
+                <div *ngIf="isValid === null" style="margin-top: 10px;">
+                    Please enter a set.
+                </div>
+                <div *ngIf="isValid === true" style="color: rgb(110, 241, 110); margin-top: 10px;">
+                    Valid set!
+                </div>
+
+                <div *ngIf="isValid === false && value.trim() !== ''" style="color: rgb(230, 80, 80); margin-top: 10px;">
+                    Invalid set!
+                </div>
+
+                <div *ngIf="isValid && parsedSet.length > 0" style="margin-top: 10px; color: rgb(191, 50, 230);">
+                    <strong>Your set:</strong> &#123; {{ parsedSet.join(', ') }} &#125;
+                </div>
+                <br />
+            <p>
+                Now that you understand sets, let's move onto set cardinality (the size of sets).
+                <br /><br />
+                The cardinality of a set is a measure of the "number of elements" in the set. For finite sets, the cardinality is simply the count of distinct elements within the set.
+                <br /><br />
+                For example, consider the set B = &#123;a, b, c, d&#125;. The cardinality of set B, denoted as |B|, is 4 because there are four distinct elements in the set.
+                <br /><br />
+                Enter any set to find its cardinality:
+            </p>
+            <input 
+      type="text" 
+      pInputText 
+      [(ngModel)]="value" 
+      (input)="checkSetInput()"
+      placeholder="Enter a valid set:"
+    />
+
+    <div *ngIf="isValid === true" style="color: rgb(80, 217, 80); margin-top: 10px;">
+      Valid set!
+    </div>
+
+    <div *ngIf="isValid === false && value.trim() !== ''" style="color: rgb(230, 80, 80); margin-top: 10px;">
+      Invalid set!
+    </div>
+
+    <div *ngIf="isValid && parsedSet.length > 0" style="margin-top: 10px; color: rgb(50, 120, 230);">
+      <strong>Your set:</strong> &#123; {{ parsedSet.join(', ') }} &#125;
+      <br />
+      <strong>Cardinality:</strong> {{ parsedSet.length }}
+    </div>
+                
+            
             </p-accordion-content>
         </p-accordion-panel>
 
         <!-- Panel 3 -->
         <p-accordion-panel value="2">
-            <p-accordion-header>2. GCD & LCM</p-accordion-header>
+            <p-accordion-header>2. Functions</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
-                    The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common 
-                    multiple (LCM) is the smallest positive integer that both numbers divide into evenly. One way to find these is through 
-                    prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm, which uses repeated 
-                    division to efficiently determine the GCD. These concepts are essential for simplifying fractions, solving equations, 
-                    and understanding number relationships.
+                    hello bro
                 </p>
             </p-accordion-content>
         </p-accordion-panel>
