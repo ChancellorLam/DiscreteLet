@@ -37,24 +37,24 @@
             <input 
                 type="text" 
                 pInputText 
-                [(ngModel)]="value" 
-                (input)="checkSetInput()"
+                [(ngModel)]="value1" 
+                (input)="checkSetInput('value1')"
                 placeholder="Enter a valid set:"
                 />
 
-                <div *ngIf="isValid === null" style="margin-top: 10px;">
+                <div *ngIf="isValid1 === null" style="margin-top: 10px;">
                     Please enter a set.
                 </div>
-                <div *ngIf="isValid === true" style="color: rgb(110, 241, 110); margin-top: 10px;">
+                <div *ngIf="isValid1 === true" style="color: rgb(110, 241, 110); margin-top: 10px;">
                     Valid set!
                 </div>
 
-                <div *ngIf="isValid === false && value.trim() !== ''" style="color: rgb(230, 80, 80); margin-top: 10px;">
+                <div *ngIf="isValid1 === false && value1.trim() !== ''" style="color: rgb(230, 80, 80); margin-top: 10px;">
                     Invalid set!
                 </div>
 
-                <div *ngIf="isValid && parsedSet.length > 0" style="margin-top: 10px; color: rgb(191, 50, 230);">
-                    <strong>Your set:</strong> &#123; {{ parsedSet.join(', ') }} &#125;
+                <div *ngIf="isValid1 && parsedSet1.length > 0" style="margin-top: 10px; color: rgb(191, 50, 230);">
+                    <strong>Your set:</strong> &#123; {{ parsedSet1.join(', ') }} &#125;
                 </div>
                 <br />
             <p>
@@ -69,23 +69,23 @@
             <input 
       type="text" 
       pInputText 
-      [(ngModel)]="value" 
-      (input)="checkSetInput()"
+      [(ngModel)]="value2" 
+      (input)="checkSetInput('value2')"
       placeholder="Enter a valid set:"
     />
 
-    <div *ngIf="isValid === true" style="color: rgb(80, 217, 80); margin-top: 10px;">
+    <div *ngIf="isValid2 === true" style="color: rgb(80, 217, 80); margin-top: 10px;">
       Valid set!
     </div>
 
-    <div *ngIf="isValid === false && value.trim() !== ''" style="color: rgb(230, 80, 80); margin-top: 10px;">
+    <div *ngIf="isValid2 === false && value2.trim() !== ''" style="color: rgb(230, 80, 80); margin-top: 10px;">
       Invalid set!
     </div>
 
-    <div *ngIf="isValid && parsedSet.length > 0" style="margin-top: 10px; color: rgb(50, 120, 230);">
-      <strong>Your set:</strong> &#123; {{ parsedSet.join(', ') }} &#125;
+    <div *ngIf="isValid2 && parsedSet2.length > 0" style="margin-top: 10px; color: rgb(50, 120, 230);">
+      <strong>Your set:</strong> &#123; {{ parsedSet2.join(', ') }} &#125;
       <br />
-      <strong>Cardinality:</strong> {{ parsedSet.length }}
+      <strong>Cardinality:</strong> {{ parsedSet2.length }}
     </div>
                 
             

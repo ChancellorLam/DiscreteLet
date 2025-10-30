@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule} from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 
@@ -15,47 +15,56 @@ import { CommonModule } from '@angular/common';
 export class BasicStructuresPage {
   activeTabs: string[] = [];
   isExpanded = false;
-  value = '';
-  isValid = false;
-  parsedSet: string[] = [];
 
-checkSetInput() {
-  let input = this.value.trim();
-  if (!input) {
-    this.isValid = false;
-    this.parsedSet = [];
-    return;
-  } else if (input.startsWith('{') || input.endsWith('}')) {
-    input = input.slice(1, -1).trim();
+  value1 = '';
+  isValid1: boolean | null = null;
+  parsedSet1: string[] = [];
+
+  value2 = '';
+  isValid2: boolean | null = null;
+  parsedSet2: string[] = [];
+
+  checkSetInput(which: 'value1' | 'value2') {
+    const valueKey = which;
+    const validKey = which === 'value1' ? 'isValid1' : 'isValid2';
+    const parsedKey = which === 'value1' ? 'parsedSet1' : 'parsedSet2';
+
+    let input = this[valueKey].trim();
+
+    if (!input) {
+      this[validKey] = null;
+      this[parsedKey] = [];
+      return;
+    }
+
+    if (input.startsWith('{') && input.endsWith('}')) {
+      input = input.slice(1, -1).trim();
+    }
+
+    const pattern = /^[A-Za-z0-9]+(\s*,\s*[A-Za-z0-9]+)*$/;
+
+    if (!pattern.test(input)) {
+      this[validKey] = false;
+      this[parsedKey] = [];
+      return;
+    }
+
+    const elements = input
+      .split(',')
+      .map(e => e.trim())
+      .filter(e => e !== '');
+
+    const uniqueElements = new Set(elements);
+
+    if (elements.length !== uniqueElements.size) {
+      this[validKey] = false;
+      this[parsedKey] = [];
+      return;
+    }
+
+    this[validKey] = true;
+    this[parsedKey] = Array.from(uniqueElements);
   }
-  
-
-  const pattern = /^[A-Za-z0-9]+(\s*,\s*[A-Za-z0-9]+)*$/;
-
-  if (!pattern.test(input)) {
-    this.isValid = false;
-    this.parsedSet = [];
-    return;
-  }
-
-  const elements = input
-    .split(',')
-    .map(e => e.trim())
-    .filter(e => e !== '');
-
-    
-  const uniqueElements = new Set(elements);
-  if (elements.length !== uniqueElements.size) {
-    this.isValid = false;
-    this.parsedSet = [];
-    return;
-  }
-
-  this.isValid = true;
-  this.parsedSet = Array.from(uniqueElements);
-}
-
-
 
   toggleAll() {
     if (this.isExpanded) {
@@ -73,5 +82,4 @@ checkSetInput() {
   collapseAll() {
     this.activeTabs = [];
   }
-
 }
