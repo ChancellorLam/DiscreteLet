@@ -314,8 +314,10 @@
       </p-tabpanel>
 
       <p-tabpanel value="2">
-        <h3>Applications</h3>
-        <p>Cryptography, RSA outline, examples.</p>
+        <h3>Number Theory & Cryptography Quiz</h3>
+        <app-quiz
+                [questions]="numberTheoryQuestions">
+            </app-quiz>
       </p-tabpanel>
     </p-tabpanels>
   </p-tabs>

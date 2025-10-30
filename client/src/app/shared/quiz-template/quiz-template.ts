@@ -1,0 +1,34 @@
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+interface Question {
+  text: string;
+  options: string[];
+  correct: string;
+  explanation?: string; // <-- optional, so it won't break if missing
+}
+
+@Component({
+  selector: 'app-quiz',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './quiz-template.html',
+  styleUrls: ['./quiz-template.css']
+})
+export class QuizComponent {
+  @Input() title = '';
+  @Input() questions: Question[] = [];
+
+  selectedAnswers: string[] = [];
+  score: number | null = null;
+
+  selectAnswer(index: number, answer: string) {
+    this.selectedAnswers[index] = answer;
+  }
+
+  calculateScore() {
+    this.score = this.questions.filter(
+      (q, i) => q.correct === this.selectedAnswers[i]
+    ).length;
+  }
+}
