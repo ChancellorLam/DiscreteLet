@@ -17,6 +17,7 @@ html, body, app-root {
   /* PrimeNG menubar colors */
   --p-menubar-background: #B39D80;
   --p-menubar-item-link-color: #000000;
+  --p-menubar-item-active-background: #526f8a7f;
 
   /* PrimeNG accordion custom colors */
   --p-accordion-header-background: #8AA08A;
@@ -34,6 +35,11 @@ html, body, app-root {
   --p-tabs-tab-active-border-color:var(--background);
   
   --p-accordion-content-background: #8AA08A;
+
+  /*PrimeNG Cards styling */
+  --p-card-background: #8AA08A;
+  --p-card-color: #000000;
+  --p-card-shadow: #000000;
 }
 
 /* Text elements */

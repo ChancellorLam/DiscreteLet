@@ -3,11 +3,19 @@ h2, h3 {
     margin-top: 2rem;
 }
 
-.content-purpose{
-    text-align: center;
+.home-card-01{
+    border: 1px solid #000000;  
+    border-radius: 14px;
 }
 
-ul {
-    display: inline-block;
-    text-align: left;;
+.home-card-02{
+    border: 1px solid #000000;  
+    border-radius: 14px;
+    border-top: none;
+}
+
+.home-card-03{
+    border: 1px solid #000000;  
+    border-radius: 14px;
+    border-top:none;
 }
