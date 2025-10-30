@@ -1,7 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+/* Root variables — global color palette  */
 :root {
   --text: #000000;
-  --background: #FBFBFE;
+  --background: #DAC7AF;
   --primary: #B39D80;
   --secondary: #DAC7AF;
   --accent: #8AA08A;

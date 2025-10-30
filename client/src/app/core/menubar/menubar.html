@@ -2,13 +2,19 @@
 
 <!-- Main container for the menubar -->
 <div class="card">
+    <!-- PrimeNG Menubar component bound to menu items from the TypeScript file -->
     <p-menubar [model]="items">
+        <!-- START SLOT — Left-side branding -->
         <ng-template #start>
+             <!-- App logo (SVG graphic) displayed at the start of the menubar -->
             <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- ...SVG paths here... -->
             </svg>
+
+         <!-- CUSTOM ITEM TEMPLATE — Defines how each menu item looks -->
         </ng-template>
         <ng-template #item let-item let-root="root">
+            <!-- Each menu link; uses PrimeNG Ripple effect and Angular router navigation -->
             <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.routerLink">
                 <!-- Icon (example: Bitcoin) shown next to label -->
                 <i *ngIf="item.icon" [ngClass]="item.icon" style="font-size: 1.5rem; color: goldenrod;"></i>
@@ -24,9 +30,13 @@
                 <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
             </a>
         </ng-template>
+
+        <!-- END SLOT — Right-side section (search + avatar) -->
         <ng-template #end>
             <div class="flex items-center gap-2">
-                <input type="text" pInputText placeholder="Search" class="w-36" />
+                <!-- Search input field (two-way bound to searchQuery) -->
+                <!-- Pressing Enter triggers the search() method -->
+                <input type="text" pInputText placeholder="Search" class="w-36" [(ngModel)]="searchQuery" (keydown.enter)="search()"/>
                 <a [routerLink]="'/profile-page'">
                 <p-avatar image="https://jcusports.com/images/2020/8/12/JCU_Mark_FullColor_4x_100.jpg" shape="circle" />
             </a>

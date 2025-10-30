@@ -15,12 +15,17 @@ import { QuizComponent } from '../../shared/quiz-template/quiz-template';
   templateUrl: './relations-page.html',
   styleUrl: './relations-page.css'
 })
-export class RelationsPage {
+export class RelationsPage implements AfterViewInit {
+  // Reference to the accordion element in the template
+  @ViewChild('accordion') accordion!: ElementRef;
 
+  // Stores currently open accordion panels
   activeTabs: string[] = [];
   activeTab = '0';
   // Tracks whether all panels are expanded or collapsed
   isExpanded = false;
+  // Holds the specific panel to open (from URL query params)
+  panelToOpen: string | null = null;
 
 
 
@@ -69,4 +74,19 @@ relationQuestions = [
   collapseAll() {
     this.activeTabs = [];
   }
+
+  // Opens a specific panel and scrolls it into view
+openPanel(panelValue: string) {
+  // Add the panel to the list if it's not already open
+    if (!this.activeTabs.includes(panelValue)) {
+      this.activeTabs.push(panelValue);
+    }
+
+    // Smoothly scroll the opened panel into view
+    setTimeout(() => {
+      const panelEl = document.querySelector(`p-accordion-panel[value="${panelValue}"]`);
+      panelEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+
 }
