@@ -1,12 +1,6 @@
 <div class="card flex justify-content-center">
     <p-accordion [(value)]="activeTabs" multiple="true">
 
-    <p-button 
-    (click)="toggleAll()" 
-    styleClass="p-button-text" 
-    [label]="isExpanded ? 'Collapse All' : 'Expand All'">
-    </p-button>
-
     <!--Tab Components-->
     <div class="card">
     <p-tabs [(value)]="activeTab">
