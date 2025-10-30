@@ -29,12 +29,73 @@
             <p-accordion-header>1. Integers & Divisibility</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
-                    Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with integers often 
-                    leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where qqq is the quotient and rrr is the 
-                    remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder. Properties of divisibility
-                    help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like 
-                    prime factorization and modular arithmetic.
-                </p>
+                    Sets are a simple yet fundamental concept in discrete mathematics. A set is a collection of distinct objects, considered as an object in its own right. 
+            Sets are typically denoted using curly braces, for example, the set of natural numbers can be represented as &#123;1, 2, 3, ....&#125;. 
+            The objects within a set are called elements or members. Sets can be finite or infinite, and they can contain any type of object, including numbers, letters, or even other sets.
+            <br /><br />
+            Heres an example of a numerical set:
+            <br /><br />
+            A = &#123;1, 2, 3, 4, 5&#125;
+            <br /><br />
+            In this example, the set 'A' contains the elements 1, 2, 3, 4, and 5.
+            <br /><br />
+            Try it yourself using the concept that sets can be numbers, letters, or words:
+            </p>
+            <input 
+                type="text" 
+                pInputText 
+                [(ngModel)]="value1" 
+                (input)="checkSetInput('value1')"
+                placeholder="Enter a valid set:"
+                />
+
+                <div *ngIf="isValid1 === null" style="margin-top: 10px;">
+                    Please enter a set.
+                </div>
+                <div *ngIf="isValid1 === true" style="color: rgb(110, 241, 110); margin-top: 10px;">
+                    Valid set!
+                </div>
+
+                <div *ngIf="isValid1 === false && value1.trim() !== ''" style="color: rgb(230, 80, 80); margin-top: 10px;">
+                    Invalid set!
+                </div>
+
+                <div *ngIf="isValid1 && parsedSet1.length > 0" style="margin-top: 10px; color: rgb(191, 50, 230);">
+                    <strong>Your set:</strong> &#123; {{ parsedSet1.join(', ') }} &#125;
+                </div>
+                <br />
+            <p>
+                Now that you understand sets, let's move onto set cardinality (the size of sets).
+                <br /><br />
+                The cardinality of a set is a measure of the "number of elements" in the set. For finite sets, the cardinality is simply the count of distinct elements within the set.
+                <br /><br />
+                For example, consider the set B = &#123;a, b, c, d&#125;. The cardinality of set B, denoted as |B|, is 4 because there are four distinct elements in the set.
+                <br /><br />
+                Enter any set to find its cardinality:
+            </p>
+            <input 
+      type="text" 
+      pInputText 
+      [(ngModel)]="value2" 
+      (input)="checkSetInput('value2')"
+      placeholder="Enter a valid set:"
+    />
+
+    <div *ngIf="isValid2 === true" style="color: rgb(80, 217, 80); margin-top: 10px;">
+      Valid set!
+    </div>
+
+    <div *ngIf="isValid2 === false && value2.trim() !== ''" style="color: rgb(230, 80, 80); margin-top: 10px;">
+      Invalid set!
+    </div>
+
+    <div *ngIf="isValid2 && parsedSet2.length > 0" style="margin-top: 10px; color: rgb(50, 120, 230);">
+      <strong>Your set:</strong> &#123; {{ parsedSet2.join(', ') }} &#125;
+      <br />
+      <strong>Cardinality:</strong> {{ parsedSet2.length }}
+    </div>
+                
+            
             </p-accordion-content>
         </p-accordion-panel>
 
