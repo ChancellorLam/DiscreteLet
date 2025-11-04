@@ -5,15 +5,10 @@
   --primary: #B39D80;
   --secondary: #DAC7AF;
   --accent: #8AA08A;
-
-  /* PrimeNG theme overrides */
-  --p-menubar-background: #B39D80;
-  --surface-ground: #ffffff;
-  --surface-card: #ffffff;
-  --surface-overlay: #ffffff;
+  --invert: #755f75;
 }
 
-/* Global page setup — force light background and readable text */
+/* Force light page background and readable text */
 html, body, app-root {
   height: 100%;
   background-color: #ffffff !important;   /* Ensures white background across app */
@@ -22,6 +17,7 @@ html, body, app-root {
   /* PrimeNG menubar colors */
   --p-menubar-background: #B39D80;
   --p-menubar-item-link-color: #000000;
+  --p-menubar-item-focus-background: #8aa08a;
 
   /* PrimeNG accordion custom colors */
   --p-accordion-header-background: #8AA08A;
@@ -30,8 +26,20 @@ html, body, app-root {
   --p-accordion-header-active-background: #8AA08A;
   --p-accordion-header-color: #000000;
   --p-accordion-header-active-color: #000000;
+
+  /*PrimeNG tabs styling */
+  --p-tabs-tablist-background:var(--secondary);
+  --p-tabs-tab-color: #000000;
+  --p-tabs-tabpanel-background:var(--accent);
+  --p-tabs-tab-active-color:#000000;
+  --p-tabs-tab-active-border-color:var(--background);
   
   --p-accordion-content-background: #8AA08A;
+
+  /*PrimeNG Cards styling */
+  --p-card-background: #8AA08A;
+  --p-card-color: #000000;
+  --p-card-shadow: #000000;
 }
 
 /* Text elements */
@@ -48,4 +56,20 @@ h2, h3, h4, p, pre, li, table{
 /* Interactive tool text (feedback) */
 .interactiveToolText{
   color: #000000;
+}
+
+/* Base nav bar style */
+:host ::ng-deep .p-menubar {
+  background-color: #B39D80 !important; 
+  color: #000000 !important;
+  padding: 0 20px;
+  border-radius: 0;
+}
+
+/*Menu items */
+:host ::ng-deep .p-menubar-item-link {
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0 15px;
 }
