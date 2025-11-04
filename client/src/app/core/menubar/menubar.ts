@@ -13,6 +13,7 @@ import { RewardService } from '../reward-service';
 @Component({
     selector: 'app-menubar',        // Component selector for use in templates
     templateUrl: './menubar.html',      // Linked HTML template
+    styleUrl: './menubar.css',
     standalone: true,
     imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, RouterLink, FormsModule]
 })
@@ -39,12 +40,12 @@ export class AppMenubar implements OnInit {
             { label: 'Counting', routerLink: '/counting' },
             { label: 'Number Theory & Cryptography', routerLink: '/number-theory'},
             { icon: PrimeIcons.BITCOIN}
-        
+
         ];
         console.log(PrimeIcons.BITCOIN);
     }
-    
-    
+
+
 
     // Expands a specific accordion panel by its 'value' attribute
     openPanel(panelValue: string | number){
