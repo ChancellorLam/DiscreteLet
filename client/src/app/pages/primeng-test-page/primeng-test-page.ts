@@ -10,31 +10,29 @@ import { LogicalExpressionService } from '../../core/services/logical-expression
   imports: [ButtonModule, InputTextModule, FormsModule],
   templateUrl: './primeng-test-page.html',
   styleUrl: './primeng-test-page.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'primeng-test-page' }
 })
 export class PrimengTestPage {
   logicalExpressionService = inject(LogicalExpressionService);
-  @ViewChild('output', { static: true }) output!: ElementRef;
-  expression = signal<string>('\\lnot(A \\land B)');
+
+  @ViewChild('output', { static: true })
+  outputRef!: ElementRef<HTMLElement>;
+
+  expression = signal<string>('');
   subExpressions = signal<string[]>([]);
   showSubExpression = signal<boolean>(false);
 
-  // renderMathEffect = effect(() => {
-  //   this.renderMath(this.expression());
-  // });
+  mathRenderEffect = effect(() => {
+    this.renderMath();
+  });
 
   computeSubExpressions() {
-    console.log(this.expression());
-    console.log(this.logicalExpressionService.getSubExpressions(this.expression()));
+    this.subExpressions.set(this.logicalExpressionService.getSubExpressions(this.expression()));
   }
 
-  // renderMath(input: string): void {
-  //   try {
-  //     katex.render(input, this.output.nativeElement, {
-  //       throwOnError: false,
-  //     });
-  //   } catch (e) {
-  //     this.output.nativeElement.textContent = 'Rendering error';
-  //   }
-  // }
+  renderMath(): void {
+    const el = this.outputRef.nativeElement;
+    katex.render(this.expression(), el, { throwOnError: false });
+  }
 }
