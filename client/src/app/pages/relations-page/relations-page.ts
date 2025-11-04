@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
@@ -54,7 +54,10 @@ relationQuestions = [
 
 
 
-
+  ngAfterViewInit(): void {
+    console.log('RelationsPage view initialized');
+    // You can safely interact with @ViewChild elements here if needed
+  }
 
 
 

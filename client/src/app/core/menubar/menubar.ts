@@ -6,7 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
 import { MenubarModule } from 'primeng/menubar';
-import { RouterLink} from '@angular/router';
+import { Router, RouterLink} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RewardService } from '../reward-service';
 
@@ -34,66 +34,17 @@ export class AppMenubar implements OnInit {
             { label: 'Home', routerLink: '/home' },
             { label: 'Logic', routerLink: '/logic' },
             { label: 'Basic Structures', routerLink: '/basic-structures' },
-            { label: 'Relations', routerLink: '/relations',
-                items: [
-                    {label: 'Relations Introduction', routerLink: '/relations', panelValue: '0'},
-                    {label: 'Relations and their Properties', routerLink: '/relations', panelValue: '1'},
-                    {label: 'Representing Relations Using Matrices', routerLink: '/relations', panelValue: '2'},
-                    {label: 'Operations on Relations', routerLink: '/relations', panelValue: '3'},
-                    {label: 'Equivalence Relations', routerLink: '/relations', panelValue: '4'}
-                ]
-             },
+            { label: 'Relations', routerLink: '/relations'},
             { label: 'Graph Theory', routerLink: '/graph-theory' },
             { label: 'Counting', routerLink: '/counting' },
-            { label: 'Number Theory & Cryptography', routerLink: '/number-theory',
-                items: [
-                    {label: 'Number Theory Introduction', routerLink: '/number-theory', panelValue: '0'},
-                    {label: 'Integers & Divisibility', routerLink: '/number-theory', panelValue: '1'},
-                    {label: 'GCD & LCM', routerLink: '/number-theory', panelValue: '2'},
-                    {label: 'Prime Numbers', routerLink: '/number-theory', panelValue: '3'},
-                    {label: 'Modular Arithmetic', routerLink: '/number-theory', panelValue: '4'},
-                    {label: 'Classical Theorems', routerLink: '/number-theory', panelValue: '5'},
-                    {label: 'Applications in Cryptography and Computer Science', routerLink: '/number-theory', panelValue: '6'}
-                ]
-             },
+            { label: 'Number Theory & Cryptography', routerLink: '/number-theory'},
             { icon: PrimeIcons.BITCOIN}
         
         ];
         console.log(PrimeIcons.BITCOIN);
     }
     
-    // SEARCH FUNCTIONALITY
-    // Searches the menu items (and nested items) for a label that matches user input
-    search() {
-        const query = this.searchQuery.toLowerCase().trim();
-
-        // recursive function to find a menu item by label
-        const findItem = (items: MenuItem[]): MenuItem | undefined => {
-            for(const item of items){
-                if(item.label?.toLowerCase().includes(query)){
-                    return item;
-                }
-                //check nested items, if applicable
-                if(item.items){
-                    const found = findItem(item.items);
-                    if (found) return found;
-                }
-            }
-            return undefined;
-        };
-
-        const match = findItem(this.items);
-            // If a matching menu item is found, navigate to it
-            if (match && match.routerLink) {
-                // If item has a panelValue, pass it as query param
-                const queryParams = match['panelValue'] != null ? { panel: match['panelValue'] } : {};
-                this.router.navigate([match.routerLink], { queryParams });
-                this.searchQuery = '';
-        }   else {
-                alert('Topic not found.');
-            }
-
-    }
+    
 
     // Expands a specific accordion panel by its 'value' attribute
     openPanel(panelValue: string | number){
