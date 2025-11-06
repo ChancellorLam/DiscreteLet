@@ -6,7 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
 import { MenubarModule } from 'primeng/menubar';
-import { Router, RouterLink} from '@angular/router';
+import { RouterLink, Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RewardService } from '../reward-service';
 
