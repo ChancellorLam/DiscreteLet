@@ -46,7 +46,35 @@
                     remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder. Properties of divisibility
                     help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like 
                     prime factorization and modular arithmetic.
-                </p>
+                </p><br/>
+
+            <div class="divisibilityChecker">
+                <p-button 
+                    (click)="onClick()" 
+                    styleClass="p-button-text" 
+                    label="Generate-Number">
+                </p-button>
+                <div class="interactiveToolText">
+                    Num1: {{randomNumber}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Num2: {{ randMod }}
+                </div>
+
+                <p>Check Answer (Do not include remainders)</p>
+                <div class="button-row">
+                    <p-inputnumber [(ngModel)]="userDivisibilityAnswer" inputId="integeronly" />
+                    <!-- Calls method passing user input -->
+                    <p-button
+                        (click)="onDivisibilityAnswer(userDivisibilityAnswer)" 
+                        styleClass="p-button-text" 
+                        label="Check">
+                    </p-button>
+                </div> 
+
+                <div class="interactiveToolText">{{divisibilityFeedback}}</div>
+                    
+            </div>
+
+
             </p-accordion-content>
         </p-accordion-panel>
 

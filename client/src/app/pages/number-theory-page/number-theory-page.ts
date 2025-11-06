@@ -25,6 +25,8 @@ export class NumberTheoryPage {
   primeNumFeedback: string | null = null;
   userModAnswer: number | null = null;
   modFeedback: string | null = null;
+  userDivisibilityAnswer: number | null = null;
+  divisibilityFeedback: string | null = null;
 
 
 // Random Number generator for prime number checker
@@ -64,6 +66,12 @@ getRandomMod(min: number, max: number): number {
     return this.randomNumber % this.randMod;
   }
 
+  // int & divisibility
+  divisibility(num1: number, num2: number): number {
+    const answer = num1/num2;
+    return answer
+  }
+
     // EVENT HANDLERS
     // Called when "Generate Number" is clicked — sets random values
     onClick(): void {
@@ -89,7 +97,6 @@ getRandomMod(min: number, max: number): number {
       else{
         this.primeNumFeedback = "Incorrect. Try again.";
       }
-      console.log(this.primeNumFeedback);
     }
     // END prime num checker
 
@@ -113,6 +120,50 @@ getRandomMod(min: number, max: number): number {
         this.modFeedback = "Incorrect. The correct answer is ${correct}.`";
       }
     }
+
+    onDivisibilityAnswer(userGuessDivisibility: number | null): void{
+      if(userGuessDivisibility ===null){
+        this.divisibilityFeedback = "Please enter an answer"; return;
+      }
+      if (this.randomNumber === null || this.randMod === null) {
+        this.divisibilityFeedback = 'Generate numbers first!';
+        return;
+    }
+
+      const num = this.randomNumber;
+      const den = this.randMod;
+      const quotient = Math.floor(num / den);
+      const remainder = num % den;
+
+    // Exact division case
+    if (remainder === 0) {
+      if (userGuessDivisibility === quotient) {
+        this.divisibilityFeedback = `Correct! ${num} is divisible by ${den}, quotient = ${quotient}.`;
+        confetti();
+        this.rewards.add(1);
+      } 
+      else {
+        this.divisibilityFeedback = `Incorrect. ${num} ÷ ${den} = ${quotient}.`;
+      }
+      return;
+    }
+
+    // Not exactly divisible — accept either quotient or remainder depending on UI expectation
+    if (userGuessDivisibility === remainder) {
+      this.divisibilityFeedback = `Correct! Remainder = ${remainder}.`;
+      confetti();
+      this.rewards.add(1);
+    } 
+    else if (userGuessDivisibility === quotient) {
+      this.divisibilityFeedback = `Correct! Quotient = ${quotient}.`;
+      confetti();
+      this.rewards.add(1);
+    } 
+    else {
+      this.divisibilityFeedback = `Not divisible. Quotient = ${quotient}, remainder = ${remainder}.`;
+    }
+  }
+
 
     /* Quiz questions and answers */
     numberTheoryQuestions = [
