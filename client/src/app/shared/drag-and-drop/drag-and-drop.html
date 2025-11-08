@@ -1,0 +1,55 @@
+<div class="card flex flex-wrap gap-4 drag-drop-container">
+    <p>Drag and Drop the term with the correct example.</p>
+    <!-- Available Choices -->
+    <div class="p-2 availableChoices rounded-border w-60">
+        <ul class="list-none flex flex-col gap-2 p-0 m-0">
+            <li *ngFor="let choice of availableChoices" class="p-2 rounded-border shadow-sm cursor-move" pDraggable
+                (onDragStart)="dragStart(choice)" (onDragEnd)="dragEnd()">
+                {{ choice.name }}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Drop Zones -->
+    <div class="drop-zones-grid">
+        <!-- Drop Zone 1 -->
+        <div class="zone-1" pDroppable (onDrop)="dropZone1()">
+            <p class="text-center border-surface border-b">R = &#123;(1,1), (2,2), (3,3), (1,2)&#125;</p>
+            <ul class="list-none flex flex-col gap-2 p-0 m-0" *ngIf="zone1Choices.length > 0">
+                <li *ngFor="let choice of zone1Choices" class="p-2 rounded-border shadow-sm">
+                    {{ choice.name }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Drop Zone 2 -->
+        <div class="zone-2" pDroppable (onDrop)="dropZone2()">
+            <p class="text-center border-surface border-b">R = &#123;(1,1), (2,2), (1,2)&#125;</p>
+            <ul class="list-none flex flex-col gap-2 p-0 m-0" *ngIf="zone2Choices.length > 0">
+                <li *ngFor="let choice of zone2Choices" class="p-2 rounded-border shadow-sm">
+                    {{ choice.name }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Drop Zone 3 -->
+        <div class="zone-3" pDroppable (onDrop)="dropZone3()">
+            <p class="text-center border-surface border-b">R = &#123;(1,2), (2,3), (1,3), (3,3)&#125;</p>
+            <ul class="list-none flex flex-col gap-2 p-0 m-0" *ngIf="zone3Choices.length > 0">
+                <li *ngFor="let choice of zone3Choices" class="p-2 rounded-border shadow-sm">
+                    {{ choice.name }}
+                </li>
+            </ul>
+        </div>
+
+        <!-- Drop Zone 4 -->
+        <div class="zone-4" pDroppable (onDrop)="dropZone4()">
+            <p class="text-center border-surface border-b">R = &#123;(1,2), (2,1), (2,3), (3,2)&#125;</p>
+            <ul class="list-none flex flex-col gap-2 p-0 m-0" *ngIf="zone4Choices.length > 0">
+                <li *ngFor="let choice of zone4Choices" class="p-2 rounded-border shadow-sm">
+                    {{ choice.name }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

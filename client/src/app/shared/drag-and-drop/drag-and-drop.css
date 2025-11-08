@@ -1,0 +1,47 @@
+.drag-drop-container {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.drop-zones-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.available-choices {
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+}
+
+.drop-zone {
+  min-width: auto;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+}
+
+.zone-1{
+    border: 2px solid #ffffff;
+}
+
+.zone-2{
+    border: 2px solid #ffffff;
+}
+
+.zone-3{
+    border: 2px solid #ffffff;
+}
+
+.zone-4{
+    border: 2px solid #ffffff;
+}
+.draggable-item {
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+}
+
+.draggable-item:hover {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}

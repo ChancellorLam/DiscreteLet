@@ -8,11 +8,12 @@ import { ButtonModule} from 'primeng/button';
 import { ActivatedRoute } from '@angular/router';
 import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
+import { DragAndDropComponent, Choice } from '../../shared/drag-and-drop/drag-and-drop';
 
 @Component({
   selector: 'app-relations-page',
   standalone: true,
-  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent],
+  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent, DragAndDropComponent],
   templateUrl: './relations-page.html',
   styleUrls: ['./relations-page.css']
 })
@@ -29,6 +30,14 @@ export class RelationsPage implements AfterViewInit {
   isExpanded = false;
   // Holds the specific panel to open (from URL query params)
   panelToOpen: string | null = null;
+
+  // Drag and Drop Choices for relations-page
+  relationChoices: Choice[] = [
+    { id: 1, name: 'Reflexive' },
+    { id: 2, name: 'Symmetric' },
+    { id: 3, name: 'Transitive' },
+    { id: 4, name: 'Antisymmetric' }
+  ];
 
   /* Quiz questions and answers */
   relationQuestions = [
@@ -53,11 +62,14 @@ export class RelationsPage implements AfterViewInit {
     }
   ];
 
-
-
-
-
-
+  //Handler for drag and drop changes
+  handleChoicesChanged(event: { available: Choice[], zone1: Choice[], zone2: Choice[], zone3: Choice[], zone4: Choice[] }) {
+  console.log('Available choices:', event.available);
+  console.log('Zone 1:', event.zone1);
+  console.log('Zone 2:', event.zone2);
+  console.log('Zone 3:', event.zone3);
+  console.log('Zone 4:', event.zone4);
+}
 
   toggleAll() {
     if (this.isExpanded) {
@@ -108,7 +120,7 @@ export class RelationsPage implements AfterViewInit {
     }, 100);
   }
 
-    // Lifecycle: read query params and open target panel (if provided)
+    // Lifecycle- read query params and open target panel (if provided)
   ngAfterViewInit(): void {
     // subscribe to queryParamMap to capture ?panel= value
     this.route.queryParamMap.subscribe(params => {
