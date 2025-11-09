@@ -1,19 +1,19 @@
 <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-    <p-button 
-      (click)="toggleAll()" 
-      styleClass="p-button-text" 
+    <p-button
+      (click)="toggleAll()"
+      styleClass="p-button-text"
       [label]="isExpanded ? 'Collapse All' : 'Expand All'">
     </p-button>
-    <p-button 
-      (click)="clearAll()" 
-      styleClass="p-button-text p-button-secondary" 
+    <p-button
+      (click)="clearAll()"
+      styleClass="p-button-text p-button-secondary"
       label="Clear All">
     </p-button>
 </div>
 
 <div class="card flex justify-content-center">
     <p-accordion [(value)]="activeTabs" multiple="true">
-        
+
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
             <p-accordion-header>Basic Structure Introduction:</p-accordion-header>
@@ -29,14 +29,14 @@
             <p-accordion-header>1. Sets</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
-                    Sets are a simple yet fundamental concept in discrete mathematics. A set is a collection of distinct objects, considered as an object in its own right. 
-            Sets are typically denoted using curly braces, for example, the set of natural numbers can be represented as &#123;1, 2, 3, ....&#125;. 
+                    <strong>Sets</strong> are a simple yet fundamental concept in discrete mathematics. A set is a collection of distinct objects, considered as an object in its own right.
+            Sets are typically denoted using curly braces, for example, the set of natural numbers can be represented as &#123;1, 2, 3, ....&#125;.
 
-            The objects within a set are called elements or members. Sets can be finite or infinite, and they can contain any type of object, including numbers, letters, or even other sets.
+            The objects within a set are called <strong>elements</strong> or members. Sets can be finite or infinite, and they can contain any type of object, including numbers, letters, or even other sets.
 
             <br /><br />
 
-            Heres an example of a numerical set:
+            Heres an example of a <strong>numerical set</strong>:
 
             <br /><br />
 
@@ -52,23 +52,23 @@
 
             <br /><br />
 
-            <p-button 
-                (click)="loadSetExample1()" 
+            <p-button
+                (click)="loadSetExample1()"
                 styleClass="p-button-sm p-button-text"
                 label="Load Example: {1, 2, 3, 4, 5}">
             </p-button>
-            <p-button 
-                (click)="generateRandomSet1()" 
+            <p-button
+                (click)="generateRandomSet1()"
                 styleClass="p-button-sm p-button-text"
                 label="Generate Random Set">
             </p-button>
 
             </p>
 
-            <input 
-                type="text" 
-                pInputText 
-                [(ngModel)]="value1" 
+            <input
+                type="text"
+                pInputText
+                [(ngModel)]="value1"
                 (input)="checkSetInput('value1')"
                 placeholder="Enter a valid set:"
                 />
@@ -107,23 +107,23 @@
 
                 <br /><br />
 
-                <p-button 
-                    (click)="loadSetExample2()" 
+                <p-button
+                    (click)="loadSetExample2()"
                     styleClass="p-button-sm p-button-text"
                     label="Load Example: {a, b, c, d}">
                 </p-button>
-                <p-button 
-                    (click)="generateRandomSet2()" 
+                <p-button
+                    (click)="generateRandomSet2()"
                     styleClass="p-button-sm p-button-text"
                     label="Generate Random Set">
                 </p-button>
 
             </p>
 
-            <input 
-      type="text" 
-      pInputText 
-      [(ngModel)]="value2" 
+            <input
+      type="text"
+      pInputText
+      [(ngModel)]="value2"
       (input)="checkSetInput('value2')"
       placeholder="Enter a valid set:"
     />
@@ -176,23 +176,23 @@
 
         <div *ngIf="isValid1 && isValid2" style="margin-top: 10px;">
             <div style="display: flex; gap: 5px; flex-wrap: wrap;">
-                <p-button 
-                    (click)="calculateSetUnion()" 
+                <p-button
+                    (click)="calculateSetUnion()"
                     label="Union (A ∪ B)"
                     styleClass="p-button-sm">
                 </p-button>
-                <p-button 
-                    (click)="calculateSetIntersection()" 
+                <p-button
+                    (click)="calculateSetIntersection()"
                     label="Intersection (A ∩ B)"
                     styleClass="p-button-sm">
                 </p-button>
-                <p-button 
-                    (click)="calculateSetDifference()" 
+                <p-button
+                    (click)="calculateSetDifference()"
                     label="Difference (A - B)"
                     styleClass="p-button-sm">
                 </p-button>
-                <p-button 
-                    (click)="checkSubset()" 
+                <p-button
+                    (click)="checkSubset()"
                     label="Is A ⊆ B?"
                     styleClass="p-button-sm">
                 </p-button>
@@ -281,18 +281,18 @@
 
                     <br /><br />
 
-                    <p-button 
-                        (click)="loadFunctionExample()" 
+                    <p-button
+                        (click)="loadFunctionExample()"
                         styleClass="p-button-sm p-button-text"
                         label="Load Example: 1:a,2:b,3:c">
                     </p-button>
 
                 </p>
 
-                <input 
-                    type="text" 
-                    pInputText 
-                    [(ngModel)]="functionInput" 
+                <input
+                    type="text"
+                    pInputText
+                    [(ngModel)]="functionInput"
                     (input)="checkFunctionInput()"
                     placeholder="Enter function mapping (e.g., 1:a,2:b,3:c)"
                 />
@@ -316,8 +316,8 @@
                 </div>
 
                 <div *ngIf="isValidFunction && parsedFunction.length > 0" style="margin-top: 15px;">
-                    <p-button 
-                        (click)="checkFunctionProperties()" 
+                    <p-button
+                        (click)="checkFunctionProperties()"
                         label="Check Function Properties"
                         styleClass="p-button-sm">
                     </p-button>
@@ -346,10 +346,10 @@
 
                     <br /><br />
 
-                    <input 
-                        type="text" 
-                        pInputText 
-                        [(ngModel)]="function2Input" 
+                    <input
+                        type="text"
+                        pInputText
+                        [(ngModel)]="function2Input"
                         (input)="checkFunction2Input()"
                         placeholder="Enter second function (e.g., a:1,b:2,c:3)"
                         style="width: 100%; max-width: 400px;"
@@ -363,8 +363,8 @@
                     </div>
 
                     <div *ngIf="isValidFunction && isValidFunction2 && parsedFunction.length > 0 && parsedFunction2.length > 0" style="margin-top: 15px;">
-                        <p-button 
-                            (click)="composeFunctions()" 
+                        <p-button
+                            (click)="composeFunctions()"
                             label="Compose Functions (f ∘ g)"
                             styleClass="p-button-sm">
                         </p-button>
@@ -379,7 +379,7 @@
                             {{ compositionError }}
                         </div>
                     </div>
-            
+
 
             </p-accordion-content>
         </p-accordion-panel>
@@ -433,10 +433,10 @@
                 </p>
 
                 <p style="margin-top: 15px;"><strong>Matrix A:</strong></p>
-                <input 
-                    type="text" 
-                    pInputText 
-                    [(ngModel)]="matrixAInput" 
+                <input
+                    type="text"
+                    pInputText
+                    [(ngModel)]="matrixAInput"
                     (input)="checkMatrixInput('A')"
                     placeholder="Enter matrix A (e.g., 1,2;3,4)"
                     style="width: 100%; max-width: 400px;"
@@ -458,10 +458,10 @@
                 </div>
 
                 <p style="margin-top: 15px;"><strong>Matrix B:</strong></p>
-                <input 
-                    type="text" 
-                    pInputText 
-                    [(ngModel)]="matrixBInput" 
+                <input
+                    type="text"
+                    pInputText
+                    [(ngModel)]="matrixBInput"
                     (input)="checkMatrixInput('B')"
                     placeholder="Enter matrix B (e.g., 5,6;7,8)"
                     style="width: 100%; max-width: 400px;"
@@ -485,20 +485,20 @@
                 <div *ngIf="isValidMatrixA" style="margin-top: 20px;">
                     <p style="margin-bottom: 10px;"><strong>Matrix A Operations:</strong></p>
                     <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                        <input 
-                            type="number" 
-                            pInputText 
-                            [(ngModel)]="scalarValue" 
+                        <input
+                            type="number"
+                            pInputText
+                            [(ngModel)]="scalarValue"
                             placeholder="Enter scalar value"
                             style="width: 150px;"
                         />
-                        <p-button 
-                            (click)="multiplyByScalar('A')" 
+                        <p-button
+                            (click)="multiplyByScalar('A')"
                             label="Multiply A by Scalar"
                             styleClass="p-button-sm">
                         </p-button>
-                        <p-button 
-                            (click)="transposeMatrix('A')" 
+                        <p-button
+                            (click)="transposeMatrix('A')"
                             label="Transpose A"
                             styleClass="p-button-sm">
                         </p-button>
@@ -522,13 +522,13 @@
                 <div *ngIf="isValidMatrixA && isValidMatrixB" style="margin-top: 20px;">
                     <p style="margin-bottom: 10px;"><strong>Matrix Operations:</strong></p>
                     <div style="display: flex; gap: 5px;">
-                        <p-button 
-                            (click)="addMatrices()" 
+                        <p-button
+                            (click)="addMatrices()"
                             label="Add (A + B)"
                             styleClass="p-button-sm">
                         </p-button>
-                        <p-button 
-                            (click)="multiplyMatrices()" 
+                        <p-button
+                            (click)="multiplyMatrices()"
                             label="Multiply (A × B)"
                             styleClass="p-button-sm">
                         </p-button>
@@ -554,8 +554,8 @@
                 </div>
 
                 <div style="margin-top: 20px;">
-                    <p-button 
-                        (click)="loadMatrixExample()" 
+                    <p-button
+                        (click)="loadMatrixExample()"
                         styleClass="p-button-sm p-button-text"
                         label="Load Example Matrices">
                     </p-button>
@@ -563,8 +563,7 @@
 
             </p-accordion-content>
         </p-accordion-panel>
-        
+
     </p-accordion>
 </div>
 
-    
