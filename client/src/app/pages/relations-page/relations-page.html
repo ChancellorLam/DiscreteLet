@@ -116,6 +116,7 @@
                                 <h3>Relations Practice (on Relation &#123;1,2,3&#125;)</h3>
                                 <app-drag-and-drop
                                     [availableChoices] = "relationChoices"
+                                    [dropZones]="relationDropZones"
                                     (choicesChanged) = "handleChoicesChanged($event)">
                                 </app-drag-and-drop>
 

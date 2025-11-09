@@ -8,7 +8,7 @@ import { ButtonModule} from 'primeng/button';
 import { ActivatedRoute } from '@angular/router';
 import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
-import { DragAndDropComponent, Choice } from '../../shared/drag-and-drop/drag-and-drop';
+import { DragAndDropComponent, Choice, DropZone } from '../../shared/drag-and-drop/drag-and-drop';
 
 @Component({
   selector: 'app-relations-page',
@@ -37,6 +37,14 @@ export class RelationsPage implements AfterViewInit {
     { id: 2, name: 'Symmetric' },
     { id: 3, name: 'Transitive' },
     { id: 4, name: 'Antisymmetric' }
+  ];
+
+  // Correct answers for each drop zone
+  relationDropZones: DropZone[] = [
+    { label: 'R = {(1,1), (2,2), (3,3), (1,2)}', correctAnswerID:1}, //reflexive
+    { label: 'R = {(1,2), (2,1), (2,3), (3,2)}', correctAnswerID:2}, //symmetric
+    { label: 'R = {(1,2), (2,3), (1,3), (3,3)}', correctAnswerID:3}, //transitive
+    { label: 'R = {(1,1), (2,2), (1,2)}', correctAnswerID:4}, //antisymmetric
   ];
 
   /* Quiz questions and answers */
