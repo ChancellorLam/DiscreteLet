@@ -6,7 +6,10 @@
 
     <ul>
       <li *ngFor="let option of question.options">
-        <button (click)="selectAnswer(i, option)">
+        <button
+          (click)="selectAnswer(i, option)"
+          [ngClass]="{ selected: selectedAnswers[i] === option }"
+        >
           {{ option }}
         </button>
       </li>

@@ -62,12 +62,37 @@ export class RelationsPage implements AfterViewInit {
         'A relation from A to B must be a set of ordered pairs (x, y) where x ∈ A and y ∈ B. Only {(a, 1), (b, 2)} satisfies this.'
     },
     {
-      text: 'If set A has 3 elements and set B has 4 elements, how many ordered pairs are in the Cartesian product A × B?',
-      options: ['3', '4', '7', '12'],
-      correct: '12',
+      text: 'Let R = {(1, 1), (2, 2), (1, 2), (2, 1)} be a relation on the set A = {1, 2}. Which property is R missing?',
+      options: ['Reflexive', 'Symmetric', 'Transitive', 'R has all three properties'],
+      correct: 'R has all three properties',
       explanation:
-        'The number of elements in A × B is |A| × |B|, which equals 3 × 4 = 12.'
+        'The relation is reflexive (it has (1, 1) and (2, 2)), symmetric (if (a, b) is there, (b, a) is there), and transitive.'
+    },
+    {
+      text: 'Let A = {1, 2, 3} and R = {(1, 2), (2, 3), (3, 3)}. What is the matrix representation MR?',
+      options: ['[ 0 1 0 ] [ 0 0 1 ] [ 0 0 1 ]', '[ 0 1 0 ] [ 0 0 0 ] [ 0 0 1 ]', '[ 1 1 0 ] [ 0 1 1 ] [ 0 0 1 ]', '[ 0 0 0 ] [ 1 0 0 ] [ 0 1 1 ]'],
+      correct: '[ 0 1 0 ] [ 0 0 1 ] [ 0 0 1 ]',
+      explanation: 'The entry MR[i, j] = 1 if (i, j) is in R.'
+    },
+    {
+      text: ' Let R1 = {(1, 2), (2, 3), (3, 1)} and R2 = {(2, 3), (3, 2)}. What is the union R1 U R2?',
+      options: ['{(2, 3)}', '{(1, 2), (3, 1), (3, 2)}', '{(1, 2), (2, 3), (3, 1), (3, 2)}', '{(1, 2), (3, 1)}'],
+      correct: '{(1, 2), (2, 3), (3, 1), (3, 2)}',
+      explanation: 'The union includes all pairs from both sets.'
+    },
+    {
+      text: 'Given M1 = [ 0 1 ] [ 1 0 ]. What is the complement matrix, ¬M1?',
+      options: ['[ 1 0 ] [ 0 1 ]', '[ 0 1 ] [ 1 0 ]', '[ 1 1 ] [ 0 0 ]', '[ 0 0 ] [ 1 1 ]'],
+      correct: '[ 1 0 ] [ 0 1 ]',
+      explanation: 'The complement (Logical NOT) flips 1s to 0s and 0s to 1s.S'
+    },
+    {
+      text: 'Which three properties must a relation have to be an equivalence relation?',
+      options: ['Reflexive, Symmetric, Antisymmetric', 'Reflexive, Antisymmetric, Transitive', 'Symmetric, Antisymmetric, Transitive', 'Reflexive, Symmetric, Transitive'],
+      correct: 'Reflexive, Symmetric, Transitive',
+      explanation: 'An equivalence relation must relate every element to itself (reflexive), have mutual relationships (symmetric), and preserve relationships through chains (transitive).'
     }
+
   ];
 
   //Handler for drag and drop changes
@@ -91,12 +116,10 @@ export class RelationsPage implements AfterViewInit {
   expandAll() {
     // If you add more panels, update this range accordingly or compute dynamically from the template data.
     this.activeTabs = ['0', '1', '2', '3', '4', '5', '6'];
-    this.isExpanded = true;
   }
 
   collapseAll() {
     this.activeTabs = [];
-    this.isExpanded = false;
   }
 
   // Toggle a single panel open/closed

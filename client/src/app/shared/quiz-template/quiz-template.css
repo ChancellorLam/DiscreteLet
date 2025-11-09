@@ -1,0 +1,36 @@
+/* Base button style for answer choices */
+.quiz ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.quiz li {
+  margin: 0.4rem 0;
+}
+
+.quiz button {
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.95rem;
+  color: #000000;
+}
+
+/* Hover state */
+.quiz button:hover {
+  background-color: #dac7af; /* soft blue hover */
+  border-color: #007ad9;
+}
+
+/* Selected state (after click) */
+.quiz button.selected {
+  background-color: #dac7af; /* blue when selected */
+  color: #000000;
+  border-color: #005fa3;
+  font-weight: 600;
+}
