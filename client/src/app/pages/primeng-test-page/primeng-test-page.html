@@ -1,3 +1,10 @@
 <input type="text" pInputText [(ngModel)]="expression" />
 <p-button label="Click me" (click)="computeSubExpressions()"></p-button>
-<div #output></div>
+
+@if ( showSubExpression() ) {
+  <ul>
+    @for (subExpression of subExpressions(); track $index) {
+      <li [innerHTML]="renderMathToString(subExpression)"></li>
+    }
+  </ul>
+}

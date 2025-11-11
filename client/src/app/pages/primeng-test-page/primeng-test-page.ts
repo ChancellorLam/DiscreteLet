@@ -29,10 +29,16 @@ export class PrimengTestPage {
 
   computeSubExpressions() {
     this.subExpressions.set(this.logicalExpressionService.getSubExpressions(this.expression()));
+    this.showSubExpression.set(true);
+    console.log(this.subExpressions());
   }
 
   renderMath(): void {
     const el = this.outputRef.nativeElement;
     katex.render(this.expression(), el, { throwOnError: false });
+  }
+
+  renderMathToString(expr: string): string {
+    return katex.renderToString(expr, { throwOnError: false });
   }
 }
