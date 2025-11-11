@@ -34,3 +34,7 @@
   border-color: #005fa3;
   font-weight: 600;
 }
+
+.correctAnswer{
+  background-color: #32a852;
+}

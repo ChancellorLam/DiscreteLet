@@ -18,6 +18,7 @@ html, body, app-root {
   --p-menubar-background: #B39D80;
   --p-menubar-item-link-color: #000000;
   --p-menubar-item-focus-background: #8aa08a;
+  --p-badge-primary-background: #ffffff;
 
   /* PrimeNG accordion custom colors */
   --p-accordion-header-background: #8AA08A;

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RewardService } from '../../core/reward-service';
 
 interface Question {
   text: string;

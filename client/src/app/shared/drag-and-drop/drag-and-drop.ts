@@ -53,6 +53,12 @@ export class DragAndDropComponent implements OnChanges {
     zone3Correct: boolean | null = null;
     zone4Correct: boolean | null = null;
 
+    //Feedback for each zone
+    zone1Feedback: string | null = null;
+    zone2Feedback: string | null = null;
+    zone3Feedback: string | null = null;
+    zone4Feedback: string | null = null;
+
     showResults = false;
 
     ngOnChanges(changes: SimpleChanges) {
@@ -124,7 +130,11 @@ export class DragAndDropComponent implements OnChanges {
             this.zone3Correct = this.zone3Choices.length === 1 && this.zone3Choices[0].id === this.dropZones[2].correctAnswerID;
             this.zone4Correct = this.zone4Choices.length === 1 && this.zone4Choices[0].id === this.dropZones[3].correctAnswerID;
             this.showResults=true;
-
+            this.zone1Feedback = "Every element in this set is related to itself, therefore it is Reflexive";
+            console.log(this.zone1Feedback);
+            this.zone2Feedback = "For every pair in R, the reversed pair is also in R. Therefore, this is Symmetric";
+            this.zone3Feedback = "For every instance where an element a is related to b, and b is related to c, the element a is also related to c within the set R. Therefore this is Transitive";
+            this.zone4Feedback = "For every pair (a,b) in the relation, the reverse pair (b,a) is not in the relation. Therefore, this is Antisymmetric";
             if (this.zone1Correct) this.rewards.add(1);
             if (this.zone2Correct) this.rewards.add(1);
             if (this.zone3Correct) this.rewards.add(1);
@@ -151,6 +161,11 @@ export class DragAndDropComponent implements OnChanges {
         this.zone3Correct = null;
         this.zone4Correct = null;
         this.showResults = false;
+        
+        this.zone1Feedback = null;
+        this.zone2Feedback = null;
+        this.zone3Feedback = null;
+        this.zone4Feedback = null;
 
         // Notify parent
         this.emitChanges();

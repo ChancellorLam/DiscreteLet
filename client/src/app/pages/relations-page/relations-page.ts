@@ -51,12 +51,7 @@ export class RelationsPage implements AfterViewInit {
   relationQuestions = [
     {
       text: 'Let A = {a, b} and B = {1, 2}. Which of the following is a valid relation from A to B?',
-      options: [
-        '{(a, 1), (b, 2)}',
-        '{(1, a), (2, b)}',
-        '{(a, b), (1, 2)}',
-        '{a, 1}'
-      ],
+      options: ['{(a, 1), (b, 2)}', '{(1, a), (2, b)}', '{(a, b), (1, 2)}', '{a, 1}'],
       correct: '{(a, 1), (b, 2)}',
       explanation:
         'A relation from A to B must be a set of ordered pairs (x, y) where x ∈ A and y ∈ B. Only {(a, 1), (b, 2)} satisfies this.'
