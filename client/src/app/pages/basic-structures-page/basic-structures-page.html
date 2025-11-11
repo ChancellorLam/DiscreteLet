@@ -179,10 +179,10 @@
 
         <div *ngIf="isValid1 && isValid2" style="margin-top: 10px;">
             <div *ngIf="parsedSet1.length === parsedSet2.length" style="color: rgb(80, 217, 80);">
-                ✓ The sets are equivalent! Both have cardinality {{ parsedSet1.length }}.
+                The sets are equivalent! Both have cardinality {{ parsedSet1.length }}.
             </div>
             <div *ngIf="parsedSet1.length !== parsedSet2.length" style="color: rgb(230, 80, 80);">
-                ✗ The sets are not equivalent. Set 1 has cardinality {{ parsedSet1.length }}, Set 2 has cardinality {{ parsedSet2.length }}.
+                The sets are not equivalent. Set 1 has cardinality {{ parsedSet1.length }}, Set 2 has cardinality {{ parsedSet2.length }}.
             </div>
         </div>
         <div *ngIf="!(isValid1 && isValid2)" style="color:#f3ba40; margin-top: 10px;">
@@ -224,10 +224,10 @@
 
             <div *ngIf="subsetResult !== null" style="margin-top: 15px;">
                 <div *ngIf="subsetResult" style="color: rgb(80, 217, 80);">
-                    ✓ Set 1 is a subset of Set 2.
+                    Set 1 is a subset of Set 2.
                 </div>
                 <div *ngIf="!subsetResult" style="color: rgb(230, 80, 80);">
-                    ✗ Set 1 is NOT a subset of Set 2.
+                    Set 1 is NOT a subset of Set 2.
                 </div>
             </div>
         </div>
@@ -344,19 +344,19 @@
 
                     <div *ngIf="functionProperties.isInjective !== null" style="margin-top: 15px;">
                         <div *ngIf="functionProperties.isInjective" style="color: rgb(80, 217, 80);">
-                            ✓ One-to-One (Injective): Yes
+                            One-to-One (Injective): Yes
                         </div>
                         <div *ngIf="!functionProperties.isInjective" style="color: rgb(230, 80, 80);">
-                            ✗ One-to-One (Injective): No
+                            One-to-One (Injective): No
                         </div>
                         <div *ngIf="functionProperties.isSurjective" style="color: rgb(80, 217, 80); margin-top: 5px;">
-                            ✓ Onto (Surjective): Yes
+                            Onto (Surjective): Yes
                         </div>
                         <div *ngIf="!functionProperties.isSurjective" style="color: rgb(230, 80, 80); margin-top: 5px;">
-                            ✗ Onto (Surjective): No
+                            Onto (Surjective): No
                         </div>
                         <div *ngIf="functionProperties.isBijective" style="color: rgb(80, 217, 80); margin-top: 5px; font-weight: bold;">
-                            ✓ Bijective: Yes (both one-to-one and onto)
+                            Bijective: Yes (both one-to-one and onto)
                         </div>
                     </div>
                 </div>
