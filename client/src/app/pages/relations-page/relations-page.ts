@@ -1,13 +1,17 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ActivatedRoute } from '@angular/router';
+import { TabsModule } from 'primeng/tabs';
+import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 
 @Component({
   selector: 'app-relations-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule],
+  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent],
   templateUrl: './relations-page.html',
   styleUrl: './relations-page.css'
 })
@@ -17,28 +21,46 @@ export class RelationsPage implements AfterViewInit {
 
   // Stores currently open accordion panels
   activeTabs: string[] = [];
+  activeTab = '0';
   // Tracks whether all panels are expanded or collapsed
   isExpanded = false;
   // Holds the specific panel to open (from URL query params)
   panelToOpen: string | null = null;
 
-  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(){
-    // Retrieve "panel" query parameter to determine which panel to open on load
-    this.route.queryParams.subscribe(params => {
-      this.panelToOpen = params['panel'] ?? null;
-    });
-  }
 
-  ngAfterViewInit() {
-    // If a panel is specified in the URL, open it after the view initializes
-    if (this.panelToOpen) {
-      setTimeout(() => this.openPanel(this.panelToOpen!), 200);
+/* Quiz questions and answers */
+relationQuestions = [
+    {
+      text: 'Let A = {a, b} and B = {1, 2}. Which of the following is a valid relation from A to B?',
+      options: [
+        '{(a, 1), (b, 2)}',
+        '{(1, a), (2, b)}',
+        '{(a, b), (1, 2)}',
+        '{a, 1}'
+      ],
+      correct: '{(a, 1), (b, 2)}',
+      explanation:
+        'A relation from A to B must be a set of ordered pairs (x, y) where x ∈ A and y ∈ B. Only {(a, 1), (b, 2)} satisfies this.'
+    },
+    {
+      text: 'If set A has 3 elements and set B has 4 elements, how many ordered pairs are in the Cartesian product A × B?',
+      options: ['3', '4', '7', '12'],
+      correct: '12',
+      explanation:
+        'The number of elements in A × B is |A| × |B|, which equals 3 × 4 = 12.'
     }
+  ];
+
+
+
+  ngAfterViewInit(): void {
+    console.log('RelationsPage view initialized');
+    // You can safely interact with @ViewChild elements here if needed
   }
 
-  // Toggles between expanding all and collapsing all panels
+
+
   toggleAll() {
     if (this.isExpanded) {
       this.collapseAll();

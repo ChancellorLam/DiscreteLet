@@ -1,28 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
 import confetti from 'canvas-confetti';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { TabsModule } from 'primeng/tabs';
+import { RewardService } from '../../core/reward-service';
+import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 
 @Component({
-  selector: 'app-number-theory-page',   // Component selector used in templates
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule],
-  templateUrl: './number-theory-page.html',   // HTML template file
-  styleUrl: './number-theory-page.css'    // CSS styles for this component
+  selector: 'app-number-theory-page',
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent],
+  templateUrl: './number-theory-page.html',
+  styleUrl: './number-theory-page.css'
 })
 export class NumberTheoryPage {
-  // Accordion state management
-  activeTabs: string[] = [];    // Stores currently expanded accordion panels
-  isExpanded = false;   // Tracks whether all panels are expanded
-  
-  // Variables for Prime Checker and Mod Checker tools
-  randomNumber: number | null = null;   // Holds generated random number
-  randMod: number | null = null;    // Holds generated modulus value
-  primeNumFeedback: string | null = null;   // Feedback for prime number quiz
-  userModAnswer: number | null = null;    // User’s input for mod result
-  modFeedback: string | null = null;    // Feedback for mod answer
+  private rewards = inject(RewardService);
+  activeTabs: string[] = [];
+  activeTab= '0';
+  isExpanded = false;
+  randomNumber: number | null = null;
+  randMod: number | null = null;
+  primeNumFeedback: string | null = null;
+  userModAnswer: number | null = null;
+  modFeedback: string | null = null;
 
 
 // Random Number generator for prime number checker
@@ -82,6 +84,7 @@ getRandomMod(min: number, max: number): number {
       if(userGuessPrime === actualPrime){
         this.primeNumFeedback = "Correct!";
         confetti();
+        this.rewards.add(1);
       }
       else{
         this.primeNumFeedback = "Incorrect. Try again.";
@@ -103,12 +106,38 @@ getRandomMod(min: number, max: number): number {
       if(userGuessModAnswer == correct){
         this.modFeedback = "Correct!";
         confetti();
+        this.rewards.add(1);
       }
       else{
         // Use template literal correctly to show actual result
         this.modFeedback = "Incorrect. The correct answer is ${correct}.`";
       }
     }
+
+    /* Quiz questions and answers */
+    numberTheoryQuestions = [
+    {
+      text: 'Let A = {a, b} and B = {1, 2}. Which of the following is a valid relation from A to B?',
+      options: [
+        '{(a, 1), (b, 2)}',
+        '{(1, a), (2, b)}',
+        '{(a, b), (1, 2)}',
+        '{a, 1}'
+      ],
+      correct: '{(a, 1), (b, 2)}',
+      explanation:
+        'A relation from A to B must be a set of ordered pairs (x, y) where x ∈ A and y ∈ B. Only {(a, 1), (b, 2)} satisfies this.'
+    },
+    {
+      text: 'If set A has 3 elements and set B has 4 elements, how many ordered pairs are in the Cartesian product A × B?',
+      options: ['3', '4', '7', '12'],
+      correct: '12',
+      explanation:
+        'The number of elements in A × B is |A| × |B|, which equals 3 × 4 = 12.'
+    }
+  ];
+
+
 
 
 // ACCORDION CONTROL

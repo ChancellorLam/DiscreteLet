@@ -15,15 +15,17 @@
             <!-- Each menu link; uses PrimeNG Ripple effect and Angular router navigation -->
             <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.routerLink">
                 <!-- Icon (example: Bitcoin) shown next to label -->
-                <i class="pi pi-bitcoin" style="font-size: 10rem; color: goldenrod;"></i>
+                <i *ngIf="item.icon" [ngClass]="item.icon" style="font-size: 1.5rem; color: goldenrod;"></i>
                 <!-- Menu label text -->
                 <span>{{ item.label }}</span>
-                <!-- Optional badge shown next to items -->
+                <!-- only render bitcoin badge when count is defined and > 0 -->
+                <ng-container *ngIf="item.icon === 'pi pi-bitcoin'">
+                  <ng-container *ngIf="rewards.count$ | async as count">
+                    <p-badge *ngIf="count > 0" [value]="count" class="ml-2"></p-badge>
+                  </ng-container>
+                </ng-container>
+
                 <p-badge *ngIf="item.badge" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
-                <!-- Optional keyboard shortcut label -->
-                <span *ngIf="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
-                <!-- Dropdown arrow shown if the item has submenus -->
-                <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
             </a>
         </ng-template>
 
@@ -32,7 +34,6 @@
             <div class="flex items-center gap-2">
                 <!-- Search input field (two-way bound to searchQuery) -->
                 <!-- Pressing Enter triggers the search() method -->
-                <input type="text" pInputText placeholder="Search" class="w-36" [(ngModel)]="searchQuery" (keydown.enter)="search()"/>
                 <a [routerLink]="'/profile-page'">
                 <p-avatar image="https://jcusports.com/images/2020/8/12/JCU_Mark_FullColor_4x_100.jpg" shape="circle" />
             </a>

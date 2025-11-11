@@ -5,15 +5,27 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
+import { TabsModule } from 'primeng/tabs';
+import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 
 @Component({
   selector: 'app-basic-structures-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputTextModule, CommonModule],
+  imports: [
+    AccordionModule,
+    ToggleButtonModule,
+    FormsModule,
+    ButtonModule,
+    InputTextModule,
+    CommonModule,
+    TabsModule,
+    QuizComponent
+  ],
   templateUrl: './basic-structures-page.html',
   styleUrl: './basic-structures-page.css'
 })
 export class BasicStructuresPage {
   activeTabs: string[] = [];
+  activeTab = '0';
   isExpanded = false;
 
   value1 = '';
