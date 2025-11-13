@@ -5,10 +5,11 @@ import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
 import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
+import { TestButton } from './test-button/test-button/test-button';
 
 @Component({
   selector: 'app-counting-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent],
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent, TestButton],
   templateUrl: './counting-page.html',
   styleUrl: './counting-page.css'
 })
