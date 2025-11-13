@@ -8,6 +8,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { TabsModule } from 'primeng/tabs';
 import { RewardService } from '../../core/services/reward-service';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
+import { TestButton } from './test-button/test-button/test-button';
 
 @Component({
   selector: 'app-counting-page',
