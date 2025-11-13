@@ -1,16 +1,3 @@
-<div style="display: flex; gap: 10px; margin-bottom: 10px;">
-    <p-button
-      (click)="toggleAll()"
-      styleClass="p-button-text"
-      [label]="isExpanded ? 'Collapse All' : 'Expand All'">
-    </p-button>
-    <p-button
-      (click)="clearAll()"
-      styleClass="p-button-text p-button-secondary"
-      label="Clear All">
-    </p-button>
-</div>
-
 <div class="card flex justify-content-center">
     <p-accordion [(value)]="activeTabs" multiple="true">
 
@@ -32,7 +19,13 @@
                 (click)="toggleAll()"
                 styleClass="p-button-text"
                 [label]="isExpanded ? 'Collapse All' : 'Expand All'">
-        </p-button>   </h3>
+        </p-button>
+        <p-button
+      (click)="clearAll()"
+      styleClass="p-button-text p-button-secondary"
+      label="Clear All">
+    </p-button>
+      </h3>
 
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
