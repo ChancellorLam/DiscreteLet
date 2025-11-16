@@ -111,14 +111,21 @@
                                         </tr>
                                     </table>
 
-                                </div><br/><br/>
+                                </div><br /><br />
                                 <!--Call drag and drop component. Use relations-page data-->
                                 <h3>Relations Practice (on Relation &#123;1,2,3&#125;)</h3>
-                                <app-drag-and-drop
-                                    [availableChoices] = "relationChoices"
-                                    [dropZones]="relationDropZones"
-                                    (choicesChanged) = "handleChoicesChanged($event)">
+                                <app-drag-and-drop [availableChoices]="relationChoices" [dropZones]="relationDropZones"
+                                    (choicesChanged)="handleChoicesChanged($event)"
+                                    (resultsChecked)="handleResults($event)">
                                 </app-drag-and-drop>
+
+                                <!-- Display feedback summary -->
+                                <div *ngIf="feedbackMessages.length > 0" class="feedback-summary">
+                                    <h4>Feedback Summary</h4>
+                                    <ul>
+                                        <li *ngFor="let fb of feedbackMessages">{{ fb }}</li>
+                                    </ul>
+                                </div>
 
                             </p-accordion-content>
                         </p-accordion-panel>
@@ -382,7 +389,8 @@
                                     <tr>
                                         <td>Symmetry</td>
                                         <td>If <b>(a, b)</b> is in <b>R</b>, then <b>(b, a)</b> must also be in
-                                            <b>R</b>.</td>
+                                            <b>R</b>.
+                                        </td>
                                         <td>If <b>a</b> is related to <b>b</b>, then <b>b</b> is related to <b>a</b>
                                             too.</td>
                                     </tr>
@@ -435,6 +443,11 @@
 
                     <p-tabpanel value="1">
                         <h3>Relations Quiz</h3>
+                        <p-button
+                            (click)="refreshQuiz()"
+                            styleClass="p-button-text p-button-sm"
+                            icon="pi pi-refresh"
+                            label="New Questions"></p-button>
                         <app-quiz [questions]="relationQuestions">
                         </app-quiz>
                     </p-tabpanel>
@@ -442,7 +455,7 @@
                     <p-tabpanel value="2">
                         <h3>Unit Test</h3>
                         <p>Relations Exam Goes HERE</p>
-                    </p-tabpanel>   
+                    </p-tabpanel>
                 </p-tabpanels>
             </p-tabs>
         </div>

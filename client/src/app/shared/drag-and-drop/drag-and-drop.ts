@@ -39,6 +39,16 @@ export class DragAndDropComponent implements OnChanges {
         zone4: Choice[];
     }>();
 
+    @Output() resultsChecked = new EventEmitter<{
+    correctness: boolean[],
+    zones: {
+        zone1: Choice[];
+        zone2: Choice[];
+        zone3: Choice[];
+        zone4: Choice[];
+    };
+}>();
+
     // Separate arrays for each drop zone
     zone1Choices: Choice[] = [];
     zone2Choices: Choice[] = [];
@@ -52,12 +62,6 @@ export class DragAndDropComponent implements OnChanges {
     zone2Correct: boolean | null = null;
     zone3Correct: boolean | null = null;
     zone4Correct: boolean | null = null;
-
-    //Feedback for each zone
-    zone1Feedback: string | null = null;
-    zone2Feedback: string | null = null;
-    zone3Feedback: string | null = null;
-    zone4Feedback: string | null = null;
 
     showResults = false;
 
@@ -123,24 +127,38 @@ export class DragAndDropComponent implements OnChanges {
     }
 
     checkAnswers() {
-        if(this.dropZones.length >= 4) {
-            //check each zone
-            this.zone1Correct = this.zone1Choices.length === 1 && this.zone1Choices[0].id === this.dropZones[0].correctAnswerID;
-            this.zone2Correct = this.zone2Choices.length === 1 && this.zone2Choices[0].id === this.dropZones[1].correctAnswerID;
-            this.zone3Correct = this.zone3Choices.length === 1 && this.zone3Choices[0].id === this.dropZones[2].correctAnswerID;
-            this.zone4Correct = this.zone4Choices.length === 1 && this.zone4Choices[0].id === this.dropZones[3].correctAnswerID;
-            this.showResults=true;
-            this.zone1Feedback = "Every element in this set is related to itself, therefore it is Reflexive";
-            console.log(this.zone1Feedback);
-            this.zone2Feedback = "For every pair in R, the reversed pair is also in R. Therefore, this is Symmetric";
-            this.zone3Feedback = "For every instance where an element a is related to b, and b is related to c, the element a is also related to c within the set R. Therefore this is Transitive";
-            this.zone4Feedback = "For every pair (a,b) in the relation, the reverse pair (b,a) is not in the relation. Therefore, this is Antisymmetric";
-            if (this.zone1Correct) this.rewards.add(1);
-            if (this.zone2Correct) this.rewards.add(1);
-            if (this.zone3Correct) this.rewards.add(1);
-            if (this.zone4Correct) this.rewards.add(1);
-        }
+    if (this.dropZones.length >= 4) {
+        // Check correctness for each zone
+        this.zone1Correct = this.zone1Choices.length === 1 && this.zone1Choices[0].id === this.dropZones[0].correctAnswerID;
+        this.zone2Correct = this.zone2Choices.length === 1 && this.zone2Choices[0].id === this.dropZones[1].correctAnswerID;
+        this.zone3Correct = this.zone3Choices.length === 1 && this.zone3Choices[0].id === this.dropZones[2].correctAnswerID;
+        this.zone4Correct = this.zone4Choices.length === 1 && this.zone4Choices[0].id === this.dropZones[3].correctAnswerID;
+
+        this.showResults = true;
+
+        // Emit only correctness + dropped choices
+        this.resultsChecked.emit({
+            correctness: [
+                this.zone1Correct,
+                this.zone2Correct,
+                this.zone3Correct,
+                this.zone4Correct
+            ],
+            zones: {
+                zone1: this.zone1Choices,
+                zone2: this.zone2Choices,
+                zone3: this.zone3Choices,
+                zone4: this.zone4Choices
+            }
+        });
+
+        // Optional: reward tracking
+        if (this.zone1Correct) this.rewards.add(1);
+        if (this.zone2Correct) this.rewards.add(1);
+        if (this.zone3Correct) this.rewards.add(1);
+        if (this.zone4Correct) this.rewards.add(1);
     }
+}
 
     // Reset functionality
     resetAll() {
@@ -161,11 +179,6 @@ export class DragAndDropComponent implements OnChanges {
         this.zone3Correct = null;
         this.zone4Correct = null;
         this.showResults = false;
-        
-        this.zone1Feedback = null;
-        this.zone2Feedback = null;
-        this.zone3Feedback = null;
-        this.zone4Feedback = null;
 
         // Notify parent
         this.emitChanges();

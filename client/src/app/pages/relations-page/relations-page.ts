@@ -10,6 +10,23 @@ import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 import { DragAndDropComponent, Choice, DropZone } from '../../shared/drag-and-drop/drag-and-drop';
 
+interface DragDropResult {
+  correctness: boolean[];
+  zones: {
+    zone1: Choice[];
+    zone2: Choice[];
+    zone3: Choice[];
+    zone4: Choice[];
+  };
+}
+
+interface Question {
+  text: string;
+  options: string[];
+  correct: string;
+  explanation?: string;
+}
+
 @Component({
   selector: 'app-relations-page',
   standalone: true,
@@ -39,6 +56,27 @@ export class RelationsPage implements AfterViewInit {
     { id: 4, name: 'Antisymmetric' }
   ];
 
+  // Feedback messages shown below drag-drop 
+feedbackMessages: string[] = [];
+
+// Handler for drag-drop correctness event 
+handleResults(result: DragDropResult) {
+    const feedbackTexts = [
+        "Every element in this set is related to itself, therefore it is Reflexive.",
+        "For every pair in R, the reversed pair is also in R. Therefore, this is Symmetric.",
+        "If a is related to b and b is related to c, then a is related to c. Therefore, this is Transitive.",
+        "For every pair (a,b) in R, (b,a) is not in R. Therefore, this is Antisymmetric."
+    ];
+
+    const labels = ["Reflexive", "Symmetric", "Transitive", "Antisymmetric"];
+
+    this.feedbackMessages = result.correctness.map((isCorrect, i) =>
+        isCorrect
+            ? `${labels[i]}: Correct! ${feedbackTexts[i]}`
+            : `${labels[i]}: Incorrect. ${feedbackTexts[i]}`
+    );
+}
+
   // Correct answers for each drop zone
   relationDropZones: DropZone[] = [
     { label: 'R = {(1,1), (2,2), (3,3), (1,2)}', correctAnswerID:1}, //reflexive
@@ -48,7 +86,7 @@ export class RelationsPage implements AfterViewInit {
   ];
 
   /* Quiz questions and answers */
-  relationQuestions = [
+  relationQuestionPool: Question[] = [
     {
       text: 'Let A = {a, b} and B = {1, 2}. Which of the following is a valid relation from A to B?',
       options: ['{(a, 1), (b, 2)}', '{(1, a), (2, b)}', '{(a, b), (1, 2)}', '{a, 1}'],
@@ -87,8 +125,30 @@ export class RelationsPage implements AfterViewInit {
       correct: 'Reflexive, Symmetric, Transitive',
       explanation: 'An equivalence relation must relate every element to itself (reflexive), have mutual relationships (symmetric), and preserve relationships through chains (transitive).'
     }
-
   ];
+
+  // Displayed questions, randomly selected from pool
+  relationQuestions: Question[] = [];
+
+  constructor() {
+    // initialize with random questions when component is created
+    this.selectRandomQuestions(5);
+  }
+
+  //randomly selects n questions from the question pool
+  //count num questions to select (default is 5)
+  selectRandomQuestions(count = 5): void {
+    //create a copy of the pool and shuffle it
+    const shuffled = [...this.relationQuestionPool].sort(() => Math.random() -0.5);
+    //take the first count questions
+    this.relationQuestions = shuffled.slice(0, Math.min(count, this.relationQuestionPool.length));
+  }
+
+  //refresh quiz with new random questions
+  refreshQuiz(): void {
+    this.selectRandomQuestions(5);
+  }
+
 
   //Handler for drag and drop changes
   handleChoicesChanged(event: { available: Choice[], zone1: Choice[], zone2: Choice[], zone3: Choice[], zone4: Choice[] }) {
