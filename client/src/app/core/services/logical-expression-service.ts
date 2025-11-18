@@ -58,7 +58,7 @@ export class LogicalExpressionService {
     },
   };
 
-  public getSubExpressions(expr: string): string[] {
+  public getSubexpressions(expr: string): string[] {
     // break up given expression into tokens
     const tokens = this.tokenize(expr);
 
@@ -66,10 +66,10 @@ export class LogicalExpressionService {
     const ast = this.parseToAST(tokens);
 
     // get list of subexpressions that the expression is composed of
-    const subs: string[] = [];
-    this.collect(ast, subs);
+    const subexpressions: string[] = [];
+    this.collectSubexpressionsFromAST(ast, subexpressions);
 
-    return this.stripRedundantOuterParentheses(subs);
+    return this.stripRedundantOuterParentheses(subexpressions);
   }
 
   private tokenize(expr: string): string[] {
@@ -172,7 +172,7 @@ export class LogicalExpressionService {
   }
 
   // Collect all subexpressions (variables and composite expressions) from the AST
-  private collect(node: Node, acc: string[]): void {
+  private collectSubexpressionsFromAST(node: Node, acc: string[]): void {
     const vars = new Set<string>();
     const subs: string[] = [];
 
