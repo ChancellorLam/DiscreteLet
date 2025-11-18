@@ -9,6 +9,7 @@ import { TabsModule } from 'primeng/tabs';
 import { RewardService } from '../../core/reward-service';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 
+//defines structure for quiz questions
 interface Question {
   text: string;
   options: string[];
@@ -23,17 +24,20 @@ interface Question {
   styleUrl: './number-theory-page.css'
 })
 export class NumberTheoryPage {
+  //inject reward service to track user progress
   private rewards = inject(RewardService);
-  activeTabs: string[] = [];
-  activeTab= '0';
-  isExpanded = false;
-  randomNumber: number | null = null;
-  randMod: number | null = null;
-  primeNumFeedback: string | null = null;
-  userModAnswer: number | null = null;
-  modFeedback: string | null = null;
-  userDivisibilityAnswer: number | null = null;
-  divisibilityFeedback: string | null = null;
+
+  activeTabs: string[] = []; //tracks which accordion panels are open
+  activeTab= '0'; //currently selected tab
+  isExpanded = false; //tracks if all accordion panels are expanded
+
+  randomNumber: number | null = null; // Stores the generated random number for exercises
+  randMod: number | null = null; // Stores the generated random modulus for exercises
+  primeNumFeedback: string | null = null; // Displays feedback for prime number checker
+  userModAnswer: number | null = null; // Stores user's answer for mod exercise
+  modFeedback: string | null = null; // Displays feedback for mod exercise
+  userDivisibilityAnswer: number | null = null; // Stores user's answer for divisibility exercise
+  divisibilityFeedback: string | null = null; // Displays feedback for divisibility exercise
 
 
 // Random Number generator for prime number checker
@@ -128,6 +132,7 @@ getRandomMod(min: number, max: number): number {
       }
     }
 
+    // handles user input for divisibility tool
     onDivisibilityAnswer(userGuessDivisibility: number | null): void{
       if(userGuessDivisibility ===null){
         this.divisibilityFeedback = "Please enter an answer"; return;
@@ -222,6 +227,25 @@ getRandomMod(min: number, max: number): number {
       options: ['They make calculations faster', 'They simplify addition and subtraction', 'They make it easy to factor large numbers', 'They make it difficult to reverse the encryption process'],
       correct: 'They make it difficult to reverse the encryption process',
       explanation: 'RSA relies on the fact that factoring the product of large primes is computationally hard, securing modern digitial communication.'
+    },
+    {
+      text: 'Which number is prime?',
+      options: ['21', '29', '33', '51'],
+      correct: '29',
+      explanation: '29 has exactly two positive divisors.'
+    },
+    {
+      text: 'Compute 19mod6.',
+      options: ['1', '3', '5', '6'],
+      correct: '1',
+      explanation: 'When you divide 19 by 6, you get 3 with a remainder of 1, because 6 × 3 = 18, and 19 − 18 = 1.'
+    }, 
+    {
+      text: 'The Fundamental Theorem of Arithmetic states:',
+      options: ['Every integer has infinitely many factorizations', 'Every integer >= 2 has a unique prime factorization',
+        'Every prime is even', 'Every integer is divisible by a prime'],
+      correct: 'Every integer >= 2 has a unique prime factorization',
+      explanation: 'Prime factorizations are unique up to order.'
     }
   ];
 

@@ -10,6 +10,7 @@ import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 import { DragAndDropComponent, Choice, DropZone } from '../../shared/drag-and-drop/drag-and-drop';
 
+// stucture for drag-drop results
 interface DragDropResult {
   correctness: boolean[];
   zones: {
@@ -20,6 +21,7 @@ interface DragDropResult {
   };
 }
 
+//structure for quiz questions
 interface Question {
   text: string;
   options: string[];
@@ -35,6 +37,7 @@ interface Question {
   styleUrls: ['./relations-page.css']
 })
 export class RelationsPage implements AfterViewInit {
+  //inject ActivatedRoute service to read URL query parameters
   private route = inject(ActivatedRoute);
 
   // Reference to the accordion element in the template
@@ -68,8 +71,10 @@ handleResults(result: DragDropResult) {
         "For every pair (a,b) in R, (b,a) is not in R. Therefore, this is Antisymmetric."
     ];
 
+    //labels corresponding to each drop zone
     const labels = ["Reflexive", "Symmetric", "Transitive", "Antisymmetric"];
 
+    //generate feedback message for each zone based on correctness
     this.feedbackMessages = result.correctness.map((isCorrect, i) =>
         isCorrect
             ? `${labels[i]}: Correct! ${feedbackTexts[i]}`
@@ -167,6 +172,7 @@ handleResults(result: DragDropResult) {
   // Displayed questions, randomly selected from pool
   relationQuestions: Question[] = [];
 
+  //constructor runs when component is created
   constructor() {
     // initialize with random questions when component is created
     this.selectRandomQuestions(5);
@@ -188,7 +194,9 @@ handleResults(result: DragDropResult) {
 
 
   //Handler for drag and drop changes
+  //called whenever choices are moved between zones
   handleChoicesChanged(event: { available: Choice[], zone1: Choice[], zone2: Choice[], zone3: Choice[], zone4: Choice[] }) {
+    //log the current state of all zones for debuggng
   console.log('Available choices:', event.available);
   console.log('Zone 1:', event.zone1);
   console.log('Zone 2:', event.zone2);
