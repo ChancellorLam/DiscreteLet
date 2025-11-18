@@ -26,7 +26,7 @@ interface Question {
   text: string;
   options: string[];
   correct: string;
-  explanation?: string;
+  explanation: string;
 }
 
 @Component({
