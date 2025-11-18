@@ -28,7 +28,7 @@ export class PrimengTestPage {
   });
 
   computeSubExpressions() {
-    this.subExpressions.set(this.logicalExpressionService.getSubExpressions(this.expression()));
+    this.subExpressions.set(this.logicalExpressionService.getSubexpressions(this.expression()));
     this.showSubExpression.set(true);
     console.log(this.subExpressions());
   }
