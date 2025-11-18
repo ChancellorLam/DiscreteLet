@@ -1,0 +1,99 @@
+<div class="drag-drop-container">
+    <div class="header-container">
+        <p>Drag and Drop the term with the correct example.</p>
+        <div class="button-group">
+            <p-button
+                label="Check Answers"
+                icon="pi pi-check"
+                severity="success"
+                (onClick)="checkAnswers()"
+                styleClass="p-button-sm">
+            </p-button>
+            <p-button
+                label="Reset"
+                icon="pi pi-refresh"
+                severity="secondary"
+                (onClick)="resetAll()"
+                styleClass="p-button-sm">
+            </p-button>
+        </div>
+    </div>
+
+    <!-- Available Choices -->
+    <div class="availableChoices">
+        <ul>
+            <li *ngFor="let choice of availableChoices" pDraggable
+                (onDragStart)="dragStart(choice)" (onDragEnd)="dragEnd()">
+                {{ choice.name }}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Drop Zones -->
+    <div class="drop-zones-grid">
+
+        <!-- Drop Zone 1 -->
+        <div class="zone-1"
+             [class.correct]="showResults && zone1Correct === true"
+             [class.incorrect]="showResults && zone1Correct === false"
+             pDroppable
+             (onDrop)="dropZone1()">
+            <p>{{ dropZones[0].label || 'R = {(1,1), (2,2), (3,3), (1,2)}' }}</p>
+            <ul *ngIf="zone1Choices.length > 0">
+                <li *ngFor="let choice of zone1Choices">
+                    {{ choice.name }}
+                </li>
+            </ul>
+            <span *ngIf="showResults && zone1Correct === true" class="feedback-icon"></span>
+            <span *ngIf="showResults && zone1Correct === false" class="feedback-icon"></span>
+        </div>
+
+        <!-- Drop Zone 2 -->
+        <div class="zone-2"
+             [class.correct]="showResults && zone2Correct === true"
+             [class.incorrect]="showResults && zone2Correct === false"
+             pDroppable
+             (onDrop)="dropZone2()">
+            <p>{{ dropZones[1].label || 'R = {(1,1), (2,2), (1,2)}' }}</p>
+            <ul *ngIf="zone2Choices.length > 0">
+                <li *ngFor="let choice of zone2Choices">
+                    {{ choice.name }}
+                </li>
+            </ul>
+            <span *ngIf="showResults && zone2Correct === true" class="feedback-icon pi pi-check"></span>
+            <span *ngIf="showResults && zone2Correct === false" class="feedback-icon pi pi-times"></span>
+        </div>
+
+        <!-- Drop Zone 3 -->
+        <div class="zone-3"
+             [class.correct]="showResults && zone3Correct === true"
+             [class.incorrect]="showResults && zone3Correct === false"
+             pDroppable
+             (onDrop)="dropZone3()">
+            <p>{{ dropZones[2].label || 'R = {(1,2), (2,3), (1,3), (3,3)}' }}</p>
+            <ul *ngIf="zone3Choices.length > 0">
+                <li *ngFor="let choice of zone3Choices">
+                    {{ choice.name }}
+                </li>
+            </ul>
+            <span *ngIf="showResults && zone3Correct === true" class="feedback-icon pi pi-check"></span>
+            <span *ngIf="showResults && zone3Correct === false" class="feedback-icon pi pi-times"></span>
+        </div>
+
+        <!-- Drop Zone 4 -->
+        <div class="zone-4"
+             [class.correct]="showResults && zone4Correct === true"
+             [class.incorrect]="showResults && zone4Correct === false"
+             pDroppable
+             (onDrop)="dropZone4()">
+            <p>{{ dropZones[3].label || 'R = {(1,2), (2,1), (2,3), (3,2)}' }}</p>
+            <ul *ngIf="zone4Choices.length > 0">
+                <li *ngFor="let choice of zone4Choices">
+                    {{ choice.name }}
+                </li>
+            </ul>
+            <span *ngIf="showResults && zone4Correct === true" class="feedback-icon pi pi-check"></span>
+            <span *ngIf="showResults && zone4Correct === false" class="feedback-icon pi pi-times"></span>
+        </div>
+    </div>
+</div>

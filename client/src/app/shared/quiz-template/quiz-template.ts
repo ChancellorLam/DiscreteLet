@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RewardService } from '../../core/reward-service';
 
 interface Question {
   text: string;
@@ -19,16 +21,36 @@ export class QuizComponent {
   @Input() title = '';
   @Input() questions: Question[] = [];
 
+  private rewardService = inject(RewardService);
+
   selectedAnswers: string[] = [];
   score: number | null = null;
+
+  ngOnChanges(changes: SimpleChanges){
+    if(changes['questions'] && !changes['questions'].firstChange){
+      this.resetQuiz();
+    }
+  }
 
   selectAnswer(index: number, answer: string) {
     this.selectedAnswers[index] = answer;
   }
 
   calculateScore() {
-    this.score = this.questions.filter(
+    const correctCount = this.questions.filter(
       (q, i) => q.correct === this.selectedAnswers[i]
     ).length;
+
+    this.score = correctCount;
+
+    //award points for correct answers
+    if(correctCount > 0){
+      this.rewardService.add(correctCount);
+    }
+  }
+
+  resetQuiz() {
+    this.selectedAnswers = [];
+    this.score = null;
   }
 }

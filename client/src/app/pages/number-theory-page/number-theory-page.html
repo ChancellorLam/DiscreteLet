@@ -7,8 +7,8 @@
         <p-tabs [(value)]="activeTab">
             <p-tablist>
             <p-tab value="0">Lessons</p-tab>
-            <p-tab value="1">Exercises</p-tab>
-            <p-tab value="2">Quiz</p-tab>
+            <p-tab value="1">Quiz</p-tab>
+            <p-tab value="2">Unit Test</p-tab>
         </p-tablist>
 
         <p-tabpanels>
@@ -46,7 +46,35 @@
                     remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder. Properties of divisibility
                     help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like 
                     prime factorization and modular arithmetic.
-                </p>
+                </p><br/>
+
+            <div class="divisibilityChecker">
+                <p-button 
+                    (click)="onClick()" 
+                    styleClass="p-button-text" 
+                    label="Generate-Number">
+                </p-button>
+                <div class="interactiveToolText">
+                    Num1: {{randomNumber}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Num2: {{ randMod }}
+                </div>
+
+                <p>Check Answer (Do not include remainders)</p>
+                <div class="button-row">
+                    <p-inputnumber [(ngModel)]="userDivisibilityAnswer" inputId="integeronly" />
+                    <!-- Calls method passing user input -->
+                    <p-button
+                        (click)="onDivisibilityAnswer(userDivisibilityAnswer)" 
+                        styleClass="p-button-text" 
+                        label="Check">
+                    </p-button>
+                </div> 
+
+                <div class="interactiveToolText">{{divisibilityFeedback}}</div>
+                    
+            </div>
+
+
             </p-accordion-content>
         </p-accordion-panel>
 
@@ -309,15 +337,15 @@
         </p-tabpanel>
 
       <p-tabpanel value="1">
-        <h3>Exercises</h3>
-        <p>Practice gcd, modular inverses, sample problems.</p>
-      </p-tabpanel>
-
-      <p-tabpanel value="2">
         <h3>Number Theory & Cryptography Quiz</h3>
         <app-quiz
                 [questions]="numberTheoryQuestions">
             </app-quiz>
+      </p-tabpanel>
+
+      <p-tabpanel value="2">
+        <h3>Number Theory & Cryptography Unit Test</h3>
+        <p>Number Theory Exam Goes HERE</p>
       </p-tabpanel>
     </p-tabpanels>
   </p-tabs>
