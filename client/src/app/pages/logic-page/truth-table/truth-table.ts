@@ -1,6 +1,5 @@
-import { Component, computed, inject, input } from '@angular/core';
-import {LogicalExpressionService} from '../../../core/services/logical-expression-service';
-import {LatexContainer} from '../../../shared/components/latex-container/latex-container';
+import { Component, input } from '@angular/core';
+import { LatexContainer } from '../../../shared/components/latex-container/latex-container';
 
 @Component({
   selector: 'app-truth-table',
