@@ -69,7 +69,7 @@ export class LogicalExpressionService {
     const subs: string[] = [];
     this.collect(ast, subs);
 
-    return subs;
+    return this.stripRedundantOuterParentheses(subs);
   }
 
   private tokenize(expr: string): string[] {
@@ -197,5 +197,11 @@ export class LogicalExpressionService {
     acc.push(...subs);
   };
 
-
+  private stripRedundantOuterParentheses(arr: string[]): string[] {
+    return arr.map(str =>
+      str.startsWith("(") && str.endsWith(")")
+        ? str.slice(1, -1)
+        : str
+    );
+  }
 }
