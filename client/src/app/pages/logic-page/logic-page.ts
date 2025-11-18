@@ -5,10 +5,11 @@ import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
 import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
+import {LatexContainer} from '../../shared/components/latex-container/latex-container';
 
 @Component({
   selector: 'app-logic-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent],
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent, LatexContainer],
   templateUrl: './logic-page.html',
   styleUrl: './logic-page.css'
 })
