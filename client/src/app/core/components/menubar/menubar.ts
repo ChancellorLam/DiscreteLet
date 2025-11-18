@@ -8,7 +8,7 @@ import { RippleModule } from 'primeng/ripple';
 import { MenubarModule } from 'primeng/menubar';
 import { RouterLink, Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { RewardService } from '../reward-service';
+import { RewardService } from '../../services/reward-service';
 
 @Component({
     selector: 'app-menubar',        // Component selector for use in templates

@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RewardService } from '../../core/reward-service';
+import { RewardService } from '../../core/services/reward-service';
 
 interface Question {
   text: string;

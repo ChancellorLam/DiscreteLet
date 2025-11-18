@@ -6,7 +6,7 @@ import { ButtonModule} from 'primeng/button';
 import confetti from 'canvas-confetti';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TabsModule } from 'primeng/tabs';
-import { RewardService } from '../../core/reward-service';
+import { RewardService } from '../../core/services/reward-service';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 
 @Component({
@@ -34,7 +34,7 @@ export class NumberTheoryPage {
 getRandomNum(min: number, max: number): number {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 }
 
 // Random Mod generator for Mod checker with max of 20
@@ -42,7 +42,7 @@ getRandomNum(min: number, max: number): number {
 getRandomMod(min: number, max: number): number {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 }
 
   // prime num checker
@@ -51,7 +51,7 @@ getRandomMod(min: number, max: number): number {
     if(num <=1 ) return false;    // Exclude 0, 1, and negatives
     if(num === 2) return true;    // 2 is prime
     if (num % 2 === 0) return false;    // Exclude even numbers > 2
-    
+
     // Check divisibility by odd numbers up to √num
     for(let i=3; i<=Math.sqrt(num); i+=2){
       if(num%i === 0) return false;
@@ -141,7 +141,7 @@ getRandomMod(min: number, max: number): number {
         this.divisibilityFeedback = `Correct! ${num} is divisible by ${den}, quotient = ${quotient}.`;
         confetti();
         this.rewards.add(1);
-      } 
+      }
       else {
         this.divisibilityFeedback = `Incorrect. ${num} ÷ ${den} = ${quotient}.`;
       }
@@ -153,12 +153,12 @@ getRandomMod(min: number, max: number): number {
       this.divisibilityFeedback = `Correct! Remainder = ${remainder}.`;
       confetti();
       this.rewards.add(1);
-    } 
+    }
     else if (userGuessDivisibility === quotient) {
       this.divisibilityFeedback = `Correct! Quotient = ${quotient}.`;
       confetti();
       this.rewards.add(1);
-    } 
+    }
     else {
       this.divisibilityFeedback = `Not divisible. Quotient = ${quotient}, remainder = ${remainder}.`;
     }
@@ -222,7 +222,7 @@ getRandomMod(min: number, max: number): number {
 
 
 // ACCORDION CONTROL
-// Toggles between expanding and collapsing all panels 
+// Toggles between expanding and collapsing all panels
   toggleAll() {
     if (this.isExpanded) {
       this.collapseAll();
