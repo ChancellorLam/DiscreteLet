@@ -4,7 +4,11 @@
 @if ( showSubExpression() ) {
   <ul>
     @for (subExpression of subExpressions(); track $index) {
-      <li [innerHTML]="renderMathToString(subExpression)"></li>
+      <li>
+        <app-latex-container
+          [latex]="subExpression"
+        ></app-latex-container>
+      </li>
     }
   </ul>
 }

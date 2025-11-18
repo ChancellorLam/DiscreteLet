@@ -4,10 +4,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import katex from 'katex';
 import { LogicalExpressionService } from '../../core/services/logical-expression-service';
+import { LatexContainer } from '../../shared/components/latex-container/latex-container';
 
 @Component({
   selector: 'app-primeng-test-page',
-  imports: [ButtonModule, InputTextModule, FormsModule],
+  imports: [ButtonModule, InputTextModule, FormsModule, LatexContainer],
   templateUrl: './primeng-test-page.html',
   styleUrl: './primeng-test-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
