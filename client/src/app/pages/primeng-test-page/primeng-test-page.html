@@ -1,14 +1,5 @@
-<input type="text" pInputText [(ngModel)]="expression" />
-<p-button label="Click me" (click)="computeSubExpressions()"></p-button>
-
-@if ( showSubExpression() ) {
-  <ul>
-    @for (subExpression of subExpressions(); track $index) {
-      <li>
-        <app-latex-container
-          [latex]="subExpression"
-        ></app-latex-container>
-      </li>
-    }
-  </ul>
-}
+<div class="main-container">
+  <app-truth-table-solver
+    title="Truth Table Solver"
+  ></app-truth-table-solver>
+</div>
