@@ -9,6 +9,13 @@ import { TabsModule } from 'primeng/tabs';
 import { RewardService } from '../../core/reward-service';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 
+interface Question {
+  text: string;
+  options: string[];
+  correct: string;
+  explanation?: string;
+}
+
 @Component({
   selector: 'app-number-theory-page',
   imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent],
@@ -165,8 +172,8 @@ getRandomMod(min: number, max: number): number {
   }
 
 
-    /* Quiz questions and answers */
-    numberTheoryQuestions = [
+    // Quiz questions and answers
+    numberTheoryQuestionPool: Question[] = [
     {
       text: 'Which of the following best describes the main focus of number theory?',
       options: [
@@ -218,7 +225,27 @@ getRandomMod(min: number, max: number): number {
     }
   ];
 
+  //displayed questions, randomly select from pool
+  numberTheoryQuestions: Question[] = [];
 
+  constructor(){
+    //initialize with random questions when component is created
+    this.selectRandomQuestions(5);
+  }
+
+  //randomly selects n questions from the question pool
+  //count num questions to select (default is 5)
+  selectRandomQuestions(count = 5): void {
+    //create a copy of the pool and shuffle it
+    const shuffled = [...this.numberTheoryQuestionPool].sort(() => Math.random() -0.5);
+    //take the first count questions
+    this.numberTheoryQuestions = shuffled.slice(0, Math.min(count, this.numberTheoryQuestionPool.length));
+  }
+
+  //refresh quiz with new random questions
+  refreshQuiz(): void {
+    this.selectRandomQuestions(5);
+  }
 
 
 // ACCORDION CONTROL
