@@ -58,6 +58,27 @@ export class LogicalExpressionService {
     },
   };
 
+  public evaluateLogicalExpression(node: Node, vars: Record<string, boolean>): boolean {
+    switch (node.type) {
+      case "var": return vars[node.name];
+      case "unary": return !this.evaluateLogicalExpression(node.expr, vars);
+      case "binary":
+        const left = this.evaluateLogicalExpression(node.left, vars);
+        const right = this.evaluateLogicalExpression(node.right, vars);
+        switch (node.op) {
+          case "\\land": return left && right;
+          case "\\lor": return left || right;
+          case "\\rightarrow":
+          case "\\to": return !left || right;
+          case "\\leftrightarrow": return left === right;
+          default:
+            throw new Error(`Unknown binary operator: ${node.op}`);
+        }
+      default:
+        throw new Error(`Unknown node type: ${(node as any).type}`);
+    }
+  }
+
   public getSubexpressions(expr: string): string[] {
     // break up given expression into tokens
     const tokens = this.tokenize(expr);
