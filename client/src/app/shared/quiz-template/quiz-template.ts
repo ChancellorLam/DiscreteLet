@@ -3,13 +3,15 @@ import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { RewardService } from '../../core/reward-service';
 
+//structure for quiz questions
 interface Question {
   text: string;
   options: string[];
   correct: string;
-  explanation?: string; // <-- optional, so it won't break if missing
+  explanation: string; 
 }
 
+//reuseable quiz component
 @Component({
   selector: 'app-quiz',
   standalone: true,
@@ -18,25 +20,35 @@ interface Question {
   styleUrls: ['./quiz-template.css']
 })
 export class QuizComponent {
-  @Input() title = '';
-  @Input() questions: Question[] = [];
+  //Input properties. These are passed in from parent components
+  @Input() title = ''; // title displayed at top of quiz
+  @Input() questions: Question[] = []; // array of questions to display
 
+  //inject reward service to rack user points
   private rewardService = inject(RewardService);
 
-  selectedAnswers: string[] = [];
-  score: number | null = null;
+  selectedAnswers: string[] = []; //stores user selected answer for each question
+  score: number | null = null; //stores quiz score
 
+  // Lifecycle hook, runs whenever input properties change
   ngOnChanges(changes: SimpleChanges){
+    //check if question input changed AND its not the first time its been set
     if(changes['questions'] && !changes['questions'].firstChange){
       this.resetQuiz();
     }
   }
 
+  //index = which question numnber
+  //answer = text of the selected answer
   selectAnswer(index: number, answer: string) {
+    //store the selected answer in the array at the corresponding index
     this.selectedAnswers[index] = answer;
   }
 
+  //called when user clicks "submit" button
   calculateScore() {
+    //count num questions answered correctly
+    //for each question, check if correct answer matches user's selected answer
     const correctCount = this.questions.filter(
       (q, i) => q.correct === this.selectedAnswers[i]
     ).length;
@@ -49,6 +61,7 @@ export class QuizComponent {
     }
   }
 
+  //clear all user selections and the score
   resetQuiz() {
     this.selectedAnswers = [];
     this.score = null;
