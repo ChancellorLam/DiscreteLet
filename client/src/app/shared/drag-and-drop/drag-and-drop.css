@@ -1,0 +1,61 @@
+.drag-drop-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 2px solid #ffffff;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.drop-zones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.zone-1, .zone-2, .zone-3, .zone-4 {
+  min-width: 240px;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+/* Correct answer styling */
+.zone-1.correct, .zone-2.correct, .zone-3.correct, .zone-4.correct {
+  border-color: #10b981;
+  background-color: #d1fae5;
+}
+
+/* Incorrect answer styling */
+.zone-1.incorrect, .zone-2.incorrect, .zone-3.incorrect, .zone-4.incorrect {
+  border-color: #ef4444;
+  background-color: #fee2e2;
+}
+
+.feedback-icon {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.zone-1.correct .feedback-icon, 
+.zone-2.correct .feedback-icon, 
+.zone-3.correct .feedback-icon, 
+.zone-4.correct .feedback-icon {
+  color: #10b981;
+}
+
+.zone-1.incorrect .feedback-icon, 
+.zone-2.incorrect .feedback-icon, 
+.zone-3.incorrect .feedback-icon, 
+.zone-4.incorrect .feedback-icon {
+  color: #ef4444;
+}

@@ -1,8 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+/* Root variables — global color palette  */
 :root {
   --text: #000000;
-  --background: #FBFBFE;
+  --background: #DAC7AF;
   --primary: #B39D80;
   --secondary: #DAC7AF;
   --accent: #8AA08A;
+  --invert: #755f75;
+}
+
+/* Force light page background and readable text */
+html, body, app-root {
+  height: 100%;
+  background-color: #ffffff !important;   /* Ensures white background across app */
+  color: #000000 !important;    /* Ensures black readable text */
+
+  /* PrimeNG menubar colors */
+  --p-menubar-background: #B39D80;
+  --p-menubar-item-link-color: #000000;
+  --p-menubar-item-focus-background: #8aa08a;
+  --p-badge-primary-background: #ffffff;
+
+  /* PrimeNG accordion custom colors */
+  --p-accordion-header-background: #8AA08A;
+  --p-accordion-header-hover-background: #755f75;
+  --p-accordion-header-active-hover-background: #755f75;
+  --p-accordion-header-active-background: #8AA08A;
+  --p-accordion-header-color: #000000;
+  --p-accordion-header-active-color: #000000;
+
+  /*PrimeNG tabs styling */
+  --p-tabs-tablist-background:var(--secondary);
+  --p-tabs-tab-color: #000000;
+  --p-tabs-tabpanel-background:var(--accent);
+  --p-tabs-tab-active-color:#000000;
+  --p-tabs-tab-active-border-color:var(--background);
+
+  --p-accordion-content-background: #8AA08A;
+}
+
+/* Text elements */
+h2, h3, h4, p, pre, li, table{
+  color: #000000;
+  margin-top: 0;
+}
+
+/* Accordion component styling overrides  */
+.p-accordion {
+  margin-bottom: 20rem;
+}
+
+/* Interactive tool text (feedback) */
+.interactiveToolText{
+  color: #000000;
+}
+
+/* Base nav bar style */
+:host ::ng-deep .p-menubar {
+  background-color: #B39D80 !important;
+  color: #000000 !important;
+  padding: 0 20px;
+  border-radius: 0;
+}
+
+/*Menu items */
+:host ::ng-deep .p-menubar-item-link {
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0 15px;
 }

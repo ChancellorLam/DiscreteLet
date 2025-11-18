@@ -1,0 +1,29 @@
+<div class="quiz">
+  <h3>{{ title }}</h3>
+
+  <div *ngFor="let question of questions; let i = index">
+    <p>{{ i + 1 }}. {{ question.text }}</p>
+
+    <ul>
+      <li *ngFor="let option of question.options">
+        <button
+          (click)="selectAnswer(i, option)"
+          [ngClass]="{ selected: selectedAnswers[i] === option }"
+        >
+          {{ option }}
+        </button>
+      </li>
+    </ul>
+
+    <div *ngIf="score !== null">
+      <p><strong>Correct Answer:</strong> {{ question.correct }}</p>
+      <p><em>{{ question.explanation }}</em></p>
+    </div>
+  </div>
+
+  <button (click)="calculateScore()">Submit Quiz</button>
+
+  <p *ngIf="score !== null">
+    Your score: {{ score }}/{{ questions.length }}
+  </p>
+</div>

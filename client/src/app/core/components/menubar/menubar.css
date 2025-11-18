@@ -1,3 +1,5 @@
+@import "primeicons/primeicons.css";
+
 /* Base nav bar style */
 :host ::ng-deep .p-menubar {
   background-color: #B39D80; 
