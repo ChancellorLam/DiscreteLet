@@ -1,45 +1,14 @@
-import { Component, signal, effect, inject, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
-import katex from 'katex';
-import { LogicalExpressionService } from '../../core/services/logical-expression-service';
-import { LatexContainer } from '../../shared/components/latex-container/latex-container';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TruthTableSolver } from '../logic-page/truth-table-solver/truth-table-solver';
 
 @Component({
   selector: 'app-primeng-test-page',
-  imports: [ButtonModule, InputTextModule, FormsModule, LatexContainer],
+  imports: [TruthTableSolver],
   templateUrl: './primeng-test-page.html',
   styleUrl: './primeng-test-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'primeng-test-page' }
 })
 export class PrimengTestPage {
-  logicalExpressionService = inject(LogicalExpressionService);
 
-  @ViewChild('output', { static: true })
-  outputRef!: ElementRef<HTMLElement>;
-
-  expression = signal<string>('');
-  subExpressions = signal<string[]>([]);
-  showSubExpression = signal<boolean>(false);
-
-  mathRenderEffect = effect(() => {
-    this.renderMath();
-  });
-
-  computeSubExpressions() {
-    this.subExpressions.set(this.logicalExpressionService.getSubexpressions(this.expression()));
-    this.showSubExpression.set(true);
-    console.log(this.subExpressions());
-  }
-
-  renderMath(): void {
-    const el = this.outputRef.nativeElement;
-    katex.render(this.expression(), el, { throwOnError: false });
-  }
-
-  renderMathToString(expr: string): string {
-    return katex.renderToString(expr, { throwOnError: false });
-  }
 }
