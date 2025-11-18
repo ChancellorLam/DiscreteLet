@@ -13,7 +13,7 @@
 
   <p-tabpanels>
       <p-tabpanel value="0">
-        <h3>Relations Lessons    <p-button
+        <h3>Logic Lessons    <p-button
             (click)="toggleAll()"
             styleClass="p-button-text"
             [label]="isExpanded ? 'Collapse All' : 'Expand All'">
@@ -50,7 +50,107 @@
                   <app-latex-container
                     [latex]="'\\neg'"
                   ></app-latex-container>
-                  <span> - negation</span>
+                  <span> - NOT (Negation)</span>
+                  <ul>
+                    <li>
+                      Example: Let
+                      <app-latex-container
+                        [latex]="'A = \\text{Logic is fun!}'"
+                      ></app-latex-container>
+                       Then
+                      <app-latex-container
+                        [latex]="'\\neg A = \\text{Logic is NOT fun.}'"
+                      ></app-latex-container>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <app-latex-container
+                    [latex]="'\\land'"
+                  ></app-latex-container>
+                  <span> - AND (Conjunction)</span>
+                  <ul>
+                    <li>
+                      Example: Let
+                      <app-latex-container
+                        [latex]="'A = \\text{Logic is fun!}'"
+                      ></app-latex-container>
+                      and
+                      <app-latex-container
+                        [latex]="'B = \\text{I love logic!}'"
+                      ></app-latex-container>
+                      Then
+                      <app-latex-container
+                        [latex]="'A \\land B = \\text{Logic is fun AND I love logic!}'"
+                      ></app-latex-container>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <app-latex-container
+                    [latex]="'\\lor'"
+                  ></app-latex-container>
+                  <span> - OR (Disjunction)</span>
+                  <ul>
+                    <li>
+                      Example: Let
+                      <app-latex-container
+                        [latex]="'A = \\text{Logic is fun!}'"
+                      ></app-latex-container>
+                      and
+                      <app-latex-container
+                        [latex]="'B = \\text{I love logic!}'"
+                      ></app-latex-container>
+                      Then
+                      <app-latex-container
+                        [latex]="'A \\lor B = \\text{Logic is fun OR I love logic!}'"
+                      ></app-latex-container>
+                    </li>
+                    <li>
+                      Note that in everyday English, OR is commonly used to mean one or the other. For example,
+                      consider the sentence "You are good at math or you are good at English." This is normally
+                      interpreted to mean that you are only good at one and not good at both. (This is actually a more
+                      complex logical operator called XOR/exclusive OR). In the context of logic however, OR means
+                      if at least one of the propositions are true, then the whole statement is true.
+                    </li>
+
+                    <li>
+                      Referring back to our example of
+                      <app-latex-container
+                        [latex]="'A \\lor B = \\text{Logic is fun OR I love logic!}'"
+                      ></app-latex-container>
+                      , if&nbsp;
+                      <app-latex-container
+                        [latex]="'\\text{Logic is fun!}'"
+                      ></app-latex-container>
+                      is true or
+                      <app-latex-container
+                        [latex]="'\\text{I love logic!}'"
+                      ></app-latex-container>
+                      is true, or even if both are true, then
+                      <app-latex-container
+                        [latex]="'A \\lor B'"
+                      ></app-latex-container>
+                      is true.
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <app-latex-container
+                    [latex]="'\\rightarrow'"
+                  ></app-latex-container>
+                  <span> - IF, THEN (Implication)</span>
+
+                </li>
+
+                <li>
+                  <app-latex-container
+                    [latex]="'\\leftrightarrow'"
+                  ></app-latex-container>
+                  <span> - IF AND ONLY IF (Biconditional)</span>
                 </li>
               </ul>
             </p-accordion-content>
