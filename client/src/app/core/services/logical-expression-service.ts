@@ -58,6 +58,32 @@ export class LogicalExpressionService {
     },
   };
 
+  public generateTruthTable(expr: string): { subexpressions: string[], table: Record<string, boolean>[] } {
+    const subexpressions = this.getSubexpressions(expr);
+    const variables = subexpressions.filter(s => /^[A-Za-z]+$/.test(s));
+    const numRows = Math.pow(2, variables.length);
+
+    const table: Record<string, boolean>[] = [];
+
+    for (let i = numRows - 1; i >= 0; i--) {
+      const assignment: Record<string, boolean> = {};
+      variables.forEach((v, idx) => {
+        assignment[v] = Boolean(i & (1 << (variables.length - 1 - idx)));
+      });
+
+      const row: Record<string, boolean> = {};
+      for (const sub of subexpressions) {
+        const subAst = this.parseToAST(this.tokenize(sub));
+        row[sub] = this.evaluateLogicalExpression(subAst, assignment);
+      }
+
+      table.push(row);
+    }
+
+    console.log({ subexpressions, table });
+    return { subexpressions, table };
+  }
+
   public evaluateLogicalExpression(node: Node, vars: Record<string, boolean>): boolean {
     switch (node.type) {
       case "var": return vars[node.name];
