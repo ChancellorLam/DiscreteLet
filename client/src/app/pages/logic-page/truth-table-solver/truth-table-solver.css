@@ -1,0 +1,32 @@
+.column-container {
+  border: 1px solid;
+  padding: 3.6%;
+  overflow: auto;
+
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.symbol-panel {
+  border: 1px solid grey;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  gap: 12px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  gap: 36px;
+}
+
+.center {
+  margin: 0 auto;
+}
