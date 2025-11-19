@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RewardService } from '../../core/reward-service';
@@ -19,7 +18,7 @@ interface Question {
   templateUrl: './quiz-template.html',
   styleUrls: ['./quiz-template.css']
 })
-export class QuizComponent {
+export class QuizComponent implements OnChanges {
   //Input properties. These are passed in from parent components
   @Input() title = ''; // title displayed at top of quiz
   @Input() questions: Question[] = []; // array of questions to display
@@ -29,6 +28,7 @@ export class QuizComponent {
 
   selectedAnswers: string[] = []; //stores user selected answer for each question
   score: number | null = null; //stores quiz score
+  submitted = false; // whether the quiz has been submitted
 
   // Lifecycle hook, runs whenever input properties change
   ngOnChanges(changes: SimpleChanges){
@@ -51,12 +51,14 @@ export class QuizComponent {
     //for each question, check if correct answer matches user's selected answer
     const correctCount = this.questions.filter(
       (q, i) => q.correct === this.selectedAnswers[i]
-    ).length;
+    ).length; //add green color to correct answer
+
 
     this.score = correctCount;
+    this.submitted = true;
 
     //award points for correct answers
-    if(correctCount > 0){
+    if (correctCount > 0) {
       this.rewardService.add(correctCount);
     }
   }
@@ -65,5 +67,6 @@ export class QuizComponent {
   resetQuiz() {
     this.selectedAnswers = [];
     this.score = null;
+    this.submitted = false;
   }
 }
