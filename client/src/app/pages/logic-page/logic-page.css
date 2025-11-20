@@ -10,3 +10,7 @@ ul li {
 .underlined-text {
   text-decoration: underline;
 }
+
+.whitespace-container {
+  margin-bottom: 600px;
+}
