@@ -322,6 +322,61 @@
                 a statement is true (T) or false (F) depending on the inputs.
               </p>
 
+              <p>
+                For example, here are the truth tables for all the operators
+              </p>
+              <ul>
+                <li>
+                  NOT (Negation)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('\\neg A')"
+                    [tableData]="getTruthTable('\\neg A')"
+                  ></app-truth-table>
+                </li>
+
+                <li>
+                  AND (Conjunction)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('A \\land B')"
+                    [tableData]="getTruthTable('A \\land B')"
+                  ></app-truth-table>
+                </li>
+
+                <li>
+                  OR (Disjunction)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('A \\lor B')"
+                    [tableData]="getTruthTable('A \\lor B')"
+                  ></app-truth-table>
+                </li>
+
+                <li>
+                  IF, THEN (Implication)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('A \\to B')"
+                    [tableData]="getTruthTable('A \\to B')"
+                  ></app-truth-table>
+                </li>
+
+                <li>
+                  IF AND ONLY IF (Biconditional)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('A \\leftrightarrow B')"
+                    [tableData]="getTruthTable('A \\leftrightarrow B')"
+                  ></app-truth-table>
+                </li>
+              </ul>
+
+              You can also generate truth tables for logical statements compounded together. For example,
+              <app-truth-table
+                [subexpressions]="getSubexpressions('\\neg(A \\land B) \\to (A \\lor C)')"
+                [tableData]="getTruthTable('\\neg(A \\land B) \\to (A \\lor C)')"
+              ></app-truth-table>
+
+              Feel free to experiment and generate your own Truth Tables
+              <app-truth-table-solver
+                [title]="'Truth Table Generator'"
+              ></app-truth-table-solver>
             </p-accordion-content>
         </p-accordion-panel>
     </p-tabpanel>
@@ -343,3 +398,4 @@
 
     </p-accordion>
 </div>
+<div class="whitespace-container"></div>
