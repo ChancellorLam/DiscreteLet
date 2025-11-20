@@ -29,4 +29,8 @@ export class TruthTableSolver {
   addSymbol(symbol: string) {
     this.expression.set(this.expression() + symbol);
   }
+
+  clearAll() {
+    this.expression.set('');
+  }
 }
