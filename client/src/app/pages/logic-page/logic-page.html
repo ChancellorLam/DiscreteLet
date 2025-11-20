@@ -158,6 +158,82 @@
                         [latex]="'A \\to B = \\text{If Logic is fun, then I love logic!}'"
                       ></app-latex-container>
                     </li>
+
+                    <li>
+                      An implication
+                      <app-latex-container
+                        [latex]="'P \\to Q'"
+                      ></app-latex-container>
+                      is a conditional statement that asserts that if your <span class="important-term">antecedent</span>&nbsp;
+                      <app-latex-container
+                        [latex]="'P'"
+                      ></app-latex-container>
+                      is true, then your <span class="important-term">consequent</span>&nbsp;
+                      <app-latex-container
+                        [latex]="'Q'"
+                      ></app-latex-container>
+                      must also be true.
+                    </li>
+
+                    <li>
+                      Consider the statement:
+                      <app-latex-container
+                        [latex]="'P \\to Q = \\text{If I am doing my math homework, then I am complaining.}'"
+                      ></app-latex-container>
+                      Say that this statement is true, and also say that you know that I am doing my math homework.
+                      Then, you can logically deduce that I am complaining. If you know
+                      <app-latex-container
+                        [latex]="'P \\to Q'"
+                      ></app-latex-container>
+                      and you know that
+                      <app-latex-container
+                        [latex]="'P'"
+                      ></app-latex-container>
+                      is true, making the conclusion that
+                      <app-latex-container
+                        [latex]="'Q'"
+                      ></app-latex-container>
+                      is true is called <span class="important-term">modus ponens</span>.
+                    </li>
+
+                    <li>
+                      Also, if you know
+                      <app-latex-container
+                        [latex]="'P \\to Q'"
+                      ></app-latex-container>
+                      , then you also know that the <span class="important-term">contrapositive</span>&nbsp;
+                      <app-latex-container
+                        [latex]="'\\neg Q \\to \\neg P = \\text{If I am not complaining, then I am not doing my math homework}'"
+                      ></app-latex-container>
+                      is true.
+                    </li>
+
+                    <li>
+                      However, note that <span class="underlined-text">an implication does not imply</span> that the
+                      <span class="important-term">converse</span> is true! That is, if you know that the statement
+                      <app-latex-container
+                        [latex]="'P \\to Q'"
+                      ></app-latex-container>
+                      is true, you do not know if the statement
+                      <app-latex-container
+                        [latex]="'Q \\to P = \\text{If I am complaining, then I am doing my math homework}'"
+                      ></app-latex-container>
+                      is true! For example, I could be complaining, but I could be instead doing my history homework.
+                      In this case, the statement
+                      <app-latex-container
+                        [latex]="'Q \\to P'"
+                      ></app-latex-container>
+                      isn't true because I am complaining, but I'm not doing my math homework. The implication can be
+                      thought of as a promise in a way. If your antecedent
+                      <app-latex-container
+                        [latex]="'P'"
+                      ></app-latex-container>
+                      is true, and your consequent
+                      <app-latex-container
+                        [latex]="'Q'"
+                      ></app-latex-container>
+                      isn't true, then you have broken your promise and the implication is false.
+                    </li>
                   </ul>
                 </li>
 
@@ -178,7 +254,52 @@
                       ></app-latex-container>
                       Then
                       <app-latex-container
-                        [latex]="'A \\to B = \\text{If Logic is fun, then I love logic!}'"
+                        [latex]="'A \\leftrightarrow B = \\text{Logic is fun if and only if I love logic!}'"
+                      ></app-latex-container>
+                    </li>
+
+                    <li>
+                      The biconditional statement (commonly invoked using the phrase if and only if in mathematics) is
+                      a statement where an implication and its converse are both true. For example, if
+                      <app-latex-container
+                        [latex]="'P = \\text{The number } n \\text{ is even}'"
+                      ></app-latex-container>
+                      and
+                      <app-latex-container
+                        [latex]="'Q = \\text{The number } n^2 \\text{ is even}'"
+                      ></app-latex-container>
+                      and you know that the biconditional statement,
+                      <app-latex-container
+                        [latex]="'P \\leftrightarrow Q = \\text{The number } n \\text{ is even if and only if the number } n^2 \\text{ is even}'"
+                      ></app-latex-container>
+                      is true, then the following statements are both true:
+                      <ul>
+                        <li>
+                          <app-latex-container
+                            [latex]="'P \\to Q = \\text{If the number } n \\text{ is even, then the number } n^2 \\text{ is even.}'"
+                          ></app-latex-container>
+                        </li>
+
+                        <li>
+                          <app-latex-container
+                            [latex]="'Q \\to P = \\text{If the number } n^2 \\text{ is even, then the number } n \\text{ is even.}'"
+                          ></app-latex-container>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <li>
+                      Because the implication and its converse are both true, we can say that
+                      <app-latex-container
+                        [latex]="'P \\leftrightarrow Q'"
+                      ></app-latex-container>
+                      is <span class="important-term">logically equivalent</span> to
+                      <app-latex-container
+                        [latex]="'Q \\leftrightarrow P'"
+                      ></app-latex-container>
+                      . Another way to write this is
+                      <app-latex-container
+                        [latex]="'P \\leftrightarrow Q \\equiv Q \\leftrightarrow P'"
                       ></app-latex-container>
                     </li>
                   </ul>
@@ -189,15 +310,18 @@
 
         <!-- Panel 3 -->
         <p-accordion-panel value="2">
-            <p-accordion-header>2. GCD & LCM</p-accordion-header>
+            <p-accordion-header>2. Truth Tables</p-accordion-header>
             <p-accordion-content>
-                <p class="m-0">
-                    The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common
-                    multiple (LCM) is the smallest positive integer that both numbers divide into evenly. One way to find these is through
-                    prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm, which uses repeated
-                    division to efficiently determine the GCD. These concepts are essential for simplifying fractions, solving equations,
-                    and understanding number relationships.
-                </p>
+              <p class="m-0">
+                At the end of the previous section, we touched on the idea of logical equivalence, the idea that
+                two logical statements are the same. There are many ways to show that two logical statements are
+                equivalent, one way to do so is by creating a truth table.
+              </p>
+              <p class="m-0">
+                A truth table is a systematic way to see all possible outcomes of a logical statement. It shows whether
+                a statement is true (T) or false (F) depending on the inputs.
+              </p>
+
             </p-accordion-content>
         </p-accordion-panel>
     </p-tabpanel>
