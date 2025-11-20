@@ -5,17 +5,30 @@
     <p>{{ i + 1 }}. {{ question.text }}</p>
 
     <ul>
-      <li *ngFor="let option of question.options">
+      <li *ngFor="let option of question.options; let j = index">
         <button
           (click)="selectAnswer(i, option)"
-          [ngClass]="{ selected: selectedAnswers[i] === option }"
+          [disabled]="submitted"
+          [ngClass]="{
+            selected: !submitted && selectedAnswers[i] === option,
+            'answer-correct': submitted && option === question.correct,
+            'answer-incorrect':
+              submitted && selectedAnswers[i] === option && option !== question.correct
+          }"
         >
+        <!-- ngClass logic for answer button styling:
+          - selected: Highlights the user's choice before submission.
+          - answer-correct: After the quiz is submitted, marks this option green 
+            if it is the correct answer.
+          - answer-incorrect: After submission, marks the user's chosen option red 
+            if it is NOT the correct answer. -->
+
           {{ option }}
         </button>
       </li>
     </ul>
 
-    <div *ngIf="score !== null">
+    <div *ngIf="submitted">
       <p><strong>Correct Answer:</strong> {{ question.correct }}</p>
       <p><em>{{ question.explanation }}</em></p>
     </div>

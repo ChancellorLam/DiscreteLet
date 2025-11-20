@@ -338,6 +338,11 @@
 
       <p-tabpanel value="1">
         <h3>Number Theory & Cryptography Quiz</h3>
+        <p-button
+            (click)="refreshQuiz()"
+            styleClass="p-button-text p-button-sm"
+            icon="pi pi-refresh"
+            label="New Questions"></p-button>
         <app-quiz
                 [questions]="numberTheoryQuestions">
             </app-quiz>

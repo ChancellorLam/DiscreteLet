@@ -10,6 +10,7 @@ import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 import { DragAndDropComponent, Choice, DropZone } from '../../shared/drag-and-drop/drag-and-drop';
 
+// stucture for drag-drop results
 interface DragDropResult {
   correctness: boolean[];
   zones: {
@@ -20,11 +21,12 @@ interface DragDropResult {
   };
 }
 
+//structure for quiz questions
 interface Question {
   text: string;
   options: string[];
   correct: string;
-  explanation?: string;
+  explanation: string;
 }
 
 @Component({
@@ -35,6 +37,7 @@ interface Question {
   styleUrls: ['./relations-page.css']
 })
 export class RelationsPage implements AfterViewInit {
+  //inject ActivatedRoute service to read URL query parameters
   private route = inject(ActivatedRoute);
 
   // Reference to the accordion element in the template
@@ -68,8 +71,10 @@ handleResults(result: DragDropResult) {
         "For every pair (a,b) in R, (b,a) is not in R. Therefore, this is Antisymmetric."
     ];
 
+    //labels corresponding to each drop zone
     const labels = ["Reflexive", "Symmetric", "Transitive", "Antisymmetric"];
 
+    //generate feedback message for each zone based on correctness
     this.feedbackMessages = result.correctness.map((isCorrect, i) =>
         isCorrect
             ? `${labels[i]}: Correct! ${feedbackTexts[i]}`
@@ -124,12 +129,50 @@ handleResults(result: DragDropResult) {
       options: ['Reflexive, Symmetric, Antisymmetric', 'Reflexive, Antisymmetric, Transitive', 'Symmetric, Antisymmetric, Transitive', 'Reflexive, Symmetric, Transitive'],
       correct: 'Reflexive, Symmetric, Transitive',
       explanation: 'An equivalence relation must relate every element to itself (reflexive), have mutual relationships (symmetric), and preserve relationships through chains (transitive).'
+    },
+    {
+      text: 'Which branch of mathematics is most closely related to number theory in its study of arithmetic properties?',
+      options: ['Geometry', 'Abstract algebra', 'Calculus', 'Statistics'],
+      correct: 'Abstract algebra',
+      explanation: 'Number theory overlaps strongly with algebraic structures like rings and fields.'
+    },
+    {
+      text: 'Number theory is primarily concerned with which type of objects?',
+      options: ['Real functions', 'Integers', 'Vectors', 'Matrices'],
+      correct: 'Integers',
+      explanation: 'Integer properties and relationships form the core of number theory.'
+    },
+    {
+      text: 'If a = 42 and b = 7, which is true?',
+      options: ['a|b', 'b|a', 'Both divide each other', 'Neither divides the other'],
+      correct: 'b|a',
+      explanation: 'Since 7 divides 42, b divides a (b|a).'
+    },
+    {
+      text: 'If a = 15 and b = 4, which statement is correct?',
+      options: ['a|b', 'b|a', 'Both divide each other', 'Neither divides the other'],
+      correct: 'Neither divides the other',
+      explanation: 'Neither 15 nor 4 divides the other.'
+    },
+    {
+      text: 'What is the GCD of 84 and 30?',
+      options: ['3', '6', '12', '15'],
+      correct: '6',
+      explanation: 'The Euclidean algorithm gives 6.'
+    },
+    {
+      text: 'What is the LCM of 8 and 12?',
+      options: ['12', '16', '24', '48'],
+      correct: '24',
+      explanation: 'The least common multiple of a and b equals a times b divided by their greatest common divisor, which is 24.'
     }
+
   ];
 
   // Displayed questions, randomly selected from pool
   relationQuestions: Question[] = [];
 
+  //constructor runs when component is created
   constructor() {
     // initialize with random questions when component is created
     this.selectRandomQuestions(5);
@@ -151,7 +194,9 @@ handleResults(result: DragDropResult) {
 
 
   //Handler for drag and drop changes
+  //called whenever choices are moved between zones
   handleChoicesChanged(event: { available: Choice[], zone1: Choice[], zone2: Choice[], zone3: Choice[], zone4: Choice[] }) {
+    //log the current state of all zones for debuggng
   console.log('Available choices:', event.available);
   console.log('Zone 1:', event.zone1);
   console.log('Zone 2:', event.zone2);

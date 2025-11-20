@@ -35,6 +35,16 @@
   font-weight: 600;
 }
 
-.correctAnswer{
-  background-color: #32a852;
+.quiz button.answer-correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+  font-weight: 700;
+}
+
+.quiz button.answer-incorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+  font-weight: 700;
 }
