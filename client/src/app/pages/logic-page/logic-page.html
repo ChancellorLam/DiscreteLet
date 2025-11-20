@@ -13,53 +13,370 @@
 
   <p-tabpanels>
       <p-tabpanel value="0">
-        <h3>Relations Lessons    <p-button 
-            (click)="toggleAll()" 
-            styleClass="p-button-text" 
+        <h3>Logic Lessons    <p-button
+            (click)="toggleAll()"
+            styleClass="p-button-text"
             [label]="isExpanded ? 'Collapse All' : 'Expand All'">
         </p-button>   </h3>
         <!-- Panel 1 -->
         <p-accordion-panel value="0">
-            <p-accordion-header>Number Theory Introduction:</p-accordion-header>
+            <p-accordion-header>Logic Introduction:</p-accordion-header>
             <p-accordion-content>
                 <p class="m-0">
-                    Number theory is a branch of pure mathematics that focuses on the integers and integer-valued functions. It investigates 
-                    fundamental concepts such as divisibility (what it means for one integer to divide another), prime numbers and their 
-                    distribution, greatest common divisors, and factorization into primes. Beyond these “elementary” concerns, number theory 
-                    branches into deeper realms: analytic number theory uses tools from calculus and complex analysis to study patterns like 
-                    the density of primes, while algebraic number theory examines the arithmetic properties of numbers in more general 
-                    algebraic structures (like rings of algebraic integers). Many of its problems are easy to state but famously hard to 
-                    solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field has unexpectedly rich applications 
-                    in modern cryptography and computer science.
+                  Logic is the study of valid reasoning, argumentation, and deduction. Key areas of study include the
+                  fundamental laws of logic (like identity and non-contradiction), meaning of symbols, structure of
+                  arguments, and the relationship between logic and truth. Logic is a foundational element to
+                  philosophy, mathematics as well as computer science.
                 </p>
             </p-accordion-content>
         </p-accordion-panel>
 
         <!-- Panel 2 -->
         <p-accordion-panel value="1">
-            <p-accordion-header>1. Integers & Divisibility</p-accordion-header>
+            <p-accordion-header>1. Logical Symbols</p-accordion-header>
             <p-accordion-content>
-                <p class="m-0">
-                    Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with integers often 
-                    leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where qqq is the quotient and rrr is the 
-                    remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder. Properties of divisibility
-                    help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like 
-                    prime factorization and modular arithmetic.
-                </p>
+              <p class="m-0">
+                Propositional logic is considered to be the most basic form of logic. It serves as a foundational
+                system that studies the logical relationships of propositions/statements, which are treated as units
+                that are either true or false. It forms the basis of more complex logical systems like
+                first-order-logic.
+
+                Propositional logic deals with the truth values of propositions and how they combine using logical
+                connectives. In the context of propositional logic, there are five main logical operators:
+              </p>
+
+              <ul>
+                <li>
+                  <app-latex-container
+                    [latex]="'\\neg'"
+                  ></app-latex-container>
+                  <span> - NOT (Negation)</span>
+                  <ul>
+                    <li>
+                      Example: Let
+                      <app-latex-container
+                        [latex]="'A = \\text{Logic is fun!}'"
+                      ></app-latex-container>
+                       Then
+                      <app-latex-container
+                        [latex]="'\\neg A = \\text{Logic is NOT fun.}'"
+                      ></app-latex-container>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <app-latex-container
+                    [latex]="'\\land'"
+                  ></app-latex-container>
+                  <span> - AND (Conjunction)</span>
+                  <ul>
+                    <li>
+                      Example: Let
+                      <app-latex-container
+                        [latex]="'A = \\text{Logic is fun!}'"
+                      ></app-latex-container>
+                      and
+                      <app-latex-container
+                        [latex]="'B = \\text{I love logic!}'"
+                      ></app-latex-container>
+                      Then
+                      <app-latex-container
+                        [latex]="'A \\land B = \\text{Logic is fun AND I love logic!}'"
+                      ></app-latex-container>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <app-latex-container
+                    [latex]="'\\lor'"
+                  ></app-latex-container>
+                  <span> - OR (Disjunction)</span>
+                  <ul>
+                    <li>
+                      Example: Let
+                      <app-latex-container
+                        [latex]="'A = \\text{Logic is fun!}'"
+                      ></app-latex-container>
+                      and
+                      <app-latex-container
+                        [latex]="'B = \\text{I love logic!}'"
+                      ></app-latex-container>
+                      Then
+                      <app-latex-container
+                        [latex]="'A \\lor B = \\text{Logic is fun OR I love logic!}'"
+                      ></app-latex-container>
+                    </li>
+                    <li>
+                      Note that in everyday English, OR is commonly used to mean one or the other. For example,
+                      consider the sentence "You are good at math or you are good at English." This is normally
+                      interpreted to mean that you are only good at one and not good at both. (This is actually a more
+                      complex logical operator called XOR/exclusive OR). In the context of logic however, OR means
+                      if at least one of the propositions are true, then the whole statement is true.
+                    </li>
+
+                    <li>
+                      Referring back to our example of
+                      <app-latex-container
+                        [latex]="'A \\lor B = \\text{Logic is fun OR I love logic!}'"
+                      ></app-latex-container>
+                      , if&nbsp;
+                      <app-latex-container
+                        [latex]="'\\text{Logic is fun!}'"
+                      ></app-latex-container>
+                      is true or
+                      <app-latex-container
+                        [latex]="'\\text{I love logic!}'"
+                      ></app-latex-container>
+                      is true, or even if both are true, then
+                      <app-latex-container
+                        [latex]="'A \\lor B'"
+                      ></app-latex-container>
+                      is true.
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <app-latex-container
+                    [latex]="'\\rightarrow'"
+                  ></app-latex-container>
+                  <span> - IF, THEN (Implication)</span>
+                  <ul>
+                    <li>
+                      Example: Let
+                      <app-latex-container
+                        [latex]="'A = \\text{Logic is fun!}'"
+                      ></app-latex-container>
+                      and
+                      <app-latex-container
+                        [latex]="'B = \\text{I love logic!}'"
+                      ></app-latex-container>
+                      Then
+                      <app-latex-container
+                        [latex]="'A \\to B = \\text{If Logic is fun, then I love logic!}'"
+                      ></app-latex-container>
+                    </li>
+
+                    <li>
+                      An implication
+                      <app-latex-container
+                        [latex]="'P \\to Q'"
+                      ></app-latex-container>
+                      is a conditional statement that asserts that if your <span class="important-term">antecedent</span>&nbsp;
+                      <app-latex-container
+                        [latex]="'P'"
+                      ></app-latex-container>
+                      is true, then your <span class="important-term">consequent</span>&nbsp;
+                      <app-latex-container
+                        [latex]="'Q'"
+                      ></app-latex-container>
+                      must also be true.
+                    </li>
+
+                    <li>
+                      Consider the statement:
+                      <app-latex-container
+                        [latex]="'P \\to Q = \\text{If I am doing my math homework, then I am complaining.}'"
+                      ></app-latex-container>
+                      Say that this statement is true, and also say that you know that I am doing my math homework.
+                      Then, you can logically deduce that I am complaining. If you know
+                      <app-latex-container
+                        [latex]="'P \\to Q'"
+                      ></app-latex-container>
+                      and you know that
+                      <app-latex-container
+                        [latex]="'P'"
+                      ></app-latex-container>
+                      is true, making the conclusion that
+                      <app-latex-container
+                        [latex]="'Q'"
+                      ></app-latex-container>
+                      is true is called <span class="important-term">modus ponens</span>.
+                    </li>
+
+                    <li>
+                      Also, if you know
+                      <app-latex-container
+                        [latex]="'P \\to Q'"
+                      ></app-latex-container>
+                      , then you also know that the <span class="important-term">contrapositive</span>&nbsp;
+                      <app-latex-container
+                        [latex]="'\\neg Q \\to \\neg P = \\text{If I am not complaining, then I am not doing my math homework}'"
+                      ></app-latex-container>
+                      is true.
+                    </li>
+
+                    <li>
+                      However, note that <span class="underlined-text">an implication does not imply</span> that the
+                      <span class="important-term">converse</span> is true! That is, if you know that the statement
+                      <app-latex-container
+                        [latex]="'P \\to Q'"
+                      ></app-latex-container>
+                      is true, you do not know if the statement
+                      <app-latex-container
+                        [latex]="'Q \\to P = \\text{If I am complaining, then I am doing my math homework}'"
+                      ></app-latex-container>
+                      is true! For example, I could be complaining, but I could be instead doing my history homework.
+                      In this case, the statement
+                      <app-latex-container
+                        [latex]="'Q \\to P'"
+                      ></app-latex-container>
+                      isn't true because I am complaining, but I'm not doing my math homework. The implication can be
+                      thought of as a promise in a way. If your antecedent
+                      <app-latex-container
+                        [latex]="'P'"
+                      ></app-latex-container>
+                      is true, and your consequent
+                      <app-latex-container
+                        [latex]="'Q'"
+                      ></app-latex-container>
+                      isn't true, then you have broken your promise and the implication is false.
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <app-latex-container
+                    [latex]="'\\leftrightarrow'"
+                  ></app-latex-container>
+                  <span> - IF AND ONLY IF (Biconditional)</span>
+                  <ul>
+                    <li>
+                      Example: Let
+                      <app-latex-container
+                        [latex]="'A = \\text{Logic is fun!}'"
+                      ></app-latex-container>
+                      and
+                      <app-latex-container
+                        [latex]="'B = \\text{I love logic!}'"
+                      ></app-latex-container>
+                      Then
+                      <app-latex-container
+                        [latex]="'A \\leftrightarrow B = \\text{Logic is fun if and only if I love logic!}'"
+                      ></app-latex-container>
+                    </li>
+
+                    <li>
+                      The biconditional statement (commonly invoked using the phrase if and only if in mathematics) is
+                      a statement where an implication and its converse are both true. For example, if
+                      <app-latex-container
+                        [latex]="'P = \\text{The number } n \\text{ is even}'"
+                      ></app-latex-container>
+                      and
+                      <app-latex-container
+                        [latex]="'Q = \\text{The number } n^2 \\text{ is even}'"
+                      ></app-latex-container>
+                      and you know that the biconditional statement,
+                      <app-latex-container
+                        [latex]="'P \\leftrightarrow Q = \\text{The number } n \\text{ is even if and only if the number } n^2 \\text{ is even}'"
+                      ></app-latex-container>
+                      is true, then the following statements are both true:
+                      <ul>
+                        <li>
+                          <app-latex-container
+                            [latex]="'P \\to Q = \\text{If the number } n \\text{ is even, then the number } n^2 \\text{ is even.}'"
+                          ></app-latex-container>
+                        </li>
+
+                        <li>
+                          <app-latex-container
+                            [latex]="'Q \\to P = \\text{If the number } n^2 \\text{ is even, then the number } n \\text{ is even.}'"
+                          ></app-latex-container>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <li>
+                      Because the implication and its converse are both true, we can say that
+                      <app-latex-container
+                        [latex]="'P \\leftrightarrow Q'"
+                      ></app-latex-container>
+                      is <span class="important-term">logically equivalent</span> to
+                      <app-latex-container
+                        [latex]="'Q \\leftrightarrow P'"
+                      ></app-latex-container>
+                      . Another way to write this is
+                      <app-latex-container
+                        [latex]="'P \\leftrightarrow Q \\equiv Q \\leftrightarrow P'"
+                      ></app-latex-container>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </p-accordion-content>
         </p-accordion-panel>
 
         <!-- Panel 3 -->
         <p-accordion-panel value="2">
-            <p-accordion-header>2. GCD & LCM</p-accordion-header>
+            <p-accordion-header>2. Truth Tables</p-accordion-header>
             <p-accordion-content>
-                <p class="m-0">
-                    The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common 
-                    multiple (LCM) is the smallest positive integer that both numbers divide into evenly. One way to find these is through 
-                    prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm, which uses repeated 
-                    division to efficiently determine the GCD. These concepts are essential for simplifying fractions, solving equations, 
-                    and understanding number relationships.
-                </p>
+              <p class="m-0">
+                At the end of the previous section, we touched on the idea of logical equivalence, the idea that
+                two logical statements are the same. There are many ways to show that two logical statements are
+                equivalent, one way to do so is by creating a truth table.
+              </p>
+              <p class="m-0">
+                A truth table is a systematic way to see all possible outcomes of a logical statement. It shows whether
+                a statement is true (T) or false (F) depending on the inputs.
+              </p>
+
+              <p>
+                For example, here are the truth tables for all the operators
+              </p>
+              <ul>
+                <li>
+                  NOT (Negation)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('\\neg A')"
+                    [tableData]="getTruthTable('\\neg A')"
+                  ></app-truth-table>
+                </li>
+
+                <li>
+                  AND (Conjunction)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('A \\land B')"
+                    [tableData]="getTruthTable('A \\land B')"
+                  ></app-truth-table>
+                </li>
+
+                <li>
+                  OR (Disjunction)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('A \\lor B')"
+                    [tableData]="getTruthTable('A \\lor B')"
+                  ></app-truth-table>
+                </li>
+
+                <li>
+                  IF, THEN (Implication)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('A \\to B')"
+                    [tableData]="getTruthTable('A \\to B')"
+                  ></app-truth-table>
+                </li>
+
+                <li>
+                  IF AND ONLY IF (Biconditional)
+                  <app-truth-table
+                    [subexpressions]="getSubexpressions('A \\leftrightarrow B')"
+                    [tableData]="getTruthTable('A \\leftrightarrow B')"
+                  ></app-truth-table>
+                </li>
+              </ul>
+
+              You can also generate truth tables for logical statements compounded together. For example,
+              <app-truth-table
+                [subexpressions]="getSubexpressions('\\neg(A \\land B) \\to (A \\lor C)')"
+                [tableData]="getTruthTable('\\neg(A \\land B) \\to (A \\lor C)')"
+              ></app-truth-table>
+
+              Feel free to experiment and generate your own Truth Tables
+              <app-truth-table-solver
+                [title]="'Truth Table Generator'"
+              ></app-truth-table-solver>
             </p-accordion-content>
         </p-accordion-panel>
     </p-tabpanel>
@@ -81,3 +398,4 @@
 
     </p-accordion>
 </div>
+<div class="whitespace-container"></div>

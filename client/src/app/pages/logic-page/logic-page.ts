@@ -1,18 +1,34 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
 import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
+import {LatexContainer} from '../../shared/components/latex-container/latex-container';
+import {LogicalExpressionService} from '../../core/services/logical-expression-service';
+import {TruthTable} from './truth-table/truth-table';
+import {TruthTableSolver} from './truth-table-solver/truth-table-solver';
 
 @Component({
   selector: 'app-logic-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent],
+  imports: [
+    AccordionModule,
+    ToggleButtonModule,
+    FormsModule,
+    ButtonModule,
+    TabsModule,
+    QuizComponent,
+    LatexContainer,
+    TruthTable,
+    TruthTableSolver
+  ],
   templateUrl: './logic-page.html',
   styleUrl: './logic-page.css'
 })
 export class LogicPage {
+  logicalExpressionService = inject(LogicalExpressionService);
+
   activeTabs: string[] = [];
   activeTab = '0';
   isExpanded = false;
@@ -39,6 +55,14 @@ export class LogicPage {
         'The number of elements in A × B is |A| × |B|, which equals 3 × 4 = 12.'
     }
   ];
+
+  public getSubexpressions(expression: string) {
+    return this.logicalExpressionService.generateTruthTable(expression).subexpressions;
+  }
+
+  public getTruthTable(expression: string) {
+    return this.logicalExpressionService.generateTruthTable(expression).table ;
+  }
 
 
   toggleAll() {
