@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import { FormsModule} from '@angular/forms';
-import { ButtonModule} from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 import confetti from 'canvas-confetti';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TabsModule } from 'primeng/tabs';
@@ -19,7 +20,7 @@ interface Question {
 
 @Component({
   selector: 'app-number-theory-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent],
+  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent],
   templateUrl: './number-theory-page.html',
   styleUrl: './number-theory-page.css'
 })
@@ -28,7 +29,7 @@ export class NumberTheoryPage {
   private rewards = inject(RewardService);
 
   activeTabs: string[] = []; //tracks which accordion panels are open
-  activeTab= '0'; //currently selected tab
+  activeTab = '0'; //currently selected tab
   isExpanded = false; //tracks if all accordion panels are expanded
 
   randomNumber: number | null = null; // Stores the generated random number for exercises
@@ -38,114 +39,155 @@ export class NumberTheoryPage {
   modFeedback: string | null = null; // Displays feedback for mod exercise
   userDivisibilityAnswer: number | null = null; // Stores user's answer for divisibility exercise
   divisibilityFeedback: string | null = null; // Displays feedback for divisibility exercise
+  // GCD/LCM Practice Tool
+  randomGcdLcmNum1: number | null = null;
+  randomGcdLcmNum2: number | null = null;
+  userGcdAnswer: number | null = null;
+  userLcmAnswer: number | null = null;
+  gcdLcmFeedback: string | null = null;
 
 
-// Random Number generator for prime number checker
-// Generates a random integer between min and max (inclusive)
-getRandomNum(min: number, max: number): number {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
-}
+  // Random Number generator for prime number checker
+  // Generates a random integer between min and max (inclusive)
+  getRandomNum(min: number, max: number): number {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+  }
 
-// Random Mod generator for Mod checker with max of 20
-// Generates a random modulus between min and max (inclusive)
-getRandomMod(min: number, max: number): number {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
-}
+  // Random Mod generator for Mod checker with max of 20
+  // Generates a random modulus between min and max (inclusive)
+  getRandomMod(min: number, max: number): number {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+  }
 
   // prime num checker
   // Determines if a given number is prime
   isPrime(num: number): boolean {
-    if(num <=1 ) return false;    // Exclude 0, 1, and negatives
-    if(num === 2) return true;    // 2 is prime
+    if (num <= 1) return false;    // Exclude 0, 1, and negatives
+    if (num === 2) return true;    // 2 is prime
     if (num % 2 === 0) return false;    // Exclude even numbers > 2
-    
+
     // Check divisibility by odd numbers up to √num
-    for(let i=3; i<=Math.sqrt(num); i+=2){
-      if(num%i === 0) return false;
+    for (let i = 3; i <= Math.sqrt(num); i += 2) {
+      if (num % i === 0) return false;
     }
     return true;
   }
 
   // mod checker
   // Returns the correct mod result for the generated random number and modulus
-  getModAnswer(): number | null{
-    if(this.randomNumber ===null || this.randMod ===null) return null;
+  getModAnswer(): number | null {
+    if (this.randomNumber === null || this.randMod === null) return null;
     return this.randomNumber % this.randMod;
   }
 
   // int & divisibility
   divisibility(num1: number, num2: number): number {
-    const answer = num1/num2;
+    const answer = num1 / num2;
     return answer
   }
 
-    // EVENT HANDLERS
-    // Called when "Generate Number" is clicked — sets random values
-    onClick(): void {
-      const random = this.getRandomNum(1, 999);
-      const randomMod = this.getRandomMod(1, 20);
-      this.randomNumber = random;
-      this.randMod = randomMod;
-      this.primeNumFeedback=null;   // Reset feedback
-      console.log('Random number:', random);
+  // Calculate GCD using Euclidean algorithm
+  calculateGCD(a: number, b: number): number {
+    a = Math.abs(a);
+    b = Math.abs(b);
+
+    while (b !== 0) {
+      const temp = b;
+      b = a % b;
+      a = temp;
     }
 
-    // Handles user's "Yes"/"No" response for prime number check
-    onPrimeAnswer(userGuessPrime: boolean): void{
-      if(this.randomNumber ===null) return;
+    return a;
+  }
 
-      const actualPrime = this.isPrime(this.randomNumber);
+  // Calculate LCM using the formula: LCM(a,b) = (a × b) / GCD(a,b)
+  calculateLCM(a: number, b: number): number {
+    if (a === 0 || b === 0) return 0;
 
-      if(userGuessPrime === actualPrime){
-        this.primeNumFeedback = "Correct!";
-        confetti();
-        this.rewards.add(1);
-      }
-      else{
-        this.primeNumFeedback = "Incorrect. Try again.";
-      }
+    const gcd = this.calculateGCD(a, b);
+    return Math.abs(a * b) / gcd;
+  }
+
+  // Generate random numbers for GCD/LCM practice
+  generateGcdLcmProblem(): void {
+    // Generate two random numbers between 2 and 50
+    this.randomGcdLcmNum1 = this.getRandomNum(2, 50);
+    this.randomGcdLcmNum2 = this.getRandomNum(2, 50);
+
+    // Reset user answers and feedback
+    this.userGcdAnswer = null;
+    this.userLcmAnswer = null;
+    this.gcdLcmFeedback = null;
+    console.log('Generated numbers:', this.randomGcdLcmNum1, this.randomGcdLcmNum2);
+  }
+
+  // EVENT HANDLERS
+  // Called when "Generate Number" is clicked — sets random values
+  onClick(): void {
+    const random = this.getRandomNum(1, 999);
+    const randomMod = this.getRandomMod(1, 20);
+    this.randomNumber = random;
+    this.randMod = randomMod;
+    this.primeNumFeedback = null;   // Reset feedback
+    console.log('Random number:', random);
+  }
+
+  // Handles user's "Yes"/"No" response for prime number check
+  onPrimeAnswer(userGuessPrime: boolean): void {
+    if (this.randomNumber === null) return;
+
+    const actualPrime = this.isPrime(this.randomNumber);
+
+    if (userGuessPrime === actualPrime) {
+      this.primeNumFeedback = "Correct!";
+      confetti();
+      this.rewards.add(1);
     }
-    // END prime num checker
+    else {
+      this.primeNumFeedback = "Incorrect. Try again.";
+    }
+  }
+  // END prime num checker
 
-   // Handles user input for modular arithmetic checker
-    onModAnswer(userGuessModAnswer: number |null): void{
-      if(userGuessModAnswer ===null){
-        this.modFeedback = "Please enter an answer"; return;
-      }
-      const correct = this.getModAnswer();
-      if(correct ===null){
-        this.modFeedback = "Generate numbers first!";
-        return;
-      }
-      if(userGuessModAnswer == correct){
-        this.modFeedback = "Correct!";
-        confetti();
-        this.rewards.add(1);
-      }
-      else{
-        // Use template literal correctly to show actual result
-        this.modFeedback = "Incorrect. The correct answer is ${correct}.`";
-      }
+  // Handles user input for modular arithmetic checker
+  onModAnswer(userGuessModAnswer: number | null): void {
+    if (userGuessModAnswer === null) {
+      this.modFeedback = "Please enter an answer"; return;
+    }
+    const correct = this.getModAnswer();
+    if (correct === null) {
+      this.modFeedback = "Generate numbers first!";
+      return;
+    }
+    if (userGuessModAnswer == correct) {
+      this.modFeedback = "Correct!";
+      confetti();
+      this.rewards.add(1);
+    }
+    else {
+      // Use template literal correctly to show actual result
+      this.modFeedback = "Incorrect. The correct answer is ${correct}.`";
+    }
+  }
+
+  // handles user input for divisibility tool
+  onDivisibilityAnswer(userGuessDivisibility: number | null): void {
+    if (userGuessDivisibility === null) {
+      this.divisibilityFeedback = "Please enter an answer"; return;
+    }
+    if (this.randomNumber === null || this.randMod === null) {
+      this.divisibilityFeedback = 'Generate numbers first!';
+      return;
     }
 
-    // handles user input for divisibility tool
-    onDivisibilityAnswer(userGuessDivisibility: number | null): void{
-      if(userGuessDivisibility ===null){
-        this.divisibilityFeedback = "Please enter an answer"; return;
-      }
-      if (this.randomNumber === null || this.randMod === null) {
-        this.divisibilityFeedback = 'Generate numbers first!';
-        return;
-    }
-
-      const num = this.randomNumber;
-      const den = this.randMod;
-      const quotient = Math.floor(num / den);
-      const remainder = num % den;
+    const num = this.randomNumber;
+    const den = this.randMod;
+    const quotient = Math.floor(num / den);
+    const remainder = num % den;
 
     // Exact division case
     if (remainder === 0) {
@@ -153,7 +195,7 @@ getRandomMod(min: number, max: number): number {
         this.divisibilityFeedback = `Correct! ${num} is divisible by ${den}, quotient = ${quotient}.`;
         confetti();
         this.rewards.add(1);
-      } 
+      }
       else {
         this.divisibilityFeedback = `Incorrect. ${num} ÷ ${den} = ${quotient}.`;
       }
@@ -165,20 +207,57 @@ getRandomMod(min: number, max: number): number {
       this.divisibilityFeedback = `Correct! Remainder = ${remainder}.`;
       confetti();
       this.rewards.add(1);
-    } 
+    }
     else if (userGuessDivisibility === quotient) {
       this.divisibilityFeedback = `Correct! Quotient = ${quotient}.`;
       confetti();
       this.rewards.add(1);
-    } 
+    }
     else {
       this.divisibilityFeedback = `Not divisible. Quotient = ${quotient}, remainder = ${remainder}.`;
     }
   }
 
+  // Check user's GCD and LCM answers
+  onCheckGcdLcm(): void {
+    // Validation
+    if (this.randomGcdLcmNum1 === null || this.randomGcdLcmNum2 === null) {
+      this.gcdLcmFeedback = 'Please generate numbers first!';
+      return;
+    }
 
-    // Quiz questions and answers
-    numberTheoryQuestionPool: Question[] = [
+    if (this.userGcdAnswer === null || this.userLcmAnswer === null) {
+      this.gcdLcmFeedback = 'Please enter both GCD and LCM answers!';
+      return;
+    }
+
+    // Calculate correct answers
+    const correctGcd = this.calculateGCD(this.randomGcdLcmNum1, this.randomGcdLcmNum2);
+    const correctLcm = this.calculateLCM(this.randomGcdLcmNum1, this.randomGcdLcmNum2);
+
+    // Check answers
+    const gcdCorrect = this.userGcdAnswer === correctGcd;
+    const lcmCorrect = this.userLcmAnswer === correctLcm;
+
+    // Provide feedback
+    if (gcdCorrect && lcmCorrect) {
+      this.gcdLcmFeedback = `Both answers are correct!`;
+      confetti();
+      this.rewards.add(2); // Award 2 points for getting both correct
+    } else if (gcdCorrect && !lcmCorrect) {
+      this.gcdLcmFeedback = `GCD is correct, but LCM is incorrect. The correct LCM is ${correctLcm}.`;
+      this.rewards.add(1); // Award 1 point for getting one correct
+    } else if (!gcdCorrect && lcmCorrect) {
+      this.gcdLcmFeedback = `LCM is correct, but GCD is incorrect. The correct GCD is ${correctGcd}.`;
+      this.rewards.add(1); // Award 1 point for getting one correct
+    } else {
+      this.gcdLcmFeedback = `Both answers are incorrect. GCD = ${correctGcd}, LCM = ${correctLcm}.`;
+    }
+  }
+
+
+  // Quiz questions and answers
+  numberTheoryQuestionPool: Question[] = [
     {
       text: 'Which of the following best describes the main focus of number theory?',
       options: [
@@ -239,7 +318,7 @@ getRandomMod(min: number, max: number): number {
       options: ['1', '3', '5', '6'],
       correct: '1',
       explanation: 'When you divide 19 by 6, you get 3 with a remainder of 1, because 6 × 3 = 18, and 19 − 18 = 1.'
-    }, 
+    },
     {
       text: 'The Fundamental Theorem of Arithmetic states:',
       options: ['Every integer has infinitely many factorizations', 'Every integer >= 2 has a unique prime factorization',
@@ -252,7 +331,7 @@ getRandomMod(min: number, max: number): number {
   //displayed questions, randomly select from pool
   numberTheoryQuestions: Question[] = [];
 
-  constructor(){
+  constructor() {
     //initialize with random questions when component is created
     this.selectRandomQuestions(5);
   }
@@ -261,7 +340,7 @@ getRandomMod(min: number, max: number): number {
   //count num questions to select (default is 5)
   selectRandomQuestions(count = 5): void {
     //create a copy of the pool and shuffle it
-    const shuffled = [...this.numberTheoryQuestionPool].sort(() => Math.random() -0.5);
+    const shuffled = [...this.numberTheoryQuestionPool].sort(() => Math.random() - 0.5);
     //take the first count questions
     this.numberTheoryQuestions = shuffled.slice(0, Math.min(count, this.numberTheoryQuestionPool.length));
   }
@@ -272,8 +351,8 @@ getRandomMod(min: number, max: number): number {
   }
 
 
-// ACCORDION CONTROL
-// Toggles between expanding and collapsing all panels 
+  // ACCORDION CONTROL
+  // Toggles between expanding and collapsing all panels 
   toggleAll() {
     if (this.isExpanded) {
       this.collapseAll();

@@ -4,6 +4,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
+import { TableModule } from 'primeng/table';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ActivatedRoute } from '@angular/router';
 import { TabsModule } from 'primeng/tabs';
@@ -32,7 +33,7 @@ interface Question {
 @Component({
   selector: 'app-relations-page',
   standalone: true,
-  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent, DragAndDropComponent],
+  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TableModule, TabsModule, QuizComponent, DragAndDropComponent],
   templateUrl: './relations-page.html',
   styleUrls: ['./relations-page.css']
 })
@@ -50,6 +51,8 @@ export class RelationsPage implements AfterViewInit {
   isExpanded = false;
   // Holds the specific panel to open (from URL query params)
   panelToOpen: string | null = null;
+
+  userMatrixInput: number | null = null; // Stores user's answer for divisibility exercise
 
   // Drag and Drop Choices for relations-page
   relationChoices: Choice[] = [

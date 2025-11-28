@@ -2,359 +2,437 @@
     <p-accordion [(value)]="activeTabs" multiple="true">
 
 
-    <!--Tab Components-->
-    <div class="card">
-        <p-tabs [(value)]="activeTab">
-            <p-tablist>
-            <p-tab value="0">Lessons</p-tab>
-            <p-tab value="1">Quiz</p-tab>
-            <p-tab value="2">Unit Test</p-tab>
-        </p-tablist>
+        <!--Tab Components-->
+        <div class="card">
+            <p-tabs [(value)]="activeTab">
+                <p-tablist>
+                    <p-tab value="0">Lessons</p-tab>
+                    <p-tab value="1">Quiz</p-tab>
+                    <p-tab value="2">Unit Test</p-tab>
+                </p-tablist>
 
-        <p-tabpanels>
-        <p-tabpanel value="0">
-        <h3>Number Theory & Cryptography Lessons    <p-button 
-            (click)="toggleAll()" 
-            styleClass="p-button-text" 
-            [label]="isExpanded ? 'Collapse All' : 'Expand All'">
-        </p-button>   </h3>
-        
-        <!-- Panel 1 -->
-        <p-accordion-panel value="0">
-            <p-accordion-header class="accordionHeader"><u>Number Theory Introduction:</u></p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    Number theory is a branch of pure mathematics that focuses on the integers and integer-valued functions. It investigates 
-                    fundamental concepts such as divisibility (what it means for one integer to divide another), prime numbers and their 
-                    distribution, greatest common divisors, and factorization into primes. Beyond these “elementary” concerns, number theory 
-                    branches into deeper realms: analytic number theory uses tools from calculus and complex analysis to study patterns like 
-                    the density of primes, while algebraic number theory examines the arithmetic properties of numbers in more general 
-                    algebraic structures (like rings of algebraic integers). Many of its problems are easy to state but famously hard to 
-                    solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field has unexpectedly rich applications 
-                    in modern cryptography and computer science.
-                </p>
-            </p-accordion-content>
-        </p-accordion-panel>
+                <p-tabpanels>
+                    <p-tabpanel value="0">
+                        <h3>Number Theory & Cryptography Lessons <p-button (click)="toggleAll()"
+                                styleClass="p-button-text" [label]="isExpanded ? 'Collapse All' : 'Expand All'">
+                            </p-button> </h3>
 
-        <!-- Panel 2 -->
-        <p-accordion-panel value="1">
-            <p-accordion-header class="accordionHeader"><u>1. Integers & Divisibility</u></p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with integers often 
-                    leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where qqq is the quotient and rrr is the 
-                    remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder. Properties of divisibility
-                    help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like 
-                    prime factorization and modular arithmetic.
-                </p><br/>
+                        <!-- Panel 1 -->
+                        <p-accordion-panel value="0">
+                            <p-accordion-header class="accordionHeader"><u>Number Theory
+                                    Introduction:</u></p-accordion-header>
+                            <p-accordion-content>
+                                <p class="m-0">
+                                    Number theory is a branch of pure mathematics that focuses on the integers and
+                                    integer-valued functions. It investigates
+                                    fundamental concepts such as divisibility (what it means for one integer to divide
+                                    another), prime numbers and their
+                                    distribution, greatest common divisors, and factorization into primes. Beyond these
+                                    “elementary” concerns, number theory
+                                    branches into deeper realms: analytic number theory uses tools from calculus and
+                                    complex analysis to study patterns like
+                                    the density of primes, while algebraic number theory examines the arithmetic
+                                    properties of numbers in more general
+                                    algebraic structures (like rings of algebraic integers). Many of its problems are
+                                    easy to state but famously hard to
+                                    solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field
+                                    has unexpectedly rich applications
+                                    in modern cryptography and computer science.
+                                </p>
+                            </p-accordion-content>
+                        </p-accordion-panel>
 
-            <div class="divisibilityChecker">
-                <p-button 
-                    (click)="onClick()" 
-                    styleClass="p-button-text" 
-                    label="Generate-Number">
-                </p-button>
-                <div class="interactiveToolText">
-                    Num1: {{randomNumber}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    Num2: {{ randMod }}
-                </div>
+                        <!-- Panel 2 -->
+                        <p-accordion-panel value="1">
+                            <p-accordion-header class="accordionHeader"><u>1. Integers &
+                                    Divisibility</u></p-accordion-header>
+                            <p-accordion-content>
+                                <p class="m-0">
+                                    Integers (ℤ) are the set of whole numbers, both positive and negative, including
+                                    zero. Division with integers often
+                                    leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where
+                                    qqq is the quotient and rrr is the
+                                    remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no
+                                    remainder. Properties of divisibility
+                                    help us test whether one number can evenly divide another, and these rules form the
+                                    foundation for later concepts like
+                                    prime factorization and modular arithmetic.
+                                </p><br />
 
-                <p>Check Answer (Do not include remainders)</p>
-                <div class="button-row">
-                    <p-inputnumber [(ngModel)]="userDivisibilityAnswer" inputId="integeronly" />
-                    <!-- Calls method passing user input -->
-                    <p-button
-                        (click)="onDivisibilityAnswer(userDivisibilityAnswer)" 
-                        styleClass="p-button-text" 
-                        label="Check">
-                    </p-button>
-                </div> 
+                                <div class="divisibilityChecker">
+                                    <p-button (click)="onClick()" styleClass="p-button-text" label="Generate-Number">
+                                    </p-button>
+                                    <div class="interactiveToolText">
+                                        Num1: {{randomNumber}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        Num2: {{ randMod }}
+                                    </div>
 
-                <div class="interactiveToolText">{{divisibilityFeedback}}</div>
-                    
-            </div>
+                                    <p>Check Answer (Do not include remainders)</p>
+                                    <div class="button-row">
+                                        <p-inputnumber [(ngModel)]="userDivisibilityAnswer" inputId="integeronly" />
+                                        <!-- Calls method passing user input -->
+                                        <p-button (click)="onDivisibilityAnswer(userDivisibilityAnswer)"
+                                            styleClass="p-button-text" label="Check">
+                                        </p-button>
+                                    </div>
+
+                                    <div class="interactiveToolText">{{divisibilityFeedback}}</div>
+
+                                </div>
 
 
-            </p-accordion-content>
-        </p-accordion-panel>
+                            </p-accordion-content>
+                        </p-accordion-panel>
 
-        <!-- Panel 3 -->
-        <p-accordion-panel value="2">
-            <p-accordion-header class="accordionHeader"><u>2. GCD & LCM</u></p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common 
-                    multiple (LCM) is the smallest positive integer that both numbers divide into evenly. One way to find these is through 
-                    prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm, which uses repeated 
-                    division to efficiently determine the GCD. These concepts are essential for simplifying fractions, solving equations, 
-                    and understanding number relationships.
-                </p>
+                        <!-- Panel 3 -->
+                        <p-accordion-panel value="2">
+                            <p-accordion-header class="accordionHeader"><u>2. GCD & LCM</u></p-accordion-header>
+                            <p-accordion-content>
+                                <p class="m-0">
+                                    The greatest common divisor (GCD) of two numbers is the largest integer that divides
+                                    both, while the least common
+                                    multiple (LCM) is the smallest positive integer that both numbers divide into
+                                    evenly. One way to find these is through
+                                    prime factorization, by comparing shared and unique factors. Another is the
+                                    Euclidean Algorithm, which uses repeated
+                                    division to efficiently determine the GCD. These concepts are essential for
+                                    simplifying fractions, solving equations,
+                                    and understanding number relationships.
+                                </p>
 
-                <h3>Euclidean Algorithm — Compute gcd(252, 198)</h3>
+                                <h3>Euclidean Algorithm — Compute gcd(252, 198)</h3>
 
-                <p>Apply repeated division with remainder:</p>
+                                <p>Apply repeated division with remainder:</p>
 
-                <p>
-                    252 = 1 × 198 + 54 &nbsp;&nbsp; (quotient = 1, remainder = 54)<br>
-                    198 = 3 × 54 + 36 &nbsp;&nbsp; (quotient = 3, remainder = 36)<br>
-                    54 = 1 × 36 + 18 &nbsp;&nbsp; (quotient = 1, remainder = 18)<br>
-                    36 = 2 × 18 + 0 &nbsp;&nbsp; (quotient = 2, remainder = 0)
-                </p>
+                                <p>
+                                    252 = 1 × 198 + 54 &nbsp;&nbsp; (quotient = 1, remainder = 54)<br>
+                                    198 = 3 × 54 + 36 &nbsp;&nbsp; (quotient = 3, remainder = 36)<br>
+                                    54 = 1 × 36 + 18 &nbsp;&nbsp; (quotient = 1, remainder = 18)<br>
+                                    36 = 2 × 18 + 0 &nbsp;&nbsp; (quotient = 2, remainder = 0)
+                                </p>
 
-                <p>When we reach a remainder of 0, the previous nonzero remainder is the gcd.</p>
-                <p><strong>Therefore, gcd(252, 198) = 18</strong></p>
+                                <p>When we reach a remainder of 0, the previous nonzero remainder is the gcd.</p>
+                                <p><strong>Therefore, gcd(252, 198) = 18</strong></p>
 
-                <hr>
+                                <hr>
 
-                <h3>Example: Find the LCM of 12 and 18</h3>
+                                <h3>Example: Find the LCM of 12 and 18</h3>
 
-                <h4>Step 1 — Recall the relationship</h4>
-                <p>
-                    For any positive integers a and b:<br>
-                    LCM(a, b) = |a × b| / GCD(a, b)
-                </p>
+                                <h4>Step 1 — Recall the relationship</h4>
+                                <p>
+                                    For any positive integers a and b:<br>
+                                    LCM(a, b) = |a × b| / GCD(a, b)
+                                </p>
 
-                <p>
-                    This formula comes from the fact that the product of two numbers equals the product of their GCD and LCM:<br>
-                    a × b = GCD(a, b) × LCM(a, b)
-                </p>
+                                <p>
+                                    This formula comes from the fact that the product of two numbers equals the product
+                                    of their GCD and LCM:<br>
+                                    a × b = GCD(a, b) × LCM(a, b)
+                                </p>
 
-                <h4>Step 2 — Find the GCD using the Euclidean algorithm</h4>
-                <p>
-                    18 = 1 × 12 + 6<br>
-                    12 = 2 × 6 + 0<br>
-                    → The remainder becomes 0, so <strong>GCD = 6</strong>.
-                </p>
+                                <h4>Step 2 — Find the GCD using the Euclidean algorithm</h4>
+                                <p>
+                                    18 = 1 × 12 + 6<br>
+                                    12 = 2 × 6 + 0<br>
+                                    → The remainder becomes 0, so <strong>GCD = 6</strong>.
+                                </p>
 
-                <h4>Step 3 — Apply the formula for LCM</h4>
-                <p>
-                    LCM(12, 18) = (12 × 18) / 6<br>
-                    12 × 18 = 216<br>
-                    216 ÷ 6 = 36
-                </p>
+                                <h4>Step 3 — Apply the formula for LCM</h4>
+                                <p>
+                                    LCM(12, 18) = (12 × 18) / 6<br>
+                                    12 × 18 = 216<br>
+                                    216 ÷ 6 = 36
+                                </p>
 
-                <p><strong>Therefore, LCM(12, 18) = 36</strong></p>
+                                <p><strong>Therefore, LCM(12, 18) = 36</strong></p>
 
-                <h4>Step 4 — (Optional) Check using prime factorization</h4>
-                <table border="1" cellpadding="5" cellspacing="0">
-                <tr>
-                    <th>Number</th>
-                    <th>Prime Factors</th>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>2<sup>2</sup> × 3<sup>1</sup></td>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td>2<sup>1</sup> × 3<sup>2</sup></td>
-                </tr>
-                </table>
+                                <h4>Step 4 — (Optional) Check using prime factorization</h4>
+                                <table border="1" cellpadding="5" cellspacing="0">
+                                    <tr>
+                                        <th>Number</th>
+                                        <th>Prime Factors</th>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>2<sup>2</sup> × 3<sup>1</sup></td>
+                                    </tr>
+                                    <tr>
+                                        <td>18</td>
+                                        <td>2<sup>1</sup> × 3<sup>2</sup></td>
+                                    </tr>
+                                </table>
 
-                <p>
-                Take the highest power of each prime:<br>
-                LCM = 2<sup>2</sup> × 3<sup>2</sup> = 4 × 9 = 36<br>
-                <strong>Produces the same result!</strong>
-                </p>
-                <br>
+                                <p>
+                                    Take the highest power of each prime:<br>
+                                    LCM = 2<sup>2</sup> × 3<sup>2</sup> = 4 × 9 = 36<br>
+                                    <strong>Produces the same result!</strong>
+                                </p>
+                                <br>
 
-                <h3>GCD / LCM Calculator</h3>
-                
+                                <h3>GCD / LCM Calculator</h3>
+                                <!-- Generate Button -->
+                                <div class="generate-section">
+                                    <p-button label="Generate Numbers" icon="pi pi-refresh"
+                                        (onClick)="generateGcdLcmProblem()" styleClass="p-button-primary">
+                                    </p-button>
+                                </div>
 
-            </p-accordion-content>
-        </p-accordion-panel>
+                                <!-- Problem Display -->
+                                <div *ngIf="randomGcdLcmNum1 !== null && randomGcdLcmNum2 !== null"
+                                    class="problem-section">
+                                    <div class="numbers-display">
+                                        <h3>Numbers: <span class="highlight">{{ randomGcdLcmNum1 }}</span> and <span
+                                                class="highlight">{{ randomGcdLcmNum2 }}</span></h3>
+                                    </div>
 
-        <!-- Panel 4 Prime Numbers-->
-        <p-accordion-panel value="3">
-            <p-accordion-header class="accordionHeader"><u>3. Prime Numbers</u></p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    A prime number is a number greater than 1 that has exactly two divisors: 1 and itself. Numbers with more than 
-                    two divisors are composite. The Fundamental Theorem of Arithmetic states that every integer greater than 1 can be 
-                    uniquely expressed as a product of prime numbers, which makes primes the “building blocks” of integers. Although 
-                    primes become less frequent as numbers grow larger, their distribution follows intriguing patterns that are central 
-                    to number theory and applications like cryptography.
-                    </p>
-                    <br>
+                                    <!-- GCD Input -->
+                                    <div class="answer-input">
+                                        <label for="gcd-input">GCD (Greatest Common Divisor):</label>
+                                        <p-inputNumber inputId="gcd-input" [(ngModel)]="userGcdAnswer"
+                                            [showButtons]="false" placeholder="Enter GCD">
+                                        </p-inputNumber>
+                                    </div>
 
-                    <h3>Walkthrough example — determine whether 221 is prime</h3>
-                    <p>
-                        <h4>Step 1 — Trivial checks</h4>
-                <p>Let <strong>n = 221</strong>.</p>
-                <ul>
-                <li>Check: <code>n &gt; 1</code> — yes: <code>221 &gt; 1</code>.</li>
-                <li>Is <code>n = 2</code>? — no.</li>
-                <li>Is <code>n</code> even? Last digit is <code>1</code> &rarr; odd &rarr; not divisible by 2.</li>
-                </ul>
+                                    <!-- LCM Input -->
+                                    <div class="answer-input">
+                                        <label for="lcm-input">LCM (Least Common Multiple):</label>
+                                        <p-inputNumber inputId="lcm-input" [(ngModel)]="userLcmAnswer"
+                                            [showButtons]="false" placeholder="Enter LCM">
+                                        </p-inputNumber>
+                                    </div>
 
-                <h4>Step 2 — Compute bound</h4>
-                <p>
-                14<sup>2</sup> = 196 and 15<sup>2</sup> = 225, so &radic;221 is between 14 and 15.
-                Therefore we only need to check divisors &le; 14. The primes to test are:
-                <code>2, 3, 5, 7, 11, 13</code>.
-                </p>
+                                    <!-- Check Button -->
+                                    <div class="check-section">
+                                        <p-button label="Check Answers" icon="pi pi-check" (onClick)="onCheckGcdLcm()"
+                                            styleClass="p-button-success">
+                                        </p-button>
+                                    </div>
 
-                <h4>Step 3 — Test each candidate (showing arithmetic)</h4>
+                                    <!-- Feedback -->
+                                    <div *ngIf="gcdLcmFeedback" class="feedback-section">
+                                        <p [class.correct]="gcdLcmFeedback?.includes('Perfect') || gcdLcmFeedback?.includes('correct ✓')"
+                                            [class.incorrect]="gcdLcmFeedback?.includes('incorrect')">
+                                            {{ gcdLcmFeedback }}
+                                        </p>
+                                    </div>
 
-                 <p>Divisible by 2? Last digit is <code>1</code> &rarr; <strong>no</strong>.</p>
+                                    <!-- Helper Info -->
+                                    <div class="helper-section">
+                                        <p><strong>Reminder:</strong></p>
+                                        <ul>
+                                            <li><strong>GCD:</strong> The largest number that divides both numbers
+                                                evenly</li>
+                                            <li><strong>LCM:</strong> The smallest number that both numbers divide into
+                                                evenly</li>
+                                        </ul>
+                                    </div>
+                                </div>
 
-                <p>Divisible by 3? Sum of digits = 2 + 2 + 1 = 5. Since 5 is not a multiple of 3 &rarr; <strong>no</strong>.</p>
 
-                <p>Divisible by 5? Last digit is not 0 or 5 &rarr; <strong>no</strong>.</p>
+                            </p-accordion-content>
+                        </p-accordion-panel>
 
-                <p>Divisible by 7? (long division)</p>
-                <pre>
-                    Divide 221 by 7:
-                    7 goes into 22 → 3    (3 × 7 = 21), remainder 22 − 21 = 1
-                    bring down final digit 1 → 11
-                    7 goes into 11 → 1    (1 × 7 = 7), remainder 11 − 7 = 4
-                    Final remainder = 4 → not divisible by 7.
-                </pre>
+                        <!-- Panel 4 Prime Numbers-->
+                        <p-accordion-panel value="3">
+                            <p-accordion-header class="accordionHeader"><u>3. Prime Numbers</u></p-accordion-header>
+                            <p-accordion-content>
+                                <p class="m-0">
+                                    A prime number is a number greater than 1 that has exactly two divisors: 1 and
+                                    itself. Numbers with more than
+                                    two divisors are composite. The Fundamental Theorem of Arithmetic states that every
+                                    integer greater than 1 can be
+                                    uniquely expressed as a product of prime numbers, which makes primes the “building
+                                    blocks” of integers. Although
+                                    primes become less frequent as numbers grow larger, their distribution follows
+                                    intriguing patterns that are central
+                                    to number theory and applications like cryptography.
+                                </p>
+                                <br>
 
-                <p>Divisible by 11? Alternating-sum test: 2 − 2 + 1 = 1, not a multiple of 11 &rarr; <strong>no</strong>.
-                (Long division also gives remainder 1.)</p>
+                                <h3>Walkthrough example — determine whether 221 is prime</h3>
+                                <p>
+                                <h4>Step 1 — Trivial checks</h4>
+                                <p>Let <strong>n = 221</strong>.</p>
+                                <ul>
+                                    <li>Check: <code>n &gt; 1</code> — yes: <code>221 &gt; 1</code>.</li>
+                                    <li>Is <code>n = 2</code>? — no.</li>
+                                    <li>Is <code>n</code> even? Last digit is <code>1</code> &rarr; odd &rarr; not
+                                        divisible by 2.</li>
+                                </ul>
 
-                <p>Divisible by 13? (long division)</p>
-                <pre>
-                    13 goes into 22 → 1    (1 × 13 = 13), remainder 22 − 13 = 9
-                    bring down final digit 1 → 91
-                    13 goes into 91 → 7    (7 × 13 = 91), remainder 91 − 91 = 0
-                    Final remainder = 0 → divisible by 13.
-                </pre>
+                                <h4>Step 2 — Compute bound</h4>
+                                <p>
+                                    14<sup>2</sup> = 196 and 15<sup>2</sup> = 225, so &radic;221 is between 14 and 15.
+                                    Therefore we only need to check divisors &le; 14. The primes to test are:
+                                    <code>2, 3, 5, 7, 11, 13</code>.
+                                </p>
 
-                <h4>Step 4 — Conclude</h4>
-                <p>We found a nontrivial divisor: <strong>13</strong>. Therefore <strong>221 is composite (not prime)</strong>.</p>
-                <p>Compute the cofactor: <code>221 &divide; 13 = 17</code>.</p>
-                <p>Check: <code>13 &times; 17 = 221</code>.</p>
-                <p>Prime factorization (by the Fundamental Theorem of Arithmetic): <code>221 = 13 &times; 17</code>.</p>
+                                <h4>Step 3 — Test each candidate (showing arithmetic)</h4>
 
-                <div class="primeNumChecker">
-                    <h3>Prime Number Checker</h3>
-                    <!-- generate random num here-->
-                     <p-button 
-                        (click)="onClick()" 
-                        styleClass="p-button-text" 
-                        label="Generate-Number">
-                    </p-button>
-                    <div class="interactiveToolText">
-                        Random number: {{ randomNumber }}
-                    </div>        
-                     
-                <!-- check if num is prime-->
-                     <p>Is this a prime number?</p>
-                <div class="button-row">
-                    <!-- Button: user answers Yes --> 
-                    <p-button
-                        (click)="onPrimeAnswer(true)" 
-                        styleClass="p-button-text" 
-                        label="Yes">
-                    </p-button>
-                    <!-- Button: user answers No -->
-                    <p-button    
-                        (click)="onPrimeAnswer(false)" 
-                        styleClass="p-button-text" 
-                        label="No">
-                    </p-button>
-                </div> 
+                                <p>Divisible by 2? Last digit is <code>1</code> &rarr; <strong>no</strong>.</p>
 
-                    <div>{{primeNumFeedback}}</div>
+                                <p>Divisible by 3? Sum of digits = 2 + 2 + 1 = 5. Since 5 is not a multiple of 3 &rarr;
+                                    <strong>no</strong>.
+                                </p>
 
-                </div>
-                
-            </p-accordion-content>
-        </p-accordion-panel>
+                                <p>Divisible by 5? Last digit is not 0 or 5 &rarr; <strong>no</strong>.</p>
 
-        <!-- Panel 5 -->
-        <p-accordion-panel value="4">
-            <p-accordion-header class="accordionHeader"><u>4. Modular Arithmetic</u></p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    In modular arithmetic, we write a≡b (mod n)a \equiv b \ (\text(mod ) n)a≡b (mod n) to mean that aaa and bbb 
-                    leave the same remainder when divided by nnn. This system is often described as “clock arithmetic,” since numbers 
-                    wrap around after reaching the modulus. Modular arithmetic has its own rules for addition and multiplication, and 
-                    introduces concepts like modular inverses, which allow certain equations to be solved in modular systems. It is a 
-                    powerful tool used in problem-solving, cryptography, and computer science.
-                </p><br/>
+                                <p>Divisible by 7? (long division)</p>
+                                <pre>
+                                    Divide 221 by 7:
+                                    7 goes into 22 → 3    (3 × 7 = 21), remainder 22 − 21 = 1
+                                    bring down final digit 1 → 11
+                                    7 goes into 11 → 1    (1 × 7 = 7), remainder 11 − 7 = 4
+                                    Final remainder = 4 → not divisible by 7.
+                                </pre>
 
-                <!--Add walkthrough example here-->
-                <h4>Example</h4>
+                                <p>Divisible by 11? Alternating-sum test: 2 − 2 + 1 = 1, not a multiple of 11 &rarr;
+                                    <strong>no</strong>.
+                                    (Long division also gives remainder 1.)
+                                </p>
 
-                <br/><!--Mod Checker Tool-->
-                <p-button 
-                    (click)="onClick()" 
-                    styleClass="p-button-text" 
-                    label="Generate-Number">
-                </p-button>
-                <div class="interactiveToolText">
-                    Random Number: {{randomNumber}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    Random Mod: {{ randMod }}
-                </div>
+                                <p>Divisible by 13? (long division)</p>
+                                <pre>
+                                    13 goes into 22 → 1    (1 × 13 = 13), remainder 22 − 13 = 9
+                                    bring down final digit 1 → 91
+                                    13 goes into 91 → 7    (7 × 13 = 91), remainder 91 − 91 = 0
+                                    Final remainder = 0 → divisible by 13.
+                                </pre>
 
-                <p>Check Answer</p>
-                <div class="button-row">
-                    <p-inputnumber [(ngModel)]="userModAnswer" inputId="integeronly" />
-                    <!-- Calls method passing user input -->
-                    <p-button
-                        (click)="onModAnswer(userModAnswer)" 
-                        styleClass="p-button-text" 
-                        label="Check">
-                    </p-button>
-                </div> 
+                                <h4>Step 4 — Conclude</h4>
+                                <p>We found a nontrivial divisor: <strong>13</strong>. Therefore <strong>221 is
+                                        composite (not prime)</strong>.</p>
+                                <p>Compute the cofactor: <code>221 &divide; 13 = 17</code>.</p>
+                                <p>Check: <code>13 &times; 17 = 221</code>.</p>
+                                <p>Prime factorization (by the Fundamental Theorem of Arithmetic):
+                                    <code>221 = 13 &times; 17</code>.
+                                </p>
 
-                <div class="interactiveToolText">{{modFeedback}}</div>
+                                <div class="primeNumChecker">
+                                    <h3>Prime Number Checker</h3>
+                                    <!-- generate random num here-->
+                                    <p-button (click)="onClick()" styleClass="p-button-text" label="Generate-Number">
+                                    </p-button>
+                                    <div class="interactiveToolText">
+                                        Random number: {{ randomNumber }}
+                                    </div>
 
-            </p-accordion-content>
-        </p-accordion-panel>
+                                    <!-- check if num is prime-->
+                                    <p>Is this a prime number?</p>
+                                    <div class="button-row">
+                                        <!-- Button: user answers Yes -->
+                                        <p-button (click)="onPrimeAnswer(true)" styleClass="p-button-text" label="Yes">
+                                        </p-button>
+                                        <!-- Button: user answers No -->
+                                        <p-button (click)="onPrimeAnswer(false)" styleClass="p-button-text" label="No">
+                                        </p-button>
+                                    </div>
 
-        <!-- Panel 6 -->
-        <p-accordion-panel value="5">
-            <p-accordion-header class="accordionHeader"><u>5. Classical Theorems</u></p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    Several foundational theorems form the backbone of number theory. The Euclidean Algorithm provides a systematic 
-                    way to find the GCD, reinforcing divisibility concepts. Fermat’s Little Theorem introduces a relationship between 
-                    prime numbers and modular arithmetic, showing that ap−1≡1 (mod p)a^(p-1) \equiv 1 \ (\text(mod ) p)ap−1≡1 (mod p) 
-                    for prime ppp. The Chinese Remainder Theorem explains how to solve systems of modular equations simultaneously, 
-                    with visual or intuitive methods helping to make this abstract idea concrete. These theorems build intuition for 
-                    more advanced mathematical applications.
-                </p>
-            </p-accordion-content>
-        </p-accordion-panel>
+                                    <div>{{primeNumFeedback}}</div>
 
-        <!-- Panel 7 -->
-        <p-accordion-panel value="6">
-            <p-accordion-header class="accordionHeader"><u>6. Applications in Cryptography and Computer Science</u></p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    Primes and modular arithmetic are essential for modern encryption systems, especially in securing digital 
-                    communication. The RSA algorithm uses large prime numbers and modular exponentiation to create public and 
-                    private keys, making it computationally easy to encrypt but extremely hard to break without special knowledge. 
-                    Even without advanced math, students can see how modular arithmetic underpins secure data transfer and how number 
-                    theory moves from abstract concepts to real-world technologies.
-                </p>
-            </p-accordion-content>
-        </p-accordion-panel>
-        </p-tabpanel>
+                                </div>
 
-      <p-tabpanel value="1">
-        <h3>Number Theory & Cryptography Quiz</h3>
-        <p-button
-            (click)="refreshQuiz()"
-            styleClass="p-button-text p-button-sm"
-            icon="pi pi-refresh"
-            label="New Questions"></p-button>
-        <app-quiz
-                [questions]="numberTheoryQuestions">
-            </app-quiz>
-      </p-tabpanel>
+                            </p-accordion-content>
+                        </p-accordion-panel>
 
-      <p-tabpanel value="2">
-        <h3>Number Theory & Cryptography Unit Test</h3>
-        <p>Number Theory Exam Goes HERE</p>
-      </p-tabpanel>
-    </p-tabpanels>
-  </p-tabs>
-</div>
+                        <!-- Panel 5 -->
+                        <p-accordion-panel value="4">
+                            <p-accordion-header class="accordionHeader"><u>4. Modular
+                                    Arithmetic</u></p-accordion-header>
+                            <p-accordion-content>
+                                <p class="m-0">
+                                    In modular arithmetic, we write a≡b (mod n)a \equiv b \ (\text(mod ) n)a≡b (mod n)
+                                    to mean that aaa and bbb
+                                    leave the same remainder when divided by nnn. This system is often described as
+                                    “clock arithmetic,” since numbers
+                                    wrap around after reaching the modulus. Modular arithmetic has its own rules for
+                                    addition and multiplication, and
+                                    introduces concepts like modular inverses, which allow certain equations to be
+                                    solved in modular systems. It is a
+                                    powerful tool used in problem-solving, cryptography, and computer science.
+                                </p><br />
+
+                                <!--Add walkthrough example here-->
+                                <h4>Example</h4>
+
+                                <br /><!--Mod Checker Tool-->
+                                <p-button (click)="onClick()" styleClass="p-button-text" label="Generate-Number">
+                                </p-button>
+                                <div class="interactiveToolText">
+                                    Random Number: {{randomNumber}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Random Mod: {{ randMod }}
+                                </div>
+
+                                <p>Check Answer</p>
+                                <div class="button-row">
+                                    <p-inputnumber [(ngModel)]="userModAnswer" inputId="integeronly" />
+                                    <!-- Calls method passing user input -->
+                                    <p-button (click)="onModAnswer(userModAnswer)" styleClass="p-button-text"
+                                        label="Check">
+                                    </p-button>
+                                </div>
+
+                                <div class="interactiveToolText">{{modFeedback}}</div>
+
+                            </p-accordion-content>
+                        </p-accordion-panel>
+
+                        <!-- Panel 6 -->
+                        <p-accordion-panel value="5">
+                            <p-accordion-header class="accordionHeader"><u>5. Classical
+                                    Theorems</u></p-accordion-header>
+                            <p-accordion-content>
+                                <p class="m-0">
+                                    Several foundational theorems form the backbone of number theory. The Euclidean
+                                    Algorithm provides a systematic
+                                    way to find the GCD, reinforcing divisibility concepts. Fermat’s Little Theorem
+                                    introduces a relationship between
+                                    prime numbers and modular arithmetic, showing that ap−1≡1 (mod p)a^(p-1) \equiv 1 \
+                                    (\text(mod ) p)ap−1≡1 (mod p)
+                                    for prime ppp. The Chinese Remainder Theorem explains how to solve systems of
+                                    modular equations simultaneously,
+                                    with visual or intuitive methods helping to make this abstract idea concrete. These
+                                    theorems build intuition for
+                                    more advanced mathematical applications.
+                                </p>
+                            </p-accordion-content>
+                        </p-accordion-panel>
+
+                        <!-- Panel 7 -->
+                        <p-accordion-panel value="6">
+                            <p-accordion-header class="accordionHeader"><u>6. Applications in Cryptography and Computer
+                                    Science</u></p-accordion-header>
+                            <p-accordion-content>
+                                <p class="m-0">
+                                    Primes and modular arithmetic are essential for modern encryption systems,
+                                    especially in securing digital
+                                    communication. The RSA algorithm uses large prime numbers and modular exponentiation
+                                    to create public and
+                                    private keys, making it computationally easy to encrypt but extremely hard to break
+                                    without special knowledge.
+                                    Even without advanced math, students can see how modular arithmetic underpins secure
+                                    data transfer and how number
+                                    theory moves from abstract concepts to real-world technologies.
+                                </p>
+                            </p-accordion-content>
+                        </p-accordion-panel>
+                    </p-tabpanel>
+
+                    <p-tabpanel value="1">
+                        <h3>Number Theory & Cryptography Quiz</h3>
+                        <p-button (click)="refreshQuiz()" styleClass="p-button-text p-button-sm" icon="pi pi-refresh"
+                            label="New Questions"></p-button>
+                        <app-quiz [questions]="numberTheoryQuestions">
+                        </app-quiz>
+                    </p-tabpanel>
+
+                    <p-tabpanel value="2">
+                        <h3>Number Theory & Cryptography Unit Test</h3>
+                        <p>Number Theory Exam Goes HERE</p>
+                    </p-tabpanel>
+                </p-tabpanels>
+            </p-tabs>
+        </div>
 
     </p-accordion>
 </div>

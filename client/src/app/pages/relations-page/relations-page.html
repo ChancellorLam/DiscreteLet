@@ -188,6 +188,26 @@
                                     tells you whether
                                     a<sub>i</sub> is related to a<sub>j</sub>.
                                 </p>
+                                <!--Interactive tool-->
+                                <p-table [tableStyle]="{ 'min-width': '50rem' }">
+                                    <ng-template #header>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Quantity</th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template #body let-product>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+
                             </p-accordion-content>
                         </p-accordion-panel>
 
