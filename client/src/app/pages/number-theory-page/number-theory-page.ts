@@ -45,7 +45,13 @@ export class NumberTheoryPage {
   userGcdAnswer: number | null = null;
   userLcmAnswer: number | null = null;
   gcdLcmFeedback: string | null = null;
-
+  // Euclidean Algorithm Visualizer
+  euclidNum1: number | null = null;
+  euclidNum2: number | null = null;
+  euclideanSteps: string[] = [];
+  currentStepIndex = -1;
+  euclideanResult: number | null = null;
+  isEuclideanRunning = false;
 
   // Random Number generator for prime number checker
   // Generates a random integer between min and max (inclusive)
@@ -124,6 +130,86 @@ export class NumberTheoryPage {
     this.gcdLcmFeedback = null;
     console.log('Generated numbers:', this.randomGcdLcmNum1, this.randomGcdLcmNum2);
   }
+
+// Generate all steps for Euclidean Algorithm
+generateEuclideanSteps(a: number, b: number): void {
+  this.euclideanSteps = [];
+  this.currentStepIndex = -1;
+  this.euclideanResult = null;
+  this.isEuclideanRunning = true;
+
+  let num1 = Math.abs(a);
+  let num2 = Math.abs(b);
+  let stepNumber = 1;
+
+  this.euclideanSteps.push(`Finding GCD(${a}, ${b}):`);
+
+  // Generate all steps
+  while (num2 !== 0) {
+    const quotient = Math.floor(num1 / num2);
+    const remainder = num1 % num2;
+    
+    this.euclideanSteps.push(
+      `Step ${stepNumber}: ${num1} = ${num2} × ${quotient} + ${remainder}`
+    );
+    
+    num1 = num2;
+    num2 = remainder;
+    stepNumber++;
+  }
+
+  this.euclideanResult = num1;
+  this.euclideanSteps.push(`Result: GCD = ${num1}`);
+}
+
+// Start the Euclidean Algorithm
+startEuclidean(): void {
+  if (this.euclidNum1 === null || this.euclidNum2 === null) {
+    alert('Please enter both numbers!');
+    return;
+  }
+
+  if (this.euclidNum1 === 0 && this.euclidNum2 === 0) {
+    alert('Both numbers cannot be zero!');
+    return;
+  }
+
+  this.generateEuclideanSteps(this.euclidNum1, this.euclidNum2);
+  this.currentStepIndex = 0; // Show first step (title)
+}
+
+// Move to next step
+nextEuclideanStep(): void {
+  if (this.currentStepIndex < this.euclideanSteps.length - 1) {
+    this.currentStepIndex++;
+    
+    // If we reached the final result
+    if (this.currentStepIndex === this.euclideanSteps.length - 1) {
+      this.isEuclideanRunning = false;
+      confetti();
+      this.rewards.add(2);
+    }
+  }
+}
+
+// Move to previous step
+previousEuclideanStep(): void {
+  if (this.currentStepIndex > 0) {
+    this.currentStepIndex--;
+  }
+}
+
+
+// Reset the visualizer
+resetEuclidean(): void {
+  this.euclidNum1 = null;
+  this.euclidNum2 = null;
+  this.euclideanSteps = [];
+  this.currentStepIndex = -1;
+  this.euclideanResult = null;
+  this.isEuclideanRunning = false;
+}
+
 
   // EVENT HANDLERS
   // Called when "Generate Number" is clicked — sets random values

@@ -395,6 +395,112 @@
                                     theorems build intuition for
                                     more advanced mathematical applications.
                                 </p>
+
+                                <div class="euclidean-visualizer">
+                                    <h4>Euclidean Algorithm Visualizer</h4>
+                                    <p>Watch how the Euclidean Algorithm finds the GCD of two numbers!</p>
+
+                                    <!-- Input Section -->
+                                    <div class="input-section">
+                                        <div class="input-group">
+                                            <label for="euclid-num1">First Number:</label>
+                                            <p-inputNumber inputId="euclid-num1" [(ngModel)]="euclidNum1"
+                                                [showButtons]="false" [disabled]="euclideanSteps.length > 0"
+                                                placeholder="Enter first number">
+                                            </p-inputNumber>
+                                        </div>
+
+                                        <div class="input-group">
+                                            <label for="euclid-num2">Second Number:</label>
+                                            <p-inputNumber inputId="euclid-num2" [(ngModel)]="euclidNum2"
+                                                [showButtons]="false" [disabled]="euclideanSteps.length > 0"
+                                                placeholder="Enter second number">
+                                            </p-inputNumber>
+                                        </div>
+
+                                        <div class="button-group">
+                                            <p-button *ngIf="euclideanSteps.length === 0" label="Start Algorithm"
+                                                icon="pi pi-play" (onClick)="startEuclidean()"
+                                                styleClass="p-button-primary">
+                                            </p-button>
+
+                                            <p-button *ngIf="euclideanSteps.length > 0" label="Reset"
+                                                icon="pi pi-refresh" (onClick)="resetEuclidean()"
+                                                styleClass="p-button-secondary">
+                                            </p-button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Steps Visualization -->
+                                    <div *ngIf="euclideanSteps.length > 0" class="steps-container">
+                                        <div class="steps-display">
+                                            <div *ngFor="let step of euclideanSteps; let i = index" class="step-item"
+                                                [class.current]="i === currentStepIndex"
+                                                [class.completed]="i < currentStepIndex"
+                                                [class.upcoming]="i > currentStepIndex">
+
+                                                <!-- Step indicator icon -->
+                                                <span class="step-icon">
+                                                    <i *ngIf="i < currentStepIndex" class="pi pi-check"></i>
+                                                    <i *ngIf="i === currentStepIndex" class="pi pi-arrow-right"></i>
+                                                    <i *ngIf="i > currentStepIndex" class="pi pi-circle"></i>
+                                                </span>
+
+                                                <!-- Step text -->
+                                                <span class="step-text">{{ step }}</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Navigation Controls -->
+                                        <div class="controls-section">
+                                            <p-button label="Previous" icon="pi pi-chevron-left"
+                                                (onClick)="previousEuclideanStep()" [disabled]="currentStepIndex <= 0"
+                                                styleClass="p-button-outlined">
+                                            </p-button>
+
+                                            <p-button label="Next Step" icon="pi pi-chevron-right"
+                                                (onClick)="nextEuclideanStep()"
+                                                [disabled]="currentStepIndex >= euclideanSteps.length - 1"
+                                                styleClass="p-button-success">
+                                            </p-button>
+                                        </div>
+
+                                        <!-- Final Result Display -->
+                                        <div *ngIf="currentStepIndex === euclideanSteps.length - 1"
+                                            class="result-display">
+                                            <h3>Complete!</h3>
+                                            <p class="result-text">The Greatest Common Divisor is: <strong>{{
+                                                    euclideanResult }}</strong></p>
+                                            <p class="reward-text">+2 points earned!</p>
+                                        </div>
+
+                                        <!-- Progress Indicator -->
+                                        <div class="progress-indicator">
+                                            <span>Progress: {{ currentStepIndex + 1 }} / {{ euclideanSteps.length
+                                                }}</span>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill"
+                                                    [style.width.%]="((currentStepIndex + 1) / euclideanSteps.length) * 100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Educational Info -->
+                                    <div class="info-section">
+                                        <h5>How it Works:</h5>
+                                        <p><strong>The Euclidean Algorithm</strong> finds the GCD by repeatedly dividing
+                                            and taking remainders:</p>
+                                        <ol>
+                                            <li>Divide the larger number by the smaller</li>
+                                            <li>Replace the larger with the smaller, and the smaller with the remainder
+                                            </li>
+                                            <li>Repeat until the remainder is 0</li>
+                                            <li>The last non-zero remainder is the GCD</li>
+                                        </ol>
+                                    </div>
+                                </div>
+
                             </p-accordion-content>
                         </p-accordion-panel>
 
