@@ -1,8 +1,8 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, User, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { Auth, signOut, onAuthStateChanged, User, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { environment } from '../../app.config';
+import { environment } from '../../../environments/environment.development'; 
 
 export interface AuthUser {
   id?: number;
@@ -42,53 +42,18 @@ export class AuthService {
     });
   }
   
-  // Register with email and password
-  async register(email: string, password: string): Promise<void> {
-    try {
-      const credential = await createUserWithEmailAndPassword(this.auth, email, password);
-      
-      // Sync with backend
-      const token = await credential.user.getIdToken();
-      await this.verifyWithBackend(token);
-      
-      console.log('User registered successfully');
-    } catch (error) {
-      console.error('Registration error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Registration failed';
-      throw new Error(errorMessage);
-    }
-  }
-  
-  // Login with email and password
-  async login(email: string, password: string): Promise<void> {
-    try {
-      const credential = await signInWithEmailAndPassword(this.auth, email, password);
-      
-      // Sync with backend
-      const token = await credential.user.getIdToken();
-      await this.verifyWithBackend(token);
-      
-      console.log('User logged in successfully');
-      this.router.navigate(['/']); // Navigate to home after login
-    } catch (error) {
-      console.error('Login error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Login failed';
-      throw new Error(errorMessage);
-    }
-  }
-  
-  // Login with Google
+  // Login with Google (also handles registration automatically)
   async loginWithGoogle(): Promise<void> {
     try {
       const provider = new GoogleAuthProvider();
       const credential = await signInWithPopup(this.auth, provider);
       
-      // Sync with backend
+      // Sync with backend (creates user if doesn't exist)
       const token = await credential.user.getIdToken();
       await this.verifyWithBackend(token);
       
       console.log('User logged in with Google successfully');
-      this.router.navigate(['/']); // Navigate to home after login
+      this.router.navigate(['/home']); // Navigate to home after login
     } catch (error) {
       console.error('Google login error:', error);
       const errorMessage = error instanceof Error ? error.message : 'Google login failed';

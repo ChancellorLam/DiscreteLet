@@ -8,9 +8,10 @@ import { CountingPage } from './pages/counting-page/counting-page';
 import { NumberTheoryPage } from './pages/number-theory-page/number-theory-page';
 import { PrimengTestPage } from './pages/primeng-test-page/primeng-test-page';
 import { ProfilePage } from './pages/profile-page/profile-page';
+import { LoginPage } from './pages/login/login';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'login-page', pathMatch: 'full'},
   { path: 'home', component: HomePage, pathMatch: 'full' },
   { path: 'logic', component: LogicPage },
   { path: 'basic-structures', component: BasicStructuresPage },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: 'counting', component: CountingPage },
   { path: 'number-theory', component: NumberTheoryPage },
   { path: 'primeng-test-page', component: PrimengTestPage },
-  { path: 'profile-page', component: ProfilePage}
+  { path: 'profile-page', component: ProfilePage},
+  { path: 'login-page', component: LoginPage}
 ];
