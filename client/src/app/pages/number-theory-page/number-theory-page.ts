@@ -9,6 +9,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { TabsModule } from 'primeng/tabs';
 import { RewardService } from '../../core/reward-service';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
+import { RsaChallenge } from '../../shared/rsa-challenge/rsa-challenge';
 
 //defines structure for quiz questions
 interface Question {
@@ -20,7 +21,7 @@ interface Question {
 
 @Component({
   selector: 'app-number-theory-page',
-  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent],
+  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent, RsaChallenge],
   templateUrl: './number-theory-page.html',
   styleUrl: './number-theory-page.css'
 })
