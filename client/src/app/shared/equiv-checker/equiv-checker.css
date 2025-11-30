@@ -1,0 +1,19 @@
+.equiv-container {
+  background: #eef5ff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.input-block {
+  margin-bottom: 12px;
+}
+
+.yes {
+  color: green;
+  font-weight: bold;
+}
+
+.no {
+  color: red;
+  font-weight: bold;
+}

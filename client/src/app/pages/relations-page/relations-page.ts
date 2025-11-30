@@ -12,6 +12,7 @@ import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 import { DragAndDropComponent, Choice, DropZone } from '../../shared/drag-and-drop/drag-and-drop';
 import { RelationOps } from '../../shared/relation-ops/relation-ops';
 import { RelationMatrix } from '../../shared/relation-matrix/relation-matrix';
+import { EquivChecker } from '../../shared/equiv-checker/equiv-checker';
 
 // stucture for drag-drop results
 interface DragDropResult {
@@ -35,7 +36,8 @@ interface Question {
 @Component({
   selector: 'app-relations-page',
   standalone: true,
-  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TableModule, TabsModule, QuizComponent, DragAndDropComponent, RelationOps, RelationMatrix],
+  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TableModule, TabsModule, QuizComponent, 
+    DragAndDropComponent, RelationOps, RelationMatrix, EquivChecker],
   templateUrl: './relations-page.html',
   styleUrls: ['./relations-page.css']
 })

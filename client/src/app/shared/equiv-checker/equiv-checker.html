@@ -1,0 +1,50 @@
+<div class="equiv-container">
+
+  <h2>Equivalence Relation Checker</h2>
+
+  <!-- Set Input -->
+  <div class="input-block">
+    <label for="setInput">Set A (comma separated):</label>
+    <input id="setInput" type="text" [(ngModel)]="setInput" (input)="updateAll()">
+  </div>
+
+  <!-- Relation Input -->
+  <div class="input-block">
+    <label for="relationInput">Relation R (pairs like (1,4)):</label>
+    <input id="relationInput" type="text" [(ngModel)]="relationInput" (input)="updateAll()">
+  </div>
+
+  <hr>
+
+  <!-- Properties -->
+  <h3>Relation Properties</h3>
+
+  <p><strong>Reflexive:</strong> {{ reflexive ? 'Yes' : 'No' }}</p>
+  <div *ngIf="!reflexive">
+    Missing: {{ missingReflexive }}
+  </div>
+
+  <p><strong>Symmetric:</strong> {{ symmetric ? 'Yes' : 'No' }}</p>
+  <div *ngIf="!symmetric">
+    Missing: {{ missingSymmetric }}
+  </div>
+
+  <p><strong>Transitive:</strong> {{ transitive ? 'Yes' : 'No' }}</p>
+  <div *ngIf="!transitive">
+    Missing: {{ missingTransitive }}
+  </div>
+
+  <h3>Is this an Equivalence Relation?</h3>
+  <p [class.yes]="isEquivalenceRelation" [class.no]="!isEquivalenceRelation">
+    {{ isEquivalenceRelation ? 'YES' : 'NO' }}
+  </p>
+
+  <hr>
+
+  <!-- Equivalence Classes -->
+  <h3>Equivalence Classes</h3>
+  <div *ngFor="let a of A">
+    <p>[{{ a }}] = {{ equivalenceClasses[a] }}</p>
+  </div>
+
+</div>

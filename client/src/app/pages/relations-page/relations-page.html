@@ -511,6 +511,36 @@
                                     class:</p>
                                 <p>[a] = &#123;b ∈ A | aRb&#125;</p>
 
+                                <!--Instructions and Interactive Tool-->
+                                <div class="equiv-instructions">
+                                    <h3>How to Use This Tool</h3>
+
+                                    <p>Enter a set <strong>A</strong> and a relation <strong>R</strong>, and the tool
+                                        will tell you whether R is an equivalence relation.</p>
+
+                                    <ol>
+                                        <li><strong>Enter Set A</strong> using commas.
+                                            <br>Example: <code>1,2,3,4,5,6</code>
+                                        </li>
+
+                                        <li><strong>Enter Relation R</strong> as ordered pairs.
+                                            <br>Example: <code>(1,4), (4,1), (2,5), (5,2)</code>
+                                        </li>
+
+                                        <li>The tool checks:
+                                            <ul>
+                                                <li>Reflexive: (a, a) in R</li>
+                                                <li>Symmetric: (a, b) ⇒ (b, a)</li>
+                                                <li>Transitive: (a, b) & (b, c) ⇒ (a, c)</li>
+                                            </ul>
+                                        </li>
+
+                                        <li>It also shows the <strong>equivalence class</strong> for each element.</li>
+                                    </ol>
+                                </div>
+
+                                <app-equiv-checker></app-equiv-checker>
+
                             </p-accordion-content>
                         </p-accordion-panel>
                     </p-tabpanel>
