@@ -521,18 +521,70 @@
                                     theory moves from abstract concepts to real-world technologies.
                                 </p>
 
-                            <div class="rsa-instructions">
-                                <h3>How to Use the RSA Challenge</h3>
-                                <ol>
-                                    <li>Look at the given numbers: <strong>p</strong>, <strong>q</strong>, <strong>n</strong>, <strong>φ(n)</strong>, <strong>e</strong>, and <strong>d</strong>.</li>
-                                    <li>Use these values to compute the correct answer for the challenge (e.g., encryption or decryption of a number).</li>
-                                    <li>Type your answer into the input box labeled "Your answer".</li>
-                                    <li>Click <strong>Submit</strong> to check if your answer is correct.</li>
-                                    <li>If you want a new challenge, click <strong>New Challenge</strong>.</li>
-                                </ol>
-                                <p>Tip: Remember that in RSA, <strong>n = p × q</strong>, and <strong>φ(n) = (p-1) × (q-1)</strong>. Use <strong>e</strong> to encrypt and <strong>d</strong> to decrypt.</p>
-                            </div>
+                                <div class="rsa-instructions">
+                                    <h3>How to Use the RSA Encryption/Decryption Challenge</h3>
+                                    <p>
+                                        This tool gives you a random RSA problem and asks you to either
+                                        <strong>encrypt a word</strong> or <strong>decrypt a ciphertext</strong>.
+                                        You have a limited amount of time to answer!
+                                    </p>
 
+                                    <ol>
+                                        <li>
+                                            Each challenge will randomly choose a mode:
+                                            <ul>
+                                                <li><strong>Encrypt Mode:</strong> convert a word into encrypted
+                                                    numbers.</li>
+                                                <li><strong>Decrypt Mode:</strong> convert encrypted numbers back into
+                                                    the original word.</li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            The RSA values <strong>p</strong>, <strong>q</strong>, <strong>n</strong>,
+                                            <strong>φ(n)</strong>, <strong>e</strong>, and <strong>d</strong> are shown
+                                            for reference.
+                                        </li>
+
+                                        <li>
+                                            <strong>Letter-to-number conversion:</strong><br>
+                                            Letters are converted to numbers using:<br>
+                                            <code>A = 1, B = 2, … Z = 26</code> (spaces = 0)
+                                        </li>
+
+                                        <li>
+                                            <strong>Encrypting a message:</strong><br>
+                                            <ul>
+                                                <li>Convert each letter → number.</li>
+                                                <li>Encrypt each number using <code>C = M^e mod n</code>.</li>
+                                                <li>Your answer should be a list of encrypted numbers separated by
+                                                    commas.<br>
+                                                    Example: <code>42, 88, 17</code></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <strong>Decrypting a ciphertext:</strong><br>
+                                            <ul>
+                                                <li>Apply <code>M = C^d mod n</code> to each number.</li>
+                                                <li>Convert the resulting numbers back into letters.</li>
+                                                <li>Your final answer should be the original word (letters only).</li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            Type your answer in the box and click <strong>Submit</strong>.
+                                            You'll immediately see whether you're correct.
+                                        </li>
+
+                                        <li>
+                                            When you're done, click <strong>New Challenge</strong> to try another
+                                            problem.
+                                        </li>
+                                    </ol>
+
+                                    <p><strong>Note:</strong> All messages are uppercase. No punctuation is used.</p>
+                                </div>
                                 <app-rsa-challenge></app-rsa-challenge>
                             </p-accordion-content>
                         </p-accordion-panel>
