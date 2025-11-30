@@ -19,31 +19,55 @@ interface BackendVerifyResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private auth = inject(Auth);
+  private auth!: Auth;
   private http = inject(HttpClient);
   private router = inject(Router);
   
   // Signal to track current user
   currentUser = signal<AuthUser | null>(null);
   firebaseUser = signal<User | null>(null);
+
+  private authInitialized = false;
   
   constructor() {
-    // Listen to Firebase auth state changes
-    onAuthStateChanged(this.auth, async (user) => {
-      this.firebaseUser.set(user);
+    // Delay Firebase Auth injection to avoid initialization race
+    setTimeout(() => {
+      this.initializeAuth();
+    }, 0);
+  }
+
+  private initializeAuth(): void {
+    try {
+      this.auth = inject(Auth);
+      console.log('Auth injected successfully');
       
-      if (user) {
-        // User is signed in, sync with backend
-        await this.syncUserWithBackend(user);
-      } else {
-        // User is signed out
-        this.currentUser.set(null);
-      }
-    });
+      // Listen to Firebase auth state changes
+      onAuthStateChanged(this.auth, async (user) => {
+        console.log('Auth state changed:', user?.email || 'No user');
+        this.firebaseUser.set(user);
+        
+        if (user) {
+          // User is signed in, sync with backend
+          await this.syncUserWithBackend(user);
+        } else {
+          // User is signed out
+          this.currentUser.set(null);
+        }
+      });
+      
+      this.authInitialized = true;
+    } catch (error) {
+      console.error('Failed to initialize Auth:', error);
+    }
   }
   
   // Login with Google (also handles registration automatically)
   async loginWithGoogle(): Promise<void> {
+    //wait for auth to be initialized
+    while(!this.authInitialized){
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    
     try {
       const provider = new GoogleAuthProvider();
       const credential = await signInWithPopup(this.auth, provider);
@@ -104,6 +128,9 @@ export class AuthService {
   
   // Get current Firebase token
   async getToken(): Promise<string | null> {
+    if(!this.authInitialized || !this.auth?.currentUser){
+        return null;
+    }
     const user = this.auth.currentUser;
     if (user) {
       return await user.getIdToken();
