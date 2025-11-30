@@ -223,12 +223,122 @@
                         <li><strong>0</strong> means the pair is NOT in the relation</li>
                       </ul>
 
+<<<<<<< HEAD
                       <h4>1. Enter the Set A</h4>
                       <p>
                         Type your elements into the "Set A" box, separated by commas.
                         For example:
                       </p>
                       <pre>A = a1, a2, a3</pre>
+=======
+                                <h4>Example</h4>
+                                <p>If A = &#123;a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>&#125; and R =
+                                    &#123;(a<sub>1</sub>, a<sub>2</sub>), (a<sub>
+                                        2</sub>, a<sub>3</sub>)&#125;, then the matrix M_R looks like:
+                                </p>
+                                <table>
+                                    <tr>
+                                        <th></th>
+                                        <th>a<sub>1</sub></th>
+                                        <th>a<sub>2</sub></th>
+                                        <th>a<sub>3</sub></th>
+                                    </tr>
+                                    <tr>
+                                        <th>a<sub>1</sub></th>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <th>a<sub>2</sub></th>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <th>a<sub>3</sub></th>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                </table>
+                                <p>Each row and column corresponds to an element in A, and the entry at position (i, j)
+                                    tells you whether
+                                    a<sub>i</sub> is related to a<sub>j</sub>.
+                                </p>
+                                <!--Instructions for tool-->
+                                <div class="relation-matrix-instructions">
+                                    <h3>How to Use the Relation Matrix Builder</h3>
+
+                                    <p>
+                                        This tool helps you convert a relation into a matrix and also lets you edit
+                                        the matrix to update the relation. A relation matrix is an <strong>n ×
+                                            n</strong>
+                                        grid of 0s and 1s where:
+                                    </p>
+
+                                    <ul>
+                                        <li><strong>1</strong> means the pair <code>(aᵢ, aⱼ)</code> is in the relation
+                                        </li>
+                                        <li><strong>0</strong> means the pair is NOT in the relation</li>
+                                    </ul>
+
+                                    <h4>1. Enter the Set A</h4>
+                                    <p>
+                                        Type your elements into the “Set A” box, separated by commas.
+                                        For example:
+                                    </p>
+                                    <pre>A = a1, a2, a3</pre>
+
+                                    <h4>2. Enter the Relation R</h4>
+                                    <p>
+                                        Type the ordered pairs using parentheses. Example:
+                                    </p>
+                                    <pre>(a1,a2), (a2,a3)</pre>
+
+                                    <p>
+                                        Once entered, the matrix will automatically update. Rows represent the first
+                                        element of the pair, and columns represent the second element.
+                                    </p>
+
+                                    <h4>3. Click the Matrix to Edit It</h4>
+                                    <p>
+                                        You can click any cell in the matrix:
+                                    </p>
+
+                                    <ul>
+                                        <li>Click a <strong>0</strong> → becomes <strong>1</strong> (the pair is added)
+                                        </li>
+                                        <li>Click a <strong>1</strong> → becomes <strong>0</strong> (the pair is
+                                            removed)</li>
+                                    </ul>
+
+                                    <p>The relation box will automatically update to reflect the changes.</p>
+
+                                    <h4>Example (Clicking the Matrix)</h4>
+                                    <p>If you click the cell at row <code>a3</code>, column <code>a1</code>:</p>
+
+                                    <pre>0 → 1</pre>
+
+                                    <p>
+                                        Then the matrix now contains <code>(a3, a1)</code>, and the updated relation
+                                        becomes:
+                                    </p>
+                                    <pre>&#123;(a1,a2), (a2,a3), (a3,a1)&#125;</pre>
+
+                                    <h4>4. Explore the Relationship</h4>
+                                    <p>You can use this tool to understand:</p>
+                                    <ul>
+                                        <li>How relations map to matrices</li>
+                                        <li>How matrix entries correspond to ordered pairs</li>
+                                        <li>How structure changes when pairs are added or removed</li>
+                                        <li>Patterns like reflexive, symmetric, and transitive relations</li>
+                                    </ul>
+                                </div>
+
+                                <!--Interactive tool-->
+                                <app-relation-matrix></app-relation-matrix>
+>>>>>>> e7655ff7 (Relation Matrix Builder tool)
 
                       <h4>2. Enter the Relation R</h4>
                       <p>
@@ -466,10 +576,20 @@
                     </div>
                     <br/>
 
+<<<<<<< HEAD
                     <app-relation-ops></app-relation-ops>
                   </div>
                 </p-accordion-content>
               </p-accordion-panel>
+=======
+                    <p-tabpanel value="1">
+                        <h3>Relations Quiz</h3>
+                        <p-button (click)="refreshQuiz()" styleClass="p-button-text p-button-sm" icon="pi pi-refresh"
+                            label="New Questions"></p-button>
+                        <app-quiz [questions]="relationQuestions">
+                        </app-quiz>
+                    </p-tabpanel>
+>>>>>>> e7655ff7 (Relation Matrix Builder tool)
 
               <!-- Panel 5 -->
               <p-accordion-panel value="4">
