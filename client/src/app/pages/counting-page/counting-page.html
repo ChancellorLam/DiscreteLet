@@ -1,84 +1,292 @@
 <div class="card flex justify-content-center">
-    <p-accordion [(value)]="activeTabs" multiple="true">
+  <p-accordion [(value)]="activeTabs" multiple="true">
 
-<!--Tab Components-->
-<div class="card">
-  <p-tabs [(value)]="activeTab">
-    <p-tablist>
-      <p-tab value="0">Lessons</p-tab>
-      <p-tab value="1">Exercises</p-tab>
-      <p-tab value="2">Quiz</p-tab>
-    </p-tablist>
+    <div class="card">
+      <p-tabs [(value)]="activeTab">
+        <p-tablist>
+          <p-tab value="0">Lessons</p-tab>
+          <p-tab value="1">Exercises</p-tab>
+          <p-tab value="2">Quiz</p-tab>
+        </p-tablist>
 
-    <p-tabpanels>
-      <p-tabpanel value="0">
-        <h3>Relations Lessons    <p-button 
-            (click)="toggleAll()" 
-            styleClass="p-button-text" 
-            [label]="isExpanded ? 'Collapse All' : 'Expand All'">
-        </p-button>   </h3>
-        
-        <!-- Panel 1 -->
-        <p-accordion-panel value="0">
-            <p-accordion-header>Number Theory Introduction:</p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    Number theory is a branch of pure mathematics that focuses on the integers and integer-valued functions. It investigates 
-                    fundamental concepts such as divisibility (what it means for one integer to divide another), prime numbers and their 
-                    distribution, greatest common divisors, and factorization into primes. Beyond these “elementary” concerns, number theory 
-                    branches into deeper realms: analytic number theory uses tools from calculus and complex analysis to study patterns like 
-                    the density of primes, while algebraic number theory examines the arithmetic properties of numbers in more general 
-                    algebraic structures (like rings of algebraic integers). Many of its problems are easy to state but famously hard to 
-                    solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field has unexpectedly rich applications 
-                    in modern cryptography and computer science.
+        <p-tabpanels>
+
+          <!-- LESSONS TAB -->
+          <p-tabpanel value="0">
+            <h3>
+              Counting Principles Lessons
+              <p-button 
+                (click)="toggleAll()" 
+                styleClass="p-button-text"
+                [label]="isExpanded ? 'Collapse All' : 'Expand All'">
+              </p-button>
+            </h3>
+
+            <!-- Panel 1: Basic Counting Principle -->
+            <p-accordion-panel value="0">
+              <p-accordion-header class="accordionHeader">
+                <u>1. Basic Counting Principle</u>
+              </p-accordion-header>
+
+              <p-accordion-content>
+
+                <h3>What Is the Counting Principle?</h3>
+                <p>
+                  The Basic Counting Principle states that if one action can be completed 
+                  in <b>m</b> ways and a second action can be completed in <b>n</b> ways, 
+                  then completing both actions in sequence can be done in:
+                  <br><br>
+                  <b>m × n total ways.</b>
                 </p>
-            </p-accordion-content>
-        </p-accordion-panel>
 
-        <!-- Panel 2 -->
-        <p-accordion-panel value="1">
-            <p-accordion-header>1. Integers & Divisibility</p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with integers often 
-                    leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where qqq is the quotient and rrr is the 
-                    remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder. Properties of divisibility
-                    help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like 
-                    prime factorization and modular arithmetic.
+                <h3>Why This Matters</h3>
+                <p>
+                  This principle is the foundation of all multi-step counting techniques. 
+                  It helps us determine the total number of possible outcomes when a process 
+                  involves multiple consecutive choices.
                 </p>
-            </p-accordion-content>
-        </p-accordion-panel>
 
-        <!-- Panel 3 -->
-        <p-accordion-panel value="2">
-            <p-accordion-header>2. GCD & LCM</p-accordion-header>
-            <p-accordion-content>
-                <p class="m-0">
-                    The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common 
-                    multiple (LCM) is the smallest positive integer that both numbers divide into evenly. One way to find these is through 
-                    prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm, which uses repeated 
-                    division to efficiently determine the GCD. These concepts are essential for simplifying fractions, solving equations, 
-                    and understanding number relationships.
+                <h3>Simple Example</h3>
+                <p>
+                  • 3 shirts  
+                  <br>
+                  • 2 pants  
+                  <br><br>
+                  Total outfits = <b>3 × 2 = 6</b>
                 </p>
-            </p-accordion-content>
-        </p-accordion-panel>
-        </p-tabpanel>
 
-      <p-tabpanel value="1">
-        <h3>Exercises</h3>
-        <p>Practice gcd, modular inverses, sample problems.</p>
-      </p-tabpanel>
+                <h3>Worked Example</h3>
+                <p>
+                  A code contains one letter (A–D) and one digit (0–9).  
+                  <br><br>
+                  Total possible codes = <b>4 × 10 = 40</b>
+                </p>
 
-      <p-tabpanel value="2">
-        <h3>Relations Quiz</h3>
-            <app-quiz
-                [questions]="countingPageQuestions">
-            </app-quiz>
-      </p-tabpanel>
-    </p-tabpanels>
-  </p-tabs>
-</div>
+                <h3>Practice Problems</h3>
+                <ul>
+                  <li>5 sandwiches × 3 drinks = ?</li>
+                  <li>4 clubs × 6 sports = ?</li>
+                  <li>2 letters (26 choices each) × 3 digits = ?</li>
+                </ul>
 
-        
-    </p-accordion>
+              </p-accordion-content>
+            </p-accordion-panel>
+
+            <!-- Panel 2: Factorials -->
+            <p-accordion-panel value="1">
+              <p-accordion-header class="accordionHeader">
+                <u>2. Factorials</u>
+              </p-accordion-header>
+
+              <p-accordion-content>
+
+                <h3>What Is a Factorial?</h3>
+                <p>
+                  A factorial counts the number of ways to arrange <b>n distinct objects</b>.  
+                  It is defined as:
+                  <br><br>
+                  <b>n! = n × (n − 1) × (n − 2) × ... × 1</b>
+                </p>
+
+                <h3>Why Factorials Are Useful</h3>
+                <p>
+                  Factorials appear in any situation involving ordering, such as lining up 
+                  people or arranging books.
+                </p>
+
+                <h3>Worked Example</h3>
+                <p>
+                  How many ways can 5 students line up?
+                  <br><br>
+                  <b>5! = 120</b>
+                </p>
+
+                <h3>Practice Problems</h3>
+                <ul>
+                  <li>Compute 6!</li>
+                  <li>Number of ways to arrange 7 books.</li>
+                  <li>How many finishing orders for 8 runners?</li>
+                </ul>
+
+                <h3>Factorial Calculator</h3>
+                <div class="button-row">
+                  <p-inputnumber [(ngModel)]="factorialInput" inputId="factorialinput"></p-inputnumber>
+                  <p-button (click)="onFactorialCalculate()" styleClass="p-button-text" label="Compute"></p-button>
+                </div>
+
+                <div class="interactiveToolText">
+                  Result: {{ factorialResult }}
+                </div>
+
+              </p-accordion-content>
+            </p-accordion-panel>
+
+            <!-- Panel 3: Permutations -->
+            <p-accordion-panel value="2">
+              <p-accordion-header class="accordionHeader">
+                <u>3. Permutations</u>
+              </p-accordion-header>
+
+              <p-accordion-content>
+
+                <h3>What Is a Permutation?</h3>
+                <p>
+                  A permutation counts the number of <b>ordered selections</b> of <b>r items from n</b>.  
+                  The order matters.
+                  <br><br>
+                  Formula:
+                  <br>
+                  <b>P(n, r) = n! / (n − r)!</b>
+                </p>
+
+                <h3>When Do We Use Permutations?</h3>
+                <p>Use permutations whenever arrangement affects the outcome:</p>
+                <ul>
+                  <li>Assigning officer roles</li>
+                  <li>Determining race outcomes</li>
+                  <li>Arranging trophies or books</li>
+                </ul>
+
+                <h3>Worked Example</h3>
+                <p>
+                  Choose 3 officers (President, VP, Treasurer) from 6 students:
+                  <br><br>
+                  <b>P(6, 3) = 6 × 5 × 4 = 120</b>
+                </p>
+
+                <h3>Practice Problems</h3>
+                <ul>
+                  <li>3-letter codes from 8 letters</li>
+                  <li>Top 3 positions from 5 runners</li>
+                  <li>Arrange 4 books chosen from 10</li>
+                </ul>
+
+                <h3>Permutation Calculator</h3>
+                <div class="button-row">
+                  <p-inputnumber [(ngModel)]="permN" placeholder="n"></p-inputnumber>
+                  <p-inputnumber [(ngModel)]="permR" placeholder="r"></p-inputnumber>
+                  <p-button (click)="onPermutationCalculate()" styleClass="p-button-text" label="Compute"></p-button>
+                </div>
+
+                <div class="interactiveToolText">
+                  Result: {{ permResult }}
+                </div>
+
+              </p-accordion-content>
+            </p-accordion-panel>
+
+            <!-- Panel 4: Combinations -->
+            <p-accordion-panel value="3">
+              <p-accordion-header class="accordionHeader">
+                <u>4. Combinations</u>
+              </p-accordion-header>
+
+              <p-accordion-content>
+
+                <h3>What Is a Combination?</h3>
+                <p>
+                  A combination counts the number of <b>unordered selections</b> of r items from n.  
+                  Order does NOT matter.
+                  <br><br>
+                  Formula:
+                  <br>
+                  <b>C(n, r) = n! / (r! (n − r)!)</b>
+                </p>
+
+                <h3>When Do We Use Combinations?</h3>
+                <ul>
+                  <li>Selecting committee members</li>
+                  <li>Choosing lottery numbers</li>
+                  <li>Selecting toppings</li>
+                </ul>
+
+                <h3>Worked Example</h3>
+                <p>
+                  Choose 3 toppings from 10:
+                  <br><br>
+                  <b>C(10, 3) = 120</b>
+                </p>
+
+                <h3>Practice Problems</h3>
+                <ul>
+                  <li>Choose 4 from 12</li>
+                  <li>6-number lottery from 49</li>
+                  <li>Select 5 songs from 15</li>
+                </ul>
+
+                <h3>Combination Calculator</h3>
+                <div class="button-row">
+                  <p-inputnumber [(ngModel)]="combN" placeholder="n"></p-inputnumber>
+                  <p-inputnumber [(ngModel)]="combR" placeholder="r"></p-inputnumber>
+                  <p-button (click)="onCombinationCalculate()" styleClass="p-button-text" label="Compute"></p-button>
+                </div>
+
+                <div class="interactiveToolText">
+                  Result: {{ combResult }}
+                </div>
+
+              </p-accordion-content>
+            </p-accordion-panel>
+
+            <!-- Panel 5: Subsets -->
+            <p-accordion-panel value="4">
+              <p-accordion-header class="accordionHeader">
+                <u>5. Subsets & Power Sets</u>
+              </p-accordion-header>
+
+              <p-accordion-content>
+
+                <h3>What Is a Subset?</h3>
+                <p>
+                  A subset is any selection of elements from a set.
+                  A set with <b>n elements</b> has <b>2ⁿ subsets</b>.
+                </p>
+
+                <h3>Why 2ⁿ Subsets?</h3>
+                <p>
+                  Each element has two choices:
+                  <br>• Include it  
+                  <br>• Exclude it  
+                  <br><br>
+                  So total subsets = <b>2 × 2 × ... × 2 = 2ⁿ</b>
+                </p>
+
+                <h3>Worked Example</h3>
+                <p>
+                  Consider the set {{ '{' }}a, b, c{{ '}' }}.
+                  <br><br>
+                  Number of subsets = <b>2³ = 8</b>
+                </p>
+
+                <h3>Practice Problems</h3>
+                <ul>
+                  <li>How many subsets does a 4-element set have?</li>
+                  <li>List all subsets of {{ '{' }}1, 2{{ '}' }}</li>
+                  <li>How many subsets does a 10-element set have?</li>
+                </ul>
+
+              </p-accordion-content>
+            </p-accordion-panel>
+
+          </p-tabpanel>
+
+          <!-- EXERCISES TAB -->
+          <p-tabpanel value="1">
+            <h3>Exercises</h3>
+            <p>
+              Practice factorials, permutations, combinations, and subset counting.
+            </p>
+          </p-tabpanel>
+
+          <!-- QUIZ TAB -->
+          <p-tabpanel value="2">
+            <h3>Counting Quiz</h3>
+            <app-quiz [questions]="countingQuestions"></app-quiz>
+          </p-tabpanel>
+
+        </p-tabpanels>
+      </p-tabs>
+    </div>
+
+  </p-accordion>
 </div>

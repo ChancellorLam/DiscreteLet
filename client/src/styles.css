@@ -36,6 +36,9 @@ html, body, app-root {
   --p-tabs-tab-active-border-color:var(--background);
 
   --p-accordion-content-background: #8AA08A;
+  --p-card-background: #8AA08A;
+  --p-card-color: #000000;
+  --p-card-shadow: #000000;
 }
 
 /* Text elements */
