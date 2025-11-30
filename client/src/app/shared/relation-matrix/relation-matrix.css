@@ -1,0 +1,32 @@
+.relation-matrix-container {
+  background: #eef5ff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.input-block {
+  margin-bottom: 14px;
+}
+
+.matrix-table {
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.matrix-table th,
+.matrix-table td {
+  border: 1px solid #555;
+  padding: 8px 14px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.matrix-table td.on {
+  background: #4caf50;
+  color: white;
+}
+
+.matrix-table td.off {
+  background: #fff;
+}
