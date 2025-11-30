@@ -1,0 +1,36 @@
+.ops-container {
+  padding: 20px;
+  border-radius: 12px;
+  background: #f3f6ff;
+}
+
+.operation-select {
+  margin-bottom: 12px;
+}
+
+.pair-section, .matrix-section {
+  margin-bottom: 20px;
+}
+
+.matrix {
+  border-collapse: collapse;
+}
+
+.matrix td {
+  border: 1px solid #444;
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.result-title {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.result {
+  font-size: 1.1rem;
+  background: #fff;
+  padding: 6px;
+  border-radius: 6px;
+}

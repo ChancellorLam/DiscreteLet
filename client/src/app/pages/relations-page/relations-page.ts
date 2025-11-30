@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 import { DragAndDropComponent, Choice, DropZone } from '../../shared/drag-and-drop/drag-and-drop';
+import { RelationOps } from '../../shared/relation-ops/relation-ops';
 
 // stucture for drag-drop results
 interface DragDropResult {
@@ -33,7 +34,7 @@ interface Question {
 @Component({
   selector: 'app-relations-page',
   standalone: true,
-  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TableModule, TabsModule, QuizComponent, DragAndDropComponent],
+  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TableModule, TabsModule, QuizComponent, DragAndDropComponent, RelationOps],
   templateUrl: './relations-page.html',
   styleUrls: ['./relations-page.css']
 })
