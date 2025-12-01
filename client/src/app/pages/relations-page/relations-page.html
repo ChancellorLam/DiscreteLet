@@ -1,472 +1,496 @@
-<div class="card flex justify-content-center">
-  <!-- Accordion component with multiple panels allowed -->
-  <p-accordion #accordion [(value)]="activeTabs" multiple="true">
+<div class="main-page-container">
+  <div class="card flex justify-content-center">
+    <!-- Accordion component with multiple panels allowed -->
+    <p-accordion #accordion [(value)]="activeTabs" multiple="true">
 
-    <!--Tab Components-->
-    <div class="card">
-      <p-tabs [(value)]="activeTab">
-        <p-tablist>
-          <p-tab value="0">Lessons</p-tab>
-          <p-tab value="1">Quiz</p-tab>
-          <p-tab value="2">Unit Test</p-tab>
-        </p-tablist>
+      <!--Tab Components-->
+      <div class="card">
+        <p-tabs [(value)]="activeTab">
+          <p-tablist>
+            <p-tab value="0">Lessons</p-tab>
+            <p-tab value="1">Quiz</p-tab>
+            <p-tab value="2">Unit Test</p-tab>
+          </p-tablist>
 
-        <p-tabpanels>
-          <p-tabpanel value="0">
-            <h3>Relations Lessons
-              <p-button (click)="toggleAll()" styleClass="p-button-text"
-                        [label]="isExpanded ? 'Collapse All' : 'Expand All'">
-              </p-button>
-            </h3>
-            <!-- Panel 1 -->
-            <p-accordion-panel value="0">
-              <p-accordion-header><u>Relations Introduction:</u></p-accordion-header>
-              <p-accordion-content>
-                <p class="m-0">
-                  In Discrete Mathematics, a relation is a way of describing how elements of one set
-                  are connected to elements of another
-                  set, formally defined as a subset of the Cartesian product of two sets. Relations
-                  are fundamental in representing
-                  associations such as “is equal to,” “is less than,” or “divides,” and they form the
-                  basis for many mathematical and
-                  computational concepts. By studying relations, we can analyze their properties (like
-                  reflexivity, symmetry, and
-                  transitivity), represent them using matrices or graphs, perform operations on them
-                  (such as union, intersection,
-                  and composition), and identify special forms like equivalence relations that
-                  partition a set into distinct classes.
-                </p>
-              </p-accordion-content>
-            </p-accordion-panel>
-
-            <!-- Panel 2 -->
-            <p-accordion-panel value="1">
-              <p-accordion-header><u>1. Relations and their Properties</u></p-accordion-header>
-              <p-accordion-content>
-                <!--Lesson content-->
-                <p class="m-0">
-                  Definition: A relation RRR from a set AAA to a set BBB is a subset of the Cartesian
-                  product A×BA \times BA×B.
-                  That is,
-                  R⊆A×BR \subseteq A \times BR⊆A×B
-                  Each element of RRR is an ordered pair (a,b)(a, b)(a,b) where a∈Aa \in Aa∈A and b∈Bb
-                  \in Bb∈B.
-                  If (a,b)∈R(a,b) \in R(a,b)∈R, we say “a is related to b” and write aRbaRbaRb.
-                </p>
-                <div>
-                  <h4>Example</h4>
-                  <p>
-                    Let A = &#123;1, 2, 3&#125; and define a relation
+          <p-tabpanels>
+            <p-tabpanel value="0">
+              <h3>Relations Lessons
+                <p-button (click)="toggleAll()" styleClass="p-button-text"
+                          [label]="isExpanded ? 'Collapse All' : 'Expand All'">
+                </p-button>
+              </h3>
+              <!-- Panel 1 -->
+              <p-accordion-panel value="0">
+                <p-accordion-header>
+                  <div class="topic-header header-font-size">Relations Introduction:</div>
+                </p-accordion-header>
+                <p-accordion-content>
+                  <p class="indent-content">
+                    In Discrete Mathematics, a relation is a way of describing how elements of one set
+                    are connected to elements of another
+                    set, formally defined as a subset of the Cartesian product of two sets. Relations
+                    are fundamental in representing
+                    associations such as “is equal to,” “is less than,” or “divides,” and they form the
+                    basis for many mathematical and
+                    computational concepts. By studying relations, we can analyze their properties (like
+                    reflexivity, symmetry, and
+                    transitivity), represent them using matrices or graphs, perform operations on them
+                    (such as union, intersection,
+                    and composition), and identify special forms like equivalence relations that
+                    partition a set into distinct classes.
                   </p>
-                  <p>
-                    R = &#123;(1, 2), (2, 3), (3, 1)&#125;
-                  </p>
-                  <p>
-                    Then 1&nbsp;R&nbsp;2, 2&nbsp;R&nbsp;3, and 3&nbsp;R&nbsp;1.
-                  </p>
-                </div>
-                <br>
+                </p-accordion-content>
+              </p-accordion-panel>
 
-                <div>
-                  <h4>Properties of Relations</h4>
-                  <p>For a relation <b>R</b> on a set <b>A</b>:</p>
+              <!-- Panel 2 -->
+              <p-accordion-panel value="1">
+                <p-accordion-header>
+                  <div class="topic-header header-font-size">I. Relations and their Properties</div>
+                </p-accordion-header>
+                <p-accordion-content>
+                  <div class="indent-content">
+                    <!--Lesson content-->
+                    <p class="m-0">
+                      Definition: A relation RRR from a set AAA to a set BBB is a subset of the Cartesian
+                      product A×BA \times BA×B.
+                      That is,
+                      R⊆A×BR \subseteq A \times BR⊆A×B
+                      Each element of RRR is an ordered pair (a,b)(a, b)(a,b) where a∈Aa \in Aa∈A and b∈Bb
+                      \in Bb∈B.
+                      If (a,b)∈R(a,b) \in R(a,b)∈R, we say “a is related to b” and write aRbaRbaRb.
+                    </p>
+                    <div>
+                      <h4>Example</h4>
+                      <p>
+                        Let A = &#123;1, 2, 3&#125; and define a relation
+                      </p>
+                      <p>
+                        R = &#123;(1, 2), (2, 3), (3, 1)&#125;
+                      </p>
+                      <p>
+                        Then 1&nbsp;R&nbsp;2, 2&nbsp;R&nbsp;3, and 3&nbsp;R&nbsp;1.
+                      </p>
+                    </div>
+                    <br>
 
-                  <p>Reflexive:<br>
-                    (a, a) &isin; R for all a &isin; A.
-                  </p>
+                    <div>
+                      <h4>Properties of Relations</h4>
+                      <p>For a relation <b>R</b> on a set <b>A</b>:</p>
 
-                  <p>Symmetric:<br>
-                    If (a, b) &isin; R, then (b, a) &isin; R.
-                  </p>
+                      <p>Reflexive:<br>
+                        (a, a) &isin; R for all a &isin; A.
+                      </p>
 
-                  <p>Antisymmetric:<br>
-                    If (a, b) &isin; R and (b, a) &isin; R, then a = b.
-                  </p>
+                      <p>Symmetric:<br>
+                        If (a, b) &isin; R, then (b, a) &isin; R.
+                      </p>
 
-                  <p>Transitive:<br>
-                    If (a, b) &isin; R and (b, c) &isin; R, then (a, c) &isin; R.
-                  </p>
-                </div>
+                      <p>Antisymmetric:<br>
+                        If (a, b) &isin; R and (b, a) &isin; R, then a = b.
+                      </p>
 
-                <!--Example Properties table-->
-                <div>
-                  <table>
-                    <tr>
-                      <th>Property</th>
-                      <th>Example Relation on &#123;1,2,3&#125;</th>
-                    </tr>
-                    <tr>
-                      <td>Reflexive</td>
-                      <td>&#123;(1,1), (2,2), (3,3)&#125;</td>
-                    </tr>
-                    <tr>
-                      <td>Symmetric</td>
-                      <td>&#123;(1,2), (2,1)&#125;</td>
-                    </tr>
-                    <tr>
-                      <td>Antisymmetric</td>
-                      <td>&#123;(1,2)&#125;</td>
-                    </tr>
-                    <tr>
-                      <td>Transitive</td>
-                      <td>&#123;(1,2), (2,3), (1,3)&#125;</td>
-                    </tr>
-                  </table>
+                      <p>Transitive:<br>
+                        If (a, b) &isin; R and (b, c) &isin; R, then (a, c) &isin; R.
+                      </p>
+                    </div>
 
-                </div>
-                <br/><br/>
-                <!--Call drag and drop component. Use relations-page data-->
-                <h3>Relations Practice (on Relation &#123;1,2,3&#125;)</h3>
-                <app-drag-and-drop [availableChoices]="relationChoices" [dropZones]="relationDropZones"
-                                   (choicesChanged)="handleChoicesChanged($event)"
-                                   (resultsChecked)="handleResults($event)">
-                </app-drag-and-drop>
+                    <!--Example Properties table-->
+                    <div>
+                      <table>
+                        <tr>
+                          <th>Property</th>
+                          <th>Example Relation on &#123;1,2,3&#125;</th>
+                        </tr>
+                        <tr>
+                          <td>Reflexive</td>
+                          <td>&#123;(1,1), (2,2), (3,3)&#125;</td>
+                        </tr>
+                        <tr>
+                          <td>Symmetric</td>
+                          <td>&#123;(1,2), (2,1)&#125;</td>
+                        </tr>
+                        <tr>
+                          <td>Antisymmetric</td>
+                          <td>&#123;(1,2)&#125;</td>
+                        </tr>
+                        <tr>
+                          <td>Transitive</td>
+                          <td>&#123;(1,2), (2,3), (1,3)&#125;</td>
+                        </tr>
+                      </table>
 
-                <!-- Display feedback summary -->
-                <div *ngIf="feedbackMessages.length > 0" class="feedback-summary">
-                  <h4>Feedback Summary</h4>
-                  <ul>
-                    <li *ngFor="let fb of feedbackMessages">{{ fb }}</li>
-                  </ul>
-                </div>
+                    </div>
+                    <br/><br/>
+                    <!--Call drag and drop component. Use relations-page data-->
+                    <h3>Relations Practice (on Relation &#123;1,2,3&#125;)</h3>
+                    <app-drag-and-drop [availableChoices]="relationChoices" [dropZones]="relationDropZones"
+                                       (choicesChanged)="handleChoicesChanged($event)"
+                                       (resultsChecked)="handleResults($event)">
+                    </app-drag-and-drop>
 
-              </p-accordion-content>
-            </p-accordion-panel>
+                    <!-- Display feedback summary -->
+                    <div *ngIf="feedbackMessages.length > 0" class="feedback-summary">
+                      <h4>Feedback Summary</h4>
+                      <ul>
+                        <li *ngFor="let fb of feedbackMessages">{{ fb }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
 
-            <!-- Panel 3 -->
-            <p-accordion-panel value="2">
-              <p-accordion-header><u>2. Representing Relations Using Matrices</u></p-accordion-header>
-              <p-accordion-content>
-                <p class="m-0">
-                  Let's say you have a set:</p>
-                <li>A = &#123;a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub>&#125;- a list of elements
-                </li>
-                <p>Now, suppose there's a relation <strong>R</strong> defined on this set. That means
-                  certain pairs of elements (like
-                  (a<sub>1</sub>, a<sub>2</sub>)) are considered "related" according to some
-                  rule.<br>We can represent this relation
-                  using a matrix <strong>M_R</strong>, which is an n * n grid of 1s and 0s:</p>
-                <li>
-                  M_R [i],[j] = 1 if the pair (a<sub>i</sub>, a<sub>j</sub>) is in the relation R
-                  (i.e., they are related).
-                </li>
-                <li>
-                  M_R [i],[j] = 0 if the pair (a<sub>i</sub>, a<sub>j</sub>) is not in the relation R.
-                </li>
+              <!-- Panel 3 -->
+              <p-accordion-panel value="2">
+                <p-accordion-header>
+                  <div class="topic-header header-font-size">II. Representing Relations Using Matrices</div>
+                </p-accordion-header>
+                <p-accordion-content>
+                  <div class="indent-content">
+                    <p class="m-0">
+                      Let's say you have a set:
+                    </p>
+                    <ul>
+                      <li>A = &#123;a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub>&#125;- a list of elements
+                      </li>
+                      <p>Now, suppose there's a relation <strong>R</strong> defined on this set. That means
+                        certain pairs of elements (like
+                        (a<sub>1</sub>, a<sub>2</sub>)) are considered "related" according to some
+                        rule.<br>We can represent this relation
+                        using a matrix <strong>M_R</strong>, which is an n * n grid of 1s and 0s:</p>
+                      <li>
+                        M_R [i],[j] = 1 if the pair (a<sub>i</sub>, a<sub>j</sub>) is in the relation R
+                        (i.e., they are related).
+                      </li>
+                      <li>
+                        M_R [i],[j] = 0 if the pair (a<sub>i</sub>, a<sub>j</sub>) is not in the relation R.
+                      </li>
+                    </ul>
+                    <br>
 
-                <br>
-
-                <h4>Example</h4>
-                <p>If A = &#123;a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>&#125; and R =
-                  &#123;(a<sub>1</sub>, a<sub>2</sub>), (a<sub>
-                    2</sub>, a<sub>3</sub>)&#125;, then the matrix M_R looks like:
-                </p>
-                <table>
-                  <tr>
-                    <th></th>
-                    <th>a<sub>1</sub></th>
-                    <th>a<sub>2</sub></th>
-                    <th>a<sub>3</sub></th>
-                  </tr>
-                  <tr>
-                    <th>a<sub>1</sub></th>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>0</td>
-                  </tr>
-                  <tr>
-                    <th>a<sub>2</sub></th>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>1</td>
-                  </tr>
-                  <tr>
-                    <th>a<sub>3</sub></th>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                  </tr>
-                </table>
-                <p>Each row and column corresponds to an element in A, and the entry at position (i, j)
-                  tells you whether
-                  a<sub>i</sub> is related to a<sub>j</sub>.
-                </p>
-              </p-accordion-content>
-            </p-accordion-panel>
-
-            <!-- Panel 4-->
-            <p-accordion-panel value="3">
-              <p-accordion-header><u>3. Operations on Relations</u></p-accordion-header>
-              <p-accordion-content>
-                <h3>Common Operations</h3>
-                <p class="m-0">Let the set A = &#123;1, 2, 3&#125;<br/>And two relations on A:</p>
-                <li>R<sub>1</sub> = &#123;(1,2), (2,3), (3,1)&#125;</li>
-                <li>R<sub>2</sub> = &#123;(2,3), (3,1), (3,2)&#125;</li>
-                <br/>
-                <table>
-                  <tr>
-                    <th>Operation</th>
-                    <th>Symbol</th>
-                    <th>Defintion</th>
-                    <th>Description</th>
-                    <th>Result</th>
-                  </tr>
-                  <tr>
-                    <th>Union</th>
-                    <td>R<sub>1</sub> ∪ R<sub>2</sub></td>
-                    <td>All pairs in R<sub>1</sub> or R<sub>2</sub></td>
-                    <td>Combines both relations</td>
-                    <td>&#123;(1,2), (2,3), (3,1), (3,2)&#125;</td>
-                  </tr>
-                  <tr>
-                    <th>Intersection</th>
-                    <td>R<sub>1</sub> ∩ R<sub>2</sub></td>
-                    <td>Only pairs in both R<sub>1</sub> and R<sub>2</sub></td>
-                    <td>Finds common pairs</td>
-                    <td>&#123;(2,3), (3,1)&#125;</td>
-                  </tr>
-                  <tr>
-                    <th>Difference</th>
-                    <td>R<sub>1</sub> - R<sub>2</sub></td>
-                    <td>Pairs in R<sub>1</sub> that aren't in R<sub>2</sub></td>
-                    <td>Subtracts one relation from another</td>
-                    <td>&#123;(1,2)&#125;</td>
-                  </tr>
-                  <tr>
-                    <th>Inverse</th>
-                    <td>R<sub>1</sub><sup>-1</sup></td>
-                    <td>Flip each pair: (a,b) becomes (b,a)</td>
-                    <td>Reverses direction of relation</td>
-                    <td>&#123;(2,1), (3,2), (1,3)&#125;</td>
-                  </tr>
-                  <tr>
-                    <th>Composition</th>
-                    <td>R<sub>1</sub> ∘ R<sub>2</sub></td>
-                    <td>Pairs (a, c) where there's a <strong>b</strong> such that (a, b) ∈
-                      R<sub>1</sub>
-                      and (b, c) ∈ R<sub>2</sub></td>
-                    <td>Chains relations through a middle</td>
-                    <td>&#123;(1,3), (2,1)&#125;</td>
-                  </tr>
-                </table>
-                <br/>
-
-                <div>
-                  <h3>Matrix Operations</h3>
-                  <p>Let the set A = &#123;1, 2, 3&#125;<br/>And two relations on A:</p>
-                  <li>M<sub>1</sub> =
+                    <h4>Example</h4>
+                    <p>If A = &#123;a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>&#125; and R =
+                      &#123;(a<sub>1</sub>, a<sub>2</sub>), (a<sub>
+                        2</sub>, a<sub>3</sub>)&#125;, then the matrix M_R looks like:
+                    </p>
                     <table>
                       <tr>
-                        <td>[ 0 1 0 ]</td>
+                        <th></th>
+                        <th>a<sub>1</sub></th>
+                        <th>a<sub>2</sub></th>
+                        <th>a<sub>3</sub></th>
                       </tr>
                       <tr>
-                        <td>[ 0 0 1 ]</td>
+                        <th>a<sub>1</sub></th>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
                       </tr>
                       <tr>
-                        <td>[ 1 0 0 ]</td>
+                        <th>a<sub>2</sub></th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                      </tr>
+                      <tr>
+                        <th>a<sub>3</sub></th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
                       </tr>
                     </table>
-                  </li>
-                  <li>M<sub>2</sub> =
+                    <p>Each row and column corresponds to an element in A, and the entry at position (i, j)
+                      tells you whether
+                      a<sub>i</sub> is related to a<sub>j</sub>.
+                    </p>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
+
+              <!-- Panel 4-->
+              <p-accordion-panel value="3">
+                <p-accordion-header>
+                  <div class="topic-header header-font-size">III. Operations on Relations</div>
+                </p-accordion-header>
+                <p-accordion-content>
+                  <div class="indent-content">
+                    <h3>Common Operations</h3>
+                    <p class="m-0">
+                      Let the set A = &#123;1, 2, 3&#125;<br/>And two relations on A:
+                    </p>
+                    <ul>
+                      <li>R<sub>1</sub> = &#123;(1,2), (2,3), (3,1)&#125;</li>
+                      <li>R<sub>2</sub> = &#123;(2,3), (3,1), (3,2)&#125;</li>
+                    </ul>
+                    <br/>
                     <table>
                       <tr>
-                        <td>[ 0 0 0 ]</td>
+                        <th>Operation</th>
+                        <th>Symbol</th>
+                        <th>Defintion</th>
+                        <th>Description</th>
+                        <th>Result</th>
                       </tr>
                       <tr>
-                        <td>[ 0 0 1 ]</td>
+                        <th>Union</th>
+                        <td>R<sub>1</sub> ∪ R<sub>2</sub></td>
+                        <td>All pairs in R<sub>1</sub> or R<sub>2</sub></td>
+                        <td>Combines both relations</td>
+                        <td>&#123;(1,2), (2,3), (3,1), (3,2)&#125;</td>
                       </tr>
                       <tr>
-                        <td>[ 0 1 0 ]</td>
+                        <th>Intersection</th>
+                        <td>R<sub>1</sub> ∩ R<sub>2</sub></td>
+                        <td>Only pairs in both R<sub>1</sub> and R<sub>2</sub></td>
+                        <td>Finds common pairs</td>
+                        <td>&#123;(2,3), (3,1)&#125;</td>
+                      </tr>
+                      <tr>
+                        <th>Difference</th>
+                        <td>R<sub>1</sub> - R<sub>2</sub></td>
+                        <td>Pairs in R<sub>1</sub> that aren't in R<sub>2</sub></td>
+                        <td>Subtracts one relation from another</td>
+                        <td>&#123;(1,2)&#125;</td>
+                      </tr>
+                      <tr>
+                        <th>Inverse</th>
+                        <td>R<sub>1</sub><sup>-1</sup></td>
+                        <td>Flip each pair: (a,b) becomes (b,a)</td>
+                        <td>Reverses direction of relation</td>
+                        <td>&#123;(2,1), (3,2), (1,3)&#125;</td>
+                      </tr>
+                      <tr>
+                        <th>Composition</th>
+                        <td>R<sub>1</sub> ∘ R<sub>2</sub></td>
+                        <td>Pairs (a, c) where there's a <strong>b</strong> such that (a, b) ∈
+                          R<sub>1</sub>
+                          and (b, c) ∈ R<sub>2</sub></td>
+                        <td>Chains relations through a middle</td>
+                        <td>&#123;(1,3), (2,1)&#125;</td>
                       </tr>
                     </table>
-                  </li>
+                    <br/>
 
-                  <br/>
-                  <table>
-                    <tr>
-                      <th>Operation</th>
-                      <th>Symbol</th>
-                      <th>Matrix Rule</th>
-                      <th>Description</th>
-                      <th>Matrix Result</th>
-                    </tr>
-                    <tr>
-                      <th>Union</th>
-                      <td>R<sub>1</sub> ∪ R<sub>2</sub></td>
-                      <td>Logical <strong>OR</strong>: M<sub>1</sub>[i][j] v M<sub>2</sub></td>
-                      <td>Combines related pairs from both matrices</td>
-                      <td>
-                        <table>
-                          <tr>
-                            <td>[ 0 1 0 ]</td>
-                          </tr>
-                          <tr>
-                            <td>[ 0 0 1 ]</td>
-                          </tr>
-                          <tr>
-                            <td>[ 1 1 0 ]</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Intersection</th>
-                      <td>R<sub>1</sub> ∩ R<sub>2</sub></td>
-                      <td>Logical <strong>AND</strong>: M<sub>1</sub>[i][j] ∧ M<sub>2</sub></td>
-                      <td>Keeps only pairs common to both matrices</td>
-                      <td>
-                        <table>
-                          <tr>
-                            <td>[ 0 0 0 ]</td>
-                          </tr>
-                          <tr>
-                            <td>[ 0 0 1 ]</td>
-                          </tr>
-                          <tr>
-                            <td>[ 0 0 0 ]</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Complement</th>
-                      <td>¬R</td>
-                      <td>Logical <strong>NOT</strong>: ¬M[i][j]</td>
-                      <td>Flips 1s to 0s and 0s to 1s</td>
-                      <td>
-                        <table>
-                          <tr>
-                            <td>[ 1 0 1 ]</td>
-                          </tr>
-                          <tr>
-                            <td>[ 1 1 0 ]</td>
-                          </tr>
-                          <tr>
-                            <td>[ 0 1 1 ]</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Composition</th>
-                      <td>R<sub>1</sub> &#9092; R<sub>2</sub></td>
-                      <td>Boolean matrix multiplication</td>
-                      <td>Connects relations via intermediate steps</td>
-                      <td>
-                        <table>
-                          <tr>
-                            <td>[ 0 1 0 ]</td>
-                          </tr>
-                          <tr>
-                            <td>[ 0 0 0 ]</td>
-                          </tr>
-                          <tr>
-                            <td>[ 0 0 1 ]</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
+                    <div>
+                      <h3>Matrix Operations</h3>
+                      <p>Let the set A = &#123;1, 2, 3&#125;<br/>And two relations on A:</p>
+                      <ul>
+                        <li>M<sub>1</sub> =
+                          <table>
+                            <tr>
+                              <td>[ 0 1 0 ]</td>
+                            </tr>
+                            <tr>
+                              <td>[ 0 0 1 ]</td>
+                            </tr>
+                            <tr>
+                              <td>[ 1 0 0 ]</td>
+                            </tr>
+                          </table>
+                        </li>
+                        <li>M<sub>2</sub> =
+                          <table>
+                            <tr>
+                              <td>[ 0 0 0 ]</td>
+                            </tr>
+                            <tr>
+                              <td>[ 0 0 1 ]</td>
+                            </tr>
+                            <tr>
+                              <td>[ 0 1 0 ]</td>
+                            </tr>
+                          </table>
+                        </li>
+                      </ul>
+                      <br/>
+                      <table>
+                        <tr>
+                          <th>Operation</th>
+                          <th>Symbol</th>
+                          <th>Matrix Rule</th>
+                          <th>Description</th>
+                          <th>Matrix Result</th>
+                        </tr>
+                        <tr>
+                          <th>Union</th>
+                          <td>R<sub>1</sub> ∪ R<sub>2</sub></td>
+                          <td>Logical <strong>OR</strong>: M<sub>1</sub>[i][j] v M<sub>2</sub></td>
+                          <td>Combines related pairs from both matrices</td>
+                          <td>
+                            <table>
+                              <tr>
+                                <td>[ 0 1 0 ]</td>
+                              </tr>
+                              <tr>
+                                <td>[ 0 0 1 ]</td>
+                              </tr>
+                              <tr>
+                                <td>[ 1 1 0 ]</td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Intersection</th>
+                          <td>R<sub>1</sub> ∩ R<sub>2</sub></td>
+                          <td>Logical <strong>AND</strong>: M<sub>1</sub>[i][j] ∧ M<sub>2</sub></td>
+                          <td>Keeps only pairs common to both matrices</td>
+                          <td>
+                            <table>
+                              <tr>
+                                <td>[ 0 0 0 ]</td>
+                              </tr>
+                              <tr>
+                                <td>[ 0 0 1 ]</td>
+                              </tr>
+                              <tr>
+                                <td>[ 0 0 0 ]</td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Complement</th>
+                          <td>¬R</td>
+                          <td>Logical <strong>NOT</strong>: ¬M[i][j]</td>
+                          <td>Flips 1s to 0s and 0s to 1s</td>
+                          <td>
+                            <table>
+                              <tr>
+                                <td>[ 1 0 1 ]</td>
+                              </tr>
+                              <tr>
+                                <td>[ 1 1 0 ]</td>
+                              </tr>
+                              <tr>
+                                <td>[ 0 1 1 ]</td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Composition</th>
+                          <td>R<sub>1</sub> &#9092; R<sub>2</sub></td>
+                          <td>Boolean matrix multiplication</td>
+                          <td>Connects relations via intermediate steps</td>
+                          <td>
+                            <table>
+                              <tr>
+                                <td>[ 0 1 0 ]</td>
+                              </tr>
+                              <tr>
+                                <td>[ 0 0 0 ]</td>
+                              </tr>
+                              <tr>
+                                <td>[ 0 0 1 ]</td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
 
-              </p-accordion-content>
-            </p-accordion-panel>
+              <!-- Panel 5 -->
+              <p-accordion-panel value="4">
+                <p-accordion-header>
+                  <div class="topic-header header-font-size">IV. Equivalence Relations</div>
+                </p-accordion-header>
+                <p-accordion-content>
+                  <div class="indent-content">
+                    <p class="m-0">A relation R on set A is an equivalence relation if it satisfies the
+                      following:</p>
+                    <table>
+                      <tr>
+                        <th>Property</th>
+                        <th>What It Means</th>
+                        <th>In Simple Terms</th>
+                      </tr>
+                      <tr>
+                        <td>Reflexivity</td>
+                        <td>For every element <b>a</b> in the set, the pair <b>(a, a)</b> is in the
+                          relation <b>R</b>.
+                        </td>
+                        <td>Every element is related to itself.</td>
+                      </tr>
+                      <tr>
+                        <td>Symmetry</td>
+                        <td>If <b>(a, b)</b> is in <b>R</b>, then <b>(b, a)</b> must also be in
+                          <b>R</b>.
+                        </td>
+                        <td>If <b>a</b> is related to <b>b</b>, then <b>b</b> is related to <b>a</b>
+                          too.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Transitivity</td>
+                        <td>If <b>(a, b)</b> and <b>(b, c)</b> are in <b>R</b>, then <b>(a, c)</b> must
+                          also be in <b>R</b>.
+                        </td>
+                        <td>If <b>a</b> is related to <b>b</b>, and <b>b</b> to <b>c</b>, then <b>a</b>
+                          is related to <b>c</b>.
+                        </td>
+                      </tr>
+                    </table>
+                    <br/>
 
-            <!-- Panel 5 -->
-            <p-accordion-panel value="4">
-              <p-accordion-header><u>4. Equivalence Relations</u></p-accordion-header>
-              <p-accordion-content>
-                <p class="m-0">A relation R on set A is an equivalence relation if it satisfies the
-                  following:</p>
-                <table>
-                  <tr>
-                    <th>Property</th>
-                    <th>What It Means</th>
-                    <th>In Simple Terms</th>
-                  </tr>
-                  <tr>
-                    <td>Reflexivity</td>
-                    <td>For every element <b>a</b> in the set, the pair <b>(a, a)</b> is in the
-                      relation <b>R</b>.
-                    </td>
-                    <td>Every element is related to itself.</td>
-                  </tr>
-                  <tr>
-                    <td>Symmetry</td>
-                    <td>If <b>(a, b)</b> is in <b>R</b>, then <b>(b, a)</b> must also be in
-                      <b>R</b>.
-                    </td>
-                    <td>If <b>a</b> is related to <b>b</b>, then <b>b</b> is related to <b>a</b>
-                      too.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Transitivity</td>
-                    <td>If <b>(a, b)</b> and <b>(b, c)</b> are in <b>R</b>, then <b>(a, c)</b> must
-                      also be in <b>R</b>.
-                    </td>
-                    <td>If <b>a</b> is related to <b>b</b>, and <b>b</b> to <b>c</b>, then <b>a</b>
-                      is related to <b>c</b>.
-                    </td>
-                  </tr>
-                </table>
-                <br/>
+                    <h4>Example</h4>
+                    <p><b>Given</b>: A = &#123;1, 2, 3, 4, 5, 6&#125;</p>
+                    <p>And the relation R is defined by aRb ⟺ a≡b(mod3)</p>
+                    <p>This means two numbers are related if they produce the same remaineder when divided
+                      by 3.</p>
 
-                <h4>Example</h4>
-                <p><b>Given</b>: A = &#123;1, 2, 3, 4, 5, 6&#125;</p>
-                <p>And the relation R is defined by aRb ⟺ a≡b(mod3)</p>
-                <p>This means two numbers are related if they produce the same remaineder when divided
-                  by 3.</p>
+                    <table>
+                      <tr>
+                        <td>1 mod3</td>
+                        <td>2 mod3</td>
+                        <td>3 mod3</td>
+                        <td>4 mod3</td>
+                        <td>5 mod3</td>
+                        <td>6 mod3</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>0</td>
+                      </tr>
+                    </table>
+                    <p>Then...<br/>1R4, 2R5, 3R6<br/>By definition, R is reflexive, symmetric, and
+                      transitive.</p>
 
-                <table>
-                  <tr>
-                    <td>1 mod3</td>
-                    <td>2 mod3</td>
-                    <td>3 mod3</td>
-                    <td>4 mod3</td>
-                    <td>5 mod3</td>
-                    <td>6 mod3</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>0</td>
-                  </tr>
-                </table>
-                <p>Then...<br/>1R4, 2R5, 3R6<br/>By definition, R is reflexive, symmetric, and
-                  transitive.</p>
-
-                <h4>Equivalence Classes</h4>
-                <p>The set of all elements related to a given element <i>a</i> is called its equivalent
-                  class:</p>
-                <p>[a] = &#123;b ∈ A | aRb&#125;</p>
-
-              </p-accordion-content>
-            </p-accordion-panel>
-          </p-tabpanel>
+                    <h4>Equivalence Classes</h4>
+                    <p>The set of all elements related to a given element <i>a</i> is called its equivalent
+                      class:</p>
+                    <p>[a] = &#123;b ∈ A | aRb&#125;</p>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
+            </p-tabpanel>
 
 
-          <p-tabpanel value="1">
-            <h3>Relations Quiz</h3>
-            <p-button
-              (click)="refreshQuiz()"
-              styleClass="p-button-text p-button-sm"
-              icon="pi pi-refresh"
-              label="New Questions"></p-button>
-            <app-quiz [questions]="relationQuestions">
-            </app-quiz>
-          </p-tabpanel>
+            <p-tabpanel value="1">
+              <h3>Relations Quiz</h3>
+              <p-button
+                (click)="refreshQuiz()"
+                styleClass="p-button-text p-button-sm"
+                icon="pi pi-refresh"
+                label="New Questions"></p-button>
+              <app-quiz [questions]="relationQuestions">
+              </app-quiz>
+            </p-tabpanel>
 
-          <p-tabpanel value="2">
-            <h3>Unit Test</h3>
-            <p>Relations Exam Goes HERE</p>
-          </p-tabpanel>
-        </p-tabpanels>
-      </p-tabs>
-    </div>
+            <p-tabpanel value="2">
+              <h3>Unit Test</h3>
+              <p>Relations Exam Goes HERE</p>
+            </p-tabpanel>
+          </p-tabpanels>
+        </p-tabs>
+      </div>
 
-  </p-accordion>
+    </p-accordion>
+  </div>
 </div>
