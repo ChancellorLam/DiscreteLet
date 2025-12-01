@@ -1,14 +1,14 @@
-import {Component, inject} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule} from '@angular/forms';
 import { ButtonModule} from 'primeng/button';
 import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
-import {LatexContainer} from '../../shared/components/latex-container/latex-container';
-import {LogicalExpressionService} from '../../core/services/logical-expression-service';
-import {TruthTable} from './truth-table/truth-table';
-import {TruthTableSolver} from './truth-table-solver/truth-table-solver';
+import { LatexContainer } from '../../shared/components/latex-container/latex-container';
+import { LogicalExpressionService } from '../../core/services/logical-expression-service';
+import { TruthTable } from './truth-table/truth-table';
+import { TruthTableSolver } from './truth-table-solver/truth-table-solver';
 
 @Component({
   selector: 'app-logic-page',
@@ -21,10 +21,11 @@ import {TruthTableSolver} from './truth-table-solver/truth-table-solver';
     QuizComponent,
     LatexContainer,
     TruthTable,
-    TruthTableSolver
+    TruthTableSolver,
   ],
   templateUrl: './logic-page.html',
-  styleUrl: './logic-page.css'
+  styleUrl: './logic-page.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LogicPage {
   logicalExpressionService = inject(LogicalExpressionService);
