@@ -44,7 +44,6 @@ html, body {
 
   width: 90vw;
   max-width: 1200px;
-  overflow: auto;
 
   margin: 0 auto;
   padding: 6rem;
@@ -68,6 +67,15 @@ html, body {
 
 .full-borders {
   border: 1px solid var(--border-outline-color);
+}
+
+.horizontally-center-content {
+  display: flex;
+  justify-content: center;
+}
+
+.indent-content {
+  padding-left: 1rem;
 }
 /* __________________________________________________________________________________________________________________ */
 
@@ -96,9 +104,5 @@ html, body {
 
 .primary-color-text {
   color: var(--secondary);
-}
-
-.indent-content {
-  padding-left: 1rem;
 }
 /* __________________________________________________________________________________________________________________ */
