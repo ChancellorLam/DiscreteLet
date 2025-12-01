@@ -1,17 +1,17 @@
-.primeNumChecker{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
-    border-color:aliceblue;
+.primeNumChecker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-color: aliceblue;
 }
 
-.button-row{
-    display: flex;
-    gap: 1rem;
+.button-row {
+  display: flex;
+  gap: 1rem;
 }
 
-.accordionHeader{
-    font-size: 18px;
+.accordionHeader {
+  font-size: 18px;
 }
