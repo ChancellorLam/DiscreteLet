@@ -1,21 +1,3 @@
 h2, h3 {
     text-align: center;
-    margin-top: 2rem;
-}
-
-.home-card-01{
-    border: 1px solid #000000;  
-    border-radius: 14px;
-}
-
-.home-card-02{
-    border: 1px solid #000000;  
-    border-radius: 14px;
-    border-top: none;
-}
-
-.home-card-03{
-    border: 1px solid #000000;  
-    border-radius: 14px;
-    border-top:none;
 }
