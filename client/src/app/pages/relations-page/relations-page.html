@@ -556,7 +556,9 @@
 
                     <p-tabpanel value="2">
                         <h3>Unit Test</h3>
-                        <p>Relations Exam Goes HERE</p>
+                        <p-tabpanel value="2">
+                            <app-unit-test-template [config]="relationUnitTestConfig"></app-unit-test-template>
+                        </p-tabpanel>
                     </p-tabpanel>
                 </p-tabpanels>
             </p-tabs>
