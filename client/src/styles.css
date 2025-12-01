@@ -32,11 +32,19 @@ html, body {
   width: 90vw;
   max-width: 1200px;
 
+  overflow-x: auto;
+
   margin: 0 auto;
   padding: 6rem;
 
   border: 1px solid var(--border-outline-color);
   border-radius: 6px;
+}
+/* Styling for Mobile Phones */
+@media (max-width: 768px) {
+  .main-page-container {
+    padding: 1rem;
+  }
 }
 
 .centered-flexbox-column {
