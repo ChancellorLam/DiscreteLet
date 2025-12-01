@@ -81,6 +81,10 @@ html, body {
   color: var(--secondary);
 }
 
+.header-font-size {
+  font-size: 2.16rem;
+}
+
 .important-term {
   font-weight: bold;
   text-decoration: underline;
@@ -92,5 +96,9 @@ html, body {
 
 .primary-color-text {
   color: var(--secondary);
+}
+
+.indent-content {
+  padding-left: 1rem;
 }
 /* __________________________________________________________________________________________________________________ */
