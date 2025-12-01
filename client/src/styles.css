@@ -22,12 +22,6 @@
 /* Global page setup — force light background and readable text */
 html, body, app-root {
   height: 100%;
-  background-color: #DAC7AF !important;   /* Ensures white background across app */
-  color: #000000 !important;    /* Ensures black readable text */
-  
-  /* PrimeNG menubar colors */
-  --p-menubar-background: #B39D80;
-  --p-menubar-item-link-color: #000000;
 
   /* PrimeNG accordion custom colors */
   --p-accordion-header-background: #8AA08A;
@@ -43,42 +37,13 @@ html, body, app-root {
   --p-card-shadow: #000000;
 }
 
-/* Text elements */
-h2, h3, h4, p, pre, li, table{
-  color: #000000;
-  margin-top: 0;
-}
-
 /* Accordion component styling overrides  */
 .p-accordion {
   margin-bottom: 20rem;
 }
-/* __________________________________________________________________________________________________________________ */
 
-
-/* __________________________________________________________________________________________________________________ */
-/* Reusable CSS classes for FORMATTING TEXT | */
-/* __________________________________________________________________________________________________________________ */
-.topic-header {
-  border-left: 6px solid var(--primary);
-  padding-left: 0.36vh;
-  color: var(--secondary);
+/* Interactive tool text (feedback) */
+.interactiveToolText{
+  color: #000000;
 }
 
-.header-font-size {
-  font-size: 2.16rem;
-}
-
-.important-term {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.underlined-text {
-  text-decoration: underline;
-}
-
-.primary-color-text {
-  color: var(--secondary);
-}
-/* __________________________________________________________________________________________________________________ */
