@@ -1,4 +1,6 @@
+/* __________________________________________________________________________________________________________________ */
 /* Root variables — global color palette  */
+/* __________________________________________________________________________________________________________________ */
 :root {
   --primary: #49D31A;
   --secondary: light-dark(#0F369E, #FFFFFF);
@@ -11,19 +13,25 @@
   --accent: #8AA08A;
   --invert: #755f75;
 }
+/* __________________________________________________________________________________________________________________ */
+
 
 html, body {
-  height: 100%;
+  overflow: auto;
   font-family: 'Open Sans', sans-serif;
   background-color: var(--page-background);
 }
 
+
+/* __________________________________________________________________________________________________________________ */
+/* Reusable CSS classes for LAYOUT */
+/* __________________________________________________________________________________________________________________ */
 .main-page-container {
   background-color: var(--content-background);
 
   width: 90vw;
   max-width: 1200px;
-  height: 100%;
+  overflow: auto;
 
   margin: 0 auto;
   padding: 6rem;
@@ -32,7 +40,6 @@ html, body {
   border-radius: 6px;
 }
 
-/* Reusable CSS class for centered columns*/
 .centered-flexbox-column {
   display: flex;
   flex-direction: column;
@@ -49,17 +56,28 @@ html, body {
 .full-borders {
   border: 1px solid var(--border-outline-color);
 }
+/* __________________________________________________________________________________________________________________ */
 
+
+/* __________________________________________________________________________________________________________________ */
+/* Reusable CSS classes for FORMATTING TEXT | */
+/* __________________________________________________________________________________________________________________ */
 .topic-header {
   border-left: 6px solid var(--primary);
   padding-left: 0.36vh;
   color: var(--secondary);
 }
 
+.important-term {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.underlined-text {
+  text-decoration: underline;
+}
+
 .primary-color-text {
   color: var(--secondary);
 }
-
-.scroll-spacer {
-  height: 60vh;
-}
+/* __________________________________________________________________________________________________________________ */
