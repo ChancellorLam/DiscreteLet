@@ -1,5 +1,3 @@
-h1 {
-  text-align: center;
+body {
+  background-color: var(--background);
 }
-
-body { background-color: var(--background); }

@@ -11,14 +11,6 @@
 /* Force light page background and readable text */
 html, body, app-root {
   height: 100%;
-  background-color: #ffffff !important;   /* Ensures white background across app */
-  color: #000000 !important;    /* Ensures black readable text */
-
-  /* PrimeNG menubar colors */
-  --p-menubar-background: #B39D80;
-  --p-menubar-item-link-color: #000000;
-  --p-menubar-item-focus-background: #8aa08a;
-  --p-badge-primary-background: #ffffff;
 
   /* PrimeNG accordion custom colors */
   --p-accordion-header-background: #8AA08A;
@@ -41,12 +33,6 @@ html, body, app-root {
   --p-card-shadow: #000000;
 }
 
-/* Text elements */
-h2, h3, h4, p, pre, li, table{
-  color: #000000;
-  margin-top: 0;
-}
-
 /* Accordion component styling overrides  */
 .p-accordion {
   margin-bottom: 20rem;
@@ -57,18 +43,3 @@ h2, h3, h4, p, pre, li, table{
   color: #000000;
 }
 
-/* Base nav bar style */
-:host ::ng-deep .p-menubar {
-  background-color: #B39D80 !important;
-  color: #000000 !important;
-  padding: 0 20px;
-  border-radius: 0;
-}
-
-/*Menu items */
-:host ::ng-deep .p-menubar-item-link {
-  color: #000000;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 0 15px;
-}
