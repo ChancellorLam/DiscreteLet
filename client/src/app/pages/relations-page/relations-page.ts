@@ -10,6 +10,7 @@ import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 import { DragAndDropComponent, Choice, DropZone } from '../../shared/drag-and-drop/drag-and-drop';
 import { UnitTestTemplate, UnitTestConfig } from '../../shared/unit-test-template/unit-test-template';
+import { RelationMatrix } from '../../shared/relation-matrix/relation-matrix';
 
 
 interface DragDropResult {
@@ -32,7 +33,7 @@ interface Question {
 @Component({
   selector: 'app-relations-page',
   standalone: true,
-  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent, DragAndDropComponent, UnitTestTemplate],
+  imports: [CommonModule, AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, TabsModule, QuizComponent, DragAndDropComponent, UnitTestTemplate, RelationMatrix],
   templateUrl: './relations-page.html',
   styleUrls: ['./relations-page.css']
 })
