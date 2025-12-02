@@ -29,24 +29,12 @@
                 </p-accordion-header>
                 <p-accordion-content>
                   <p class="indent-content">
-                    Number theory is a branch of pure mathematics that focuses on the integers and integer-valued
-                    functions. It investigates
-                    fundamental concepts such as divisibility (what it means for one integer to divide another), prime
-                    numbers and their
-                    distribution, greatest common divisors, and factorization into primes. Beyond these “elementary”
-                    concerns, number theory
-                    branches into deeper realms: analytic number theory uses tools from calculus and complex analysis to
-                    study patterns like
-                    the density of primes, while algebraic number theory examines the arithmetic properties of numbers
-                    in
-                    more general
-                    algebraic structures (like rings of algebraic integers). Many of its problems are easy to state but
-                    famously hard to
-                    solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field has
-                    unexpectedly
-                    rich applications
-                    in modern cryptography and computer science.
-                  </p>
+                    <p>Number theory is a branch of pure mathematics that focuses on the integers and integer-valued functions. It investigates fundamental concepts such as divisibility (what it means for one integer to divide another), prime numbers and their distribution, greatest common divisors, and factorization into primes.</p>
+
+                    <p>Beyond these “elementary” concerns, number theory branches into deeper realms: analytic number theory uses tools from calculus and complex analysis to study patterns like the density of primes, while algebraic number theory examines the arithmetic properties of numbers in more general algebraic structures (such as rings of algebraic integers).</p>
+
+                    <p>Many of its problems are easy to state but famously hard to solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field has unexpectedly rich applications in modern cryptography and computer science.</p>
+
                 </p-accordion-content>
               </p-accordion-panel>
 
@@ -58,18 +46,19 @@
                 <p-accordion-content>
                   <div class="indent-content">
                     <p class="m-0">
-                      Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division
-                      with
-                      integers often
-                      leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where qqq is the
-                      quotient
-                      and rrr is the
-                      remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder.
-                      Properties of divisibility
-                      help us test whether one number can evenly divide another, and these rules form the foundation for
-                      later concepts like
-                      prime factorization and modular arithmetic.
-                    </p><br/>
+                      <p>Integers (ℤ) are the set of whole numbers, both positive and negative, including zero.</p>
+
+                      <p>Division with integers often leaves a remainder, which is captured by the equation:</p>
+
+                      <pre>a = bq + r</pre>
+
+                      <p>where <em>q</em> is the quotient and <em>r</em> is the remainder.</p>
+
+                      <p>The notation <code>a ∣ b</code> means that <em>a</em> divides <em>b</em> evenly, with no remainder.</p>
+
+                      <p>Properties of divisibility help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like prime factorization and modular arithmetic.</p>
+                      <hr>
+                      <br/>
 
                     <div class="divisibilityChecker">
                       <p-button
@@ -109,19 +98,13 @@
                 <p-accordion-content>
                   <div class="indent-content">
                     <p class="m-0">
-                      The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while
-                      the
-                      least common
-                      multiple (LCM) is the smallest positive integer that both numbers divide into evenly. One way to
-                      find
-                      these is through
-                      prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm,
-                      which
-                      uses repeated
-                      division to efficiently determine the GCD. These concepts are essential for simplifying fractions,
-                      solving equations,
-                      and understanding number relationships.
-                    </p>
+                      <p>The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common multiple (LCM) is the smallest positive integer that both numbers divide into evenly.</p>
+
+                    <p>One way to find these is through prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm, which uses repeated division to efficiently determine the GCD.</p>
+
+                    <p>These concepts are essential for simplifying fractions, solving equations, and understanding number relationships.</p>
+                    <hr>
+
 
                     <h3>Euclidean Algorithm — Compute gcd(252, 198)</h3>
 
@@ -207,18 +190,14 @@
                 <p-accordion-content>
                   <div class="indent-content">
                     <p class="m-0">
-                      A prime number is a number greater than 1 that has exactly two divisors: 1 and itself. Numbers
-                      with
-                      more than
-                      two divisors are composite. The Fundamental Theorem of Arithmetic states that every integer
-                      greater
-                      than 1 can be
-                      uniquely expressed as a product of prime numbers, which makes primes the “building blocks” of
-                      integers. Although
-                      primes become less frequent as numbers grow larger, their distribution follows intriguing patterns
-                      that are central
-                      to number theory and applications like cryptography.
-                    </p>
+                      <p>A prime number is a number greater than 1 that has exactly two divisors: 1 and itself. Numbers with more than two divisors are composite.</p>
+
+                      <p>The Fundamental Theorem of Arithmetic states that every integer greater than 1 can be uniquely expressed as a product of prime numbers, which makes 
+                        primes the “building blocks” of integers.</p>
+
+                      <p>Although primes become less frequent as numbers grow larger, their distribution follows intriguing patterns that are central to number theory and 
+                        applications like cryptography.</p>
+                    <hr>
                     <br>
 
                     <h3>Walkthrough example — determine whether 221 is prime</h3>
@@ -321,18 +300,15 @@
                 <p-accordion-content>
                   <div class="indent-content">
                     <p class="m-0">
-                      In modular arithmetic, we write a≡b (mod n)a \equiv b \ (\text(mod ) n)a≡b (mod n) to mean that
-                      aaa
-                      and bbb
-                      leave the same remainder when divided by nnn. This system is often described as “clock
-                      arithmetic,”
-                      since numbers
-                      wrap around after reaching the modulus. Modular arithmetic has its own rules for addition and
-                      multiplication, and
-                      introduces concepts like modular inverses, which allow certain equations to be solved in modular
-                      systems. It is a
-                      powerful tool used in problem-solving, cryptography, and computer science.
-                    </p><br/>
+                      <p>In modular arithmetic, we write <code>a ≡ b (mod n)</code> to mean that <em>a</em> and <em>b</em> leave the same remainder when divided by <em>n</em>.</p>
+
+                      <p>This system is often described as “clock arithmetic,” since numbers wrap around after reaching the modulus.</p>
+
+                      <p>Modular arithmetic has its own rules for addition and multiplication, and introduces concepts like modular inverses, which allow certain equations to be solved in modular systems.</p>
+
+                      <p>It is a powerful tool used in problem-solving, cryptography, and computer science.</p>
+                      <hr>
+                      <br/>
 
                     <!--Add walkthrough example here-->
                     <h4>Example</h4>
@@ -371,18 +347,19 @@
                 </p-accordion-header>
                 <p-accordion-content>
                   <p class="indent-content">
-                    Several foundational theorems form the backbone of number theory. The Euclidean Algorithm provides a
-                    systematic
-                    way to find the GCD, reinforcing divisibility concepts. Fermat’s Little Theorem introduces a
-                    relationship between
-                    prime numbers and modular arithmetic, showing that ap−1≡1 (mod p)a^(p-1) \equiv 1 \ (\text(mod )
-                    p)ap−1≡1 (mod p)
-                    for prime ppp. The Chinese Remainder Theorem explains how to solve systems of modular equations
-                    simultaneously,
-                    with visual or intuitive methods helping to make this abstract idea concrete. These theorems build
-                    intuition for
-                    more advanced mathematical applications.
-                  </p>
+                    <p>Several foundational theorems form the backbone of number theory.</p>
+
+                      <p>The Euclidean Algorithm provides a systematic way to find the GCD, reinforcing divisibility concepts.</p>
+
+                      <p>Fermat’s Little Theorem introduces a relationship between prime numbers and modular arithmetic, showing that:</p>
+
+                      <pre>a^(p−1) ≡ 1 (mod p)</pre>
+
+                      <p>for any prime <em>p</em>.</p>
+
+                      <p>The Chinese Remainder Theorem explains how to solve systems of modular equations simultaneously, with visual or intuitive methods helping to make this abstract idea more concrete.</p>
+
+                      <p>These theorems build intuition for more advanced mathematical applications.</p>
                 </p-accordion-content>
               </p-accordion-panel>
 
@@ -393,18 +370,12 @@
                 </p-accordion-header>
                 <p-accordion-content>
                   <p class="indent-content">
-                    Primes and modular arithmetic are essential for modern encryption systems, especially in securing
-                    digital
-                    communication. The RSA algorithm uses large prime numbers and modular exponentiation to create
-                    public
-                    and
-                    private keys, making it computationally easy to encrypt but extremely hard to break without special
-                    knowledge.
-                    Even without advanced math, students can see how modular arithmetic underpins secure data transfer
-                    and
-                    how number
-                    theory moves from abstract concepts to real-world technologies.
-                  </p>
+                    <p>Primes and modular arithmetic are essential for modern encryption systems, especially in securing digital communication. The RSA algorithm uses large prime numbers and modular exponentiation to create public and private keys, making it computationally easy to encrypt but extremely hard to break without special knowledge.</p>
+
+                    <p>Even without advanced math, students can see how modular arithmetic underpins secure data transfer and how number theory moves 
+                      from abstract concepts to real-world technologies.</p>
+                      <hr>
+
                   
                                <div class="rsa-instructions">
                                    <h3>How to Use the RSA Encryption/Decryption Challenge</h3>
