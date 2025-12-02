@@ -1,0 +1,48 @@
+h2{
+    color:#000
+}
+.ops-container {
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff; /* pure white background */
+  border: 1px solid #ccc; /* light gray border for separation */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow for visibility */
+}
+
+.operation-select {
+  margin-bottom: 12px;
+  color: #222; /* dark text for readability */
+}
+
+.pair-section, .matrix-section {
+  margin-bottom: 20px;
+  color: #222; /* ensure text is visible */
+}
+
+.matrix {
+  border-collapse: collapse;
+}
+
+.matrix td {
+  border: 1px solid #444; /* strong contrast border */
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: bold;
+  background: #f9f9f9; /* light gray cell background for contrast */
+  color: #111; /* dark text */
+}
+
+.result-title {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #000; /* black text for clarity */
+}
+
+.result {
+  font-size: 1.1rem;
+  background: #f9f9f9; /* light gray background to stand out from white */
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ddd; /* subtle border for separation */
+  color: #111; /* dark text */
+}
