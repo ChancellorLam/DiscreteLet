@@ -1,0 +1,26 @@
+<table>
+  <thead>
+      <tr>
+        @for (subexpression of subexpressions(); track $index) {
+          <th class="table-cell">
+            <app-latex-container
+              [latex]="subexpression"
+            ></app-latex-container>
+          </th>
+        }
+      </tr>
+  </thead>
+  <tbody>
+  @for (row of tableData(); track $index) {
+    <tr>
+      @for (col of subexpressions(); track $index) {
+        <td class="table-cell">
+          <app-latex-container
+            [latex]="row[col] ? 'T' : 'F'"
+          ></app-latex-container>
+        </td>
+      }
+    </tr>
+  }
+  </tbody>
+</table>

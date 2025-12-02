@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RewardService } from '../../core/reward-service';
+import { RewardService } from '../../core/services/reward-service';
 
 //structure for quiz questions
 interface Question {

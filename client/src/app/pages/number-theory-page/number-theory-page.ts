@@ -7,7 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import confetti from 'canvas-confetti';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TabsModule } from 'primeng/tabs';
-import { RewardService } from '../../core/reward-service';
+import { RewardService } from '../../core/services/reward-service';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 import { RsaChallenge } from '../../shared/rsa-challenge/rsa-challenge';
 
@@ -28,24 +28,25 @@ interface Question {
 export class NumberTheoryPage {
   //inject reward service to track user progress
   private rewards = inject(RewardService);
-
-  activeTabs: string[] = []; //tracks which accordion panels are open
-  activeTab = '0'; //currently selected tab
-  isExpanded = false; //tracks if all accordion panels are expanded
-
-  randomNumber: number | null = null; // Stores the generated random number for exercises
-  randMod: number | null = null; // Stores the generated random modulus for exercises
-  primeNumFeedback: string | null = null; // Displays feedback for prime number checker
-  userModAnswer: number | null = null; // Stores user's answer for mod exercise
-  modFeedback: string | null = null; // Displays feedback for mod exercise
-  userDivisibilityAnswer: number | null = null; // Stores user's answer for divisibility exercise
-  divisibilityFeedback: string | null = null; // Displays feedback for divisibility exercise
+  
+  activeTabs: string[] = [];
+  activeTab = '0';
+  isExpanded = false;
+  randomNumber: number | null = null;
+  randMod: number | null = null;
+  primeNumFeedback: string | null = null;
+  userModAnswer: number | null = null;
+  modFeedback: string | null = null;
+  userDivisibilityAnswer: number | null = null;
+  divisibilityFeedback: string | null = null;
+  
   // GCD/LCM Practice Tool
   randomGcdLcmNum1: number | null = null;
   randomGcdLcmNum2: number | null = null;
   userGcdAnswer: number | null = null;
   userLcmAnswer: number | null = null;
   gcdLcmFeedback: string | null = null;
+  
   // Euclidean Algorithm Visualizer
   euclidNum1: number | null = null;
   euclidNum2: number | null = null;
@@ -132,85 +133,83 @@ export class NumberTheoryPage {
     console.log('Generated numbers:', this.randomGcdLcmNum1, this.randomGcdLcmNum2);
   }
 
-// Generate all steps for Euclidean Algorithm
-generateEuclideanSteps(a: number, b: number): void {
-  this.euclideanSteps = [];
-  this.currentStepIndex = -1;
-  this.euclideanResult = null;
-  this.isEuclideanRunning = true;
+  // Generate all steps for Euclidean Algorithm
+  generateEuclideanSteps(a: number, b: number): void {
+    this.euclideanSteps = [];
+    this.currentStepIndex = -1;
+    this.euclideanResult = null;
+    this.isEuclideanRunning = true;
 
-  let num1 = Math.abs(a);
-  let num2 = Math.abs(b);
-  let stepNumber = 1;
+    let num1 = Math.abs(a);
+    let num2 = Math.abs(b);
+    let stepNumber = 1;
 
-  this.euclideanSteps.push(`Finding GCD(${a}, ${b}):`);
+    this.euclideanSteps.push(`Finding GCD(${a}, ${b}):`);
 
-  // Generate all steps
-  while (num2 !== 0) {
-    const quotient = Math.floor(num1 / num2);
-    const remainder = num1 % num2;
-    
-    this.euclideanSteps.push(
-      `Step ${stepNumber}: ${num1} = ${num2} × ${quotient} + ${remainder}`
-    );
-    
-    num1 = num2;
-    num2 = remainder;
-    stepNumber++;
+    // Generate all steps
+    while (num2 !== 0) {
+      const quotient = Math.floor(num1 / num2);
+      const remainder = num1 % num2;
+
+      this.euclideanSteps.push(
+        `Step ${stepNumber}: ${num1} = ${num2} × ${quotient} + ${remainder}`
+      );
+
+      num1 = num2;
+      num2 = remainder;
+      stepNumber++;
+    }
+
+    this.euclideanResult = num1;
+    this.euclideanSteps.push(`Result: GCD = ${num1}`);
   }
 
-  this.euclideanResult = num1;
-  this.euclideanSteps.push(`Result: GCD = ${num1}`);
-}
+  // Start the Euclidean Algorithm
+  startEuclidean(): void {
+    if (this.euclidNum1 === null || this.euclidNum2 === null) {
+      alert('Please enter both numbers!');
+      return;
+    }
 
-// Start the Euclidean Algorithm
-startEuclidean(): void {
-  if (this.euclidNum1 === null || this.euclidNum2 === null) {
-    alert('Please enter both numbers!');
-    return;
+    if (this.euclidNum1 === 0 && this.euclidNum2 === 0) {
+      alert('Both numbers cannot be zero!');
+      return;
+    }
+
+    this.generateEuclideanSteps(this.euclidNum1, this.euclidNum2);
+    this.currentStepIndex = 0; // Show first step (title)
   }
 
-  if (this.euclidNum1 === 0 && this.euclidNum2 === 0) {
-    alert('Both numbers cannot be zero!');
-    return;
-  }
+  // Move to next step
+  nextEuclideanStep(): void {
+    if (this.currentStepIndex < this.euclideanSteps.length - 1) {
+      this.currentStepIndex++;
 
-  this.generateEuclideanSteps(this.euclidNum1, this.euclidNum2);
-  this.currentStepIndex = 0; // Show first step (title)
-}
-
-// Move to next step
-nextEuclideanStep(): void {
-  if (this.currentStepIndex < this.euclideanSteps.length - 1) {
-    this.currentStepIndex++;
-    
-    // If we reached the final result
-    if (this.currentStepIndex === this.euclideanSteps.length - 1) {
-      this.isEuclideanRunning = false;
-      confetti();
-      this.rewards.add(2);
+      // If we reached the final result
+      if (this.currentStepIndex === this.euclideanSteps.length - 1) {
+        this.isEuclideanRunning = false;
+        confetti();
+        this.rewards.add(2);
+      }
     }
   }
-}
 
-// Move to previous step
-previousEuclideanStep(): void {
-  if (this.currentStepIndex > 0) {
-    this.currentStepIndex--;
+  // Move to previous step
+  previousEuclideanStep(): void {
+    if (this.currentStepIndex > 0) {
+      this.currentStepIndex--;
+    }
   }
-}
 
-
-// Reset the visualizer
-resetEuclidean(): void {
-  this.euclidNum1 = null;
-  this.euclidNum2 = null;
-  this.euclideanSteps = [];
-  this.currentStepIndex = -1;
-  this.euclideanResult = null;
-  this.isEuclideanRunning = false;
-}
-
+  // Reset the visualizer
+  resetEuclidean(): void {
+    this.euclidNum1 = null;
+    this.euclidNum2 = null;
+    this.euclideanSteps = [];
+    this.currentStepIndex = -1;
+    this.euclideanResult = null;
+    this.isEuclideanRunning = false;
+  }
 
   // EVENT HANDLERS
   // Called when "Generate Number" is clicked — sets random values
@@ -243,7 +242,8 @@ resetEuclidean(): void {
   // Handles user input for modular arithmetic checker
   onModAnswer(userGuessModAnswer: number | null): void {
     if (userGuessModAnswer === null) {
-      this.modFeedback = "Please enter an answer"; return;
+      this.modFeedback = "Please enter an answer";
+      return;
     }
     const correct = this.getModAnswer();
     if (correct === null) {
@@ -257,14 +257,15 @@ resetEuclidean(): void {
     }
     else {
       // Use template literal correctly to show actual result
-      this.modFeedback = "Incorrect. The correct answer is ${correct}.`";
+      this.modFeedback = `Incorrect. The correct answer is ${correct}.`;
     }
   }
 
   // handles user input for divisibility tool
   onDivisibilityAnswer(userGuessDivisibility: number | null): void {
     if (userGuessDivisibility === null) {
-      this.divisibilityFeedback = "Please enter an answer"; return;
+      this.divisibilityFeedback = "Please enter an answer";
+      return;
     }
     if (this.randomNumber === null || this.randMod === null) {
       this.divisibilityFeedback = 'Generate numbers first!';
@@ -342,7 +343,6 @@ resetEuclidean(): void {
     }
   }
 
-
   // Quiz questions and answers
   numberTheoryQuestionPool: Question[] = [
     {
@@ -355,7 +355,7 @@ resetEuclidean(): void {
       ],
       correct: 'Analyzing integer properties and relationships',
       explanation:
-        'Number theory focuses on integers, their divisibility, primes, and related structures—it’s the “arithmetic” branch of pure mathematics.'
+        'Number theory focuses on integers, their divisibility, primes, and related structures—it's the "arithmetic" branch of pure mathematics.'
     },
     {
       text: 'If a=20 and b=5, which statement is true?',
@@ -379,7 +379,7 @@ resetEuclidean(): void {
     {
       text: 'In modular arithmetic, what does 17 ≡ 5 (mod 12) mean?',
       options: ['17 and 5 are both prime numbers', '17 and 5 leave the same remainder when divided by 12', '17 is a multiple of 5', '17 and 12 have a GCD of 5'],
-      correct: '17 is a multiple of 5',
+      correct: '17 and 5 leave the same remainder when divided by 12',
       explanation: 'Both 17 and 5 give remainder 5 when divided by 12, so they are congruent modulo 12.'
     },
     {
@@ -437,9 +437,8 @@ resetEuclidean(): void {
     this.selectRandomQuestions(5);
   }
 
-
   // ACCORDION CONTROL
-  // Toggles between expanding and collapsing all panels 
+  // Toggles between expanding and collapsing all panels
   toggleAll() {
     if (this.isExpanded) {
       this.collapseAll();

@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, injec
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from 'primeng/dragdrop';
 import { ButtonModule } from 'primeng/button';
-import { RewardService } from '../../core/reward-service';
+import { RewardService } from '../../core/services/reward-service';
 
 export interface Choice {
     id: number;

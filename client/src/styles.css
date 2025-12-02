@@ -1,76 +1,103 @@
+/* __________________________________________________________________________________________________________________ */
 /* Root variables — global color palette  */
+/* __________________________________________________________________________________________________________________ */
 :root {
-  --text: #000000;
-  --background: #DAC7AF;
-  --primary: #B39D80;
-  --secondary: #DAC7AF;
+  --primary: #49D31A;
+  --secondary: light-dark(#0F369E, #FFFFFF);
+
+  --page-background: light-dark(#FAFAFA, #1C1B22);
+  --content-background: light-dark(#FFFFFF, #1C1B22);
+
+  --border-outline-color: light-dark(#D3D3D3, #D5C2C5);
+
   --accent: #8AA08A;
   --invert: #755f75;
 }
+/* __________________________________________________________________________________________________________________ */
 
-/* Force light page background and readable text */
-html, body, app-root {
-  height: 100%;
-  background-color: #ffffff !important;   /* Ensures white background across app */
-  color: #000000 !important;    /* Ensures black readable text */
-  
-  /* PrimeNG menubar colors */
-  --p-menubar-background: #B39D80;
-  --p-menubar-item-link-color: #000000;
-  --p-menubar-item-focus-background: #8aa08a;
-  --p-badge-primary-background: #ffffff;
 
-  /* PrimeNG accordion custom colors */
-  --p-accordion-header-background: #8AA08A;
-  --p-accordion-header-hover-background: #755f75;
-  --p-accordion-header-active-hover-background: #755f75;
-  --p-accordion-header-active-background: #8AA08A;
-  --p-accordion-header-color: #000000;
-  --p-accordion-header-active-color: #000000;
-
-  /*PrimeNG tabs styling */
-  --p-tabs-tablist-background:var(--secondary);
-  --p-tabs-tab-color: #000000;
-  --p-tabs-tabpanel-background:var(--accent);
-  --p-tabs-tab-active-color:#000000;
-  --p-tabs-tab-active-border-color:var(--background);
-  
-  --p-accordion-content-background: #8AA08A;
-
-  /*PrimeNG Cards styling */
-  --p-card-background: #8AA08A;
-  --p-card-color: #000000;
-  --p-card-shadow: #000000;
+html, body {
+  overflow: auto;
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--page-background);
 }
 
-/* Text elements */
-h2, h3, h4, p, pre, li, table{
-  color: #000000;
-  margin-top: 0;
+
+/* __________________________________________________________________________________________________________________ */
+/* Reusable CSS classes for LAYOUT */
+/* __________________________________________________________________________________________________________________ */
+.main-page-container {
+  background-color: var(--content-background);
+
+  width: 90vw;
+  max-width: 1200px;
+
+  overflow-x: auto;
+
+  margin: 0 auto;
+  padding: 6rem;
+
+  border: 1px solid var(--border-outline-color);
+  border-radius: 6px;
+}
+/* Styling for Mobile Phones */
+@media (max-width: 768px) {
+  .main-page-container {
+    padding: 1rem;
+  }
 }
 
-/* Accordion component styling overrides  */
-.p-accordion {
-  margin-bottom: 20rem;
+.centered-flexbox-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Interactive tool text (feedback) */
-.interactiveToolText{
-  color: #000000;
+.vertical-borders {
+  border-top: 1px solid var(--border-outline-color);
+  border-bottom: 1px solid var(--border-outline-color);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-/* Base nav bar style */
-:host ::ng-deep .p-menubar {
-  background-color: #B39D80 !important; 
-  color: #000000 !important;
-  padding: 0 20px;
-  border-radius: 0;
+.full-borders {
+  border: 1px solid var(--border-outline-color);
 }
 
-/*Menu items */
-:host ::ng-deep .p-menubar-item-link {
-  color: #000000;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 0 15px;
+.horizontally-center-content {
+  display: flex;
+  justify-content: center;
 }
+
+.indent-content {
+  padding-left: 1rem;
+}
+/* __________________________________________________________________________________________________________________ */
+
+
+/* __________________________________________________________________________________________________________________ */
+/* Reusable CSS classes for FORMATTING TEXT | */
+/* __________________________________________________________________________________________________________________ */
+.topic-header {
+  border-left: 6px solid var(--primary);
+  padding-left: 0.36vh;
+  color: var(--secondary);
+}
+
+.header-font-size {
+  font-size: 2.16rem;
+}
+
+.important-term {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.underlined-text {
+  text-decoration: underline;
+}
+
+.primary-color-text {
+  color: var(--secondary);
+}
+/* __________________________________________________________________________________________________________________ */

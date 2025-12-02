@@ -1,0 +1,95 @@
+<div class="column-container">
+  <app-latex-container
+    [latex]="'\\LARGE \\textbf{' + title() + '}'"
+  ></app-latex-container>
+  <div>
+    <app-latex-container
+      [latex]="'\\text{Logical Expression: }'"
+    ></app-latex-container>
+    <input type="text" pInputText [(ngModel)]="expression"/>
+  </div>
+
+  <app-latex-container
+    [latex]="expression()"
+    class="center"
+  ></app-latex-container>
+  <div class="symbol-panel">
+    <p-button
+      (mousedown)="$event.preventDefault()"
+      (click)="addSymbol('(')"
+    >
+      <app-latex-container
+        [latex]="'('"
+      ></app-latex-container>
+    </p-button>
+
+    <p-button
+      (mousedown)="$event.preventDefault()"
+      (click)="addSymbol(')')"
+    >
+      <app-latex-container
+        [latex]="')'"
+      ></app-latex-container>
+    </p-button>
+
+    <p-button
+      (mousedown)="$event.preventDefault()"
+      (click)="addSymbol(' \\neg ')"
+    >
+      <app-latex-container
+      [latex]="'\\neg'"
+      ></app-latex-container>
+    </p-button>
+
+    <p-button
+      (mousedown)="$event.preventDefault()"
+      (click)="addSymbol(' \\land ')"
+    >
+      <app-latex-container
+        [latex]="'\\land'"
+      ></app-latex-container>
+    </p-button>
+
+    <p-button
+      (mousedown)="$event.preventDefault()"
+      (click)="addSymbol(' \\lor ')"
+    >
+      <app-latex-container
+        [latex]="'\\lor'"
+      ></app-latex-container>
+    </p-button>
+
+    <p-button
+      (mousedown)="$event.preventDefault()"
+      (click)="addSymbol(' \\to ')"
+    >
+      <app-latex-container
+        [latex]="'\\to'"
+      ></app-latex-container>
+    </p-button>
+
+    <p-button
+      (mousedown)="$event.preventDefault()"
+      (click)="addSymbol(' \\leftrightarrow ')"
+    >
+      <app-latex-container
+        [latex]="'\\leftrightarrow'"
+      ></app-latex-container>
+    </p-button>
+  </div>
+  <div class="controls">
+    <p-button
+      label="Generate Truth Table"
+      (click)="computeTruthTable()"
+    ></p-button>
+    <p-button
+      label="Clear All"
+      (click)="clearAll()"
+    ></p-button>
+  </div>
+  <app-truth-table
+    [subexpressions]="subExpressions()"
+    [tableData]="tableData()"
+    class="center"
+  ></app-truth-table>
+</div>
