@@ -8,10 +8,11 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { TabsModule } from 'primeng/tabs';
 import { RewardService } from '../../core/services/reward-service';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
+import { RsaChallenge } from '../../shared/rsa-challenge/rsa-challenge';
 
 @Component({
   selector: 'app-number-theory-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent],
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent, RsaChallenge],
   templateUrl: './number-theory-page.html',
   styleUrl: './number-theory-page.css'
 })
