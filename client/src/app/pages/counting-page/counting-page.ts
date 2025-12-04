@@ -23,7 +23,6 @@ export interface CountingQuestion {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-counting-page',
   imports: [
     CommonModule,
@@ -44,14 +43,13 @@ export class CountingPage {
   private rewards = inject(RewardService);
 
   activeTabs: string[] = [];
-  activeTab = 0;
+  activeTab = '0';
   isExpanded = false;
   showUnitTest: boolean = false;
   startUnitTest() {
     
   console.log("START UNIT TEST CLICKED");
   this.showUnitTest = true;
-  this.activeTab = 2;
 }
 
   
