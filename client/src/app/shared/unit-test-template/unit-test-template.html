@@ -85,6 +85,12 @@
       <div class="question-section">
         <h3>{{ getCurrentQuestion()?.question }}</h3>
 
+        <!--Optional image display-->
+        <div class="question-image" *ngIf="getCurrentQuestion()?.imageUrl">
+          <img [src]="getCurrentQuestion()?.imageUrl"
+          [alt]="'Image for question ' +(currentQuestionIndex() + 1)"
+          class="question-img">
+        </div>
 
         <div class="options-list">
           <div

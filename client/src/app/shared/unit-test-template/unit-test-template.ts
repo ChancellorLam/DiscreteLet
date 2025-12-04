@@ -14,6 +14,7 @@ export interface UnitTestQuestion {
   correctAnswer: number; // Index of correct option
   explanation?: string;
   difficulty: 'easy' | 'hard';
+  imageUrl?: string // image is optional for the question
 }
 
 
