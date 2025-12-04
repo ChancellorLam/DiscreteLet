@@ -1,1 +1,36 @@
-<p>profile-page works!</p>
+<!--Discrete Math Textbook-->
+    <h2>Additional Resources</h2>
+
+  <div class="pdf-actions">
+      <h3>Discrete Mathematics and its Applications</h3> 
+      <p>(Textbook) (PDF 8.525MB)</p>
+    
+    <div class="button-group">
+      <p-button 
+        label="View in New Tab" 
+        icon="pi pi-external-link"
+        (onClick)="viewPDF('pdfs/Discrete-mathematics-Textbook.pdf')"
+        styleClass="p-button-outlined">
+      </p-button>
+      
+      <p-button 
+        label="Download PDF" 
+        icon="pi pi-download"
+        (onClick)="downloadPDF('pdfs/Discrete-mathematics-Textbook.pdf', 'Discrete-mathematics-Textbook.pdf')"
+        styleClass="p-button-outlined p-button-secondary">
+      </p-button>
+    </div>
+  </div>
+
+<!--Embedded Syllabus PDF-->
+<br><h3>Syllabus for MT-1420</h3> <br>
+<div class="pdf-container">
+  <iframe 
+    src="pdfs\MT-1420-Syllabus.pdf" 
+    type="application/pdf"
+    class="pdf-viewer">
+    <p>Your browser does not support PDFs. 
+       <a href="pdfs\MT-1420-Syllabus.pdf">Download the PDF</a>
+    </p>
+  </iframe>
+</div>
