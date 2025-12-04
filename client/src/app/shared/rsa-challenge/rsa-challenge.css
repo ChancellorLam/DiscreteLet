@@ -1,35 +1,29 @@
 .rsa-card {
   width: 400px;
   margin: 20px auto;
-  background: #fff;
   padding: 20px;
+  border: 1px solid var(--border-outline-color);
   border-radius: 14px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   font-family: Arial, sans-serif;
   text-align: center;
-  color: #111; /* Ensure default text is dark */
 }
 
 .rsa-info {
-  background: #f7f7f7;
   padding: 12px;
   border-radius: 10px;
   margin-bottom: 15px;
   font-size: 0.95rem;
-  color: #222; /* Dark text for readability */
 }
 
 .challenge-box {
-  background: #eef5ff;
   padding: 12px;
   border-radius: 10px;
   margin-bottom: 15px;
-  color: #111; /* Ensure readable text */
 }
 
 .timer {
   font-size: 1.2rem;
-  color: #000; /* Strong visibility */
 }
 
 .low {
@@ -50,15 +44,12 @@ input {
   border-radius: 6px;
   text-align: center;
   font-size: 1rem;
-  color: #111; /* Dark text */
-  background: #fff;
 }
 
 button {
   padding: 7px 14px;
   background: #007bff;
   border: none;
-  color: white;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -75,5 +66,4 @@ button:disabled {
 .feedback {
   margin-top: 10px;
   font-size: 1.2rem;
-  color: #111; /* Visible feedback text */
 }

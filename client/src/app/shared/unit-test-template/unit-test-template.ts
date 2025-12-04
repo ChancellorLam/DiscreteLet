@@ -79,8 +79,8 @@ export class UnitTestTemplate implements OnInit {
     // Shuffle questions randomly
     const shuffled = this.shuffleArray([...filteredQuestions]);
    
-    // Take only 10 questions (or less if there aren't 10 available)
-    const selectedQuestions = shuffled.slice(0, Math.min(10, shuffled.length));
+    // Take only 15 questions (or less if there aren't 15 available)
+    const selectedQuestions = shuffled.slice(0, Math.min(15, shuffled.length));
    
     this.testQuestions.set(selectedQuestions);
    

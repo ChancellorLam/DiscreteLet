@@ -9,10 +9,11 @@ import { TabsModule } from 'primeng/tabs';
 import { RewardService } from '../../core/services/reward-service';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
 import { RsaChallenge } from '../../shared/rsa-challenge/rsa-challenge';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-number-theory-page',
-  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent, RsaChallenge],
+  imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent, RsaChallenge, CommonModule],
   templateUrl: './number-theory-page.html',
   styleUrl: './number-theory-page.css'
 })
@@ -28,6 +29,19 @@ export class NumberTheoryPage {
   modFeedback: string | null = null;
   userDivisibilityAnswer: number | null = null;
   divisibilityFeedback: string | null = null;
+    // GCD/LCM Practice Tool
+  randomGcdLcmNum1: number | null = null;
+  randomGcdLcmNum2: number | null = null;
+  userGcdAnswer: number | null = null;
+  userLcmAnswer: number | null = null;
+  gcdLcmFeedback: string | null = null;
+    // Euclidean Algorithm Visualizer
+  euclidNum1: number | null = null;
+  euclidNum2: number | null = null;
+  euclideanSteps: string[] = [];
+  currentStepIndex = -1;
+  euclideanResult: number | null = null;
+  isEuclideanRunning = false;
 
 
 // Random Number generator for prime number checker
@@ -83,6 +97,38 @@ getRandomMod(min: number, max: number): number {
       this.primeNumFeedback=null;   // Reset feedback
       console.log('Random number:', random);
     }
+
+    // Calculate GCD using Euclidean algorithm
+  calculateGCD(a: number, b: number): number {
+    a = Math.abs(a);
+    b = Math.abs(b);
+
+    while (b !== 0) {
+      const temp = b;
+      b = a % b;
+      a = temp;
+      }
+    return a;}
+
+    // Calculate LCM using the formula: LCM(a,b) = (a × b) / GCD(a,b)
+  calculateLCM(a: number, b: number): number {
+    if (a === 0 || b === 0) return 0;
+    const gcd = this.calculateGCD(a, b);
+    return Math.abs(a * b) / gcd;
+  }
+
+  // Generate random numbers for GCD/LCM practice
+  generateGcdLcmProblem(): void {
+    // Generate two random numbers between 2 and 50
+    this.randomGcdLcmNum1 = this.getRandomNum(2, 50);
+    this.randomGcdLcmNum2 = this.getRandomNum(2, 50);
+
+    // Reset user answers and feedback
+    this.userGcdAnswer = null;
+    this.userLcmAnswer = null;
+    this.gcdLcmFeedback = null;
+    console.log('Generated numbers:', this.randomGcdLcmNum1, this.randomGcdLcmNum2);
+  }
 
     // Handles user's "Yes"/"No" response for prime number check
     onPrimeAnswer(userGuessPrime: boolean): void{
@@ -165,6 +211,120 @@ getRandomMod(min: number, max: number): number {
     }
   }
 
+  // Check user's GCD and LCM answers
+  onCheckGcdLcm(): void {
+    // Validation
+    if (this.randomGcdLcmNum1 === null || this.randomGcdLcmNum2 === null) {
+      this.gcdLcmFeedback = 'Please generate numbers first!';
+      return;
+    }
+
+    if (this.userGcdAnswer === null || this.userLcmAnswer === null) {
+      this.gcdLcmFeedback = 'Please enter both GCD and LCM answers!';
+      return;
+    }
+
+    // Calculate correct answers
+    const correctGcd = this.calculateGCD(this.randomGcdLcmNum1, this.randomGcdLcmNum2);
+    const correctLcm = this.calculateLCM(this.randomGcdLcmNum1, this.randomGcdLcmNum2);
+
+    // Check answers
+    const gcdCorrect = this.userGcdAnswer === correctGcd;
+    const lcmCorrect = this.userLcmAnswer === correctLcm;
+    // Provide feedback
+    if (gcdCorrect && lcmCorrect) {
+      this.gcdLcmFeedback = `Both answers are correct!`;
+      confetti();
+      this.rewards.add(2); // Award 2 points for getting both correct
+    } else if (gcdCorrect && !lcmCorrect) {
+      this.gcdLcmFeedback = `GCD is correct, but LCM is incorrect. The correct LCM is ${correctLcm}.`;
+      this.rewards.add(1); // Award 1 point for getting one correct
+    } else if (!gcdCorrect && lcmCorrect) {
+      this.gcdLcmFeedback = `LCM is correct, but GCD is incorrect. The correct GCD is ${correctGcd}.`;
+      this.rewards.add(1); // Award 1 point for getting one correct
+    } else {
+      this.gcdLcmFeedback = `Both answers are incorrect. GCD = ${correctGcd}, LCM = ${correctLcm}.`;
+    }
+  }
+
+  // Generate all steps for Euclidean Algorithm
+generateEuclideanSteps(a: number, b: number): void {
+  this.euclideanSteps = [];
+  this.currentStepIndex = -1;
+  this.euclideanResult = null;
+  this.isEuclideanRunning = true;
+
+  let num1 = Math.abs(a);
+  let num2 = Math.abs(b);
+  let stepNumber = 1;
+
+  this.euclideanSteps.push(`Finding GCD(${a}, ${b}):`);
+
+  // Generate all steps
+  while (num2 !== 0) {
+    const quotient = Math.floor(num1 / num2);
+    const remainder = num1 % num2;
+
+    this.euclideanSteps.push(
+      `Step ${stepNumber}: ${num1} = ${num2} × ${quotient} + ${remainder}`
+    );
+
+    num1 = num2;
+    num2 = remainder;
+    stepNumber++;
+  }
+
+  this.euclideanResult = num1;
+  this.euclideanSteps.push(`Result: GCD = ${num1}`);
+}
+
+// Start the Euclidean Algorithm
+startEuclidean(): void {
+  if (this.euclidNum1 === null || this.euclidNum2 === null) {
+    alert('Please enter both numbers!');
+    return;
+  }
+
+  if (this.euclidNum1 === 0 && this.euclidNum2 === 0) {
+    alert('Both numbers cannot be zero!');
+    return;
+  }
+
+  this.generateEuclideanSteps(this.euclidNum1, this.euclidNum2);
+  this.currentStepIndex = 0; // Show first step (title)
+}
+
+// Move to next step
+nextEuclideanStep(): void {
+  if (this.currentStepIndex < this.euclideanSteps.length - 1) {
+    this.currentStepIndex++;
+
+    // If we reached the final result
+    if (this.currentStepIndex === this.euclideanSteps.length - 1) {
+      this.isEuclideanRunning = false;
+      confetti();
+      this.rewards.add(2);
+    }
+  }
+}
+
+// Move to previous step
+previousEuclideanStep(): void {
+  if (this.currentStepIndex > 0) {
+    this.currentStepIndex--;
+  }
+}
+
+
+// Reset the visualizer
+resetEuclidean(): void {
+  this.euclidNum1 = null;
+  this.euclidNum2 = null;
+  this.euclideanSteps = [];
+  this.currentStepIndex = -1;
+  this.euclideanResult = null;
+  this.isEuclideanRunning = false;
+}
 
     /* Quiz questions and answers */
     numberTheoryQuestions = [

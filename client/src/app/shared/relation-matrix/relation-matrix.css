@@ -1,19 +1,15 @@
 .relation-matrix-container {
-  background: #eef5ff; /* Light blue is fine */
   padding: 20px;
   border-radius: 12px;
-  color: #111; /* Ensure readable text */
 }
 
 .input-block {
   margin-bottom: 14px;
-  color: #111; /* Dark text for labels */
 }
 
 .matrix-table {
   border-collapse: collapse;
   margin-top: 15px;
-  color: #111; /* Dark text */
 }
 
 .matrix-table th,
@@ -23,8 +19,6 @@
   text-align: center;
   cursor: pointer;
   font-weight: bold;
-  background: #fff; /* Ensure clear visibility on white background */
-  color: #111;      /* Dark text */
 }
 
 .matrix-table td.on {

@@ -15,9 +15,7 @@
           <p-tabpanels>
             <p-tabpanel value="0">
               <h3>Number Theory & Cryptography Lessons
-                <p-button
-                  (click)="toggleAll()"
-                  styleClass="p-button-text"
+                <p-button (click)="toggleAll()" styleClass="p-button-text"
                   [label]="isExpanded ? 'Collapse All' : 'Expand All'">
                 </p-button>
               </h3>
@@ -29,11 +27,19 @@
                 </p-accordion-header>
                 <p-accordion-content>
                   <p class="indent-content">
-                    <p>Number theory is a branch of pure mathematics that focuses on the integers and integer-valued functions. It investigates fundamental concepts such as divisibility (what it means for one integer to divide another), prime numbers and their distribution, greatest common divisors, and factorization into primes.</p>
+                  <p>Number theory is a branch of pure mathematics that focuses on the integers and integer-valued
+                    functions. It investigates fundamental concepts such as divisibility (what it means for one integer
+                    to divide another), prime numbers and their distribution, greatest common divisors, and
+                    factorization into primes.</p>
 
-                    <p>Beyond these “elementary” concerns, number theory branches into deeper realms: analytic number theory uses tools from calculus and complex analysis to study patterns like the density of primes, while algebraic number theory examines the arithmetic properties of numbers in more general algebraic structures (such as rings of algebraic integers).</p>
+                  <p>Beyond these “elementary” concerns, number theory branches into deeper realms: analytic number
+                    theory uses tools from calculus and complex analysis to study patterns like the density of primes,
+                    while algebraic number theory examines the arithmetic properties of numbers in more general
+                    algebraic structures (such as rings of algebraic integers).</p>
 
-                    <p>Many of its problems are easy to state but famously hard to solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field has unexpectedly rich applications in modern cryptography and computer science.</p>
+                  <p>Many of its problems are easy to state but famously hard to solve (for example, the Goldbach
+                    conjecture or Fermat’s Last Theorem), and the field has unexpectedly rich applications in modern
+                    cryptography and computer science.</p>
 
                 </p-accordion-content>
               </p-accordion-panel>
@@ -46,25 +52,24 @@
                 <p-accordion-content>
                   <div class="indent-content">
                     <p class="m-0">
-                      <p>Integers (ℤ) are the set of whole numbers, both positive and negative, including zero.</p>
+                    <p>Integers (ℤ) are the set of whole numbers, both positive and negative, including zero.</p>
 
-                      <p>Division with integers often leaves a remainder, which is captured by the equation:</p>
+                    <p>Division with integers often leaves a remainder, which is captured by the equation:</p>
 
-                      <pre>a = bq + r</pre>
+                    <pre>a = bq + r</pre>
 
-                      <p>where <em>q</em> is the quotient and <em>r</em> is the remainder.</p>
+                    <p>where <em>q</em> is the quotient and <em>r</em> is the remainder.</p>
 
-                      <p>The notation <code>a ∣ b</code> means that <em>a</em> divides <em>b</em> evenly, with no remainder.</p>
+                    <p>The notation <code>a ∣ b</code> means that <em>a</em> divides <em>b</em> evenly, with no
+                      remainder.</p>
 
-                      <p>Properties of divisibility help us test whether one number can evenly divide another, and these rules form the foundation for later concepts like prime factorization and modular arithmetic.</p>
-                      <hr>
-                      <br/>
+                    <p>Properties of divisibility help us test whether one number can evenly divide another, and these
+                      rules form the foundation for later concepts like prime factorization and modular arithmetic.</p>
+                    <hr>
+                    <br />
 
                     <div class="divisibilityChecker">
-                      <p-button
-                        (click)="onClick()"
-                        styleClass="p-button-text"
-                        label="Generate-Number">
+                      <p-button (click)="onClick()" styleClass="p-button-text" label="Generate-Number">
                       </p-button>
                       <div class="interactiveToolText">
                         Num1: {{ randomNumber }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -73,11 +78,9 @@
 
                       <p>Check Answer (Do not include remainders)</p>
                       <div class="button-row">
-                        <p-inputnumber [(ngModel)]="userDivisibilityAnswer" inputId="integeronly"/>
+                        <p-inputnumber [(ngModel)]="userDivisibilityAnswer" inputId="integeronly" />
                         <!-- Calls method passing user input -->
-                        <p-button
-                          (click)="onDivisibilityAnswer(userDivisibilityAnswer)"
-                          styleClass="p-button-text"
+                        <p-button (click)="onDivisibilityAnswer(userDivisibilityAnswer)" styleClass="p-button-text"
                           label="Check">
                         </p-button>
                       </div>
@@ -98,11 +101,16 @@
                 <p-accordion-content>
                   <div class="indent-content">
                     <p class="m-0">
-                      <p>The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the least common multiple (LCM) is the smallest positive integer that both numbers divide into evenly.</p>
+                    <p>The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while
+                      the least common multiple (LCM) is the smallest positive integer that both numbers divide into
+                      evenly.</p>
 
-                    <p>One way to find these is through prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm, which uses repeated division to efficiently determine the GCD.</p>
+                    <p>One way to find these is through prime factorization, by comparing shared and unique factors.
+                      Another is the Euclidean Algorithm, which uses repeated division to efficiently determine the GCD.
+                    </p>
 
-                    <p>These concepts are essential for simplifying fractions, solving equations, and understanding number relationships.</p>
+                    <p>These concepts are essential for simplifying fractions, solving equations, and understanding
+                      number relationships.</p>
                     <hr>
 
 
@@ -175,8 +183,64 @@
                       <strong>Produces the same result!</strong>
                     </p>
                     <br>
-
+                    
                     <h3>GCD / LCM Calculator</h3>
+                    <!-- Generate Button -->
+                    <div class="generate-section">
+                      <p-button label="Generate Numbers" icon="pi pi-refresh" (onClick)="generateGcdLcmProblem()"
+                        styleClass="p-button-primary">
+                      </p-button>
+                    </div>
+
+                    <!-- Problem Display -->
+                    <div *ngIf="randomGcdLcmNum1 !== null && randomGcdLcmNum2 !== null" class="problem-section">
+                      <div class="numbers-display">
+                        <h3>Numbers: <span class="highlight">{{ randomGcdLcmNum1 }}</span> and <span
+                            class="highlight">{{ randomGcdLcmNum2 }}</span></h3>
+                      </div>
+
+                      <!-- GCD Input -->
+                      <div class="answer-input">
+                        <label for="gcd-input">GCD (Greatest Common Divisor):</label>
+                        <p-inputNumber inputId="gcd-input" [(ngModel)]="userGcdAnswer" [showButtons]="false"
+                          placeholder="Enter GCD">
+                        </p-inputNumber>
+                      </div>
+
+                      <!-- LCM Input -->
+                      <div class="answer-input">
+                        <label for="lcm-input">LCM (Least Common Multiple):</label>
+                        <p-inputNumber inputId="lcm-input" [(ngModel)]="userLcmAnswer" [showButtons]="false"
+                          placeholder="Enter LCM">
+                        </p-inputNumber>
+                      </div>
+
+                      <!-- Check Button -->
+                      <div class="check-section">
+                        <p-button label="Check Answers" icon="pi pi-check" (onClick)="onCheckGcdLcm()"
+                          styleClass="p-button-success">
+                        </p-button>
+                      </div>
+
+                      <!-- Feedback -->
+                      <div *ngIf="gcdLcmFeedback" class="feedback-section">
+                        <p [class.correct]="gcdLcmFeedback?.includes('Perfect') || gcdLcmFeedback?.includes('correct ✓')"
+                          [class.incorrect]="gcdLcmFeedback?.includes('incorrect')">
+                          {{ gcdLcmFeedback }}
+                        </p>
+                      </div>
+
+                      <!-- Helper Info -->
+                      <div class="helper-section">
+                        <p><strong>Reminder:</strong></p>
+                        <ul>
+                          <li><strong>GCD:</strong> The largest number that divides both numbers
+                            evenly</li>
+                          <li><strong>LCM:</strong> The smallest number that both numbers divide into
+                            evenly</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
 
                 </p-accordion-content>
@@ -190,13 +254,16 @@
                 <p-accordion-content>
                   <div class="indent-content">
                     <p class="m-0">
-                      <p>A prime number is a number greater than 1 that has exactly two divisors: 1 and itself. Numbers with more than two divisors are composite.</p>
+                    <p>A prime number is a number greater than 1 that has exactly two divisors: 1 and itself. Numbers
+                      with more than two divisors are composite.</p>
 
-                      <p>The Fundamental Theorem of Arithmetic states that every integer greater than 1 can be uniquely expressed as a product of prime numbers, which makes 
-                        primes the “building blocks” of integers.</p>
+                    <p>The Fundamental Theorem of Arithmetic states that every integer greater than 1 can be uniquely
+                      expressed as a product of prime numbers, which makes
+                      primes the “building blocks” of integers.</p>
 
-                      <p>Although primes become less frequent as numbers grow larger, their distribution follows intriguing patterns that are central to number theory and 
-                        applications like cryptography.</p>
+                    <p>Although primes become less frequent as numbers grow larger, their distribution follows
+                      intriguing patterns that are central to number theory and
+                      applications like cryptography.</p>
                     <hr>
                     <br>
 
@@ -223,7 +290,8 @@
                     <p>Divisible by 2? Last digit is <code>1</code> &rarr; <strong>no</strong>.</p>
 
                     <p>Divisible by 3? Sum of digits = 2 + 2 + 1 = 5. Since 5 is not a multiple of 3 &rarr;
-                      <strong>no</strong>.</p>
+                      <strong>no</strong>.
+                    </p>
 
                     <p>Divisible by 5? Last digit is not 0 or 5 &rarr; <strong>no</strong>.</p>
 
@@ -238,7 +306,8 @@
 
                     <p>Divisible by 11? Alternating-sum test: 2 − 2 + 1 = 1, not a multiple of 11 &rarr;
                       <strong>no</strong>.
-                      (Long division also gives remainder 1.)</p>
+                      (Long division also gives remainder 1.)
+                    </p>
 
                     <p>Divisible by 13? (long division)</p>
                     <pre>
@@ -250,7 +319,7 @@
 
                     <h4>Step 4 — Conclude</h4>
                     <p>We found a nontrivial divisor: <strong>13</strong>. Therefore <strong>221 is composite (not
-                      prime)</strong>.</p>
+                        prime)</strong>.</p>
                     <p>Compute the cofactor: <code>221 &divide; 13 = 17</code>.</p>
                     <p>Check: <code>13 &times; 17 = 221</code>.</p>
                     <p>Prime factorization (by the Fundamental Theorem of Arithmetic): <code>221 = 13 &times; 17</code>.
@@ -259,10 +328,7 @@
                     <div class="primeNumChecker">
                       <h3>Prime Number Checker</h3>
                       <!-- generate random num here-->
-                      <p-button
-                        (click)="onClick()"
-                        styleClass="p-button-text"
-                        label="Generate-Number">
+                      <p-button (click)="onClick()" styleClass="p-button-text" label="Generate-Number">
                       </p-button>
                       <div class="interactiveToolText">
                         Random number: {{ randomNumber }}
@@ -272,16 +338,10 @@
                       <p>Is this a prime number?</p>
                       <div class="button-row">
                         <!-- Button: user answers Yes -->
-                        <p-button
-                          (click)="onPrimeAnswer(true)"
-                          styleClass="p-button-text"
-                          label="Yes">
+                        <p-button (click)="onPrimeAnswer(true)" styleClass="p-button-text" label="Yes">
                         </p-button>
                         <!-- Button: user answers No -->
-                        <p-button
-                          (click)="onPrimeAnswer(false)"
-                          styleClass="p-button-text"
-                          label="No">
+                        <p-button (click)="onPrimeAnswer(false)" styleClass="p-button-text" label="No">
                         </p-button>
                       </div>
 
@@ -300,42 +360,41 @@
                 <p-accordion-content>
                   <div class="indent-content">
                     <p class="m-0">
-                      <p>In modular arithmetic, we write <code>a ≡ b (mod n)</code> to mean that <em>a</em> and <em>b</em> leave the same remainder when divided by <em>n</em>.</p>
+                    <p>In modular arithmetic, we write <code>a ≡ b (mod n)</code> to mean that <em>a</em> and <em>b</em>
+                      leave the same remainder when divided by <em>n</em>.</p>
 
-                      <p>This system is often described as “clock arithmetic,” since numbers wrap around after reaching the modulus.</p>
+                    <p>This system is often described as “clock arithmetic,” since numbers wrap around after reaching
+                      the modulus.</p>
 
-                      <p>Modular arithmetic has its own rules for addition and multiplication, and introduces concepts like modular inverses, which allow certain equations to be solved in modular systems.</p>
+                    <p>Modular arithmetic has its own rules for addition and multiplication, and introduces concepts
+                      like modular inverses, which allow certain equations to be solved in modular systems.</p>
 
-                      <p>It is a powerful tool used in problem-solving, cryptography, and computer science.</p>
-                      <hr>
-                      <br/>
+                    <p>It is a powerful tool used in problem-solving, cryptography, and computer science.</p>
+                    <hr>
+                    <br />
 
                     <!--Add walkthrough example here-->
                     <h4>Example</h4>
 
-                    <br/><!--Mod Checker Tool-->
-                    <p-button
-                      (click)="onClick()"
-                      styleClass="p-button-text"
-                      label="Generate-Number">
-                    </p-button>
-                    <div class="interactiveToolText">
-                      Random Number: {{ randomNumber }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      Random Mod: {{ randMod }}
-                    </div>
-
-                    <p>Check Answer</p>
-                    <div class="button-row">
-                      <p-inputnumber [(ngModel)]="userModAnswer" inputId="integeronly"/>
-                      <!-- Calls method passing user input -->
-                      <p-button
-                        (click)="onModAnswer(userModAnswer)"
-                        styleClass="p-button-text"
-                        label="Check">
+                    <br /><!--Mod Checker Tool-->
+                    <div class="mod-tool">
+                      <p-button (click)="onClick()" styleClass="p-button-text" label="Generate-Number">
                       </p-button>
-                    </div>
+                      <div class="interactiveToolText">
+                        Random Number: {{ randomNumber }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Random Mod: {{ randMod }}
+                      </div>
 
-                    <div class="interactiveToolText">{{ modFeedback }}</div>
+                      <p>Check Answer</p>
+                      <div class="button-row">
+                        <p-inputnumber [(ngModel)]="userModAnswer" inputId="integeronly" />
+                        <!-- Calls method passing user input -->
+                        <p-button (click)="onModAnswer(userModAnswer)" styleClass="p-button-text" label="Check">
+                        </p-button>
+                      </div>
+
+                      <div class="interactiveToolText">{{ modFeedback }}</div>
+                    </div>
                   </div>
                 </p-accordion-content>
               </p-accordion-panel>
@@ -347,117 +406,230 @@
                 </p-accordion-header>
                 <p-accordion-content>
                   <p class="indent-content">
-                    <p>Several foundational theorems form the backbone of number theory.</p>
+                  <p>Several foundational theorems form the backbone of number theory.</p>
 
-                      <p>The Euclidean Algorithm provides a systematic way to find the GCD, reinforcing divisibility concepts.</p>
+                  <p>The Euclidean Algorithm provides a systematic way to find the GCD, reinforcing divisibility
+                    concepts.</p>
 
-                      <p>Fermat’s Little Theorem introduces a relationship between prime numbers and modular arithmetic, showing that:</p>
+                  <p>Fermat’s Little Theorem introduces a relationship between prime numbers and modular arithmetic,
+                    showing that:</p>
 
-                      <pre>a^(p−1) ≡ 1 (mod p)</pre>
+                  <pre>a^(p−1) ≡ 1 (mod p)</pre>
 
-                      <p>for any prime <em>p</em>.</p>
+                  <p>for any prime <em>p</em>.</p>
 
-                      <p>The Chinese Remainder Theorem explains how to solve systems of modular equations simultaneously, with visual or intuitive methods helping to make this abstract idea more concrete.</p>
+                  <p>The Chinese Remainder Theorem explains how to solve systems of modular equations simultaneously,
+                    with visual or intuitive methods helping to make this abstract idea more concrete.</p>
 
-                      <p>These theorems build intuition for more advanced mathematical applications.</p>
+                  <p>These theorems build intuition for more advanced mathematical applications.</p>
+
+                  <div class="euclidean-visualizer">
+                                    <h4>Euclidean Algorithm Visualizer</h4>
+                                    <p>Watch how the Euclidean Algorithm finds the GCD of two numbers!</p>
+
+                                    <!-- Input Section -->
+                                     <div class="tool-container">
+                                    <div class="input-section">
+                                        <div class="input-group">
+                                            <label for="euclid-num1">First Number:</label>
+                                            <p-inputNumber inputId="euclid-num1" [(ngModel)]="euclidNum1"
+                                                [showButtons]="false" [disabled]="euclideanSteps.length > 0"
+                                                placeholder="Enter first number">
+                                            </p-inputNumber>
+                                        </div>
+
+                                        <div class="input-group">
+                                            <label for="euclid-num2">Second Number:</label>
+                                            <p-inputNumber inputId="euclid-num2" [(ngModel)]="euclidNum2"
+                                                [showButtons]="false" [disabled]="euclideanSteps.length > 0"
+                                                placeholder="Enter second number">
+                                            </p-inputNumber>
+                                        </div>
+
+                                        <div class="button-group">
+                                            <p-button *ngIf="euclideanSteps.length === 0" label="Start Algorithm"
+                                                icon="pi pi-play" (onClick)="startEuclidean()"
+                                                styleClass="p-button-primary">
+                                            </p-button>
+
+                                            <p-button *ngIf="euclideanSteps.length > 0" label="Reset"
+                                                icon="pi pi-refresh" (onClick)="resetEuclidean()"
+                                                styleClass="p-button-secondary">
+                                            </p-button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Steps Visualization -->
+                                    <div *ngIf="euclideanSteps.length > 0" class="steps-container">
+                                        <div class="steps-display">
+                                            <div *ngFor="let step of euclideanSteps; let i = index" class="step-item"
+                                                [class.current]="i === currentStepIndex"
+                                                [class.completed]="i < currentStepIndex"
+                                                [class.upcoming]="i > currentStepIndex">
+
+                                                <!-- Step indicator icon -->
+                                                <span class="step-icon">
+                                                    <i *ngIf="i < currentStepIndex" class="pi pi-check"></i>
+                                                    <i *ngIf="i === currentStepIndex" class="pi pi-arrow-right"></i>
+                                                    <i *ngIf="i > currentStepIndex" class="pi pi-circle"></i>
+                                                </span>
+
+                                                <!-- Step text -->
+                                                <span class="step-text">{{ step }}</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Navigation Controls -->
+                                        <div class="controls-section">
+                                            <p-button label="Previous" icon="pi pi-chevron-left"
+                                                (onClick)="previousEuclideanStep()" [disabled]="currentStepIndex <= 0"
+                                                styleClass="p-button-outlined">
+                                            </p-button>
+
+                                            <p-button label="Next Step" icon="pi pi-chevron-right"
+                                                (onClick)="nextEuclideanStep()"
+                                                [disabled]="currentStepIndex >= euclideanSteps.length - 1"
+                                                styleClass="p-button-success">
+                                            </p-button>
+                                        </div>
+
+                                        <!-- Final Result Display -->
+                                        <div *ngIf="currentStepIndex === euclideanSteps.length - 1"
+                                            class="result-display">
+                                            <h3>Complete!</h3>
+                                            <p class="result-text">The Greatest Common Divisor is: <strong>{{
+                                                    euclideanResult }}</strong></p>
+                                            <p class="reward-text">+2 points earned!</p>
+                                        </div>
+
+                                        <!-- Progress Indicator -->
+                                        <div class="progress-indicator">
+                                            <span>Progress: {{ currentStepIndex + 1 }} / {{ euclideanSteps.length
+                                                }}</span>
+                                            <div class="progress-bar">
+                                                <div class="progress-fill"
+                                                    [style.width.%]="((currentStepIndex + 1) / euclideanSteps.length) * 100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Educational Info -->
+                                    <div class="info-section">
+                                        <h5>How it Works:</h5>
+                                        <p><strong>The Euclidean Algorithm</strong> finds the GCD by repeatedly dividing
+                                            and taking remainders:</p>
+                                        <ol>
+                                            <li>Divide the larger number by the smaller</li>
+                                            <li>Replace the larger with the smaller, and the smaller with the remainder
+                                            </li>
+                                            <li>Repeat until the remainder is 0</li>
+                                            <li>The last non-zero remainder is the GCD</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                </div>
                 </p-accordion-content>
               </p-accordion-panel>
 
               <!-- Panel 7 -->
               <p-accordion-panel value="6">
                 <p-accordion-header>
-                  <div class="topic-header header-font-size">V. Applications in Cryptography and Computer Science</div>
+                  <div class="topic-header header-font-size">VI. Applications in Cryptography and Computer Science</div>
                 </p-accordion-header>
                 <p-accordion-content>
                   <p class="indent-content">
-                    <p>Primes and modular arithmetic are essential for modern encryption systems, especially in securing digital communication. The RSA algorithm uses large prime numbers and modular exponentiation to create public and private keys, making it computationally easy to encrypt but extremely hard to break without special knowledge.</p>
+                  <p>Primes and modular arithmetic are essential for modern encryption systems, especially in securing
+                    digital communication. The RSA algorithm uses large prime numbers and modular exponentiation to
+                    create public and private keys, making it computationally easy to encrypt but extremely hard to
+                    break without special knowledge.</p>
 
-                    <p>Even without advanced math, students can see how modular arithmetic underpins secure data transfer and how number theory moves 
-                      from abstract concepts to real-world technologies.</p>
-                      <hr>
-
-                  
-                               <div class="rsa-instructions">
-                                   <h3>How to Use the RSA Encryption/Decryption Challenge</h3>
-                                   <p>
-                                       This tool gives you a random RSA problem and asks you to either
-                                       <strong>encrypt a word</strong> or <strong>decrypt a ciphertext</strong>.
-                                       You have a limited amount of time to answer!
-                                   </p>
+                  <p>Even without advanced math, students can see how modular arithmetic underpins secure data transfer
+                    and how number theory moves
+                    from abstract concepts to real-world technologies.</p>
+                  <hr>
 
 
-                                   <ol>
-                                       <li>
-                                           Each challenge will randomly choose a mode:
-                                           <ul>
-                                               <li><strong>Encrypt Mode:</strong> convert a word into encrypted
-                                                   numbers.</li>
-                                               <li><strong>Decrypt Mode:</strong> convert encrypted numbers back into
-                                                   the original word.</li>
-                                           </ul>
-                                       </li>
+                  <div class="rsa-instructions">
+                    <h3>How to Use the RSA Encryption/Decryption Challenge</h3>
+                    <p>
+                      This tool gives you a random RSA problem and asks you to either
+                      <strong>encrypt a word</strong> or <strong>decrypt a ciphertext</strong>.
+                      You have a limited amount of time to answer!
+                    </p>
 
 
-                                       <li>
-                                           The RSA values <strong>p</strong>, <strong>q</strong>, <strong>n</strong>,
-                                           <strong>φ(n)</strong>, <strong>e</strong>, and <strong>d</strong> are shown
-                                           for reference.
-                                       </li>
+                    <ol>
+                      <li>
+                        Each challenge will randomly choose a mode:
+                        <ul>
+                          <li><strong>Encrypt Mode:</strong> convert a word into encrypted
+                            numbers.</li>
+                          <li><strong>Decrypt Mode:</strong> convert encrypted numbers back into
+                            the original word.</li>
+                        </ul>
+                      </li>
 
 
-                                       <li>
-                                           <strong>Letter-to-number conversion:</strong><br>
-                                           Letters are converted to numbers using:<br>
-                                           <code>A = 1, B = 2, … Z = 26</code> (spaces = 0)
-                                       </li>
+                      <li>
+                        The RSA values <strong>p</strong>, <strong>q</strong>, <strong>n</strong>,
+                        <strong>φ(n)</strong>, <strong>e</strong>, and <strong>d</strong> are shown
+                        for reference.
+                      </li>
 
 
-                                       <li>
-                                           <strong>Encrypting a message:</strong><br>
-                                           <ul>
-                                               <li>Convert each letter → number.</li>
-                                               <li>Encrypt each number using <code>C = M^e mod n</code>.</li>
-                                               <li>Your answer should be a list of encrypted numbers separated by
-                                                   commas.<br>
-                                                   Example: <code>42, 88, 17</code></li>
-                                           </ul>
-                                       </li>
+                      <li>
+                        <strong>Letter-to-number conversion:</strong><br>
+                        Letters are converted to numbers using:<br>
+                        <code>A = 1, B = 2, … Z = 26</code> (spaces = 0)
+                      </li>
 
 
-                                       <li>
-                                           <strong>Decrypting a ciphertext:</strong><br>
-                                           <ul>
-                                               <li>Apply <code>M = C^d mod n</code> to each number.</li>
-                                               <li>Convert the resulting numbers back into letters.</li>
-                                               <li>Your final answer should be the original word (letters only).</li>
-                                           </ul>
-                                       </li>
+                      <li>
+                        <strong>Encrypting a message:</strong><br>
+                        <ul>
+                          <li>Convert each letter → number.</li>
+                          <li>Encrypt each number using <code>C = M^e mod n</code>.</li>
+                          <li>Your answer should be a list of encrypted numbers separated by
+                            commas.<br>
+                            Example: <code>42, 88, 17</code></li>
+                        </ul>
+                      </li>
 
 
-                                       <li>
-                                           Type your answer in the box and click <strong>Submit</strong>.
-                                           You'll immediately see whether you're correct.
-                                       </li>
+                      <li>
+                        <strong>Decrypting a ciphertext:</strong><br>
+                        <ul>
+                          <li>Apply <code>M = C^d mod n</code> to each number.</li>
+                          <li>Convert the resulting numbers back into letters.</li>
+                          <li>Your final answer should be the original word (letters only).</li>
+                        </ul>
+                      </li>
 
 
-                                       <li>
-                                           When you're done, click <strong>New Challenge</strong> to try another
-                                           problem.
-                                       </li>
-                                   </ol>
+                      <li>
+                        Type your answer in the box and click <strong>Submit</strong>.
+                        You'll immediately see whether you're correct.
+                      </li>
 
 
-                                   <p><strong>Note:</strong> All messages are uppercase. No punctuation is used.</p>
-                               </div>
-                               <app-rsa-challenge></app-rsa-challenge>
+                      <li>
+                        When you're done, click <strong>New Challenge</strong> to try another
+                        problem.
+                      </li>
+                    </ol>
+
+
+                    <p><strong>Note:</strong> All messages are uppercase. No punctuation is used.</p>
+                  </div>
+                  <app-rsa-challenge></app-rsa-challenge>
                 </p-accordion-content>
               </p-accordion-panel>
             </p-tabpanel>
 
             <p-tabpanel value="1">
               <h3>Number Theory & Cryptography Quiz</h3>
-              <app-quiz
-                [questions]="numberTheoryQuestions">
+              <app-quiz [questions]="numberTheoryQuestions">
               </app-quiz>
             </p-tabpanel>
 

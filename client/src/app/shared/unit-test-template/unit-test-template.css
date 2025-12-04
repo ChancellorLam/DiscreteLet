@@ -2,7 +2,6 @@
   max-width: 900px;
   margin: 2rem auto;
   padding: 1rem;
-  color: #f2f2f2;
 }
 
 /* Difficulty Selection */
@@ -13,12 +12,10 @@
 
 .test-header h2 {
   margin: 0 0 0.5rem 0;
-  color: #ffffff;
 }
 
 .test-header p {
   margin: 0;
-  color: #dddddd;
 }
 
 .difficulty-options {
@@ -28,7 +25,6 @@
 .difficulty-options h3 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #ffffff;
 }
 
 .difficulty-cards {
@@ -41,7 +37,6 @@
 .difficulty-card {
   cursor: pointer;
   border: 2px solid #444;
-  background: #111;
 }
 
 .difficulty-card.selected {
@@ -59,7 +54,6 @@
 .difficulty-content {
   text-align: center;
   padding: 1rem;
-  color: white;
 }
 
 .difficulty-content i {
@@ -78,12 +72,10 @@
 
 .difficulty-content h4 {
   margin: 0.5rem 0;
-  color: white;
 }
 
 .difficulty-content p {
   margin: 0.5rem 0;
-  color: #cccccc;
 }
 
 .question-count {
@@ -92,7 +84,6 @@
 }
 
 .test-info {
-  background: #222;
   padding: 1rem;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -100,7 +91,6 @@
 
 .test-info p {
   margin: 0.5rem 0;
-  color: white;
 }
 
 /* Test Progress */
@@ -113,7 +103,6 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   font-weight: 600;
-  color: white;
 }
 
 .difficulty-badge {
@@ -125,17 +114,14 @@
 
 .difficulty-badge.easy {
   background: #27ae60;
-  color: white;
 }
 
 .difficulty-badge.hard {
   background: #e74c3c;
-  color: white;
 }
 
 .progress-bar {
   height: 8px;
-  background: #333;
   border-radius: 4px;
 }
 
@@ -152,7 +138,6 @@
 }
 
 .question-section h3 {
-  color: white;
   margin-bottom: 2rem;
 }
 
@@ -167,20 +152,17 @@
   align-items: center;
   padding: 1rem;
   border: 2px solid #444;
-  background: #111;
   cursor: pointer;
 }
 
 .option-item.selected {
   border-color: #1565c0;
-  background: #0d1b2a;
 }
 
 .option-item label {
   margin-left: 1rem;
   cursor: pointer;
   flex: 1;
-  color: white;
 }
 
 .test-actions {
@@ -193,15 +175,14 @@
 .results-header {
   text-align: center;
   padding: 2rem;
-  color: white;
 }
 
 .results-header.passed {
-  background: #27ae60;
+  border: 5px solid var(--success-color);
 }
 
 .results-header.failed {
-  background: #e74c3c;
+  border: 5px solid var(--failure-color);
 }
 
 .results-header i {
@@ -235,13 +216,11 @@
 }
 
 .score-circle.passed {
-  background: #27ae60;
-  color: white;
+  border: 5px solid var(--failure-color);
 }
 
 .score-circle.failed {
-  background: #e74c3c;
-  color: white;
+  border: 5px solid var(--failure-color);
 }
 
 .score-number {
@@ -256,12 +235,10 @@
 .score-details {
   text-align: center;
   margin-bottom: 2rem;
-  color: white;
 }
 
 .score-details p {
   margin: 0.75rem 0;
-  color: white;
 }
 
 .result-message {
@@ -274,16 +251,13 @@
 }
 
 .question-review h4 {
-  color: white;
   margin-bottom: 1.5rem;
 }
 
 .review-item {
-  background: #1a1a1a;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  border-left: 4px solid #555;
-  color: white;
+  border-left: 5px solid #555;
 }
 
 .review-item:has(.correct) {
@@ -318,11 +292,9 @@
 .review-correct,
 .review-explanation {
   margin: 0.5rem 0;
-  color: white;
 }
 
 .review-explanation {
-  background: #222;
   padding: 1rem;
   margin-top: 1rem;
   font-style: italic;
