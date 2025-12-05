@@ -12,6 +12,13 @@ import { RsaChallenge } from '../../shared/rsa-challenge/rsa-challenge';
 import { CommonModule } from '@angular/common';
 import { UnitTestTemplate, UnitTestConfig } from '../../shared/unit-test-template/unit-test-template';
 
+interface Question {
+  text: string;
+  options: string[];
+  correct: string;
+  explanation?: string;
+}
+
 @Component({
   selector: 'app-number-theory-page',
   imports: [AccordionModule, ToggleButtonModule, FormsModule, ButtonModule, InputNumberModule, TabsModule, QuizComponent, RsaChallenge, CommonModule, UnitTestTemplate],
@@ -328,8 +335,8 @@ export class NumberTheoryPage {
     this.isEuclideanRunning = false;
   }
 
-  /* Quiz questions and answers */
-  numberTheoryQuestions = [
+  // Quiz questions and answers //
+  numberTheoryQuestionPool: Question[] = [
     {
       text: 'Which of the following best describes the main focus of number theory?',
       options: [
@@ -380,6 +387,9 @@ export class NumberTheoryPage {
       explanation: 'RSA relies on the fact that factoring the product of large primes is computationally hard, securing modern digitial communication.'
     }
   ];
+
+  // Displayed questions, randomly selected from pool
+  numberTheoryQuestions: Question[] = [];
 
   // Unit Test Configuration
 numTheoryCryptoUnitTestConfig: UnitTestConfig = {
@@ -609,6 +619,24 @@ numTheoryCryptoUnitTestConfig: UnitTestConfig = {
   ]
 };
 
+constructor() {
+    // initialize with random questions when component is created
+    this.selectRandomQuestions(5);
+  }
+
+  //randomly selects n questions from the question pool
+  //count num questions to select (default is 5)
+  selectRandomQuestions(count = 5): void {
+    //create a copy of the pool and shuffle it
+    const shuffled = [...this.numberTheoryQuestionPool].sort(() => Math.random() -0.5);
+    //take the first count questions
+    this.numberTheoryQuestions = shuffled.slice(0, Math.min(count, this.numberTheoryQuestionPool.length));
+  }
+
+  //refresh quiz with new random questions
+  refreshQuiz(): void {
+    this.selectRandomQuestions(5);
+  }
 
 
 
