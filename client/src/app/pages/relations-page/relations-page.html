@@ -26,19 +26,15 @@
                 </p-accordion-header>
                 <p-accordion-content>
                   <p class="indent-content">
-                    In Discrete Mathematics, a relation is a way of describing how elements of one set
-                    are connected to elements of another
-                    set, formally defined as a subset of the Cartesian product of two sets. Relations
-                    are fundamental in representing
-                    associations such as “is equal to,” “is less than,” or “divides,” and they form the
-                    basis for many mathematical and
-                    computational concepts. By studying relations, we can analyze their properties (like
-                    reflexivity, symmetry, and
-                    transitivity), represent them using matrices or graphs, perform operations on them
-                    (such as union, intersection,
-                    and composition), and identify special forms like equivalence relations that
-                    partition a set into distinct classes.
-                  </p>
+                    <p>In Discrete Mathematics, a relation is a way of describing how elements of one set are connected to elements of another set, formally defined as a subset of the Cartesian product of two sets.</p>
+
+                    <p>Relations are fundamental in representing associations such as “is equal to,” “is less than,” or “divides,” and they form the basis for many mathematical 
+                      and computational concepts.</p>
+
+                    <p>By studying relations, we can analyze their properties (like reflexivity, symmetry, and transitivity), represent them using matrices or graphs, perform 
+                      operations on them (such as union, intersection, and composition), and identify special forms like equivalence relations that partition a set into distinct 
+                      classes.</p>
+
                 </p-accordion-content>
               </p-accordion-panel>
 
@@ -51,14 +47,14 @@
                   <div class="indent-content">
                     <!--Lesson content-->
                     <p class="m-0">
-                      Definition: A relation RRR from a set AAA to a set BBB is a subset of the Cartesian
-                      product A×BA \times BA×B.
-                      That is,
-                      R⊆A×BR \subseteq A \times BR⊆A×B
-                      Each element of RRR is an ordered pair (a,b)(a, b)(a,b) where a∈Aa \in Aa∈A and b∈Bb
-                      \in Bb∈B.
-                      If (a,b)∈R(a,b) \in R(a,b)∈R, we say “a is related to b” and write aRbaRbaRb.
-                    </p>
+                      <p><strong>Definition:</strong> A relation <em>R</em> from a set <em>A</em> to a set <em>B</em> is a subset of the Cartesian product <code>A × B</code>. That is:</p>
+
+                      <pre>R ⊆ A × B</pre>
+
+                      <p>Each element of <em>R</em> is an ordered pair <code>(a, b)</code> where <em>a ∈ A</em> and <em>b ∈ B</em>.</p>
+
+                      <p>If <code>(a, b) ∈ R</code>, we say “a is related to b” and write <code>a R b</code>.</p>
+
                     <div>
                       <h4>Example</h4>
                       <p>
@@ -202,6 +198,77 @@
                       tells you whether
                       a<sub>i</sub> is related to a<sub>j</sub>.
                     </p>
+                    <!--Instructions for tool-->
+                                <div class="relation-matrix-instructions">
+                                    <h3>How to Use the Relation Matrix Builder</h3>
+
+                                    <p>
+                                        This tool helps you convert a relation into a matrix and also lets you edit
+                                        the matrix to update the relation. A relation matrix is an <strong>n ×
+                                            n</strong>
+                                        grid of 0s and 1s where:
+                                    </p>
+
+                                    <ul>
+                                        <li><strong>1</strong> means the pair <code>(aᵢ, aⱼ)</code> is in the relation
+                                        </li>
+                                        <li><strong>0</strong> means the pair is NOT in the relation</li>
+                                    </ul>
+
+                                    <h4>1. Enter the Set A</h4>
+                                    <p>
+                                        Type your elements into the “Set A” box, separated by commas.
+                                        For example:
+                                    </p>
+                                    <pre>A = a1, a2, a3</pre>
+
+                                    <h4>2. Enter the Relation R</h4>
+                                    <p>
+                                        Type the ordered pairs using parentheses. Example:
+                                    </p>
+                                    <pre>(a1,a2), (a2,a3)</pre>
+
+                                    <p>
+                                        Once entered, the matrix will automatically update. Rows represent the first
+                                        element of the pair, and columns represent the second element.
+                                    </p>
+
+                                    <h4>3. Click the Matrix to Edit It</h4>
+                                    <p>
+                                        You can click any cell in the matrix:
+                                    </p>
+
+                                    <ul>
+                                        <li>Click a <strong>0</strong> → becomes <strong>1</strong> (the pair is added)
+                                        </li>
+                                        <li>Click a <strong>1</strong> → becomes <strong>0</strong> (the pair is
+                                            removed)</li>
+                                    </ul>
+
+                                    <p>The relation box will automatically update to reflect the changes.</p>
+
+                                    <h4>Example (Clicking the Matrix)</h4>
+                                    <p>If you click the cell at row <code>a3</code>, column <code>a1</code>:</p>
+
+                                    <pre>0 → 1</pre>
+
+                                    <p>
+                                        Then the matrix now contains <code>(a3, a1)</code>, and the updated relation
+                                        becomes:
+                                    </p>
+                                    <pre>&#123;(a1,a2), (a2,a3), (a3,a1)&#125;</pre>
+
+                                    <h4>4. Explore the Relationship</h4>
+                                    <p>You can use this tool to understand:</p>
+                                    <ul>
+                                        <li>How relations map to matrices</li>
+                                        <li>How matrix entries correspond to ordered pairs</li>
+                                        <li>How structure changes when pairs are added or removed</li>
+                                        <li>Patterns like reflexive, symmetric, and transitive relations</li>
+                                    </ul>
+                                </div>
+                          <app-relation-matrix></app-relation-matrix>
+
                   </div>
                 </p-accordion-content>
               </p-accordion-panel>
@@ -388,6 +455,7 @@
                         </tr>
                       </table>
                     </div>
+                    <app-relation-ops></app-relation-ops>
                   </div>
                 </p-accordion-content>
               </p-accordion-panel>
@@ -467,6 +535,36 @@
                       class:</p>
                     <p>[a] = &#123;b ∈ A | aRb&#125;</p>
                   </div>
+
+                  <!--Instructions and Interactive Tool-->
+                                <div class="equiv-instructions">
+                                    <h3>How to Use This Tool</h3>
+
+                                    <p>Enter a set <strong>A</strong> and a relation <strong>R</strong>, and the tool
+                                        will tell you whether R is an equivalence relation.</p>
+
+                                    <ol>
+                                        <li><strong>Enter Set A</strong> using commas.
+                                            <br>Example: <code>1,2,3,4,5,6</code>
+                                        </li>
+
+                                        <li><strong>Enter Relation R</strong> as ordered pairs.
+                                            <br>Example: <code>(1,4), (4,1), (2,5), (5,2)</code>
+                                        </li>
+
+                                        <li>The tool checks:
+                                            <ul>
+                                                <li>Reflexive: (a, a) in R</li>
+                                                <li>Symmetric: (a, b) ⇒ (b, a)</li>
+                                                <li>Transitive: (a, b) & (b, c) ⇒ (a, c)</li>
+                                            </ul>
+                                        </li>
+
+                                        <li>It also shows the <strong>equivalence class</strong> for each element.</li>
+                                    </ol>
+                                </div>
+
+                                <app-equiv-checker></app-equiv-checker>
                 </p-accordion-content>
               </p-accordion-panel>
             </p-tabpanel>
@@ -485,7 +583,7 @@
 
             <p-tabpanel value="2">
               <h3>Unit Test</h3>
-              <p>Relations Exam Goes HERE</p>
+              <app-unit-test-template [config]="relationUnitTestConfig"></app-unit-test-template>
             </p-tabpanel>
           </p-tabpanels>
         </p-tabs>

@@ -1,10 +1,98 @@
-.primeNumChecker {
+.primeNumChecker, .mod-tool {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-style: solid;
-  border-color: aliceblue;
+  border: 1px solid var(--border-outline-color);
+}
+
+.tool-container {
+  border: 1px solid var(--border-outline-color);
+}
+
+/* GCD/LCM Practice Tool Styling */
+.gcd-lcm-practice {
+  padding: 1rem;
+  max-width: 600px;
+}
+
+.gcd-lcm-practice h4 {
+  margin-bottom: 0.5rem;
+}
+
+.generate-section {
+  margin: 1.5rem 0;
+}
+
+.problem-section {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-outline-color);
+}
+
+.numbers-display {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px dashed;
+}
+
+.numbers-display h3 {
+  margin: 0;
+}
+
+.highlight {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+.answer-input {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.answer-input label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.check-section {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.feedback-section {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.feedback-section p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.feedback-section .correct {
+  color: #10b981;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #10b981;
+}
+
+.feedback-section .incorrect {
+  color: #ef4444;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #ef4444;
 }
 
 .button-row {

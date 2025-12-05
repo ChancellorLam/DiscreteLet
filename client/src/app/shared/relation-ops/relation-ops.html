@@ -1,0 +1,63 @@
+<div class="ops-container">
+
+  <h2>Relation Operations Explorer</h2>
+
+  <!-- Operation Selector -->
+  <div class="operation-select">
+    <label for="operation-select">Select Operation:</label>
+    <select id="operation-select" [(ngModel)]="operation">
+      <option value="union">Union (R1 ∪ R2)</option>
+      <option value="intersection">Intersection (R1 ∩ R2)</option>
+      <option value="difference">Difference (R1 - R2)</option>
+      <option value="inverse">Inverse (R1⁻¹)</option>
+      <option value="composition">Composition (R1 ∘ R2)</option>
+    </select>
+  </div>
+
+  <hr>
+
+  <h3>Ordered Pair Representation</h3>
+
+  <div class="pair-section">
+    <p><strong>R1:</strong> {{ R1 }}</p>
+    <p><strong>R2:</strong> {{ R2 }}</p>
+
+    <p class="result-title">Result:</p>
+    <p class="result">{{ pairResult }}</p>
+  </div>
+
+  <hr>
+
+  <h3>Matrix Representation</h3>
+
+  <div class="matrix-section">
+
+    <div>
+      <p><strong>M1:</strong></p>
+      <table class="matrix">
+        <tr *ngFor="let row of M1">
+          <td *ngFor="let v of row">{{ v }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <p><strong>M2:</strong></p>
+      <table class="matrix">
+        <tr *ngFor="let row of M2">
+          <td *ngFor="let v of row">{{ v }}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <p class="result-title">Matrix Result:</p>
+
+  <table class="matrix">
+    <tr *ngFor="let row of matrixResult">
+      <td *ngFor="let v of row">{{ v }}</td>
+    </tr>
+  </table>
+
+</div>

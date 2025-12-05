@@ -1,0 +1,69 @@
+.rsa-card {
+  width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid var(--border-outline-color);
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.rsa-info {
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.challenge-box {
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.timer {
+  font-size: 1.2rem;
+}
+
+.low {
+  color: red;
+  font-weight: bold;
+}
+
+.input-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+input {
+  width: 120px;
+  padding: 6px;
+  border: 1px solid #555; /* Darker border */
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+button {
+  padding: 7px 14px;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #888;
+}
+
+.new-btn {
+  background: #28a745;
+  margin-top: 10px;
+}
+
+.feedback {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}

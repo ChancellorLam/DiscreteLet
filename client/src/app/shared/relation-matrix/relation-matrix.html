@@ -1,0 +1,57 @@
+<div class="relation-matrix-container full-borders">
+
+  <h2>Relation Matrix Builder</h2>
+
+  <!-- Set Input -->
+  <div class="input-block">
+    <label for="setInput">Set A (comma separated):</label>
+    <input 
+      id="setInput" 
+      type="text" 
+      [(ngModel)]="setInput" 
+      (input)="updateSet()"
+    >
+  </div>
+
+  <!-- Relation Input -->
+  <div class="input-block">
+    <label for="relationInput">Relation R (pairs like (a1,a2)):</label>
+    <input 
+      id="relationInput" 
+      type="text" 
+      [(ngModel)]="relationInput" 
+      (input)="updateRelationFromInput()"
+    >
+  </div>
+
+  <hr>
+
+  <!-- Display Set / Relation -->
+  <div>
+    <p><strong>A =</strong> {{ A }}</p>
+    <p><strong>R =</strong> {{ relationPairs }}</p>
+  </div>
+
+  <h3>Relation Matrix M<sub>R</sub></h3>
+
+  <!-- Matrix -->
+  <table class="matrix-table">
+    <tr>
+      <th></th>
+      <th *ngFor="let col of A">{{ col }}</th>
+    </tr>
+
+    <tr *ngFor="let row of A; let i = index">
+      <th>{{ row }}</th>
+      <td
+        *ngFor="let col of A; let j = index"
+        (click)="toggleCell(i,j)"
+        [class.on]="matrix[i][j] === 1"
+        [class.off]="matrix[i][j] === 0"
+      >
+        {{ matrix[i][j] }}
+      </td>
+    </tr>
+  </table>
+
+</div>
