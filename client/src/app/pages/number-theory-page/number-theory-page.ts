@@ -12,6 +12,7 @@ import { RsaChallenge } from '../../shared/rsa-challenge/rsa-challenge';
 import { CommonModule } from '@angular/common';
 import { UnitTestTemplate, UnitTestConfig } from '../../shared/unit-test-template/unit-test-template';
 
+// interface for quiz question
 interface Question {
   text: string;
   options: string[];
@@ -177,6 +178,7 @@ export class NumberTheoryPage {
     }
   }
 
+  // Handles user input for Divisibility tool
   onDivisibilityAnswer(userGuessDivisibility: number | null): void {
     if (userGuessDivisibility === null) {
       this.divisibilityFeedback = "Please enter an answer"; return;

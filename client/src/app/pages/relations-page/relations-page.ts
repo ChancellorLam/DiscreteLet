@@ -25,6 +25,7 @@ interface DragDropResult {
   };
 }
 
+// interface for quiz question
 interface Question {
   text: string;
   options: string[];
@@ -390,6 +391,8 @@ handleResults(result: DragDropResult) {
   console.log('Zone 4:', event.zone4);
 }
 
+// ACCORDION CONTROL
+// Toggles between expanding and collapsing all panels
   toggleAll() {
     if (this.isExpanded) {
       this.collapseAll();
