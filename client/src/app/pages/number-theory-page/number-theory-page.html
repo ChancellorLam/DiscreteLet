@@ -183,7 +183,7 @@
                       <strong>Produces the same result!</strong>
                     </p>
                     <hr><br>
-                    
+
                     <h3>GCD / LCM Calculator</h3>
                     <!-- Generate Button -->
                     <div class="generate-section">
@@ -224,8 +224,8 @@
 
                       <!-- Feedback -->
                       <div *ngIf="gcdLcmFeedback" class="feedback-section">
-                        <p [class.correct]="gcdLcmFeedback?.includes('Perfect') || gcdLcmFeedback?.includes('correct ✓')"
-                          [class.incorrect]="gcdLcmFeedback?.includes('incorrect')">
+                        <p [class.correct]="gcdLcmFeedback.includes('Perfect') || gcdLcmFeedback.includes('correct ✓')"
+                          [class.incorrect]="gcdLcmFeedback.includes('incorrect')">
                           {{ gcdLcmFeedback }}
                         </p>
                       </div>
