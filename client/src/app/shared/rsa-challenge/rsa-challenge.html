@@ -1,0 +1,64 @@
+<div class="rsa-card">
+  <h2>🔐 RSA Challenge</h2>
+
+
+  <p class="timer">
+    Time left: <span [class.low]="timer <= 5">{{ timer }}</span>s
+  </p>
+
+
+  <!-- RSA parameters -->
+  <div class="info-box">
+    <p><strong>p:</strong> {{ p }} | <strong>q:</strong> {{ q }}</p>
+    <p><strong>n:</strong> {{ n }}</p>
+    <p><strong>φ(n):</strong> {{ phi }}</p>
+    <p><strong>e:</strong> {{ e }} | <strong>d:</strong> {{ d }}</p>
+  </div>
+
+
+  <!-- Encrypt / Decrypt mode -->
+  <div class="challenge-box">
+    <!-- Encrypt mode -->
+    <ng-container *ngIf="mode === 'encrypt'">
+      <p><strong>Encrypt this message:</strong></p>
+      <h3 class="challenge-text">{{ plaintext }}</h3>
+      <p class="hint">Answer with encrypted numbers separated by commas.</p>
+    </ng-container>
+
+
+    <!-- Decrypt mode -->
+    <ng-container *ngIf="mode === 'decrypt'">
+      <p><strong>Decrypt this ciphertext:</strong></p>
+      <h3 class="challenge-text">{{ ciphertext.join(', ') }}</h3>
+      <p class="hint">Answer with the decrypted word (letters).</p>
+    </ng-container>
+  </div>
+
+
+  <!-- User input -->
+  <div class="input-row">
+    <input
+      type="text"
+      [(ngModel)]="userAnswer"
+      [disabled]="isLocked"
+      placeholder="Your answer" />
+
+
+    <button (click)="submit()" [disabled]="isLocked">
+      Submit
+    </button>
+  </div>
+
+
+  <!-- Feedback -->
+  <p class="feedback">{{ feedback }}</p>
+
+
+  <!-- New challenge -->
+  <button class="new-btn" (click)="generateChallenge()">
+    New Challenge
+  </button>
+</div>
+
+
+

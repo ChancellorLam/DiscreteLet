@@ -1,0 +1,34 @@
+h2, h3 {
+    text-align: center;
+}
+
+/* styling for textbook */
+.textbook-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid var(--border-outline-color);
+}
+
+/* styling for syllabus */
+.pdf-container {
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .pdf-container {
+    height: 70vh;
+    min-height: 400px;
+  }
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
