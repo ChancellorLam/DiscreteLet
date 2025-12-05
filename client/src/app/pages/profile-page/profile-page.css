@@ -3,36 +3,13 @@ h2, h3 {
 }
 
 /* styling for textbook */
-.pdf-actions {
+.textbook-actions {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   border: 1px solid var(--border-outline-color);
-}
-.resource-item {
-  margin-bottom: 2rem;
-}
-
-.resource-item:last-child {
-  margin-bottom: 0;
-}
-
-.resource-item h4 {
-  margin-bottom: 0.5rem;
-}
-
-.file-info {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.file-info i {
-  font-size: 1rem;
 }
 
 /* styling for syllabus */
