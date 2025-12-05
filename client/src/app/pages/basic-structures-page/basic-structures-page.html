@@ -7,8 +7,8 @@
         <p-tabs [(value)]="activeTab">
           <p-tablist>
             <p-tab value="0">Lessons</p-tab>
-            <p-tab value="1">Exercises</p-tab>
-            <p-tab value="2">Quiz</p-tab>
+            <p-tab value="1">Quiz</p-tab>
+            <p-tab value="2">Unit Test</p-tab>
           </p-tablist>
 
           <p-tabpanels>
@@ -646,14 +646,15 @@
             </p-tabpanel>
 
             <p-tabpanel value="1">
-              <h3>Exercises</h3>
-              <p>Practice gcd, modular inverses, sample problems.</p>
+              <h3>Quiz</h3>
+              <app-quiz [questions]="discreteStructuresQuestions">
+              </app-quiz>
             </p-tabpanel>
 
             <p-tabpanel value="2">
-              <h3>Relations Quiz</h3>
-              <app-quiz>
-              </app-quiz>
+              <h3>Unit Test</h3>
+              <app-unit-test-template [config]="discreteStructuresUnitTestConfig">
+              </app-unit-test-template>
             </p-tabpanel>
           </p-tabpanels>
         </p-tabs>
