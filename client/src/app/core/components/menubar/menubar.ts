@@ -32,11 +32,6 @@ export class AppMenubar implements OnInit {
 
     // Initialization — build menubar structure
     ngOnInit() {
-
-        // Debug logs to confirm PrimeIcons loading correctly
-        console.log("PrimeIcons object: ", PrimeIcons);
-        console.log("PrimeIcons.Bitcoin:", PrimeIcons.BITCOIN);
-
         // Define navigation menu items and submenus
         this.items = [
             { label: 'Home', routerLink: '/home' },
@@ -47,8 +42,6 @@ export class AppMenubar implements OnInit {
             { label: 'Counting', routerLink: '/counting' },
             { label: 'Number Theory & Cryptography', routerLink: '/number-theory'},
             { icon: PrimeIcons.BITCOIN}
-
         ];
-        console.log(PrimeIcons.BITCOIN);
     }
 }
