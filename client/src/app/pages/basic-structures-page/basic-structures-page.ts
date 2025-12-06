@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { TabsModule } from 'primeng/tabs';
 import { QuizComponent } from '../../shared/quiz-template/quiz-template';
+import { UnitTestTemplate, UnitTestConfig } from '../../shared/unit-test-template/unit-test-template';
 
 @Component({
   selector: 'app-basic-structures-page',
@@ -18,7 +19,8 @@ import { QuizComponent } from '../../shared/quiz-template/quiz-template';
     InputTextModule,
     CommonModule,
     TabsModule,
-    QuizComponent
+    QuizComponent,
+    UnitTestTemplate
   ],
   templateUrl: './basic-structures-page.html',
   styleUrl: './basic-structures-page.css'
@@ -537,5 +539,350 @@ export class BasicStructuresPage {
     this.checkMatrixInput('A');
     this.checkMatrixInput('B');
   }
+
+  discreteStructuresQuestions = [
+  {
+    text: 'Which of the following is a valid set?',
+    options: ['{1, 2, 3}', '{1, {2, 3}}', 'Both A and B', 'Neither A nor B'],
+    correct: 'Both A and B',
+    explanation:
+      'Both {1,2,3} and {1,{2,3}} follow the rules of set notation—sets can contain numbers or other sets.'
+  },
+  {
+    text: 'A function f: A → B is injective if:',
+    options: [
+      'Every input has exactly one output',
+      'Different inputs always map to different outputs',
+      'Every element in B has a preimage',
+      'The function has an inverse for every element'
+    ],
+    correct: 'Different inputs always map to different outputs',
+    explanation:
+      'Injective (one-to-one) means no two distinct elements in A map to the same element in B.'
+  },
+  {
+    text: 'What does matrix multiplication require?',
+    options: [
+      'Same number of rows in both matrices',
+      'Same number of columns in both matrices',
+      'Columns in the first equal rows in the second',
+      'Rows in the first equal rows in the second'
+    ],
+    correct: 'Columns in the first equal rows in the second',
+    explanation:
+      'Matrix multiplication AB is defined only when A has dimensions m×n and B has n×k.'
+  },
+  {
+    text: 'A matrix is invertible only if:',
+    options: [
+      'Its determinant is zero',
+      'Its determinant is nonzero',
+      'It has more rows than columns',
+      'It is symmetric'
+    ],
+    correct: 'Its determinant is nonzero',
+    explanation:
+      'A square matrix is invertible if and only if det(A) ≠ 0.'
+  },
+  {
+    text: 'Which property must an equivalence relation satisfy?',
+    options: ['Reflexive', 'Symmetric', 'Transitive', 'All of the above'],
+    correct: 'All of the above',
+    explanation:
+      'Equivalence relations always satisfy all three: reflexive, symmetric, and transitive.'
+  },
+  {
+    text: 'A function f: A → B is surjective if:',
+    options: [
+      'Every element of A has an output',
+      'Different inputs produce different outputs',
+      'Every element of B has a preimage in A',
+      'The function is invertible'
+    ],
+    correct: 'Every element of B has a preimage in A',
+    explanation:
+      'Surjective (onto) functions cover the entire codomain B.'
+  },
+  {
+    text: 'The determinant of a 2×2 matrix [[a, b], [c, d]] is:',
+    options: ['a + d', 'ad − bc', 'ab + cd', 'ac − bd'],
+    correct: 'ad − bc',
+    explanation:
+      'The determinant formula det(A) = ad − bc helps determine invertibility.'
+  }
+];
+
+discreteStructuresUnitTestConfig: UnitTestConfig = {
+  title: 'Basic Structures, Functions, and Matrices Unit Test',
+  description: 'Evaluate your understanding of sets, relations, functions, matrix operations, and determinants.',
+  passingScore: 70,
+  timeLimit: 30,
+  questions: [
+
+    // -------------------------------
+    // EASY QUESTIONS (15)
+    // -------------------------------
+    {
+      question: 'Which of the following represents a valid set?',
+      options: ['{1,2,3}', '{1,{2,3}}', 'Both', 'Neither'],
+      correctAnswer: 2,
+      explanation: 'Sets may contain numbers or other sets; both are valid.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'A function is defined as:',
+      options: [
+        'A rule assigning each input to many outputs',
+        'A rule assigning each input to exactly one output',
+        'A rule assigning outputs only to some inputs',
+        'A relation with no ordered pairs'
+      ],
+      correctAnswer: 1,
+      explanation: 'A function assigns exactly one output to each input.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'A function f: A → B is injective if:',
+      options: [
+        'Different inputs map to different outputs',
+        'Every element in B has a preimage',
+        'f has an inverse',
+        'It is symmetric'
+      ],
+      correctAnswer: 0,
+      explanation: 'Injective means no two inputs share the same output.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'A function f: A → B is surjective if:',
+      options: [
+        'Every element of B has a preimage',
+        'Different inputs map to different outputs',
+        'A contains B',
+        'f is symmetric'
+      ],
+      correctAnswer: 0,
+      explanation: 'Surjectivity means f covers the entire codomain.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'Which three properties define an equivalence relation?',
+      options: [
+        'Reflexive, Symmetric, Transitive',
+        'Symmetric, Antisymmetric, Transitive',
+        'Symmetric, Transitive, Bijective',
+        'Reflexive, Transitive, Injective'
+      ],
+      correctAnswer: 0,
+      explanation: 'Equivalence relations require all three: reflexive, symmetric, and transitive.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'If A has 3 elements and B has 4, how many functions f: A → B exist?',
+      options: ['3', '4', '12', '64'],
+      correctAnswer: 3,
+      explanation: 'Each of 3 inputs has 4 choices: 4³ = 64.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'Matrix multiplication AB is defined only if:',
+      options: [
+        'A has the same number of rows as B',
+        'A has the same number of columns as B',
+        'Columns of A = rows of B',
+        'Rows of A = columns of B'
+      ],
+      correctAnswer: 2,
+      explanation: 'AB exists only if A is m×n and B is n×k.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'The determinant of [[a, b], [c, d]] is:',
+      options: ['ab + cd', 'ac − bd', 'ad − bc', 'a + d'],
+      correctAnswer: 2,
+      explanation: 'det(A) = ad − bc.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'A matrix is invertible only if its determinant is:',
+      options: ['0', '1', 'positive', 'nonzero'],
+      correctAnswer: 3,
+      explanation: 'det(A) ≠ 0 is required for invertibility.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'Which of the following is a 3×2 matrix?',
+      options: ['[[1,2,3],[4,5,6]]', '[[1,2],[3,4],[5,6]]', '[[1],[2],[3]]', '[[1,2]]'],
+      correctAnswer: 1,
+      explanation: 'It has 3 rows and 2 columns.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'If f is bijective, what can be said?',
+      options: [
+        'f is injective only',
+        'f is surjective only',
+        'f is both injective and surjective',
+        'f has no inverse'
+      ],
+      correctAnswer: 2,
+      explanation: 'Bijective = injective + surjective.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'The identity matrix I has the property:',
+      options: ['I² = 0', 'IA = A', 'IA = 0', 'A + I = 0'],
+      correctAnswer: 1,
+      explanation: 'Multiplying by the identity leaves A unchanged.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'Which of these is always true for sets?',
+      options: ['A ⊆ A', 'A ⊂ A', 'A ∩ A = ∅', 'A ∪ A = ∅'],
+      correctAnswer: 0,
+      explanation: 'Every set is a subset of itself.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'The inverse of a bijection f: A → B is:',
+      options: [
+        'A function B → A',
+        'Not a function',
+        'A constant function',
+        'A relation but not a function'
+      ],
+      correctAnswer: 0,
+      explanation: 'A bijection guarantees a well-defined inverse.',
+      difficulty: 'easy'
+    },
+    {
+      question: 'The rank of a matrix refers to:',
+      options: [
+        'Number of rows',
+        'Number of columns',
+        'Number of pivot positions',
+        'Its determinant'
+      ],
+      correctAnswer: 2,
+      explanation: 'Rank = number of linearly independent rows/columns.',
+      difficulty: 'easy'
+    },
+
+    // -------------------------------
+    // HARD QUESTIONS (15)
+    // -------------------------------
+    {
+      question: 'How many bijections exist from a set with n elements to itself?',
+      options: ['n', 'n²', '2ⁿ', 'n!'],
+      correctAnswer: 3,
+      explanation: 'The number of bijections (permutations) of an n-element set is n!.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'If f: A → B and g: B → C are bijections, what is true about g ○ f?',
+      options: ['Always injective', 'Always surjective', 'Always bijective', 'Not necessarily a function'],
+      correctAnswer: 2,
+      explanation: 'Composition of bijections is a bijection.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'The inverse of a product of matrices satisfies:',
+      options: ['(AB)⁻¹ = A⁻¹B⁻¹', '(AB)⁻¹ = B⁻¹A⁻¹', 'A⁻¹ must equal B', 'Only true for symmetric matrices'],
+      correctAnswer: 1,
+      explanation: '(AB)⁻¹ = B⁻¹A⁻¹ for all invertible matrices A and B.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'What is the determinant of a triangular matrix?',
+      options: ['Always 0', 'Always 1', 'Product of diagonal entries', 'Sum of diagonal entries'],
+      correctAnswer: 2,
+      explanation: 'Triangular matrices have determinant equal to the product of diagonal values.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'If A is a 3×3 matrix and rank(A) = 2, what can be concluded?',
+      options: ['A is invertible', 'A has determinant 0', 'A is symmetric', 'A has no nullspace'],
+      correctAnswer: 1,
+      explanation: 'Rank < n implies det(A) = 0 and A is singular.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'How many relations on a set of size n exist?',
+      options: ['n', 'n²', '2ⁿ', '2^(n²)'],
+      correctAnswer: 3,
+      explanation: 'Each ordered pair can be included/excluded independently → 2^(n²).',
+      difficulty: 'hard'
+    },
+    {
+      question: 'A function f: A → B has a left inverse only if:',
+      options: ['f is injective', 'f is surjective', 'f is bijective', 'f is constant'],
+      correctAnswer: 0,
+      explanation: 'Left inverses exist only for injective functions.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'A function f: A → B has a right inverse only if:',
+      options: ['f is injective', 'f is surjective', 'f is bijective', 'f is constant'],
+      correctAnswer: 1,
+      explanation: 'Right inverses require surjectivity.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'If A is invertible, the solution to Ax = b is:',
+      options: ['x = bA', 'x = A + b', 'x = A⁻¹b', 'No solution'],
+      correctAnswer: 2,
+      explanation: 'Multiply both sides by A⁻¹: x = A⁻¹b.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'Which of the following is true for a linear transformation T(x) = Ax?',
+      options: [
+        'T preserves addition only',
+        'T preserves scalar multiplication only',
+        'T preserves both addition and scalar multiplication',
+        'T preserves nothing'
+      ],
+      correctAnswer: 2,
+      explanation: 'Linear transformations satisfy T(x + y) = T(x) + T(y) and T(cx) = cT(x).',
+      difficulty: 'hard'
+    },
+    {
+      question: 'If A is 4×4 and det(A)=5, what is det(3A)?',
+      options: ['15', '243', '3⁴ · 5', '3 · 5'],
+      correctAnswer: 2,
+      explanation: 'det(kA) = kⁿ det(A), so det(3A) = 3⁴ × 5.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'What is the rank of the identity matrix Iₙ?',
+      options: ['0', '1', 'n', 'n²'],
+      correctAnswer: 2,
+      explanation: 'The identity matrix has n pivot positions.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'If A is symmetric (Aᵀ = A), which statement is true?',
+      options: ['A is invertible', 'A is diagonal', 'A has real eigenvalues', 'A is always orthogonal'],
+      correctAnswer: 2,
+      explanation: 'Real symmetric matrices always have real eigenvalues.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'For sets A and B, the number of functions A → B equals:',
+      options: ['|A| × |B|', '(|A| + |B|)!', '|B|^|A|', '2^(|A||B|)'],
+      correctAnswer: 2,
+      explanation: 'Each of |A| elements chooses from |B| outputs: |B|^|A|.',
+      difficulty: 'hard'
+    },
+    {
+      question: 'If A is invertible, what is det(A⁻¹)?',
+      options: ['det(A)', '1/det(A)', 'det(A)²', '0'],
+      correctAnswer: 1,
+      explanation: 'det(A⁻¹) = 1/det(A).',
+      difficulty: 'hard'
+    }
+  ]
+};
+
 }
 
