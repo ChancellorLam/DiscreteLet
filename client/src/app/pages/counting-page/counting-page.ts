@@ -212,8 +212,8 @@ export class CountingPage {
       },
       {
         question: 'How many permutations of the word “MISSISSIPPI”?',
-        options: ['34650', '4989600', '34650', '113400'],
-        correctAnswer: 3,
+        options: ['37058', '4989600', '34650', '113400'],
+        correctAnswer: 2,
         explanation: '11! / (4!4!2!) = 34,650.',
         difficulty: 'hard'
       },
@@ -227,14 +227,14 @@ export class CountingPage {
       {
         question: 'How many permutations of selecting 4 from 12?',
         options: ['11880', '95040', '7260', '3960'],
-        correctAnswer: 1,
+        correctAnswer: 0,
         explanation: 'P(12,4) = 12×11×10×9 = 11,880.',
         difficulty: 'hard'
       },
       {
         question: 'How many ways to seat 8 people around a round table?',
         options: ['5040', '40320', '720', '504'],
-        correctAnswer: 2,
+        correctAnswer: 0,
         explanation: '(n–1)! = 7! = 5040.',
         difficulty: 'hard'
       },
