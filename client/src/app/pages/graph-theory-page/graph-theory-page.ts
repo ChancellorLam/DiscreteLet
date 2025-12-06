@@ -30,7 +30,6 @@ export class GraphTheoryPage {
   isExpanded = false;
 
   /* Quiz questions and answers */
-  /* Quiz questions and answers */
   graphTheoryQuestionPool: Question[] = [
     {
       text: 'Which of the following best describes a graph?',
