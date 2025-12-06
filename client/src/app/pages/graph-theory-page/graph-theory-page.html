@@ -7,13 +7,13 @@
         <p-tabs [(value)]="activeTab">
           <p-tablist>
             <p-tab value="0">Lessons</p-tab>
-            <p-tab value="1">Exercises</p-tab>
-            <p-tab value="2">Quiz</p-tab>
+            <p-tab value="1">Quizzes</p-tab>
+            <p-tab value="2">Unit Tests</p-tab>
           </p-tablist>
 
           <p-tabpanels>
             <p-tabpanel value="0">
-              <h3>Relations Lessons
+              <h3>Graph Theory Lessons
                 <p-button
                   (click)="toggleAll()"
                   styleClass="p-button-text"
@@ -24,27 +24,15 @@
               <!-- Panel 1 -->
               <p-accordion-panel value="0">
                 <p-accordion-header>
-                  <div class="topic-header header-font-size">Number Theory Introduction:</div>
+                  <div class="topic-header header-font-size">Graph Theory Introduction:</div>
                 </p-accordion-header>
                 <p-accordion-content>
                   <p class="indent-content">
-                    Number theory is a branch of pure mathematics that focuses on the integers and integer-valued
-                    functions. It investigates
-                    fundamental concepts such as divisibility (what it means for one integer to divide another), prime
-                    numbers and their
-                    distribution, greatest common divisors, and factorization into primes. Beyond these “elementary”
-                    concerns, number theory
-                    branches into deeper realms: analytic number theory uses tools from calculus and complex analysis to
-                    study patterns like
-                    the density of primes, while algebraic number theory examines the arithmetic properties of numbers
-                    in
-                    more general
-                    algebraic structures (like rings of algebraic integers). Many of its problems are easy to state but
-                    famously hard to
-                    solve (for example, the Goldbach conjecture or Fermat’s Last Theorem), and the field has
-                    unexpectedly
-                    rich applications
-                    in modern cryptography and computer science.
+                    Graph theory is a branch of discrete mathematics that studies graphs. Graphs are structures made of
+                    vertices
+                    (nodes) and edges (connections). It's a powerful representation for modeling relationships,
+                    networks, and interactions across many fields like computer science, mathematics, physics, biology,
+                    social science, and more.
                   </p>
                 </p-accordion-content>
               </p-accordion-panel>
@@ -52,63 +40,192 @@
               <!-- Panel 2 -->
               <p-accordion-panel value="1">
                 <p-accordion-header>
-                  <div class="topic-header header-font-size">I. Integers & Divisibility</div>
+                  <div class="topic-header header-font-size">I. Graphs</div>
                 </p-accordion-header>
                 <p-accordion-content>
-                  <p class="indent-content">
-                    Integers (ℤ) are the set of whole numbers, both positive and negative, including zero. Division with
-                    integers often
-                    leaves a remainder, which is captured by the equation a=bq+ra = bq + ra=bq+r where qqq is the
-                    quotient
-                    and rrr is the
-                    remainder. The notation “a∣ba \mid ba∣b” means that aaa divides bbb evenly, with no remainder.
-                    Properties of divisibility
-                    help us test whether one number can evenly divide another, and these rules form the foundation for
-                    later concepts like
-                    prime factorization and modular arithmetic.
-                  </p>
+                  <div class="indent-content">
+                    <p>
+                      A graph
+                      <app-latex-container
+                        [latex]="'G = \\left( V, E \\right)'"
+                      ></app-latex-container>
+                      consists of:
+                    </p>
+                    <ul>
+                      <li>
+                        <app-latex-container
+                          [latex]="'V:'"
+                        ></app-latex-container>
+                        a set of vertices (or nodes)
+                      </li>
+
+                      <li>
+                        <app-latex-container
+                          [latex]="'E:'"
+                        ></app-latex-container>
+                        a set of edges
+                      </li>
+                    </ul>
+                    <p>Graphs can represent:</p>
+                    <ul>
+                      <li>
+                        computer networks
+                      </li>
+
+                      <li>
+                        social networks
+                      </li>
+
+                      <li>
+                        transportation routes
+                      </li>
+
+                      <li>
+                        molecular structures
+                      </li>
+
+                      <li>
+                        dependency relationships, and more
+                      </li>
+                    </ul>
+                    Since graphs give us a way to express these ideas as a data structure, we can operate on them using
+                    algorithms to do things like find the shortest possible distance from one node to another using an
+                    algorithm like
+                    breadth-first-search for an unweighted graph or Djakstra's algorithm for a weighted graph.
+                  </div>
                 </p-accordion-content>
               </p-accordion-panel>
 
               <!-- Panel 3 -->
               <p-accordion-panel value="2">
                 <p-accordion-header>
-                  <div class="topic-header header-font-size">II. GCD & LCM</div>
+                  <div class="topic-header header-font-size">II. Types of Graphs</div>
                 </p-accordion-header>
                 <p-accordion-content>
-                  <p class="indent-content">
-                    The greatest common divisor (GCD) of two numbers is the largest integer that divides both, while the
-                    least common
-                    multiple (LCM) is the smallest positive integer that both numbers divide into evenly. One way to
-                    find
-                    these is through
-                    prime factorization, by comparing shared and unique factors. Another is the Euclidean Algorithm,
-                    which
-                    uses repeated
-                    division to efficiently determine the GCD. These concepts are essential for simplifying fractions,
-                    solving equations,
-                    and understanding number relationships.
-                  </p>
+                  <div class="indent-content">
+                    <h3>By direction</h3>
+                    <ul>
+                      <img
+                        ngSrc="images/graphs/undirected_graph.png"
+                        alt="undirected_graph"
+                        width="608"
+                        height="611"
+                        class="centered-image"
+                      >
+                      <li>Undirected graph – edges have no direction</li>
+                      <img
+                        ngSrc="images/graphs/directed_graph.png"
+                        alt="directed_graph"
+                        width="608"
+                        height="611"
+                        class="centered-image"
+                      >
+                      <li>Directed graph – edges have arrows for one-way relationships</li>
+                    </ul>
+
+                    <h3>By weights</h3>
+                    <ul>
+                      <li>Weighted graph – edges have costs or lengths</li>
+                      <li>Unweighted graph – all edges are treated equally</li>
+                    </ul>
+
+                    <h3>By structure</h3>
+                    <ul>
+                      <li>Simple graph – no loops or multiple edges</li>
+                      <li>Complete graph – every pair of vertices is connected</li>
+                      <li>Bipartite graph – vertices split into two sets with edges only between sets</li>
+                      <li>Tree – a graph with a root node</li>
+                    </ul>
+                  </div>
+                </p-accordion-content>
+              </p-accordion-panel>
+
+              <!-- Panel 3 -->
+              <p-accordion-panel value="2">
+                <p-accordion-header>
+                  <div class="topic-header header-font-size">III. Some Graph Algorithms</div>
+                </p-accordion-header>
+                <p-accordion-content>
+                  <div class="indent-content">
+                    <p>Breadth-First Search (BFS)</p>
+                    <p>BFS explores a graph level by level, starting from a source vertex. It visits all neighbors
+                      before moving to the next level.</p>
+                    <ul>
+                      <li>When to use: Best for unweighted graphs to find the shortest path in terms of edges.</li>
+                      <li>How it works:
+                        <ul>
+                          <li>Start by placing the source vertex in a queue.</li>
+                          <li>Repeatedly remove a vertex from the front of the queue, visit it, and add all unvisited
+                            neighbors to the queue.
+                          </li>
+                          <li>Continue until all reachable vertices are visited.</li>
+                        </ul>
+                      </li>
+                      <li>Key idea: The first time a vertex is reached, it is via the shortest possible path in number
+                        of edges.
+                      </li>
+                    </ul>
+
+                    <p>Dijkstra's Algorithm</p>
+                    <p>Dijkstra's algorithm finds the shortest paths from a source vertex to all other vertices in a
+                      weighted graph with non-negative edges.</p>
+                    <ul>
+                      <li>When to use: Weighted graphs where all edge weights are non-negative.</li>
+                      <li>How it works:
+                        <ul>
+                          <li>Assign a tentative distance to all vertices (0 for source, infinity for others).</li>
+                          <li>Set the source as the current vertex.</li>
+                          <li>For the current vertex, check all neighbors and update their distances if a shorter path
+                            is found.
+                          </li>
+                          <li>Mark the current vertex as visited and move to the unvisited vertex with the smallest
+                            distance.
+                          </li>
+                          <li>Repeat until all vertices are visited.</li>
+                        </ul>
+                      </li>
+                      <li>Key idea: By always expanding the closest vertex, Dijkstra guarantees the shortest paths to
+                        all vertices.
+                      </li>
+                    </ul>
+
+                    <p>Depth-First Search (DFS)</p>
+                    <p>DFS explores a graph by going as deep as possible along each branch before backtracking.</p>
+                    <ul>
+                      <li>When to use: Useful for exploring all paths, detecting cycles, or solving problems like
+                        topological sorting.
+                      </li>
+                      <li>How it works:
+                        <ul>
+                          <li>Start at a source vertex and mark it as visited.</li>
+                          <li>Recursively visit all unvisited neighbors of the current vertex before backtracking.</li>
+                          <li>Continue until all vertices reachable from the source have been visited.</li>
+                        </ul>
+                      </li>
+                      <li>Key idea: DFS goes deep into a branch before exploring other branches, often implemented with
+                        recursion or a stack.
+                      </li>
+                    </ul>
+
+                  </div>
                 </p-accordion-content>
               </p-accordion-panel>
             </p-tabpanel>
 
             <p-tabpanel value="1">
-              <h3>Exercises</h3>
-              <p>Practice gcd, modular inverses, sample problems.</p>
+              <h3>Relations Quiz</h3>
+              <app-quiz
+                [questions]="graphTheoryQuestionPool">
+              </app-quiz>
             </p-tabpanel>
 
             <p-tabpanel value="2">
-              <h3>Relations Quiz</h3>
-              <app-quiz
-                [questions]="relationQuestions">
-              </app-quiz>
+              <h3>Graph Theory & Unit Test</h3>
+              <app-unit-test-template [config]="graphTheoryUnitTestConfig"></app-unit-test-template>
             </p-tabpanel>
           </p-tabpanels>
         </p-tabs>
       </div>
-
-
     </p-accordion>
   </div>
 </div>
